@@ -1,0 +1,19 @@
+body {
+    margin:0;
+}
+
+.selection {
+    height: 100vh;
+    background-color: #4589ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selection img {
+    width: 265px;
+    height: 323.1px;
+    top: 350px;
+    left: 588px;
+}
+
