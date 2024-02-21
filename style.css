@@ -2,18 +2,15 @@ body {
     margin:0;
 }
 
-.selection {
+.header{
     height: 100vh;
-    background-color: #4589ff;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
-
-.selection img {
-    width: 265px;
-    height: 323.1px;
-    top: 350px;
-    left: 588px;
+.header img {
+    position: relative;
+    width: 100.03px;
+    height: 121.97px;
+    top: 80px;
+    left: 77px;
 }
 
