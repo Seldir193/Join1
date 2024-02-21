@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -M "%*"
+git commit -m "%*"
 git push
