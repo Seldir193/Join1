@@ -2,6 +2,7 @@ body {
     margin:0;
     box-sizing: border-box;
     height: 100vh;
+    background-color: #4589FF !important;
 }
 
 .header {
@@ -18,7 +19,7 @@ body {
 
 .sign {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     width: 315px;
     height: 48px;
@@ -72,23 +73,24 @@ body {
     background-color: #4589FF;
     color: white;
     border: 2px solid #4589FF;
-    border-radius: 6px;
     cursor: pointer;
+    border-radius: 8px;
 }
 
 .container-log  {
-    width: 652px;
-    height: 491px;
-    top: 266.5px;
-    left: 394px;
-    padding: 48px 115px 48px 115px;
+    width: 598px;
+    height: 607px;
+    top: 208.5px;
+    left: 421px;
+    padding: 48px 88px 48px 88px;
     border-radius: 30px;
-    gap: 39px;
+    gap: 35px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     box-shadow: 0px 0px 10px 3px #00000014;
+    background-color: white;
 }
 
 input {
@@ -100,7 +102,6 @@ input {
 
 .button-container  {
     display: flex;
-    width: 422px;
     height: 48px;
     gap: 35px;
 }
@@ -130,18 +131,14 @@ input {
 }
 
 .button-size{
-    width: 135px;
-    height: 48px;
-    padding: 10px 35px 10px 35px;
+    height: 43px;
     border-radius: 8px;
     gap: 10px;
 }
 
 .remember-me{
-    width: 355px;
-    height: 23px;
-    padding: 0px 216px 0px 0px;
-    gap: 35px;
+    display: flex;
+    justify-content: center;
 }
 
 .remember-me input label {
@@ -162,19 +159,19 @@ input {
 
 .inheadline{
     height: 58px;
-    width:315px;
+    width:415px;
 }
 
 .section{
     width: 422px;
-    height: 195px;
-    gap: 20px;
+    height: 324px;
+    gap: 16px
 }
 
 .only-input {
     width: 422px;
-    height: 152px;
-    gap: 32px;
+    height: 284px;
+    gap: 24px;
 }
 
 .only-input-near input {
@@ -186,6 +183,7 @@ input {
     border-bottom: 1px solid #D1D1D1;
     background: #FFFFFF;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .separator{
@@ -195,8 +193,8 @@ input {
 }
 
 .button-log{
-    width: 65px;
-    height: 28px;
+    width: 66px;
+    height: 23px;
 }
 
 .guest{
@@ -232,15 +230,16 @@ input {
 }
 
 .checkbox{
-    width: 139px;
-    height: 24px;
     display: flex;
-    gap:4px;
+    gap:10px;
 }
 
 label{
-    width: 111px;
+    width: 86px;
     height: 19px;
+    top: 2.5px;
+    left: 32px;
+    color: #42526E;
 }
 
 .box{
@@ -273,6 +272,13 @@ label{
     gap: 8px;
 }
 
+.policy-button{
+    width: 101px;
+    height: 19px;
+    color:#4589FF;
+    cursor: pointer;
+}
+
 .notice{
     width: 108px;
     height: 35px;
@@ -284,7 +290,7 @@ label{
 
 .policy,
 .notice {
-    color: #42526E; /* Ändere die Farben nach Bedarf */
+    color: white; /* Ändere die Farben nach Bedarf */
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
@@ -296,6 +302,30 @@ label{
 .notice:hover {
     cursor: pointer;
 }
+
+.arrow-icon{
+   width: 32px;
+   height: 32px;
+   align-content: center;
+   margin-top: 15px;
+   cursor: pointer;
+}
+
+.inheadline h1 {
+    gap: 150px;
+    font-family: Open Sans;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58px;
+    letter-spacing: 0em;
+    text-align: center;
+    display: flex;
+    margin-left: 10px;
+    gap: 80px;
+}
+
+
+
 
 
 

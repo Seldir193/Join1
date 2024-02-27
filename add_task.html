@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleadd.css">
+    <script src="js/add_task.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="headline">
+            <img src="assets/img/Capa 1.png">
+        
+            <div class="kanban">
+                  <p class="next" onclick="toggleMenuBar()">Kanban Project Management Tool</p>
+                  <div class="help-button" onclick="showHelp()">
+                    <span><img src="assets/img/help.png"></span>
+                </div>
+                <button class="buttonSize" type="button" onclick="toggleMenuBar()">
+                    <img class="profile-icon"  src="assets/img/User profile initials.png" alt="User Profile Icon">
+                </button>
+             
+                <div class="menu-bar" id="menuBar" style="display: none;">
+                    <span class="menu-item" onclick="showLegalNotice()">Legal Notice</span>
+                    <span class="menu-item" onclick="showPrivacyPolicy()">Privacy Policy</span><br>
+                    <span class="menu-item" onclick="logOut()">Log Out</span></br>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="main-content">
+    <div class="sideBoard-container">
+        <nav class="sideBoard">
+            <a href="summary.html"><img src="assets/img/Menu Icons.png">Summary</a>
+            <a href="add_task.html"><img src="assets/img/Menu Icons (1).png">Add Task</a>
+            <a href="board.html"><img src="assets/img/Menu Icons (2).png">Board</a>
+            <a href=""><img src="assets/img/Menu Icons (3).png">Contacts</a>
+
+            <div class="sideBoard-footer">
+                <p>Privacy Policy</p>
+                <p>Legal notice</p>
+            </div>
+        </nav>
+    </div>
+
+    <div class="sum-container">
+        <div class="summary-container">
+            <nav class="description">
+                
+                <nav class="title">
+                    <input class="titlebox" minlength="5" maxlength="20" placeholder="Enter a title" required>
+                    <nav class="titlesmallbox">This field is required</nav>
+                </nav>
+                
+                <nav class="enter">
+                    <nav class="optional">
+                        <span class="description-optional"><b>Description</b> (optional)</span>
+                    </nav>
+                    <input class="enter-input" placeholder="Enter a description" required>
+                    <nav class="date-box"></nav>
+                </nav>
+                <nav class="date">
+                    <nav class="due-date">
+                        <span>Due date</span>
+                    </nav>
+                    <input class="due-input" type="date" required>
+                    <nav class="due-box"></nav>
+            </nav>
+            <nav class="priority">
+                <nav class="priority-header">Priority</nav>
+                    <nav class="priority-box">
+                        <nav class="urgent">Urgent<img src="assets/img/Prio alta.png"></nav>
+                        <nav class="medium">Medium <img src="assets/img/Prio media.png"></nav>
+                        <nav class="low">Low<img src="assets/img/Prio baja.png"></nav>
+                    </nav>
+            </nav>
+            <nav class="assigned">
+                <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
+                   <div class="input-with-icon">
+                      <input type="text" id="contactInput" placeholder="Select contacts to assign..." >
+                      <img src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                   </div>
+                   <div class="contact-dropdown" id="contactDropdown"></div>
+            </nav>
+            <nav class="category">
+                <nav class="assigned-box"><b>Category</b></nav>
+                   <div class="input-with-icon">
+                      <input type="text" id="contactInput" placeholder="Select task category..." >
+                      <img src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                   </div>
+                   <div class="contact-dropdown" id="contactDropdown"></div>
+            </nav>
+            <nav class="subtasks">
+                <nav class="assigned-box"><b>Subtasks</b> (optional)</nav>
+                   <div class="input-with-icon">
+                      <input type="text" id="contactInput" placeholder="Add new subtask..." >
+                      <img src="assets/img/Subtask's icons.png" class="dropdown-icon">
+                   </div>
+                   <div class="contact-dropdown" id="contactDropdown"></div>
+            </nav>
+            <nav class="footer-box"></nav>
+          </div>
+        </div>
+        <nav class="button-box">
+           <nav class="clear-button">
+               <button class="clear">Clear <img src="assets/img/iconoir_cancel.png"></button>
+            </nav>
+            
+            <nav class="create-button">
+                <button class="create">Create Task <img src="assets/img/check.png"></button>
+            </nav>
+        </nav>
+    </div>
+</div>
+</body>
+</html>
