@@ -1,7 +1,6 @@
 body {
     margin: 0;
     font-family: Open Sans;
-    
 }
 
 .header {
@@ -152,11 +151,9 @@ body {
     height: 384px;
     padding: 300px 0px 0px 48px;
     gap: 16px;
-    margin-top:200px;
-    margin-left: 20px;
+    margin-top:100px;
     padding-left: 10px;
 }
-
 
 .sideBoard-footer p {
     width: 116px;
@@ -171,29 +168,25 @@ body {
     color: #4589FF;
 }
 
-.sum-container{
+.sum-container {
     display: flex;
-    justify-content: flex-end;
+    margin-right:auto;
 }
+
 .summary-container{
-    width: 912px;
-    height: 591px;
-    top: 264.5px;
-    left: 379.79px;
-    gap: 72px;
     display: flex;
-    margin-left: auto; 
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    cursor: pointer;
+    width: 488px;
+    height: 928px;
+    top: 96px;
+    left: 232px;
+    padding: 64px 24px 64px 24px;
+    gap: 24px;
 }
 
 .summary-container h1 {
     margin: 0; /* Entferne den Standardmargenwert für das <h1>-Element */
-}
-
-.main-content  {
-    display: flex;
 }
 
 .sum-container h1{
@@ -202,4 +195,25 @@ body {
     gap: 22px;
     font-size: 64px;
     color: #2A3647;
+}
+
+.main-content {
+    display: flex;
+    height:932px;
+}
+
+.tasks{
+    width: 912px;
+    height: 219px;
+    top: 223px;
+    gap: 35px;
+    display: flex;
+}
+
+.description{
+    width: 440px;
+    height: 361px;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
 }

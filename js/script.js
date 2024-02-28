@@ -32,3 +32,22 @@ function signForm(){
 function logOut(){
     window.location.href = 'index.html';
 }
+
+function showLegalNotice(){
+    window.location.href = 'legal.html';
+}
+
+function showPrivacyPolicy(){
+    window.location.href = 'privacy.html';
+}
+
+
+
+
+
+
+
+
+
+                    
+                   
