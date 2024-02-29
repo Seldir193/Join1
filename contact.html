@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/stylecontact.css">
-    <script src="js/add_task.js"></script>
+    <script src="js/addContact.js"></script>
 </head>
 
 <body>
@@ -47,9 +47,10 @@
         </div>
 
         <div class="sum-container">
-            <button class="addToContactButton">Add new contact <img src="./assets/img/add avatar.png" alt=""></button>
-
+            <button onclick="addContact()" class="addToContactButton">Add new contact <img src="./assets/img/add avatar.png" alt=""></button>
         </div>
+        <div onclick="closeAddContact()" id="blurContainer" class="blurContainer d-none"></div>
+
 </body>
 
 </html>

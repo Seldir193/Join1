@@ -196,6 +196,17 @@ body {
   width: 28px;
 }
 
+.blurContainer {
+  position: fixed;
+  inset: 0;
+  background-color: white;
+  opacity: 0.5;
+}
+
+.d-none {
+  display: none;
+}
+
 /* ------------------------------------------------------------- */
 .summary-container {
   display: flex;
