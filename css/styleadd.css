@@ -171,8 +171,14 @@ body {
 .sum-container {
     display: flex;
     margin-right:auto;
+    flex-direction: row-reverse;
+    overflow-y: auto; /* Füge einen vertikalen Scrollbalken hinzu */
+    filter: brightness(90%);
 }
 
+.sum-container:hover {
+    scrollbar-color: #4589FF #ffffff;
+}
 .summary-container{
     display: flex;
     flex-direction: column;
@@ -441,13 +447,22 @@ body {
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
+    border-radius: 50%;
+    background-color: white; /* Hintergrundfarbe vor dem Hover */
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out ;
+}
+
+.dropdown-icon:hover {
+    filter: brightness(100%)  ; /* Hellere Farbe beim Hover */
+    background-color: #D2E2FE; /* Neue Hintergrundfarbe beim Hover */
+    transform: scale(1.2) rotate(180deg);
 }
 
 .contact-dropdown {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 65%;
+    left: 20;
     z-index: 1;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -541,6 +556,20 @@ body {
     color: #4589FF;
     border-color: #4589FF;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

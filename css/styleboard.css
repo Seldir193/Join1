@@ -155,7 +155,6 @@ body {
     padding-left: 30px;
 }
 
-
 .sideBoard-footer p {
     width: 116px;
     height: 35px;
@@ -174,30 +173,6 @@ body {
     margin-right:auto;
 }
 
-.summary-container{
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    width: 488px;
-    height: 928px;
-    top: 96px;
-    left: 232px;
-    padding: 64px 24px 64px 24px;
-    gap: 24px;
-}
-
-.summary-container h1 {
-    margin: 0; /* Entferne den Standardmargenwert für das <h1>-Element */
-}
-
-.sum-container h1{
-    width: 455px;
-    height: 77px;
-    gap: 22px;
-    font-size: 64px;
-    color: #2A3647;
-}
-
 .main-content {
     display: flex;
     height:932px;
@@ -211,10 +186,28 @@ body {
     display: flex;
 }
 
-.description{
-    width: 440px;
-    height: 361px;
-    gap: 12px;
+.sum-container{
     display: flex;
-    flex-direction: column;
+    width: 1208px;
+    height: 215px;
+    top: 96px;
+    left: 232px;
+    padding: 72px 0px 16px 0px;
+    gap: 48px;
+    justify-content: center;
 }
+
+.add-task-container{
+    width: 1078px;
+    height: 51px;
+    gap: 474px;
+}
+
+.add-task-container input{
+    display: flex;
+    justify-content: center;
+}
+.summary-container{
+    
+}
+

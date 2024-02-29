@@ -44,10 +44,10 @@
         </nav>
     </div>
 
-    <div class="sum-container">
+    <div class="sum-container scroll-balken">
+       
         <div class="summary-container">
             <nav class="description">
-                
                 <nav class="title">
                     <input class="titlebox" minlength="5" maxlength="20" placeholder="Enter a title" required>
                     <nav class="titlesmallbox">This field is required</nav>
@@ -77,9 +77,9 @@
             </nav>
             <nav class="assigned">
                 <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
-                   <div class="input-with-icon">
-                      <input type="text" id="contactInput" placeholder="Select contacts to assign..." >
-                      <img src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                   <div class="input-with-icon" >
+                      <input type="text" id="contactInput"  placeholder="Select contacts to assign..." >
+                      <img id="icon" onclick="toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
                    </div>
                    <div class="contact-dropdown" id="contactDropdown"></div>
             </nav>

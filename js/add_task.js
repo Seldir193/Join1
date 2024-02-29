@@ -16,10 +16,11 @@ function showPrivacyPolicy(){
 }
 
 
+       
 document.addEventListener('DOMContentLoaded', function () {
     const contactInput = document.getElementById('contactInput');
     const contactDropdown = document.getElementById('contactDropdown');
-
+    
     // Dummy hinzugefügte Kontakte (kann durch deine Daten ersetzt werden)
     const addedContacts = ['John Doe', 'Jane Smith', 'Alice Johnson'];
 
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         contactItem.textContent = contact;
         contactItem.addEventListener('click', () => selectContact(contact));
         contactDropdown.appendChild(contactItem);
+        
     });
 
     // Event Listener für das Input-Feld
