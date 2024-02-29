@@ -6,8 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/stylesummary.css">
     <script src="js/script.js"></script>
+    <script src="js/templates.js"></script>
 </head>
-<body>
+<body onload="includeHTML()">
     <div class="header">
         <div class="headline">
             <img src="assets/img/Capa 1.png">
@@ -30,19 +31,7 @@
         </div>
     </div>
 <div class="main-content">
-    <div class="sideBoard-container">
-        <nav class="sideBoard">
-            <a href="summary.html"><img src="assets/img/Menu Icons.png">Summary</a>
-            <a href="add_task.html"><img src="assets/img/Menu Icons (1).png">Add Task</a>
-            <a href="board.html"><img src="assets/img/Menu Icons (2).png">Board</a>
-            <a href="contact.html"><img src="assets/img/Menu Icons (3).png">Contacts</a>
-
-            <div class="sideBoard-footer">
-                <p onclick="showPrivacyPolicy()">Privacy Policy</p></a>
-                <p onclick="showLegalNotice()">Legal notice</p></a> 
-            </div>
-        </nav>
-    </div>
+    <div w3-include-html="templates.html"></div>
 
     <div class="sum-container">
         <div class="summary-container">
