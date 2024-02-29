@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,39 @@
     <link rel="stylesheet" href="css/styleall.css">
     <script src="js/templates.js"></script>
 </head>
+
 <body onload="includeHTML()">
     <div w3-include-html="./templates/header.html"></div>
-<div class="main-content">
+    
+    <div class="sideBoardContainer"></div>
     <div w3-include-html="./templates/side-menu.html"></div>
-</div>
+    </div>
+    
+        <div class="mainBoard dFLex">
+            <div>
+                <input type="text">
+                <button></button>
+            </div>
+            <div class="dFLex">
+                <div id="toDoBoard" class="categorysBoard">
+                    <span><b>To Do</b></span>
+                    <img src="" alt="">
+                </div>
+                <div id="inProgressBoard" class="categorysBoard">
+                    <span><b>In progress</b></span>
+                    <img src="" alt="">
+                </div>
+                <div id="awaitFeedbackBoard" class="categorysBoard">
+                    <span><b>Await feedback</b></span>
+                    <img src="" alt="">
+                </div>
+                <div id="doneBoard" class="categorysBoard">
+                    <span><b>Done</b></span>
+                </div>
+            </div>
+        </div>
+        <div class="taskBoard"></div>
+    </div>
 </body>
+
 </html>
