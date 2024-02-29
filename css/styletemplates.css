@@ -6,7 +6,7 @@
   background-color: #4589ff;
   box-shadow: 0px 4px 4px 0px #0000001a;
   align-items: center;
-  padding: 20px;
+  padding: 28px;
   top: 0;
   left: 0;
   right: 0;
@@ -57,6 +57,10 @@
 
 .buttonSize:hover .profile-icon {
   filter: brightness(90%);
+}
+
+.sideBoardContainer{
+  width: 232px;
 }
 
 .sideBoard {

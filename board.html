@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,46 @@
     <link rel="stylesheet" href="css/styleboard.css">
     <link rel="stylesheet" href="css/styletemplates.css">
     <link rel="stylesheet" href="css/styleall.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <script src="js/templates.js"></script>
 </head>
+
 <body onload="includeHTML()">
-    <div w3-include-html="./templates/header.html"></div>
-<div class="main-content">
-    <div w3-include-html="./templates/side-menu.html"></div>
-</div>
+
+    <section w3-include-html="./templates/header.html"></section>
+    <div class="dFlex">
+        <section w3-include-html="./templates/side-menu.html" class="sideBoardContainer"></section>
+        <section>
+            <section class="mainBoard column">
+                <div class="searchMainContainer">
+                    <div class="inputSearchContainer"><input type="text" placeholder="Find Task">
+                        <div class="searchIconContainer"><img src="./assets/img/search.svg" alt="search Icon"
+                                id="searchIcon"></div>
+                    </div>
+                    <button>Add task <img src="./assets/img/plus.svg" alt="plusIcon">
+                    </button>
+                </div>
+                <div class="categorysBoardContainer">
+                    <div id="toDoBoard" class="categorysBoard">
+                        <span><b>To Do</b></span>
+                        <img src="./assets/img/plus_button.svg" alt="">
+                    </div>
+                    <div id="inProgressBoard" class="categorysBoard">
+                        <span><b>In progress</b></span>
+                        <img src="./assets/img/plus_button.svg" alt="">
+                    </div>
+                    <div id="awaitFeedbackBoard" class="categorysBoard">
+                        <span><b>Await feedback</b></span>
+                        <img src="./assets/img/plus_button.svg" alt="">
+                    </div>
+                    <div id="doneBoard" class="categorysBoard">
+                        <span><b>Done</b></span>
+                    </div>
+                </div>
+            </section>
+            <section class="taskBoard">Hallo</section>
+        </section>
+    </div>
 </body>
+
 </html>
