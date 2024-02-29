@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,21 @@
     <link rel="stylesheet" href="css/stylecontact.css">
     <script src="js/add_task.js"></script>
 </head>
+
 <body>
     <div class="header">
         <div class="headline">
             <img src="assets/img/Capa 1.png">
-        
+
             <div class="kanban">
-                  <p class="next" onclick="toggleMenuBar()">Kanban Project Management Tool</p>
-                  <div class="help-button" onclick="showHelp()">
+                <p class="next" onclick="toggleMenuBar()">Kanban Project Management Tool</p>
+                <div class="help-button" onclick="showHelp()">
                     <span><img src="assets/img/help.png"></span>
                 </div>
                 <button class="buttonSize" type="button" onclick="toggleMenuBar()">
-                    <img class="profile-icon"  src="assets/img/User profile initials.png" alt="User Profile Icon">
+                    <img class="profile-icon" src="assets/img/User profile initials.png" alt="User Profile Icon">
                 </button>
-             
+
                 <div class="menu-bar" id="menuBar" style="display: none;">
                     <span class="menu-item" onclick="showLegalNotice()">Legal Notice</span>
                     <span class="menu-item" onclick="showPrivacyPolicy()">Privacy Policy</span><br>
@@ -29,28 +31,25 @@
             </div>
         </div>
     </div>
-<div class="main-content">
-    <div class="sideBoard-container">
-        <nav class="sideBoard">
-            <a href="summary.html"><img src="assets/img/Menu Icons.png">Summary</a>
-            <a href="add_task.html"><img src="assets/img/Menu Icons (1).png">Add Task</a>
-            <a href="board.html"><img src="assets/img/Menu Icons (2).png">Board</a>
-            <a href=""><img src="assets/img/Menu Icons (3).png">Contacts</a>
+    <div class="main-content">
+        <div class="sideBoard-container">
+            <nav class="sideBoard">
+                <a href="summary.html"><img src="assets/img/Menu Icons.png">Summary</a>
+                <a href="add_task.html"><img src="assets/img/Menu Icons (1).png">Add Task</a>
+                <a href="board.html"><img src="assets/img/Menu Icons (2).png">Board</a>
+                <a href=""><img src="assets/img/Menu Icons (3).png">Contacts</a>
 
-            <div class="sideBoard-footer">
-                <p onclick="showPrivacyPolicy()">Privacy Policy</p></a>
-                <p onclick="showLegalNotice()">Legal notice</p></a>
-            </div>
-        </nav>
-    </div>
+                <div class="sideBoard-footer">
+                    <p onclick="showPrivacyPolicy()">Privacy Policy</p></a>
+                    <p onclick="showLegalNotice()">Legal notice</p></a>
+                </div>
+            </nav>
+        </div>
 
-    <div class="sum-container">
-        <div class="summary-container">
-            <nav class="description">
-                
-                
-        </nav>
-    </div>
-</div>
+        <div class="sum-container">
+            <button class="addToContactButton">Add new contact <img src="./assets/img/add avatar.png" alt=""></button>
+
+        </div>
 </body>
+
 </html>
