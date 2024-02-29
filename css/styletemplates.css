@@ -1,107 +1,107 @@
 .header {
-    display: flex;
-    position: absolute;
-    z-index: 10;
-    justify-content: space-between;
-    background-color: #4589FF;
-    box-shadow: 0px 4px 4px 0px #0000001A;
-    align-items: center;
-    padding: 20px;
-    top: 0;
-    left: 0;
-    right: 0;
+  display: flex;
+  position: absolute;
+  z-index: 10;
+  justify-content: space-between;
+  background-color: #4589ff;
+  box-shadow: 0px 4px 4px 0px #0000001a;
+  align-items: center;
+  padding: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
 }
 
-
 .kanban {
-    display: flex;
-    align-items: center;
-    height: 56px;
-    color: white;
-    cursor: pointer;
-    width: 433px;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  color: white;
+  cursor: pointer;
+  width: 433px;
+  justify-content: space-between;
 }
 
 .next {
-    margin: 0;
+  margin: 0;
 }
 
 .buttonSize {
-    background-color: #4589FF;
-    color: white;
-    border: none;
-    cursor: pointer;
+  background-color: #4589ff;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .help-button {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #4589FF;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #4589ff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .help-button span {
-    font-size: 20px;
-    line-height: 1;
+  font-size: 20px;
+  line-height: 1;
 }
 
 .help-button:hover span {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .buttonSize:hover .profile-icon {
-    filter: brightness(90%);
+  filter: brightness(90%);
 }
 
 .sideBoard {
-    z-index: 1;
-    padding-top: 96px;
-    width: 232px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    height: 100vh;
+  z-index: 1;
+  padding-top: 96px;
+  width: 232px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100vh;
 }
 
 .sideBoard a {
-    width: 186px;
-    height: 40px;
-    padding: 8px 10px 8px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    display: flex;
+  width: 186px;
+  height: 40px;
+  padding: 8px 10px 8px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
 }
 
 .sideBoard a:hover {
-    color: #42526E;
-    font-size: 16px;
-    text-decoration: none;
-    display: flex;
-    background-color: #D2E2FE;
-    width: 186px;
+  color: #42526e;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  background-color: #d2e2fe;
+  width: 186px;
 }
 
 .sideBoard img {
-    width: 22px;
-    height: 22px;
+  width: 22px;
+  height: 22px;
 
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .sideBoardChild2 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding-left: 30px;
-    flex: 0.5;
-    padding-bottom: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-left: 30px;
+  flex: 0.5;
+  padding-bottom: 160px;
 }
 
 .sideBoardChild2 a {
-    padding-bottom: 16px;
+  padding-bottom: 16px;
 }

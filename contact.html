@@ -6,50 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/stylecontact.css">
+    <link rel="stylesheet" href="css/styletemplates.css">
     <script src="js/addContact.js"></script>
+    <script src="js/templates.js"></script>
 </head>
 
-<body>
-    <div class="header">
-        <div class="headline">
-            <img src="assets/img/Capa 1.png">
-
-            <div class="kanban">
-                <p class="next" onclick="toggleMenuBar()">Kanban Project Management Tool</p>
-                <div class="help-button" onclick="showHelp()">
-                    <span><img src="assets/img/help.png"></span>
-                </div>
-                <button class="buttonSize" type="button" onclick="toggleMenuBar()">
-                    <img class="profile-icon" src="assets/img/User profile initials.png" alt="User Profile Icon">
-                </button>
-
-                <div class="menu-bar" id="menuBar" style="display: none;">
-                    <span class="menu-item" onclick="showLegalNotice()">Legal Notice</span>
-                    <span class="menu-item" onclick="showPrivacyPolicy()">Privacy Policy</span><br>
-                    <span class="menu-item" onclick="logOut()">Log Out</span></br>
-                </div>
-            </div>
-        </div>
-    </div>
+<body onload="includeHTML()">
+    <div w3-include-html="./templates/header.html"></div>
     <div class="main-content">
-        <div class="sideBoard-container">
-            <nav class="sideBoard">
-                <a href="summary.html"><img src="assets/img/Menu Icons.png">Summary</a>
-                <a href="add_task.html"><img src="assets/img/Menu Icons (1).png">Add Task</a>
-                <a href="board.html"><img src="assets/img/Menu Icons (2).png">Board</a>
-                <a href=""><img src="assets/img/Menu Icons (3).png">Contacts</a>
+        <div w3-include-html="./templates/side-menu.html"></div>
 
-                <div class="sideBoard-footer">
-                    <p onclick="showPrivacyPolicy()">Privacy Policy</p></a>
-                    <p onclick="showLegalNotice()">Legal notice</p></a>
-                </div>
-            </nav>
-        </div>
 
         <div class="sum-container">
             <button onclick="addContact()" class="addToContactButton">Add new contact <img src="./assets/img/add avatar.png" alt=""></button>
         </div>
         <div onclick="closeAddContact()" id="blurContainer" class="blurContainer d-none"></div>
+        <div class="addContactSlideCard">
+            <div class="upperBody">
+                <img src="./assets/img/Capa 1.png" alt="">
+                <div class="functionNameTextOne">Add contact</div>
+                <div class="functionNameTextTwo">Tasks are better with a team!</div>
+            </div>
+            <div class="lowerBody"></div>
+        </div>
 
 </body>
 
