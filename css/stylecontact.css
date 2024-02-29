@@ -1,111 +1,10 @@
-body {
-  margin: 0;
-  font-family: Open Sans;
-}
-
-.header {
-  padding: 20px 39px 20px 39px;
-  justify-content: space-between;
-  background-color: #4589ff;
-  box-shadow: 0px 4px 4px 0px #0000001a;
-}
-
-.headline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.headline img {
-  max-width: 100%;
-  height: auto;
-}
-
-.kanban {
-  display: flex;
-  align-items: center;
-  width: 433px;
-  height: 56px;
-  gap: 26px;
-  color: white;
-  cursor: pointer;
-}
-
-.next {
-  margin: 0;
-}
-
-.buttonSize {
-  background-color: #4589ff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.help-button {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #4589ff;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.help-button span {
-  font-size: 20px;
-  line-height: 1;
-}
-
-.menu-bar {
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  position: absolute;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0px 0px 10px 3px #00000014;
-  padding: 10px;
-  z-index: 1;
-  top: 100px;
-  right: 50px;
-  width: 110px;
-  text-align: right;
-}
-
-.menu-item {
-  cursor: pointer;
-  color: #707c92;
-  font-family: Open Sans;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19px;
-  letter-spacing: 0em;
-}
-
-.menu-item:hover {
-  text-decoration: none;
-  color: lightblue;
-}
-
-.help-button:hover span {
-  transform: scale(1.2);
-}
-
-.buttonSize:hover .profile-icon {
-  filter: brightness(90%);
-}
-
 .sum-container {
   display: flex;
   width: 300px;
-  background-color: yellow;
   flex-direction: column;
   height: 100vh;
+  border-right: 1px solid rgb(200, 200, 200);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .addToContactButton {
@@ -142,12 +41,18 @@ body {
 
 .addContactSlideCard {
   height: 100vh;
-  width: 350px;
-  /* transform: translateX(101%); */
+  width: 400px;
+  transform: translateX(101%);
+  transition: all 250ms ease-in-out;
   position: absolute;
   right: 0;
   border-radius: 25px 0px 0px 0px;
   border-left: 1px solid rgb(200, 200, 200);
+}
+
+.slideOpen {
+  transform: translateX(0%) !important;
+  transition: all 250ms ease-in-out;
 }
 
 .upperBody {
@@ -161,6 +66,22 @@ body {
   justify-content: center;
 }
 
+.closeX {
+  font-size: 32px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  text-align: center;
+}
+.closeX:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  padding: 0px 0px 4px 0px;
+}
 .upperBody img {
   width: 35px;
 }
@@ -169,6 +90,16 @@ body {
   background-color: white;
   width: 100%;
   height: 70%;
+  display: grid;
+  place-items: center;
+}
+.lowerBody form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
 }
 
 .functionNameTextOne {
@@ -177,6 +108,58 @@ body {
 }
 .functionNameTextTwo {
   color: white;
+}
+
+.userImgLowerBody {
+  width: 20%;
+  filter: opacity(0.5);
+}
+
+.inputLowerBody {
+  border: none;
+  border-bottom: solid 1px grey;
+  width: 80%;
+  padding: 4px;
+  outline: none;
+}
+
+.lowerBodyBtnContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.createUserBtn {
+  padding: 8px;
+  background-color: rgb(69, 137, 255);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.createUserBtn:hover {
+  cursor: pointer;
+  background-color: rgb(27, 110, 255);
+}
+.closeAddContactBtn {
+  padding: 8px;
+  background-color: rgb(250, 250, 250);
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 10px;
+  color: rgb(200, 200, 200);
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.closeAddContactBtn:hover {
+  cursor: pointer;
+  color: rgb(27, 110, 255);
+  border-color: rgb(27, 110, 255);
 }
 /* ------------------------------------------------------------- */
 .summary-container {
@@ -198,20 +181,4 @@ body {
 .main-content {
   display: flex;
   margin-top: 80px;
-}
-
-.tasks {
-  width: 912px;
-  height: 219px;
-  top: 223px;
-  gap: 35px;
-  display: flex;
-}
-
-.description {
-  width: 440px;
-  height: 361px;
-  gap: 12px;
-  display: flex;
-  flex-direction: column;
 }
