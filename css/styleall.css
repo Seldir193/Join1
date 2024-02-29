@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    font-family: Open Sans;
+    max-height: 1024px;
+}
+
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.alignItems{
+    display: flex;
+    align-items: center;
+}
+
+
+.flex50{
+    display: flex;
+    flex: 0.5
+}
