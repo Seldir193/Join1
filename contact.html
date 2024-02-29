@@ -21,13 +21,25 @@
             <button onclick="addContact()" class="addToContactButton">Add new contact <img src="./assets/img/add avatar.png" alt=""></button>
         </div>
         <div onclick="closeAddContact()" id="blurContainer" class="blurContainer d-none"></div>
-        <div class="addContactSlideCard">
+        <div id="addContactSlideCard" class="addContactSlideCard">
             <div class="upperBody">
+                <div onclick="closeAddContact()" class="closeX">×</div>
                 <img src="./assets/img/Capa 1.png" alt="">
                 <div class="functionNameTextOne">Add contact</div>
                 <div class="functionNameTextTwo">Tasks are better with a team!</div>
             </div>
-            <div class="lowerBody"></div>
+            <div class="lowerBody">
+                <form action="">
+                    <img class="userImgLowerBody" src="./assets/img/benutzer.png" alt="">
+                    <input class="inputLowerBody" type="text" placeholder="Name" required>
+                    <input class="inputLowerBody" type="email" placeholder="Email" required>
+                    <input class="inputLowerBody" type="tel" placeholder="Phone" required>
+                    <div class="lowerBodyBtnContainer">
+                        <button class="closeAddContactBtn" onclick="closeAddContact()">Cancel ×</button>
+                        <button class="createUserBtn" onclick="insertContact()" type="submit">Create Contact ✔</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
 </body>
