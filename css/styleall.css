@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Open Sans;
+    font-family: 'Open Sans';
     max-height: 1024px;
 }
 
@@ -26,4 +26,9 @@ body {
 .flex50{
     display: flex;
     flex: 0.5
+}
+
+
+.dFlex{
+    display: flex;
 }
