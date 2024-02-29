@@ -1,0 +1,248 @@
+body {
+    margin: 0;
+    font-family: Open Sans;
+}
+
+.header {
+    padding: 20px 39px 20px 39px;
+    justify-content: space-between;
+    background-color: #4589FF;
+    box-shadow: 0px 4px 4px 0px #0000001A;
+}
+
+.headline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headline img {
+    max-width: 100%;
+    height: auto;
+}
+
+.kanban {
+    display: flex;
+    align-items: center;
+    width: 433px;
+    height: 56px;
+    gap: 26px;
+    color: white;
+    cursor: pointer;
+}
+
+.next {
+    margin: 0;
+}
+
+.buttonSize {
+    background-color: #4589FF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.help-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #4589FF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.help-button span {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.menu-bar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px 3px #00000014;
+    padding: 10px;
+    z-index: 1; 
+    top:100px;
+    right:50px;
+    width:110px;
+    text-align: right;
+}
+
+.menu-item {
+    cursor: pointer;
+    color: #707C92;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+}
+
+.menu-item:hover {
+    text-decoration: none;
+    color: lightblue;
+}
+
+.help-button:hover span {
+    transform: scale(1.2); 
+}
+
+.buttonSize:hover .profile-icon {
+    filter: brightness(90%); 
+}
+
+.sideBoard-container{
+    display: flex;
+    width: 232px;
+    height: 932px;
+    top: 92px;
+    padding: 66px 0px 66px 0px;
+    gap: 235px;
+    box-shadow: 0px 0px 4px 0px #00000029;
+}
+
+.sideBoard{
+    width: 186px;
+    height: 205px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    padding-left:10px;
+}
+
+.sideBoard a{
+    width: 186px;
+    height: 40px;
+    padding: 8px 10px 8px 30px;
+    border-radius: 8px;
+    gap: 8px;
+    text-decoration: none;
+    display: flex;
+}
+
+.sideBoard a:hover{
+    color: #42526E;
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    background-color:  #D2E2FE;
+    width: 186px ;
+}
+
+.sideBoard img{
+    width: 22px;
+    height: 22px;
+    top: 1px;
+    left: 1px;
+    margin-right:10px;
+}
+
+.sideBoard-footer{
+    width: 232px;
+    height: 384px;
+    padding: 300px 0px 0px 48px;
+    gap: 16px;
+    margin-top:100px;
+    padding-left: 30px;
+}
+
+.sideBoard-footer p {
+    width: 116px;
+    height: 35px;
+    padding: 8px;
+    gap: 8px;
+}
+
+.sideBoard-footer p:hover {
+    color: #42526E;
+    cursor: pointer;
+    color: #4589FF;
+}
+
+.main-content {
+    display: flex;
+    height:932px;
+}
+
+.tasks{
+    width: 912px;
+    height: 219px;
+    top: 223px;
+    gap: 35px;
+    display: flex;
+}
+
+.summary-container{
+    display: flex;
+    padding: 50px 60px;
+    flex-direction: column;
+}
+
+.summary-container h1{
+    width: 418px;
+    height: 73px;
+    top: 168px;
+    left: 320px;
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.summary-container img{
+    width: 37px;
+    height: 37px;
+    top: 186px;
+    left: 1315px;
+    padding: 2.5px;
+}
+
+.arrow-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    flex-direction: column;
+    padding: 120px 60px;
+    justify-content: flex-start;
+    border-radius: 50%;
+}
+
+.arrow-container img:hover{
+    cursor: pointer;
+    filter: brightness(100%)  ; /* Hellere Farbe beim Hover */
+    background-color: #D2E2FE; /* Neue Hintergrundfarbe beim Hover */
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out ;
+}
+
+.privacy-box{
+    top: 289px;
+    left: 320px;
+    gap: 35px;
+    padding: 0px 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.privacy-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.privacy-box h1 , h2{
+    font-size: 33px;
+    font-weight: 700;
+    color: #4589FF;
+}
+
+.headline-box p{
+    font-size: 16px;
+    font-weight: 400;
+}

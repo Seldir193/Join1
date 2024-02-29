@@ -15,6 +15,10 @@ function showPrivacyPolicy(){
     window.location.href = 'privacy.html';
 }
 
+function showContact(){
+    window.location.href = 'contact.html';
+}
+
 
        
 document.addEventListener('DOMContentLoaded', function () {
