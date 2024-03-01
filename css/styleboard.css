@@ -22,9 +22,6 @@
     width: 244px;
 }
 
-.categorysBoard span{
-
-}
 
 .inputSearchContainer::placeholder{
     font-family: 'Open Sans', sans-serif;
@@ -95,7 +92,6 @@
 
 .taskBoard{
     min-width: 1208px;
-    min-height: 700px;
     height: 100%;
-    background-color: aqua;
+    min-height: 700px;
 }

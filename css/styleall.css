@@ -32,3 +32,8 @@ body {
 .dFlex{
     display: flex;
 }
+
+
+.overflowHidden{
+    overflow: hidden;
+}
