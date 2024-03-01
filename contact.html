@@ -17,9 +17,10 @@
         <div w3-include-html="./templates/side-menu.html"></div>
 
 
-        <div class="sum-container">
+        <div id="sum-container" class="sum-container">
             <button onclick="addContact()" class="addToContactButton">Add new contact <img src="./assets/img/add avatar.png" alt=""></button>
         </div>
+
         <div onclick="closeAddContact()" id="blurContainer" class="blurContainer d-none"></div>
         <div id="addContactSlideCard" class="addContactSlideCard">
             <div class="upperBody">
@@ -39,6 +40,12 @@
                         <button class="createUserBtn" type="submit">Create Contact ✔</button>
                     </div>
                 </form>
+            </div>
+        </div>
+        <div id="popup" class="popupContainer">
+            <div class="popupContent">
+                <span class="closePopup" onclick="closePopup()"></span>
+                <p id="popupMessage"></p>
             </div>
         </div>
 

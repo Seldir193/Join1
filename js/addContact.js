@@ -8,6 +8,12 @@ let phoneContactBook = ["0176458795", "0658451647", "03894568745"];
 
 loadLocalStorage();
 
+function renderContacts() {
+  let contacts = document.getElementById("sum-container");
+
+  contacts.innerHTML += "<div>hallo</div>";
+}
+
 function addContact() {
   document.getElementById("blurContainer").classList.remove("d-none");
   document.getElementById("addContactSlideCard").classList.add("slideOpen");
@@ -37,11 +43,23 @@ function insertContact(event) {
       document.getElementById("inputName").value = "";
       document.getElementById("inputEmail").value = "";
       document.getElementById("inputPhone").value = "";
+
+      saveToLocalStorage();
     } else {
-      alert("Der Kontakt existiert bereits.");
+      let popupMessage = document.getElementById("popupMessage");
+      popupMessage.textContent = "Der Kontakt ist bereits vorhanden.";
+      openPopup();
+      setTimeout(closePopup, 1500);
     }
   }
-  saveToLocalStorage();
+}
+
+function openPopup() {
+  document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
 }
 
 function saveToLocalStorage() {
@@ -64,3 +82,8 @@ function loadLocalStorage() {
     phoneContactBook = JSON.parse(phoneSave);
   }
 }
+
+// Stellt sicher, dass alle Elemente im DOM geladen werden bevor diese Funktion ausgeführt wird
+document.addEventListener("DOMContentLoaded", function () {
+  renderContacts();
+});

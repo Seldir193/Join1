@@ -161,6 +161,7 @@
   color: rgb(27, 110, 255);
   border-color: rgb(27, 110, 255);
 }
+
 /* ------------------------------------------------------------- */
 .summary-container {
   display: flex;
@@ -181,4 +182,29 @@
 .main-content {
   display: flex;
   margin-top: 80px;
+}
+
+.popupContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 999;
+  display: none;
+}
+
+.popupContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.closePopup {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
 }
