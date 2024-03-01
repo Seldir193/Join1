@@ -29,14 +29,14 @@
                 <div class="functionNameTextTwo">Tasks are better with a team!</div>
             </div>
             <div class="lowerBody">
-                <form action="">
+                <form onsubmit="insertContact(event)">
                     <img class="userImgLowerBody" src="./assets/img/benutzer.png" alt="">
-                    <input class="inputLowerBody" type="text" placeholder="Name" required>
-                    <input class="inputLowerBody" type="email" placeholder="Email" required>
-                    <input class="inputLowerBody" type="tel" placeholder="Phone" required>
+                    <input id="inputName" class="inputLowerBody" type="text" placeholder="Name" required>
+                    <input id="inputEmail" class="inputLowerBody" type="email" placeholder="Email" required>
+                    <input id="inputPhone" class="inputLowerBody" type="tel" placeholder="Phone" required>
                     <div class="lowerBodyBtnContainer">
                         <button class="closeAddContactBtn" onclick="closeAddContact()">Cancel ×</button>
-                        <button class="createUserBtn" onclick="insertContact()" type="submit">Create Contact ✔</button>
+                        <button class="createUserBtn" type="submit">Create Contact ✔</button>
                     </div>
                 </form>
             </div>
