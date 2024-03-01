@@ -105,7 +105,6 @@ body {
     width: 232px;
     height: 932px;
     top: 92px;
-    padding: 66px 0px 66px 0px;
     gap: 235px;
     box-shadow: 0px 0px 4px 0px #00000029;
 }
@@ -117,6 +116,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-left:10px;
+    padding: 66px 0px 66px 10px;
 }
 
 .sideBoard a{
@@ -155,6 +155,7 @@ body {
     padding-left: 30px;
 }
 
+
 .sideBoard-footer p {
     width: 116px;
     height: 35px;
@@ -169,20 +170,21 @@ body {
 }
 
 .sum-container {
+    flex: 1; /* Fülle den verbleibenden Platz aus */
     display: flex;
-    margin-right:auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .summary-container{
+    width: 952px;
+    height: 591px;
+    top: 264.5px;
+    left: 379.79px;
+    gap: 72px;
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    width: 488px;
-    height: 928px;
-    top: 96px;
-    left: 232px;
-    padding: 64px 24px 64px 24px;
-    gap: 24px;
 }
 
 .summary-container h1 {
@@ -199,7 +201,14 @@ body {
 
 .main-content {
     display: flex;
-    height:932px;
+    height: 932px;
+}
+
+.date{
+   width:912px; 
+   height: 191px;
+   gap: 58px;
+   display: flex;
 }
 
 .tasks{
@@ -208,12 +217,4 @@ body {
     top: 223px;
     gap: 35px;
     display: flex;
-}
-
-.description{
-    width: 440px;
-    height: 361px;
-    gap: 12px;
-    display: flex;
-    flex-direction: column;
 }

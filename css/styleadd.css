@@ -105,18 +105,16 @@ body {
     width: 232px;
     height: 932px;
     top: 92px;
-    padding: 66px 0px 66px 0px;
     gap: 235px;
     box-shadow: 0px 0px 4px 0px #00000029;
 }
 
 .sideBoard{
-    width: 186px;
     height: 205px;
     gap: 15px;
     display: flex;
     flex-direction: column;
-    padding-left:10px;
+    padding: 66px 0px 66px 10px;
 }
 
 .sideBoard a{
@@ -169,30 +167,25 @@ body {
 }
 
 .sum-container {
-    display: flex;
     margin-right:auto;
     flex-direction: row-reverse;
-    overflow-y: auto; /* Füge einen vertikalen Scrollbalken hinzu */
-    filter: brightness(90%);
+    width:100%
 }
 
 .sum-container:hover {
     scrollbar-color: #4589FF #ffffff;
 }
 .summary-container{
-    display: flex;
-    flex-direction: column;
     cursor: pointer;
-    width: 488px;
-    height: 928px;
-    top: 96px;
-    left: 232px;
     padding: 64px 24px 64px 24px;
-    gap: 24px;
 }
 
 .summary-container h1 {
     margin: 0; /* Entferne den Standardmargenwert für das <h1>-Element */
+}
+
+.summary-container h3{
+    display: none;
 }
 
 .sum-container h1{
@@ -225,7 +218,6 @@ body {
 }
 
 .priority{
-    width: 440px;
     height: 82px;
     gap: 8px;
     display: flex;
@@ -233,7 +225,6 @@ body {
 }
 
 .assigned{
-    width: 440px;
     height: 79px;
     gap: 8px;
     display: flex;
@@ -241,7 +232,6 @@ body {
 }
 
 .category{
-    width: 440px;
     height: 79px;
     gap: 8px;
     display: flex;
@@ -249,7 +239,6 @@ body {
 }
 
 .subtasks{
-    width: 440px;
     height: 79px;
     gap: 8px;
     display: flex;
@@ -257,19 +246,18 @@ body {
 }
 
 .title{
-    width: 440px;
     height: 84px;
     gap: 4px;
+    display: flex;
+    flex-direction: column;
 }
 
 .optional{
-    width: 440px;
     height: 23px;
     font-size: 19px;
 }
 
 .enter{
-    width: 440px;
     height: 154px;
     gap: 8px;
     display: flex;
@@ -278,7 +266,6 @@ body {
 }
 
 .description-optional{
-    width: 440px;
     height: 23px;
 }
 
@@ -300,13 +287,11 @@ body {
 }
 
 .date-box{
-    width:440px;
     height: 16px;
     font-size:13px;
 }
 
 .date{
-    width: 440px;
     height: 99px;
     gap: 8px;
     display: flex;
@@ -320,21 +305,16 @@ body {
     gap: 10px;
     border-bottom: 1px solid #D1D1D1 !important;
     border:none;
-}
-
-.title input{
     font-size: 32px;
 }
 
 .titlesmallbox{
-    width: 440px;
     height: 16px;
     font-size:13px;
     color:red;
 }
 
 .due-date{
-    width: 440px;
     height: 23px;
     font-weight: bold;
     color:  #42526E;
@@ -346,19 +326,16 @@ body {
     padding: 12px 16p 12px 16px;
     border: 0px 0px 1px 0px;
     justify-content: space-between;
-    width:440px;
     border-bottom: 1px solid #D1D1D1 !important;
     border:none;
 }
 
 .due-box{
-    width: 440px;
     height: 16px;
     font-size:13px;
 }
 
 .priority-header{
-    width: 72px;
     height: 23px;
     color: #42526E;
     font-size: 19px;
@@ -366,7 +343,6 @@ body {
 }
 
 .priority-box{
-    width: 440px;
     height: 51px;
     gap: 16px;
     display: flex;
@@ -383,7 +359,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .medium{
@@ -414,10 +389,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 0px 4px 0px #00000029;
 }
 
 .assigned-box{
-    width: 440px;
     height: 23px;
 }
 
@@ -428,7 +403,6 @@ body {
     justify-content: space-between;
     border-bottom: 1px solid #D1D1D1 !important;
     border:none;
-    width: 400px;
 }
 
 .assigned img{
@@ -439,6 +413,8 @@ body {
 .input-with-icon {
     position: relative;
     height: 48px;
+    display: flex;
+    flex-direction: column;
 }
 
 .dropdown-icon {
@@ -481,7 +457,6 @@ body {
 }
 
 .footer-box{
-    width: 440px;
     height: 48px;
 }
 
@@ -531,9 +506,12 @@ body {
 }
 
 .button-box {
-    display:flex;
+    display: flex;
     align-items: flex-end;
-    padding-bottom:120px;
+    justify-content: flex-end;
+    padding-right:80px;
+    padding-bottom:60px;
+    width:100%;
 }
 
 .create-button{
@@ -557,9 +535,101 @@ body {
     border-color: #4589FF;
 }
 
+.button-container{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 320px;
+    width:100%
+}
 
 
+@media only screen and (max-width: 768px) {
 
+.kanban{
+    justify-content: flex-end;
+    gap:5px;
+}
+
+.kanban p{
+    display:none;
+}
+
+.header{
+    padding:10px 10px 10px 10px;
+}
+
+.sideBoard-container {
+    display: none;
+}
+
+.headline{
+    width:90vw;
+    gap:120px;
+}
+
+.headline img{
+    max-width: 10vw;
+}
+
+.clear-button{
+    padding-right: 5px;
+}
+
+.button-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: unset;
+}
+
+.main-content{
+    justify-content: center;
+}
+
+.summary-container{
+    padding: 34px 40px 64px 40px;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.summary-container h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:36px;
+    font-weight: bold;
+    margin:0px;
+}
+
+.description{
+   width:unset;
+}
+
+.priority-box{
+    gap:4px;
+    font-size:16px;
+}
+
+.contact-dropdown{
+    top:auto;
+}
+
+.menu-bar{
+    top:80px;
+    right:unset;
+}
+
+.button-container .clear-button{
+    display: none;
+}
+
+.button-container{
+    display: flex;
+}
+
+
+}
 
 
 

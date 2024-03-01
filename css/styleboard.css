@@ -105,7 +105,6 @@ body {
     width: 232px;
     height: 932px;
     top: 92px;
-    padding: 66px 0px 66px 0px;
     gap: 235px;
     box-shadow: 0px 0px 4px 0px #00000029;
 }
@@ -117,6 +116,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-left:10px;
+    padding: 66px 0px 66px 10px;
 }
 
 .sideBoard a{
@@ -155,6 +155,7 @@ body {
     padding-left: 30px;
 }
 
+
 .sideBoard-footer p {
     width: 116px;
     height: 35px;
@@ -169,13 +170,45 @@ body {
 }
 
 .sum-container {
+    flex: 1; /* Fülle den verbleibenden Platz aus */
     display: flex;
-    margin-right:auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary-container{
+    width: 952px;
+    height: 591px;
+    top: 264.5px;
+    left: 379.79px;
+    gap: 72px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.summary-container h1 {
+    margin: 0; /* Entferne den Standardmargenwert für das <h1>-Element */
+}
+
+.sum-container h1{
+    width: 455px;
+    height: 77px;
+    gap: 22px;
+    font-size: 64px;
+    color: #2A3647;
 }
 
 .main-content {
     display: flex;
-    height:932px;
+    height: 932px;
+}
+
+.date{
+   width:912px; 
+   height: 191px;
+   gap: 58px;
+   display: flex;
 }
 
 .tasks{
@@ -185,26 +218,3 @@ body {
     gap: 35px;
     display: flex;
 }
-
-.sum-container{
-    display: flex;
-    width: 1208px;
-    height: 215px;
-    top: 96px;
-    left: 232px;
-    padding: 72px 0px 16px 0px;
-    gap: 48px;
-    justify-content: center;
-}
-
-.add-task-container{
-    width: 1078px;
-    height: 51px;
-    gap: 474px;
-}
-
-.add-task-container input{
-    display: flex;
-    justify-content: center;
-}
-
