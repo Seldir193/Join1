@@ -5,6 +5,7 @@
   height: 100vh;
   border-right: 1px solid rgb(200, 200, 200);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 32px;
 }
 
 .addToContactButton {
@@ -207,4 +208,52 @@
   top: 5px;
   right: 10px;
   cursor: pointer;
+}
+
+.listContact {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 32px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.chartAt {
+  background-color: orange;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.listName {
+  font-size: 20px;
+}
+
+.listEmail {
+  color: rgb(27, 110, 255);
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.line {
+  height: 2px;
+  background-color: rgb(203, 203, 203);
+  width: 100%;
+  margin-top: 12px;
+}
+
+.letter {
+  padding-left: 20px;
+  font-size: 24px;
 }

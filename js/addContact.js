@@ -8,10 +8,39 @@ let phoneContactBook = ["0176458795", "0658451647", "03894568745"];
 
 loadLocalStorage();
 
-function renderContacts() {
-  let contacts = document.getElementById("sum-container");
+function getRandomColor() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  let color = "#" + r.toString(16) + g.toString(16) + b.toString(16);
+  return color;
+}
 
-  contacts.innerHTML += "<div>hallo</div>";
+function renderAlphabeticalCategories() {
+  let contacts = document.getElementById("listContactContainer");
+  contacts.innerHTML = "";
+
+  for (let i = 0; i < nameContactBook.length; i++) {
+    let letter = nameContactBook[i].charAt(0).toUpperCase();
+    contacts.innerHTML += `<div id="${letter}" class="category"><div class="letter">${letter}</div><div class="line"></div></div>`;
+    renderContacts(letter, i);
+  }
+}
+
+function renderContacts(letter, i) {
+  let contacts = document.getElementById(letter);
+
+  let randomColor = getRandomColor();
+  let charStyle = `style="background-color: ${randomColor}"`;
+
+  contacts.innerHTML += `
+      <div class="listContact">
+        <div class="chartAt" ${charStyle}>${nameContactBook[i].charAt(0)}</div>
+        <div>
+          <div class="listName">${nameContactBook[i]}</div>
+          <div class="listEmail">${emailContactBook[i]}</div>
+        </div>
+      </div>`;
 }
 
 function addContact() {
@@ -39,19 +68,23 @@ function insertContact(event) {
       nameContactBook.push(inputName);
       emailContactBook.push(inputEmail);
       phoneContactBook.push(inputPhone);
-
-      document.getElementById("inputName").value = "";
-      document.getElementById("inputEmail").value = "";
-      document.getElementById("inputPhone").value = "";
-
+      clearInput();
       saveToLocalStorage();
     } else {
       let popupMessage = document.getElementById("popupMessage");
       popupMessage.textContent = "Der Kontakt ist bereits vorhanden.";
+      clearInput();
       openPopup();
       setTimeout(closePopup, 1500);
     }
   }
+  renderAlphabeticalCategories();
+}
+
+function clearInput() {
+  document.getElementById("inputName").value = "";
+  document.getElementById("inputEmail").value = "";
+  document.getElementById("inputPhone").value = "";
 }
 
 function openPopup() {
@@ -83,7 +116,6 @@ function loadLocalStorage() {
   }
 }
 
-// Stellt sicher, dass alle Elemente im DOM geladen werden bevor diese Funktion ausgeführt wird
 document.addEventListener("DOMContentLoaded", function () {
-  renderContacts();
+  renderAlphabeticalCategories();
 });
