@@ -1,6 +1,10 @@
 body {
     margin: 0;
+<<<<<<< HEAD
     font-family: 'Open Sans';
+=======
+    font-family: Open Sans;
+>>>>>>> 7244e5aa80c51d61850d36c50f2f2275dab5f43f
     max-height: 1024px;
 }
 
@@ -26,6 +30,7 @@ body {
 .flex50{
     display: flex;
     flex: 0.5
+<<<<<<< HEAD
 }
 
 
@@ -36,4 +41,6 @@ body {
 
 .overflowHidden{
     overflow: hidden;
+=======
+>>>>>>> 7244e5aa80c51d61850d36c50f2f2275dab5f43f
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let nameContactBook = ["Albert Einstein", "Nikola Tesla", "Isac Newton"];
 let emailContactBook = [
   "albert@gmail.com",
@@ -17,10 +18,15 @@ function renderContacts() {
 function addContact() {
   document.getElementById("blurContainer").classList.remove("d-none");
   document.getElementById("addContactSlideCard").classList.add("slideOpen");
+=======
+function addContact() {
+  document.getElementById("blurContainer").classList.remove("d-none");
+>>>>>>> 7244e5aa80c51d61850d36c50f2f2275dab5f43f
 }
 
 function closeAddContact() {
   document.getElementById("blurContainer").classList.add("d-none");
+<<<<<<< HEAD
   document.getElementById("addContactSlideCard").classList.remove("slideOpen");
 }
 
@@ -87,3 +93,6 @@ function loadLocalStorage() {
 document.addEventListener("DOMContentLoaded", function () {
   renderContacts();
 });
+=======
+}
+>>>>>>> 7244e5aa80c51d61850d36c50f2f2275dab5f43f
