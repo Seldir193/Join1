@@ -6,6 +6,8 @@ let emailContactBook = [
 ];
 let phoneContactBook = ["0176458795", "0658451647", "03894568745"];
 
+let letterArray = [];
+
 loadLocalStorage();
 
 function getRandomColor() {
@@ -17,30 +19,37 @@ function getRandomColor() {
 }
 
 function renderAlphabeticalCategories() {
+  for (let j = 0; j < nameContactBook.length; j++) {
+    let letter = nameContactBook[j].charAt(0).toUpperCase();
+    if (!letterArray.includes(letter)) {
+      letterArray.push(letter);
+    }
+  }
+
   let contacts = document.getElementById("listContactContainer");
   contacts.innerHTML = "";
 
-  for (let i = 0; i < nameContactBook.length; i++) {
-    let letter = nameContactBook[i].charAt(0).toUpperCase();
-    contacts.innerHTML += `<div id="${letter}" class="category"><div class="letter">${letter}</div><div class="line"></div></div>`;
-    renderContacts(letter, i);
+  for (let n = 0; n < letterArray.length; n++) {
+    contacts.innerHTML += `<div id="${letterArray[n]}" class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
   }
+
+  renderContacts();
 }
 
-function renderContacts(letter, i) {
-  let contacts = document.getElementById(letter);
-
-  let randomColor = getRandomColor();
-  let charStyle = `style="background-color: ${randomColor}"`;
-
-  contacts.innerHTML += `
-      <div class="listContact">
-        <div class="chartAt" ${charStyle}>${nameContactBook[i].charAt(0)}</div>
-        <div>
-          <div class="listName">${nameContactBook[i]}</div>
-          <div class="listEmail">${emailContactBook[i]}</div>
-        </div>
-      </div>`;
+function renderContacts() {
+  for (let i = 0; i < nameContactBook.length; i++) {
+    let letter = nameContactBook[i].charAt(0).toUpperCase();
+    let contacts = document.getElementById(letter);
+    let randomColor = getRandomColor();
+    let charStyle = `style="background-color: ${randomColor}"`;
+    contacts.innerHTML += `
+    <button class="listContact">
+    <div class="chartAt" ${charStyle}>${nameContactBook[i].charAt(0)}</div>
+    <div>
+    <div class="listName">${nameContactBook[i]}</div>
+    <div class="listEmail">${emailContactBook[i]}</div>
+    </div></button>`;
+  }
 }
 
 function addContact() {
@@ -61,7 +70,6 @@ function insertContact(event) {
 
   if (inputName && inputEmail && inputPhone) {
     if (
-      !nameContactBook.includes(inputName) &&
       !emailContactBook.includes(inputEmail) &&
       !phoneContactBook.includes(inputPhone)
     ) {
@@ -70,15 +78,15 @@ function insertContact(event) {
       phoneContactBook.push(inputPhone);
       clearInput();
       saveToLocalStorage();
+      renderAlphabeticalCategories();
     } else {
       let popupMessage = document.getElementById("popupMessage");
-      popupMessage.textContent = "Der Kontakt ist bereits vorhanden.";
+      popupMessage.textContent = "The contact already exists!";
       clearInput();
       openPopup();
       setTimeout(closePopup, 1500);
     }
   }
-  renderAlphabeticalCategories();
 }
 
 function clearInput() {
