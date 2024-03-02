@@ -7,6 +7,7 @@ let emailContactBook = [
 let phoneContactBook = ["0176458795", "0658451647", "03894568745"];
 
 let letterArray = [];
+let randomColorCollection = [];
 
 loadLocalStorage();
 
@@ -41,15 +42,25 @@ function renderContacts() {
     let letter = nameContactBook[i].charAt(0).toUpperCase();
     let contacts = document.getElementById(letter);
     let randomColor = getRandomColor();
+    randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
     contacts.innerHTML += `
-    <button class="listContact">
+    <button onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${nameContactBook[i].charAt(0)}</div>
     <div>
     <div class="listName">${nameContactBook[i]}</div>
     <div class="listEmail">${emailContactBook[i]}</div>
     </div></button>`;
   }
+}
+
+function pullContact(i) {
+  document.getElementById("pullContactToWindow").classList.toggle("pull");
+  let contactContainer = document.getElementById("pullContactToWindow");
+  contactContainer.innerHTML = `<div>
+  <div class="chartAt" style="background-color: ${randomColorCollection[i]}">
+  ${nameContactBook[i].charAt(0)}</div>
+  </div>`;
 }
 
 function addContact() {

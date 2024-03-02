@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .sum-container {
   display: flex;
   width: 350px;
@@ -6,6 +10,7 @@
   border-right: 1px solid rgb(200, 200, 200);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
+  overflow: auto;
 }
 
 .addToContactButton {
@@ -21,6 +26,7 @@
   align-items: center;
   gap: 8px;
 }
+
 .addToContactButton:hover {
   cursor: pointer;
   background-color: rgb(27, 110, 255);
@@ -43,7 +49,7 @@
 .addContactSlideCard {
   height: 100vh;
   width: 400px;
-  transform: translateX(101%);
+  transform: translateX(100%);
   transition: all 250ms ease-in-out;
   position: absolute;
   right: 0;
@@ -182,7 +188,7 @@
 
 .main-content {
   display: flex;
-  margin-top: 80px;
+  margin-top: 96px;
 }
 
 .popupContainer {
@@ -263,4 +269,16 @@
 .letter {
   padding-left: 20px;
   font-size: 24px;
+}
+
+#pullContactToWindow {
+  height: 100vh;
+  flex: 1;
+  background-color: orange;
+  transform: translateX(100%);
+}
+
+.pull {
+  transform: translateX(0) !important;
+  transition: all 250ms ease-in-out;
 }
