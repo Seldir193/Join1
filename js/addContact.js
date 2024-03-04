@@ -56,6 +56,10 @@ function renderContacts() {
 
 function pullContact(i) {
   document.getElementById("pullContactToWindow").classList.toggle("pull");
+  addHeadlineToPulledWindow(i);
+}
+
+function addHeadlineToPulledWindow(i) {
   let contactContainer = document.getElementById("pullContactToWindow");
   contactContainer.innerHTML = `<div class="pulledHeadline">
   <div class="chartAt" style="background-color: ${randomColorCollection[i]}">
@@ -64,9 +68,18 @@ function pullContact(i) {
   <div class="editAndDeletetContainer">
   <button onclick="editContact()" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/pencil.png">Edit</button>
   <button onclick="deleteContact()" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/mulleimer.png">Delete</button>
-  </div>
-  </div>
-  </div>`;
+  </div></div>`;
+  addInformationToPulledWindow(i);
+}
+
+function addInformationToPulledWindow(i) {
+  let contactContainer = document.getElementById("pullContactToWindow");
+  contactContainer.innerHTML += `<div class="pulledInformation">
+  <h2>Contact Information</h2>
+     <h4>Email</h4>
+     <span style="color:rgb(27, 110, 255)">${emailContactBook[i]}</span>
+     <h4>Phone</h4>
+     <span>${phoneContactBook[i]}</span></div>`;
 }
 
 function addContact() {

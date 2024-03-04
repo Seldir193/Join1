@@ -274,7 +274,6 @@ body {
 #pullContactToWindow {
   height: 100vh;
   flex: 1;
-  background-color: orange;
   transform: translateX(100%);
 }
 
@@ -297,6 +296,7 @@ body {
   border: none;
   outline: none;
   background-color: transparent;
+  width: 70px;
 }
 .editAndDeletetBtn:hover {
   color: #1a6eff;
@@ -312,7 +312,6 @@ body {
 .editAndDeletetContainer {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .h1Name {
@@ -325,4 +324,8 @@ body {
   gap: 24px;
   padding-left: 32px;
   padding-top: 40px;
+}
+
+.pulledInformation {
+  padding-left: 32px;
 }
