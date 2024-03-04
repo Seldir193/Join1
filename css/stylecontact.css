@@ -48,12 +48,12 @@ body {
 .addToContactButton {
   padding: 8px;
   height: 56px;
-  width: 357px;
+  width: 90%;
   background-color: rgb(69, 137, 255);
   border: none;
   border-radius: 10px;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -188,7 +188,7 @@ body {
   border: none;
   border-radius: 10px;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -206,7 +206,7 @@ body {
   border: 1px solid rgb(200, 200, 200);
   border-radius: 10px;
   color: rgb(200, 200, 200);
-  font-size: 16px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -391,4 +391,9 @@ body {
 
 .pulledInformation {
   padding-left: 56px;
+}
+
+#listContactContainer {
+  padding-left: 6%;
+  padding-right: 6%;
 }
