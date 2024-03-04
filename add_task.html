@@ -5,48 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/styleadd.css">
+    <link rel="stylesheet" href="css/styletemplates.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/styleall.css">
+    <script src="js/templates.js"></script>
     <script src="js/add_task.js"></script>
 </head>
-<body>
-    <div class="header">
-        <div class="headline">
-            <img src="assets/img/Capa 1.png">
-        
-            <div class="kanban">
-                  <p class="next" onclick="toggleMenuBar()">Kanban Project Management Tool</p>
-                  <div class="help-button" onclick="showHelp()">
-                    <span><img src="assets/img/help.png"></span>
-                </div>
-                <button class="buttonSize" type="button" onclick="toggleMenuBar()">
-                    <img class="profile-icon"  src="assets/img/User profile initials.png" alt="User Profile Icon">
-                </button>
-             
-                <div class="menu-bar" id="menuBar" style="display: none;">
-                    <span class="menu-item" onclick="showLegalNotice()">Legal Notice</span>
-                    <span class="menu-item" onclick="showPrivacyPolicy()">Privacy Policy</span><br>
-                    <span class="menu-item" onclick="logOut()">Log Out</span></br>
-                </div>
-            </div>
-        </div>
-    </div>
+<body onload="includeHTML()">
+    
+        <div w3-include-html="./templates/header.html"></div>
+    
 <div class="main-content">
-    <div class="sideBoard-container">
-        <nav class="sideBoard">
-            <a href="summary.html"><img src="assets/img/Menu Icons.png">Summary</a>
-            <a href="add_task.html"><img src="assets/img/Menu Icons (1).png">Add Task</a>
-            <a href="board.html"><img src="assets/img/Menu Icons (2).png">Board</a>
-            <a href="contact.html"><img src="assets/img/Menu Icons (3).png">Contacts</a>
-
-            <div class="sideBoard-footer">
-              <p onclick="showPrivacyPolicy()">Privacy Policy</p>
-              <p onclick="showLegalNotice()">Legal notice</p></a>
-            </div>
-        </nav>
-    </div>
-
-    <div class="sum-container scroll-balken">
-       
+    
+    <div w3-include-html="./templates/side-menu.html"></div>
+    <div class="sum-container">
         <div class="summary-container">
+            <h3>Add Task</h3>
             <nav class="description">
                 <nav class="title">
                     <input class="titlebox" minlength="5" maxlength="20" placeholder="Enter a title" required>
@@ -98,19 +72,24 @@
                       <img src="assets/img/Subtask's icons.png" class="dropdown-icon">
                    </div>
                    <div class="contact-dropdown" id="contactDropdown"></div>
+                   <nav class="footer-box"></nav>
             </nav>
-            <nav class="footer-box"></nav>
+        </div>
+        <nav class="button-container">
+            <nav class="button-box">
+               <nav class="clear-button">
+                   <button class="clear">Clear <img src="assets/img/iconoir_cancel.png"></button>
+               </nav>
+               
+               <nav class="create-button">
+                   <button class="create">Create Task <img src="assets/img/check.png"></button>
+               </nav>
+           </nav>
+
+        
           </div>
         </div>
-        <nav class="button-box">
-           <nav class="clear-button">
-               <button class="clear">Clear <img src="assets/img/iconoir_cancel.png"></button>
-            </nav>
-            
-            <nav class="create-button">
-                <button class="create">Create Task <img src="assets/img/check.png"></button>
-            </nav>
-        </nav>
+        
     </div>
 </div>
 </body>
