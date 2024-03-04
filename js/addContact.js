@@ -57,9 +57,15 @@ function renderContacts() {
 function pullContact(i) {
   document.getElementById("pullContactToWindow").classList.toggle("pull");
   let contactContainer = document.getElementById("pullContactToWindow");
-  contactContainer.innerHTML = `<div>
+  contactContainer.innerHTML = `<div class="pulledHeadline">
   <div class="chartAt" style="background-color: ${randomColorCollection[i]}">
   ${nameContactBook[i].charAt(0)}</div>
+  <div><h1 class="h1Name">${nameContactBook[i]}</h1>
+  <div class="editAndDeletetContainer">
+  <button onclick="editContact()" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/pencil.png">Edit</button>
+  <button onclick="deleteContact()" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/mulleimer.png">Delete</button>
+  </div>
+  </div>
   </div>`;
 }
 
