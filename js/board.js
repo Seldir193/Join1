@@ -7,7 +7,7 @@ done = [];
 
 function onload() {
     includeHTML();
-    render();
+    // render();
 }
 
 
