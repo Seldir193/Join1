@@ -5,7 +5,7 @@ body {
 }
 
 
-.space-between {
+.spaceBetween {
     display: flex;
     justify-content: space-between;
 }
@@ -36,4 +36,22 @@ body {
 
 .overflowHidden{
     overflow: hidden;
+}
+
+
+.dNOne {
+    display: none;
+}
+
+
+.jCCenter{
+    display: flex;
+    justify-content: center;
+}
+
+
+.seperater {
+    border-style: solid;
+    border-width: 1px;
+    border-color: RGB(209, 209, 209);
 }

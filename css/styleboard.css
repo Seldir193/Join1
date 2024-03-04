@@ -16,6 +16,7 @@
     display: flex;
     justify-content: space-between;
     width: 244px;
+    color: #42526E;
 }
 
 ::placeholder {
@@ -24,7 +25,7 @@
     font-weight: 400;
     color: RGB(209, 209, 209);
     line-height: 19.2px;
-} 
+}
 
 .inputSearchContainer {
     display: flex;
@@ -100,7 +101,143 @@
 
 
 .styleTasks {
-
     height: 100%;
     flex: 0.25;
+}
+
+
+.addTaskBtn {
+    cursor: pointer;
+}
+
+
+.addTaskBtn:hover {
+    background-color: #72a4fa;
+}
+
+
+.addTaskBtnPlus {
+    cursor: pointer;
+}
+
+
+#searchIcon {
+    cursor: pointer;
+}
+
+
+.userStoryBtn {
+    color: white;
+    background-color: #FF7A00;
+    border-radius: 8px;
+    border-style: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 23px;
+    line-height: 27.6px;
+    font-weight: 400;
+    height: 36px;
+    width: 160px;
+}
+
+
+.closeBtn {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+}
+
+
+.newTaskFloating {
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 528px;
+    max-height: 80vh;
+}
+
+
+.newTaskFloating table {
+    border-collapse: collapse;
+}
+
+
+.newTaskFloating td {
+    border: none;
+    text-align: left;
+    padding: 0;
+    color: black;
+}
+
+
+.newTaskFloating th {
+    border: none;
+    text-align: left;
+    padding: 0;
+    color: rgba(66, 82, 110, 1);
+}
+
+
+.newTaskFloating h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 73.2px;
+    margin: 0;
+}
+
+
+.newTaskFloating h3 {
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25.2px;
+    color: rgba(66, 82, 110, 1);
+    margin:0;
+}
+
+
+.newTaskFloating span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22.8px;
+    color: black;
+}
+
+
+.userStoryBtnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.addTaskStyleProfileName {
+    color: black;
+}
+
+
+.addTaskStyleDescription {
+    color: black;
+}
+
+
+.editContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 8px;
+}
+
+
+.editAddTask {
+    align-items: center;
+    gap: 8px;
+    display: flex;
+    justify-content: space-between;
 }
