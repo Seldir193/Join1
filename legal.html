@@ -4,51 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/legal.css">
+    
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/styleall.css">
+    <script src="js/templates.js"></script>
     <script src="js/add_task.js"></script>
+    <link rel="stylesheet" href="css/legal.css">
+    <link rel="stylesheet" href="css/styletemplates.css">
 </head>
-<body>
-    <div class="header">
-        <div class="headline">
-            <img src="assets/img/Capa 1.png">
-        
-            <div class="kanban">
-                  <p class="next" onclick="toggleMenuBar()">Kanban Project Management Tool</p>
-                  <div class="help-button" onclick="showHelp()">
-                    <span><img src="assets/img/help.png"></span>
-                </div>
-                <button class="buttonSize" type="button" onclick="toggleMenuBar()">
-                    <img class="profile-icon"  src="assets/img/User profile initials.png" alt="User Profile Icon">
-                </button>
-             
-                <div class="menu-bar" id="menuBar" style="display: none;">
-                    <span class="menu-item" onclick="showLegalNotice()">Legal Notice</span>
-                    <span class="menu-item" onclick="showPrivacyPolicy()">Privacy Policy</span><br>
-                    <span class="menu-item" onclick="logOut()">Log Out</span></br>
-                </div>
-            </div>
-        </div>
-    </div>
+<body onload="includeHTML()">
+    <div w3-include-html="./templates/header.html"></div>
 <div class="main-content">
-    <div class="sideBoard-container">
-        <nav class="sideBoard">
-            <a href="summary.html"><img src="assets/img/Menu Icons.png">Summary</a>
-            <a href="add_task.html"><img src="assets/img/Menu Icons (1).png">Add Task</a>
-            <a href="board.html"><img src="assets/img/Menu Icons (2).png">Board</a>
-            <a href="contact.html"><img src="assets/img/Menu Icons (3).png">Contacts</a>
+    <div class="dFlexd">
+    <div w3-include-html="./templates/side-menu.html"></div>
 
-            <div class="sideBoard-footer">
-                <p onclick="showPrivacyPolicy()">Privacy Policy</p></a>
-                <p onclick="showLegalNotice()">Legal notice</p></a>
-            </div>
-        </nav>
-    </div>
 
     <selection class="privacy-container">
         <div class="summary-container"> 
             <h1>Legal Notice</h1>
         </div>
         <nav class="privacy-box">
+            <div>
                 <h1>impressum</h1><br>
                 <p> Diese Website besteht aus Teilangeboten, die von verschiedenen Anbietern verantwortet werden.<br>
                     Verantwortlicher i. S. d. § 5 TMG für alle Inhalte,<br>
@@ -69,12 +45,14 @@
                     Management:
                     <br>
                     Junus<p></p>
-            </nav>
-           
+           </div>
+        </nav>
     </selection>
         <div class="arrow-container">
-            <img src="assets/img/arrow-left-line (1).png" alt="Arrow Image" onclick="showPrivacyPolicy()">
+            <img src="assets/img/arrow-left-line (1).png" alt="Arrow Image" onclick="showContact()">
         </div>
+</div>
+</div>
 </div>
 </body>
 </html>

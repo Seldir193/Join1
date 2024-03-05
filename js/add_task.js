@@ -3,6 +3,10 @@ function toggleMenuBar() {
     menuBar.style.display = (menuBar.style.display === 'block') ? 'none' : 'block';
 }
 
+function toggleBackgroundColor(element) {
+    element.classList.toggle('active');
+}
+
 function logOut(){
     window.location.href = 'index.html';
 }
@@ -19,45 +23,33 @@ function showContact(){
     window.location.href = 'contact.html';
 }
 
+function showHelp(){
+    window.location.href = 'help.html';
+}
 
-       
-document.addEventListener('DOMContentLoaded', function () {
-    const contactInput = document.getElementById('contactInput');
-    const contactDropdown = document.getElementById('contactDropdown');
-    
-    // Dummy hinzugefügte Kontakte (kann durch deine Daten ersetzt werden)
-    const addedContacts = ['John Doe', 'Jane Smith', 'Alice Johnson'];
-
-    // Füge hinzugefügte Kontakte in das Dropdown-Menü ein
-    addedContacts.forEach(contact => {
-        const contactItem = document.createElement('div');
-        contactItem.classList.add('contact-dropdown-item');
-        contactItem.textContent = contact;
-        contactItem.addEventListener('click', () => selectContact(contact));
-        contactDropdown.appendChild(contactItem);
-        
-    });
-
-    // Event Listener für das Input-Feld
-    contactInput.addEventListener('focus', showContactDropdown);
-    contactInput.addEventListener('blur', hideContactDropdown);
-
-    // Funktion zum Anzeigen des Dropdown-Menüs
-    function showContactDropdown() {
-        contactDropdown.style.display = 'block';
+function toggleIcon() {
+    var listContactContainer = document.getElementById("listContactContainer");
+    var icon = document.getElementById("icon");
+  
+    if (listContactContainer.style.display === "none") {
+      listContactContainer.style.display = "block";
+      icon.src = "assets/img/arrow_drop_up.png"; 
+    } else {
+      listContactContainer.style.display = "none";
+      icon.src = "assets/img/arrow_drop_down.png"; 
     }
+  }
 
-    // Funktion zum Ausblenden des Dropdown-Menüs
-    function hideContactDropdown() {
-        // Verzögere das Ausblenden, um Klicks auf das Dropdown-Menü zu ermöglichen
-        setTimeout(() => {
-            contactDropdown.style.display = 'none';
-        }, 200);
+  function toggleContactBackground(i) {
+    let clickedContact = document.getElementById(`contact_${i}`);
+    if (clickedContact) {
+      clickedContact.classList.toggle('active');
     }
+  }
 
-    // Funktion zum Auswählen eines Kontakts
-    function selectContact(contact) {
-        contactInput.value = contact;
-        hideContactDropdown();
-    }
-});
+  
+
+
+ 
+
+  

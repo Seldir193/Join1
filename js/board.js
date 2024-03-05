@@ -1,67 +1,152 @@
 toDo = [];
 inProgress = [];
 awaitFeedback = [];
+taskCounter = [];
 done = [];
 
 
 
 function onload() {
     includeHTML();
-    //render();
+    render();
 }
 
 
 function render() {
     for (i = 0; i < 1; i++) {
-        renderTasks(i);
+        //renderTasks(i);
+        renderAddTask(i);
     }
 }
 
 
 function renderTasks() {
 
-    document.getElementById('body').innerHTML =
+    document.getElementById('boardsContainer').innerHTML +=
         `
-        <div class="newTaskFloating dNone" id="newTaskFloating">
+        <div class="newTaskFloating dNone" id="newTaskFloating${i}">
             <div class="userStoryBtnContainer">
                 <button class="userStoryBtn">User Story</button>
                 <img src="assets/img/close.svg" alt="close icon" class="closeBtn">
             </div>
-            <h1 id="headlineTasks${i}">Hier steht die Überschrift</h1>
-            <span>Hier wird eine kleine Beschreibung der Aufgaben stehen</span>
+            <h1 id="headlineValue${i}">Hier steht die Überschrift</h1>
+            <span id="descriptionValue${i}">Hier wird eine kleine Beschreibung der Aufgaben stehen</span>
             <table>
                 <tr>
                     <th>Due Date:</th>
-                    <td>99/99/2099</td>
+                    <td id="dateValue${i}">99/99/2099</td>
                 </tr>
                 <tr>
                     <th>Priority:</th>
-                    <td>Medium <img src"assets/img/medium.svg" alt="priority img"></td>
+                    <td id="priorityValue${i}">Medium <img src"assets/img/medium.svg" alt="priority img"></td>
                 </tr>
             </table>
             <h3>Assigned To:</h3>
                     <div class="alignItems">
                         <img src="assets/img/ellipse_profil.svg" alt="Profil Img">
-                        <span>mohammed Ali</span>
+                        <span id="profilValue${i}">mohammed Ali</span>
                     </div>
             <h3>Subtasks:</h3>
-            <label for="checkboxSubtasks1" class="styleCheckboxContainer">
+            <label for="checkboxSubtasks1" class="styleCheckboxContainer" id="subtaskValue${i}">
                 <input type="checkbox" id="checkbox2" name="checkbox2">Checkbox for a Subtasks
             </label>
-            <div class="editContainer">
-                <div class="editAddTask">
-                    <img src="assets/img/delete.svg" alt="bin"><span>Delete</span>
-                </div>
-                <div class="seperater"></div>
-                <div class="editAddTask">
-                    <img src="assets/img/edit.svg" alt="pen"><span>Edit</span>
-                </div>
-            </div>
         </div>
         `;
 }
 
 
 function showAddTaskFloating() {
-    document.getElementById('newTaskFloating').classList.remove('dNone');
+    document.getElementById('addTaskFloating').classList.remove('dNone');
+}
+
+
+function toggleCard() {
+    var card = document.getElementById('addTaskFloating');
+    card.classList.toggle('active');
+}
+
+
+function renderAddTask(){
+    document.getElementById('boardsContainer').innerHTML +=
+`
+    <div class="addTaskContainer dNone" id="addTaskFloating" class="addTaskFloating">
+        <h1>Add Task</h1>    
+        <form action="submit_task.php" method="POST">
+            <input type="text" id="titleAddTaskFloating" name="title" placeholder="Enter a title" required><br>
+        
+            <label for="descriptionTextareaAddTask"><span id="descriptionTitelAddTask">Description <span id="optionalDescriptionTitelAddTask">(optional)</span></span></label><br>
+            <textarea id="descriptionTextareaAddTask" name="description" rows="4" cols="50" placeholder="Enter a Description" required></textarea><br>
+        
+            <label for="dueDate">Due date</label><br>
+            <input type="date" id="dueDate" name="due_date"><br>
+        
+            <nav class="priority">
+                        <nav class="priority-header">Priority</nav>
+                        <nav class="priority-box">
+                            <nav class="urgent">Urgent<img src="assets/img/Prio alta.png"></nav>
+                            <nav class="medium">Medium <img src="assets/img/Prio media.png"></nav>
+                            <nav class="low">Low<img src="assets/img/Prio baja.png"></nav>
+                        </nav>
+                    </nav>
+                    <nav class="assigned">
+                        <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
+                        <div class="input-with-icon">
+                            <input type="text" id="contactInput" placeholder="Select contacts to assign...">
+                            <img id="icon" onclick="toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                        </div>
+                        <div class="contact-dropdown" id="contactDropdown"></div>
+                    </nav>
+                    <nav class="category">
+                        <nav class="assigned-box"><b>Category</b></nav>
+                        <div class="input-with-icon">
+                            <input type="text" id="contactInput" placeholder="Select task category...">
+                            <img src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                        </div>
+                        <div class="contact-dropdown" id="contactDropdown"></div>
+                    </nav>
+                    <nav class="subtasks">
+                        <nav class="assigned-box"><b>Subtasks</b> (optional)</nav>
+                        <div class="input-with-icon">
+                            <input type="text" id="contactInput" placeholder="Add new subtask...">
+                            <img src="assets/img/Subtask's icons.png" class="dropdown-icon">
+                            
+                        </div>
+                        <div class="contact-dropdown" id="contactDropdown"></div>
+                        <nav class="footer-box"></nav>
+                    </nav>
+            </div>
+        
+        </form>  
+    </div>`;
+}
+
+
+function searchTasks() {
+    // Eingabewert aus dem Inputfeld abrufen
+    var inputValue = document.getElementById("searchTasksInput").value.toLowerCase();
+
+    // Alle Task-Container durchlaufen und den Eingabewert suchen
+    for (var i = 0; i < taskCounter.length; i++) {
+        var container = document.getElementById("newTaskFloating" + i);
+        var headline = document.getElementById("headlineValue" + i).innerText.toLowerCase();
+        var description = document.getElementById("descriptionValue" + i).innerText.toLowerCase();
+        var date = document.getElementById("dateValue" + i).innerText.toLowerCase();
+        var priority = document.getElementById("priorityValue" + i).innerText.toLowerCase();
+        var profil = document.getElementById("profilValue" + i).innerText.toLowerCase();
+        var subtask = document.getElementById("subtaskValue" + i).innerText.toLowerCase();
+
+        // Überprüfen, ob der Eingabewert in einem der Felder gefunden wird
+        if (headline.includes(inputValue) || 
+            description.includes(inputValue) || 
+            date.includes(inputValue) || 
+            priority.includes(inputValue) || 
+            profil.includes(inputValue) || 
+            subtask.includes(inputValue)) {
+            // Falls der Eingabewert gefunden wird, den Container anzeigen
+            container.classList.remove("dNone");
+        } else {
+            // Andernfalls den Container ausblenden
+            container.classList.add("dNone");
+        }
+    }
 }

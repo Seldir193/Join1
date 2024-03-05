@@ -19,7 +19,7 @@
     color: #42526E;
 }
 
-::placeholder {
+.inputSearchContainer::placeholder {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -207,7 +207,7 @@
     font-size: 21px;
     line-height: 25.2px;
     color: rgba(66, 82, 110, 1);
-    margin:0;
+    margin: 0;
 }
 
 
@@ -254,9 +254,217 @@
 }
 
 
-.styleCheckboxContainer{
+.styleCheckboxContainer {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 19.2px;
+}
+
+
+.addTaskContainer {
+    height: 1024px;
+    width: 518px;
+    border-radius: 30px 0px 30px 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.addTaskContainer h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 57.6px;
+    color: black;
+    margin: 0;
+}
+
+
+#titleAddTaskFloating {
+    height: 64px;
+    width: 440px;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    padding: 13px 16px;
+    border-color: rgba(209, 209, 209, 1);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38.4px;
+    color: black;
+}
+
+
+#titleAddTaskFloating::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38.4px;
+    color: rgba(209, 209, 209, 1);
+}
+
+
+#descriptionTitelAddTask {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 22.8px;
+}
+
+
+#optionalDescriptionTitelAddTask {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22.8px;
+}
+
+
+#descriptionTextareaAddTask {
+    height: 103px;
+    width: 440px;
+    border-radius: 0px 10px 10px 10px;
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(209, 209, 209, 1);
+}
+
+
+#descriptionTextareaAddTask::placeholder {
+    padding-top: 18px;
+    padding-left: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22.8px;
+}
+
+
+#dueDate {
+    width: 440px;
+    height: 48px;
+    border: 0px solid rgba(209, 209, 209, 1);
+    border-bottom-width: 1px;
+    padding: 12px 16px;
+}
+
+
+.priority {
+    height: 82px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.priority-header {
+    height: 23px;
+    color: #42526e;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+
+.priority-box {
+    height: 51px;
+    gap: 16px;
+    display: flex;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+
+.urgent {
+    width: 136px;
+    padding: 18px 10px 18px 10px;
+    border-radius: 10px;
+    gap: 10px;
+    box-shadow: 0px 0px 4px 0px #00000029;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.medium {
+    width: 136px;
+    padding: 18px 10px 18px 10px;
+    border-radius: 10px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 4px 0px #00000029;
+    background-color: #ffa800;
+    color: white;
+    align-items: center;
+}
+
+.medium img {
+    width: 20px;
+    height: 7.45px;
+    padding: 0px 0px 0px 0px;
+}
+
+.low {
+    width: 136px;
+    padding: 18px 10px 18px 10px;
+    border-radius: 10px;
+    gap: 10px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 4px 0px #00000029;
+}
+
+
+.assigned {
+    height: 79px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.assigned-box {
+    height: 23px;
+}
+
+
+.input-with-icon {
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dropdown-icon {
+    width: 24px;
+}
+
+
+#addTaskFloating {
+    position: fixed;
+    bottom: 0;
+    /* Startposition unten am Bildschirmrand */
+    width: 50vh;
+    height: 0;
+    /* Die Höhe ist 0, um die Karte zu verbergen */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Hintergrund mit leichter Verdunkelung */
+    transition: height 0.5s ease;
+    /* Animation für das Slide-Effekt */
+    z-index: 9999;
+    /* Eine hohe Z-Index-Eigenschaft, um sicherzustellen, dass die Karte alle anderen Elemente verdeckt */
+    overflow: hidden;
+    /* Verhindert, dass der Inhalt der Karte sichtbar ist, bevor sie hereinslided */
+    background-color: white;
+    padding: 20px; /*WICHTIG, DIESE WERTE SIND NOCH NICHT KORREKT!!!!!!!!!!!!*/
+}
+
+#addTaskFloating.active {
+    height: 1024px;
+    /* Die Karte wird auf die volle Bildschirmhöhe erweitert */
+    top: 127px;
+    bottom: 44px;
+    margin-left: 21px;
 }
