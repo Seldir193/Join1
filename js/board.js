@@ -49,15 +49,6 @@ function renderTasks() {
             <label for="checkboxSubtasks1" class="styleCheckboxContainer">
                 <input type="checkbox" id="checkbox2" name="checkbox2">Checkbox for a Subtasks
             </label>
-            <div class="editContainer">
-                <div class="editAddTask">
-                    <img src="assets/img/delete.svg" alt="bin"><span>Delete</span>
-                </div>
-                <div class="seperater"></div>
-                <div class="editAddTask">
-                    <img src="assets/img/edit.svg" alt="pen"><span>Edit</span>
-                </div>
-            </div>
         </div>
         `;
 }
@@ -71,40 +62,52 @@ function renderAddTask(){
     document.getElementById('body').innerHTML =
 `
     <div class="addTaskContainer">
-        <h1>Ass Task</h1>    
+        <h1>Add Task</h1>    
         <form action="submit_task.php" method="POST">
             <input type="text" id="titleAddTaskFloating" name="title" placeholder="Enter a title" required><br>
         
-            <label for="description">Beschreibung:</label><br>
-            <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+            <label for="descriptionTextareaAddTask"><span id="descriptionTitelAddTask">Description <span id="optionalDescriptionTitelAddTask">(optional)</span></span></label><br>
+            <textarea id="descriptionTextareaAddTask" name="description" rows="4" cols="50" placeholder="Enter a Description" required></textarea><br>
         
-            <label for="due_date">Fälligkeitsdatum:</label>
-            <input type="date" id="due_date" name="due_date"><br>
+            <label for="dueDate">Due date</label><br>
+            <input type="date" id="dueDate" name="due_date"><br>
         
-            <label>Priorität:</label><br>
-            <input type="radio" id="low_priority" name="priority" value="low">
-            <label for="low_priority">Niedrig</label><br>
+            <nav class="priority">
+                        <nav class="priority-header">Priority</nav>
+                        <nav class="priority-box">
+                            <nav class="urgent">Urgent<img src="assets/img/Prio alta.png"></nav>
+                            <nav class="medium">Medium <img src="assets/img/Prio media.png"></nav>
+                            <nav class="low">Low<img src="assets/img/Prio baja.png"></nav>
+                        </nav>
+                    </nav>
+                    <nav class="assigned">
+                        <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
+                        <div class="input-with-icon">
+                            <input type="text" id="contactInput" placeholder="Select contacts to assign...">
+                            <img id="icon" onclick="toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                        </div>
+                        <div class="contact-dropdown" id="contactDropdown"></div>
+                    </nav>
+                    <nav class="category">
+                        <nav class="assigned-box"><b>Category</b></nav>
+                        <div class="input-with-icon">
+                            <input type="text" id="contactInput" placeholder="Select task category...">
+                            <img src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                        </div>
+                        <div class="contact-dropdown" id="contactDropdown"></div>
+                    </nav>
+                    <nav class="subtasks">
+                        <nav class="assigned-box"><b>Subtasks</b> (optional)</nav>
+                        <div class="input-with-icon">
+                            <input type="text" id="contactInput" placeholder="Add new subtask...">
+                            <img src="assets/img/Subtask's icons.png" class="dropdown-icon">
+                            
+                        </div>
+                        <div class="contact-dropdown" id="contactDropdown"></div>
+                        <nav class="footer-box"></nav>
+                    </nav>
+            </div>
         
-            <input type="radio" id="medium_priority" name="priority" value="medium">
-            <label for="medium_priority">Mittel</label><br>
-        
-            <input type="radio" id="high_priority" name="priority" value="high">
-            <label for="high_priority">Hoch</label><br>
-        
-            <label for="category">Kategorie:</label>
-            <select id="category" name="category">
-                <option value="work">Arbeit</option>
-                <option value="personal">Persönlich</option>
-                <option value="other">Andere</option>
-            </select><br>
-        
-            <label for="checkbox1">Checkbox 1:</label>
-            <input type="checkbox" id="checkbox1" name="checkbox1" value="checkbox1"><br>
-        
-            <label for="checkbox2">Checkbox 2:</label>
-            <input type="checkbox" id="checkbox2" name="checkbox2" value="checkbox2"><br>
-        
-            <input type="submit" value="Aufgabe hinzufügen">
         </form>  
     </div>`;
 }
