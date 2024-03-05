@@ -47,7 +47,7 @@ function renderContacts() {
     contacts.innerHTML += `
     <button onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${nameContactBook[i].charAt(0)}</div>
-    <div>
+    <div class="renderNameEmail">
     <div class="listName">${nameContactBook[i]}</div>
     <div class="listEmail">${emailContactBook[i]}</div>
     </div></button>`;
@@ -62,7 +62,9 @@ function pullContact(i) {
 function addHeadlineToPulledWindow(i) {
   let contactContainer = document.getElementById("pullContactToWindow");
   contactContainer.innerHTML = `<div class="pulledHeadline">
-  <div class="chartAt" style="background-color: ${randomColorCollection[i]}">
+  <div class="chartAtPulledContact" style="background-color: ${
+    randomColorCollection[i]
+  }">
   ${nameContactBook[i].charAt(0)}</div>
   <div><h1 class="h1Name">${nameContactBook[i]}</h1>
   <div class="editAndDeletetContainer">
