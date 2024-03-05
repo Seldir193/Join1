@@ -7,18 +7,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/stylecontact.css">
     <link rel="stylesheet" href="css/styletemplates.css">
+    <link rel="stylesheet" href="css/styleall.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <script src="js/addContact.js"></script>
     <script src="js/templates.js"></script>
 </head>
 
 <body onload="includeHTML()">
     <div w3-include-html="./templates/header.html"></div>
-    <div class="main-content">
-        <div w3-include-html="./templates/side-menu.html"></div>
+    <section class="main-content">
+        <div w3-include-html="./templates/side-menu.html" class="sideBoardContainer"></div>
 
 
         <div id="sum-container" class="sum-container">
-            <button onclick="addContact()" class="addToContactButton">Add new contact <img src="./assets/img/add avatar.png" alt=""></button>
+            <div class="addContactButtonContainer">
+                <button onclick="addContact()" class="addToContactButton">Add new contact <img src="./assets/img/add avatar.png" alt=""></button>
+            </div>
             <div id="listContactContainer"></div>
         </div>
 
@@ -32,17 +36,29 @@
                 <div class="functionNameTextOne">Add contact</div>
                 <div class="functionNameTextTwo">Tasks are better with a team!</div>
             </div>
+
             <div class="lowerBody">
-                <form onsubmit="insertContact(event)">
-                    <img class="userImgLowerBody" src="./assets/img/benutzer.png" alt="">
-                    <input id="inputName" class="inputLowerBody" type="text" placeholder="Name" required>
-                    <input id="inputEmail" class="inputLowerBody" type="email" placeholder="Email" required>
-                    <input id="inputPhone" class="inputLowerBody" type="tel" placeholder="Phone" required>
-                    <div class="lowerBodyBtnContainer">
-                        <button class="closeAddContactBtn" onclick="closeAddContact()">Cancel ×</button>
-                        <button class="createUserBtn" type="submit">Create Contact ✔</button>
-                    </div>
-                </form>
+                <div class="lowerBodyDiv">
+                    <form onsubmit="insertContact(event)">
+                        <img class="userImgLowerBody" src="./assets/img/benutzer.png" alt="">
+                        <div class="inputContainerOne">
+                            <input id="inputName" class="inputLowerBody" type="text" placeholder="Name" required>
+                            <img class="inputContainerImg" src="./assets/img/profil-avatar.png">
+                        </div>
+                        <div class="inputContainerTwo">
+                            <input id="inputEmail" class="inputLowerBody" type="email" placeholder="Email" required>
+                            <img class="inputContainerImg" src="./assets/img/mail.png">
+                        </div>
+                        <div class="inputContainerThree">
+                            <input id="inputPhone" class="inputLowerBody" type="tel" placeholder="Phone" required>
+                            <img class="inputContainerImg" src="./assets/img/anruf.png">
+                        </div>
+                        <div class="lowerBodyBtnContainer">
+                            <button class="closeAddContactBtn" onclick="closeAddContact()">Cancel ×</button>
+                            <button class="createUserBtn" type="submit">Create Contact ✔</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div id="popup" class="popupContainer">
@@ -50,7 +66,7 @@
                 <span class="closePopup" onclick="closePopup()"></span>
                 <p id="popupMessage"></p>
             </div>
-        </div>
+    </section>
 
 </body>
 

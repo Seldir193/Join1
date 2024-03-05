@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <script src="js/add_task.js"></script>
     <script src="js/addContact.js"></script>
 </head>
+<<<<<<< HEAD
 <body onload="includeHTML()">
     
         <div w3-include-html="./templates/header.html"></div>
@@ -94,12 +96,90 @@
                    <button class="create">Create Task <img src="assets/img/check.png"></button>
                </nav>
            </nav>
+=======
+>>>>>>> 08ab289f14a6bd8aac055dbb7ad750f1e92eeeaf
 
-        
-          </div>
+<body onload="includeHTML()">
+
+    <div w3-include-html="./templates/header.html"></div>
+
+    <div class="main-content">
+
+        <div w3-include-html="./templates/side-menu.html"></div>
+        <div class="sum-container">
+            <div class="summary-container">
+                <h3>Add Task</h3>
+                <nav class="description">
+                    <nav class="title">
+                        <input class="titlebox" minlength="5" maxlength="20" placeholder="Enter a title" required>
+                        <nav class="titlesmallbox">This field is required</nav>
+                    </nav>
+
+                    <nav class="enter">
+                        <nav class="optional">
+                            <span class="description-optional"><b>Description</b> (optional)</span>
+                        </nav>
+                        <input class="enter-input" placeholder="Enter a description" required>
+                        <nav class="date-box"></nav>
+                    </nav>
+                    <nav class="date">
+                        <nav class="due-date">
+                            <span>Due date</span>
+                        </nav>
+                        <input class="due-input" type="date" required>
+                        <nav class="due-box"></nav>
+                    </nav>
+                    <nav class="priority">
+                        <nav class="priority-header">Priority</nav>
+                        <nav class="priority-box">
+                            <nav class="urgent">Urgent<img src="assets/img/Prio alta.png"></nav>
+                            <nav class="medium">Medium <img src="assets/img/Prio media.png"></nav>
+                            <nav class="low">Low<img src="assets/img/Prio baja.png"></nav>
+                        </nav>
+                    </nav>
+                    <nav class="assigned">
+                        <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
+                        <div class="input-with-icon">
+                            <input type="text" id="contactInput" placeholder="Select contacts to assign...">
+                            <img id="icon" onclick="toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                        </div>
+                        <div class="contact-dropdown" id="contactDropdown"></div>
+                    </nav>
+                    <nav class="category">
+                        <nav class="assigned-box"><b>Category</b></nav>
+                        <div class="input-with-icon">
+                            <input type="text" id="contactInput" placeholder="Select task category...">
+                            <img src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                        </div>
+                        <div class="contact-dropdown" id="contactDropdown"></div>
+                    </nav>
+                    <nav class="subtasks">
+                        <nav class="assigned-box"><b>Subtasks</b> (optional)</nav>
+                        <div class="input-with-icon">
+                            <input type="text" id="contactInput" placeholder="Add new subtask...">
+                            <img src="assets/img/Subtask's icons.png" class="dropdown-icon">
+                        </div>
+                        <div class="contact-dropdown" id="contactDropdown"></div>
+                        <nav class="footer-box"></nav>
+                    </nav>
+            </div>
+            <nav class="button-container">
+                <nav class="button-box">
+                    <nav class="clear-button">
+                        <button class="clear">Clear <img src="assets/img/iconoir_cancel.png"></button>
+                    </nav>
+
+                    <nav class="create-button">
+                        <button class="create">Create Task <img src="assets/img/check.png"></button>
+                    </nav>
+                </nav>
+
+
         </div>
-        
     </div>
-</div>
+
+    </div>
+    </div>
 </body>
+
 </html>
