@@ -19,7 +19,7 @@
     color: #42526E;
 }
 
-::placeholder {
+.inputSearchContainer::placeholder {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -207,7 +207,7 @@
     font-size: 21px;
     line-height: 25.2px;
     color: rgba(66, 82, 110, 1);
-    margin:0;
+    margin: 0;
 }
 
 
@@ -254,9 +254,50 @@
 }
 
 
-.styleCheckboxContainer{
+.styleCheckboxContainer {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 19.2px;
+}
+
+
+.addTaskContainer {
+    height: 1024px;
+    width: 518px;
+    border-radius: 30px 0px 30px 30px;
+    box-shadow: 0px 0px 4px 0px (0, 0, 0, 0.16)
+}
+
+
+.addTaskContainer h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 57.6px;
+    color: black;
+    margin: 0;
+}
+
+
+#titleAddTaskFloating{
+    height: 64px;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    padding: 13px 16px;
+    border-color: rgba(209, 209, 209, 1);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38.4px;
+    color: black;
+}
+
+
+#titleAddTaskFloating::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38.4px;
+    color: rgba(209, 209, 209, 1);
 }

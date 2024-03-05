@@ -7,13 +7,14 @@ done = [];
 
 function onload() {
     includeHTML();
-    //render();
+    render();
 }
 
 
 function render() {
     for (i = 0; i < 1; i++) {
-        renderTasks(i);
+        //renderTasks(i);
+        renderAddTask(i);
     }
 }
 
@@ -64,4 +65,46 @@ function renderTasks() {
 
 function showAddTaskFloating() {
     document.getElementById('newTaskFloating').classList.remove('dNone');
+}
+
+function renderAddTask(){
+    document.getElementById('body').innerHTML =
+`
+    <div class="addTaskContainer">
+        <h1>Ass Task</h1>    
+        <form action="submit_task.php" method="POST">
+            <input type="text" id="titleAddTaskFloating" name="title" placeholder="Enter a title" required><br>
+        
+            <label for="description">Beschreibung:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+        
+            <label for="due_date">Fälligkeitsdatum:</label>
+            <input type="date" id="due_date" name="due_date"><br>
+        
+            <label>Priorität:</label><br>
+            <input type="radio" id="low_priority" name="priority" value="low">
+            <label for="low_priority">Niedrig</label><br>
+        
+            <input type="radio" id="medium_priority" name="priority" value="medium">
+            <label for="medium_priority">Mittel</label><br>
+        
+            <input type="radio" id="high_priority" name="priority" value="high">
+            <label for="high_priority">Hoch</label><br>
+        
+            <label for="category">Kategorie:</label>
+            <select id="category" name="category">
+                <option value="work">Arbeit</option>
+                <option value="personal">Persönlich</option>
+                <option value="other">Andere</option>
+            </select><br>
+        
+            <label for="checkbox1">Checkbox 1:</label>
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="checkbox1"><br>
+        
+            <label for="checkbox2">Checkbox 2:</label>
+            <input type="checkbox" id="checkbox2" name="checkbox2" value="checkbox2"><br>
+        
+            <input type="submit" value="Aufgabe hinzufügen">
+        </form>  
+    </div>`;
 }
