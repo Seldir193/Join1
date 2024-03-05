@@ -434,9 +434,37 @@
     height: 48px;
     display: flex;
     flex-direction: column;
-  }
+}
 
 
 .dropdown-icon {
     width: 24px;
+}
+
+
+#addTaskFloating {
+    position: fixed;
+    bottom: 0;
+    /* Startposition unten am Bildschirmrand */
+    width: 50vh;
+    height: 0;
+    /* Die Höhe ist 0, um die Karte zu verbergen */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Hintergrund mit leichter Verdunkelung */
+    transition: height 0.5s ease;
+    /* Animation für das Slide-Effekt */
+    z-index: 9999;
+    /* Eine hohe Z-Index-Eigenschaft, um sicherzustellen, dass die Karte alle anderen Elemente verdeckt */
+    overflow: hidden;
+    /* Verhindert, dass der Inhalt der Karte sichtbar ist, bevor sie hereinslided */
+    background-color: white;
+    padding: 20px; /*WICHTIG, DIESE WERTE SIND NOCH NICHT KORREKT!!!!!!!!!!!!*/
+}
+
+#addTaskFloating.active {
+    height: 1024px;
+    /* Die Karte wird auf die volle Bildschirmhöhe erweitert */
+    top: 127px;
+    bottom: 44px;
+    margin-left: 21px;
 }

@@ -18,13 +18,13 @@
     <section w3-include-html="./templates/header.html"></section>
     <div class="dFlex overflowHidden">
         <section w3-include-html="./templates/side-menu.html" class="sideBoardContainer"></section>
-        <section>
+        <section id="boardsContainer">
             <section class="mainBoard column">
                 <div class="searchMainContainer">
-                    <div class="inputSearchContainer"><input type="text" placeholder="Find Task">
+                    <div class="inputSearchContainer"><input type="text" placeholder="Find Task" id="searchTasksInput" oninput="searchTasks()">
                         <div class="searchIconContainer"><img src="./assets/img/search.svg" alt="search Icon" id="searchIcon"></div>
                     </div>
-                    <button class="addTaskBtn">Add task <img src="./assets/img/plus.svg" alt="plusIcon">
+                    <button class="addTaskBtn" onclick="showAddTaskFloating(), toggleCard()">Add task <img src="./assets/img/plus.svg" alt="plusIcon">
                     </button>
                 </div>
                 <div class="categorysBoardContainer">
