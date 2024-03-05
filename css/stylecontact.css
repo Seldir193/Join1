@@ -1,8 +1,9 @@
 body {
   margin: 0;
   max-height: 1024px;
-  font-family: "Open sans";
+  font-family: 'Open sans', sans-serif;
 }
+
 
 .sum-container {
   display: flex;
@@ -11,23 +12,32 @@ body {
   flex-direction: column;
   border-right: 1px solid rgb(200, 200, 200);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: auto;
+  padding-top: 96px;
 }
+
+
 .addContactButtonContainer {
   height: 104px;
   padding: 32px 24px 16px 24px;
   display: grid;
   place-items: center;
 }
+
+
 .inputContainerOne {
   position: relative;
 }
+
+
 .inputContainerTwo {
   position: relative;
 }
+
+
 .inputContainerThree {
   position: relative;
 }
+
 
 .inputContainerImg {
   width: 32px;
@@ -37,6 +47,7 @@ body {
   filter: opacity(0.2);
 }
 
+
 .avatarProfil {
   width: 40px;
   position: absolute;
@@ -44,6 +55,7 @@ body {
   top: 0;
   filter: opacity(0.5);
 }
+
 
 .addToContactButton {
   padding: 8px;
@@ -60,13 +72,17 @@ body {
   gap: 8px;
 }
 
+
 .addToContactButton:hover {
   cursor: pointer;
   background-color: rgb(27, 110, 255);
 }
+
+
 .addToContactButton img {
   width: 28px;
 }
+
 
 .blurContainer {
   z-index: 1;
@@ -76,26 +92,29 @@ body {
   opacity: 0.5;
 }
 
+
 .d-none {
   display: none;
 }
+
 
 .addContactSlideCard {
   width: 584px;
   height: 1024px;
   transform: translateX(100%);
   transition: all 250ms ease-in-out;
-  position: absolute;
   right: 0;
   border-radius: 25px 0px 0px 0px;
-  border-left: 1px solid rgb(200, 200, 200);
+  border-left: 1px solid rgb(200, 200, 200);/* hier war vorher position: absolute; drin, hab ich raus genommen */
 }
+
 
 .slideOpen {
   transform: translateX(0%) !important;
   transition: all 250ms ease-in-out;
   z-index: 2;
 }
+
 
 .upperBody {
   background-color: rgb(0, 93, 255);
@@ -107,6 +126,7 @@ body {
   justify-content: center;
 }
 
+
 .closeX {
   font-size: 32px;
   position: absolute;
@@ -117,22 +137,28 @@ body {
   color: white;
   text-align: center;
 }
+
 .closeX:hover {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   padding: 0px 0px 4px 0px;
 }
+
+
 .upperBody img {
   width: 55px;
 }
 
+
 .lowerBody {
   background-color: white;
-  height: 70%;
+height: 0%;  /*  von Laurin von 70% auf null geändert  */
   display: grid;
   place-items: center;
 }
+
+
 .lowerBody form {
   display: flex;
   flex-direction: column;
@@ -142,25 +168,31 @@ body {
   width: 100%;
 }
 
+
 .lowerBodyDiv {
   width: 422px;
   height: 438px;
 }
+
 
 .functionNameTextOne {
   color: white;
   font-size: 48px;
   font-weight: bold;
 }
+
+
 .functionNameTextTwo {
   color: white;
   font-size: 28px;
 }
 
+
 .userImgLowerBody {
   width: 108px;
   filter: opacity(0.5);
 }
+
 
 .inputLowerBody {
   border: none;
@@ -170,9 +202,12 @@ body {
   outline: none;
   font-size: 20px;
 }
+
+
 .inputLowerBody::placeholder {
   color: rgb(217, 217, 217);
 }
+
 
 .lowerBodyBtnContainer {
   display: flex;
@@ -180,6 +215,8 @@ body {
   flex-direction: row;
   gap: 16px;
 }
+
+
 .createUserBtn {
   width: 204px;
   height: 61px;
@@ -194,10 +231,13 @@ body {
   align-items: center;
   gap: 8px;
 }
+
+
 .createUserBtn:hover {
   cursor: pointer;
   background-color: rgb(27, 110, 255);
 }
+
 
 .closeAddContactBtn {
   width: 136px;
@@ -212,6 +252,8 @@ body {
   align-items: center;
   gap: 8px;
 }
+
+
 .closeAddContactBtn:hover {
   cursor: pointer;
   color: rgb(27, 110, 255);
@@ -231,14 +273,18 @@ body {
   gap: 24px;
 }
 
+
 .summary-container h1 {
   margin: 0; /* Entferne den Standardmargenwert für das <h1>-Element */
 }
 
+
 .main-content {
   display: flex;
-  padding-top: 96px;
+  overflow-y: hidden;
+  max-height: 100vh;
 }
+
 
 .popupContainer {
   position: fixed;
@@ -252,11 +298,13 @@ body {
   display: none;
 }
 
+
 .popupContent {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
 }
+
 
 .closePopup {
   position: absolute;
@@ -264,6 +312,7 @@ body {
   right: 10px;
   cursor: pointer;
 }
+
 
 .listContact {
   display: flex;
@@ -275,10 +324,13 @@ body {
   background-color: transparent;
   padding: 15px 24px 15px 24px;
 }
+
+
 .listContact:hover {
   cursor: pointer;
   background-color: rgba(27, 110, 255, 0.1);
 }
+
 
 .chartAt {
   background-color: orange;
@@ -291,6 +343,8 @@ body {
   font-size: 18px;
   color: white;
 }
+
+
 .chartAtPulledContact {
   background-color: orange;
   width: 120px;
@@ -303,19 +357,23 @@ body {
   color: white;
 }
 
+
 .renderNameEmail {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
+
 .listName {
   font-size: 20px;
 }
 
+
 .listEmail {
   color: rgb(27, 110, 255);
 }
+
 
 .category {
   display: flex;
@@ -323,11 +381,13 @@ body {
   gap: 8px;
 }
 
+
 .line {
   height: 2px;
   background-color: rgb(203, 203, 203);
   width: 100%;
 }
+
 
 .letter {
   padding: 17px 36px 17px 36px;
