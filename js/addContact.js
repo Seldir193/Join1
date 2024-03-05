@@ -31,9 +31,9 @@ function renderAlphabeticalCategories() {
   contacts.innerHTML = "";
 
   for (let n = 0; n < letterArray.length; n++) {
-    contacts.innerHTML += `<div id="${letterArray[n]}" class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
-  }
+    contacts.innerHTML += `<div id="${letterArray[n]}" class="category"></div>  <div class="letter">${letterArray[n]}</div><div class="line"></div>`;
 
+  }
   renderContacts();
 }
 
@@ -45,12 +45,12 @@ function renderContacts() {
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
     contacts.innerHTML += `
-    <button onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
+    <button id="contact_${i}" onclick="toggleContactBackground(${i})" onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${nameContactBook[i].charAt(0)}</div>
     <div>
-    <div class="listName">${nameContactBook[i]}</div>
+    <div class="listName">${nameContactBook[i]}</div> 
     <div class="listEmail">${emailContactBook[i]}</div>
-    </div></button>`;
+    </div><input class="box" type="checkbox" id="remember" name="remember"></button>`;
   }
 }
 
@@ -157,3 +157,8 @@ function loadLocalStorage() {
 document.addEventListener("DOMContentLoaded", function () {
   renderAlphabeticalCategories();
 });
+
+
+
+
+

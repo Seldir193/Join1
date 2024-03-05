@@ -233,6 +233,10 @@ body {
   background-color: rgba(27, 110, 255, 0.1);
 }
 
+#listContactContainer input{
+    display: none;
+}
+
 .chartAt {
   background-color: orange;
   width: 60px;

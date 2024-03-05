@@ -41,6 +41,11 @@ function showPrivacyPolicy(){
     window.location.href = 'privacy.html';
 }
 
+function showHelp(){
+    window.location.href = 'help.html';
+}
+
+
 
 
 
