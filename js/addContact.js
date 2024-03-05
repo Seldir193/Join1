@@ -1,27 +1,24 @@
-let nameContactBook = ["Albert Einstein", "Nikola Tesla", "Isac Newton"];
-let emailContactBook = [
-  "albert@gmail.com",
-  "nikola@gmail.com",
-  "isac@gmail.com",
-];
-let phoneContactBook = ["0176458795", "0658451647", "03894568745"];
+let contactBook = [];
 
 let letterArray = [];
 let randomColorCollection = [];
 
-loadLocalStorage();
+async function init() {
+  loadUsers();
+}
 
-function getRandomColor() {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-  let color = "#" + r.toString(16) + g.toString(16) + b.toString(16);
-  return color;
+async function loadUsers() {
+  try {
+    contactBook = JSON.parse(await getItem("contact"));
+    renderAlphabeticalCategories();
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
 }
 
 function renderAlphabeticalCategories() {
-  for (let j = 0; j < nameContactBook.length; j++) {
-    let letter = nameContactBook[j].charAt(0).toUpperCase();
+  for (let j = 0; j < contactBook.length; j++) {
+    let letter = contactBook[j].name.charAt(0).toUpperCase();
     if (!letterArray.includes(letter)) {
       letterArray.push(letter);
     }
@@ -38,18 +35,18 @@ function renderAlphabeticalCategories() {
 }
 
 function renderContacts() {
-  for (let i = 0; i < nameContactBook.length; i++) {
-    let letter = nameContactBook[i].charAt(0).toUpperCase();
+  for (let i = 0; i < contactBook.length; i++) {
+    let letter = contactBook[i].name.charAt(0).toUpperCase();
     let contacts = document.getElementById(letter);
     let randomColor = getRandomColor();
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
     contacts.innerHTML += `
     <button onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
-    <div class="chartAt" ${charStyle}>${nameContactBook[i].charAt(0)}</div>
+    <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
     <div class="renderNameEmail">
-    <div class="listName">${nameContactBook[i]}</div>
-    <div class="listEmail">${emailContactBook[i]}</div>
+    <div class="listName">${contactBook[i].name}</div>
+    <div class="listEmail">${contactBook[i].email}</div>
     </div></button>`;
   }
 }
@@ -65,8 +62,8 @@ function addHeadlineToPulledWindow(i) {
   <div class="chartAtPulledContact" style="background-color: ${
     randomColorCollection[i]
   }">
-  ${nameContactBook[i].charAt(0)}</div>
-  <div><h1 class="h1Name">${nameContactBook[i]}</h1>
+  ${contactBook[i].name.charAt(0)}</div>
+  <div><h1 class="h1Name">${contactBook[i].name}</h1>
   <div class="editAndDeletetContainer">
   <button onclick="editContact()" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/pencil.png">Edit</button>
   <button onclick="deleteContact()" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/mulleimer.png">Delete</button>
@@ -79,9 +76,9 @@ function addInformationToPulledWindow(i) {
   contactContainer.innerHTML += `<div class="pulledInformation">
   <h2>Contact Information</h2>
      <h4>Email</h4>
-     <span style="color:rgb(27, 110, 255)">${emailContactBook[i]}</span>
+     <span style="color:rgb(27, 110, 255)">${contactBook[i].email}</span>
      <h4>Phone</h4>
-     <span>${phoneContactBook[i]}</span></div>`;
+     <span>${contactBook[i].number}</span></div>`;
 }
 
 function addContact() {
@@ -94,68 +91,28 @@ function closeAddContact() {
   document.getElementById("addContactSlideCard").classList.remove("slideOpen");
 }
 
-function insertContact(event) {
+async function insertContact(event) {
   event.preventDefault();
-  let inputName = document.getElementById("inputName").value;
-  let inputEmail = document.getElementById("inputEmail").value;
-  let inputPhone = document.getElementById("inputPhone").value;
 
-  if (inputName && inputEmail && inputPhone) {
-    if (
-      !emailContactBook.includes(inputEmail) &&
-      !phoneContactBook.includes(inputPhone)
-    ) {
-      nameContactBook.push(inputName);
-      emailContactBook.push(inputEmail);
-      phoneContactBook.push(inputPhone);
-      clearInput();
-      saveToLocalStorage();
-      renderAlphabeticalCategories();
-    } else {
-      let popupMessage = document.getElementById("popupMessage");
-      popupMessage.textContent = "The contact already exists!";
-      clearInput();
-      openPopup();
-      setTimeout(closePopup, 1500);
-    }
-  }
+  contactBook.push({
+    name: inputName.value,
+    email: inputEmail.value,
+    number: inputPhone.value,
+  });
+  await setItem("contact", JSON.stringify(contactBook));
+  clearInput();
 }
 
 function clearInput() {
-  document.getElementById("inputName").value = "";
-  document.getElementById("inputEmail").value = "";
-  document.getElementById("inputPhone").value = "";
+  inputName.value = "";
+  inputEmail.value = "";
+  inputPhone.value = "";
 }
 
-function openPopup() {
-  document.getElementById("popup").style.display = "block";
+function getRandomColor() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  let color = "#" + r.toString(16) + g.toString(16) + b.toString(16);
+  return color;
 }
-
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
-function saveToLocalStorage() {
-  let nameSave = JSON.stringify(nameContactBook);
-  let emailSave = JSON.stringify(emailContactBook);
-  let phoneSave = JSON.stringify(phoneContactBook);
-  localStorage.setItem(`nameContactBook`, nameSave);
-  localStorage.setItem(`emailContactBook`, emailSave);
-  localStorage.setItem(`phoneContactBook`, phoneSave);
-}
-
-function loadLocalStorage() {
-  let nameSave = localStorage.getItem(`nameContactBook`);
-  let emailSave = localStorage.getItem(`emailContactBook`);
-  let phoneSave = localStorage.getItem(`phoneContactBook`);
-
-  if (nameSave && emailSave && phoneSave) {
-    nameContactBook = JSON.parse(nameSave);
-    emailContactBook = JSON.parse(emailSave);
-    phoneContactBook = JSON.parse(phoneSave);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  renderAlphabeticalCategories();
-});
