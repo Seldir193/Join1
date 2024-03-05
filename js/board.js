@@ -7,7 +7,7 @@ done = [];
 
 function onload() {
     includeHTML();
-    // render();
+    //render();
 }
 
 
@@ -36,17 +36,17 @@ function renderTasks() {
                 </tr>
                 <tr>
                     <th>Priority:</th>
-                    <td>Medium<img src"#" alt="priority img"></td>
+                    <td>Medium <img src"assets/img/medium.svg" alt="priority img"></td>
                 </tr>
             </table>
             <h3>Assigned To:</h3>
                     <div class="alignItems">
                         <img src="assets/img/ellipse_profil.svg" alt="Profil Img">
-                        <span>Muahemed Ali</span>
+                        <span>mohammed Ali</span>
                     </div>
             <h3>Subtasks:</h3>
-            <label for="checkboxSubtasks1">
-                <input type="checkbox" id="checkbox2" name="checkbox2"> Checkbox for a Subtasks
+            <label for="checkboxSubtasks1" class="styleCheckboxContainer">
+                <input type="checkbox" id="checkbox2" name="checkbox2">Checkbox for a Subtasks
             </label>
             <div class="editContainer">
                 <div class="editAddTask">

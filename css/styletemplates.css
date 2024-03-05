@@ -114,3 +114,9 @@
 #logo {
   cursor: pointer;
 }
+
+
+.sideBoardContainer {
+  width: 232px;
+  height: 100vh;
+}
