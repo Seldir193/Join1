@@ -28,9 +28,9 @@ function renderAlphabeticalCategories() {
   contacts.innerHTML = "";
 
   for (let n = 0; n < letterArray.length; n++) {
-    contacts.innerHTML += `<div id="${letterArray[n]}" class="category"></div>  <div class="letter">${letterArray[n]}</div><div class="line"></div>`;
-
+    contacts.innerHTML += `<div id="${letterArray[n]}" class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
   }
+
   renderContacts();
 }
 
@@ -42,26 +42,12 @@ function renderContacts() {
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
     contacts.innerHTML += `
-<<<<<<< HEAD
     <button onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
     <div class="renderNameEmail">
     <div class="listName">${contactBook[i].name}</div>
     <div class="listEmail">${contactBook[i].email}</div>
     </div></button>`;
-=======
-    <button id="contact_${i}" onclick="toggleContactBackground(${i})" onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
-    <div class="chartAt" ${charStyle}>${nameContactBook[i].charAt(0)}</div>
-<<<<<<< HEAD
-    <div>
-    <div class="listName">${nameContactBook[i]}</div> 
-=======
-    <div class="renderNameEmail">
-    <div class="listName">${nameContactBook[i]}</div>
->>>>>>> 08ab289f14a6bd8aac055dbb7ad750f1e92eeeaf
-    <div class="listEmail">${emailContactBook[i]}</div>
-    </div><input class="box" type="checkbox" id="remember" name="remember"></button>`;
->>>>>>> 219d9d60afd7386ba2b978ce570ed05516ee6377
   }
 }
 
@@ -115,6 +101,7 @@ async function insertContact(event) {
   });
   await setItem("contact", JSON.stringify(contactBook));
   clearInput();
+  renderAlphabeticalCategories();
 }
 
 function clearInput() {
@@ -130,40 +117,3 @@ function getRandomColor() {
   let color = "#" + r.toString(16) + g.toString(16) + b.toString(16);
   return color;
 }
-<<<<<<< HEAD
-=======
-
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
-function saveToLocalStorage() {
-  let nameSave = JSON.stringify(nameContactBook);
-  let emailSave = JSON.stringify(emailContactBook);
-  let phoneSave = JSON.stringify(phoneContactBook);
-  localStorage.setItem(`nameContactBook`, nameSave);
-  localStorage.setItem(`emailContactBook`, emailSave);
-  localStorage.setItem(`phoneContactBook`, phoneSave);
-}
-
-function loadLocalStorage() {
-  let nameSave = localStorage.getItem(`nameContactBook`);
-  let emailSave = localStorage.getItem(`emailContactBook`);
-  let phoneSave = localStorage.getItem(`phoneContactBook`);
-
-  if (nameSave && emailSave && phoneSave) {
-    nameContactBook = JSON.parse(nameSave);
-    emailContactBook = JSON.parse(emailSave);
-    phoneContactBook = JSON.parse(phoneSave);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  renderAlphabeticalCategories();
-});
-
-
-
-
-
->>>>>>> 219d9d60afd7386ba2b978ce570ed05516ee6377
