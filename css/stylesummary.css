@@ -104,8 +104,8 @@ body {
 
 .main-content {
     display: flex;
-    height: 932px;
-    overflow-y: auto;
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 .date{
