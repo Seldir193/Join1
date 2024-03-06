@@ -1,5 +1,10 @@
 let currentDraggedElement;
 
+let countToDo = [];
+let countInProgress = [];
+let countAwaitFeedback = [];
+let countDone = [];
+
 toDos = [{ //arraystruktur muss angepasst werden, da die Daten remote gespeichert werden
     id: 1,
     title: 'testtitel',
@@ -20,8 +25,7 @@ function render() {
     for (i = 0; i < 1; i++) {
         //renderShowTask(i);
         renderAddTask(i);
-        //renderNoTasks();
-        renderAddedTasks();
+        renderNoTasks();
     }
 }
 
@@ -167,7 +171,7 @@ function renderNoTasks() {
 
 
 function checkNoTasksToDo() {
-    if (toDo == 0) {
+    if (countToDo == 0) {
         document.getElementById('toDoTasks').innerHTML +=
             `
         <div class="noTasks">No tasks To Do</div>
@@ -177,7 +181,7 @@ function checkNoTasksToDo() {
 
 
 function checkNoTasksInProgress() {
-    if (inProgress == 0) {
+    if (countInProgress == 0) {
         document.getElementById('inProgressTasks').innerHTML +=
             `
         <div class="noTasks">No tasks To Do</div>
@@ -187,7 +191,7 @@ function checkNoTasksInProgress() {
 
 
 function checkNoTasksAwaitFeedback() {
-    if (awaitFeedback == 0) {
+    if (countAwaitFeedback == 0) {
         document.getElementById('awaitFeedbackTasks').innerHTML +=
             `
         <div class="noTasks">No tasks To Do</div>
@@ -197,7 +201,7 @@ function checkNoTasksAwaitFeedback() {
 
 
 function checkNoTasksDone() {
-    if (done == 0) {
+    if (countDone == 0) {
         document.getElementById('doneTasks').innerHTML +=
             `
         <div class="noTasks">No tasks To Do</div>
