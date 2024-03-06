@@ -32,7 +32,7 @@
         <div id="pullContactToWindow"></div>
 
         <div id="addContactSlideCard" class="addContactSlideCard">
-            <div class="upperBody">
+            <div id="upperBody" class="upperBody">
                 <div onclick="closeAddContact()" class="closeX">×</div>
                 <img src="./assets/img/Capa 1.png" alt="">
                 <div class="functionNameTextOne">Add contact</div>
@@ -63,11 +63,45 @@
                 </div>
             </div>
         </div>
-        <div id="popup" class="popupContainer">
-            <div class="popupContent">
-                <span class="closePopup" onclick="closePopup()"></span>
-                <p id="popupMessage"></p>
+
+
+
+
+
+
+
+        <div id="editDeleteSlideCard" class="editDeleteSlideCard">
+            <div id="upperBodyEditDelete" class="upperBody">
+                <div onclick="closeAddContact()" class="closeX">×</div>
+                <img src="./assets/img/Capa 1.png" alt="">
+                <div class="functionNameTextOne">Edit contact</div>
             </div>
+
+            <div class="lowerBody">
+                <div class="lowerBodyDiv">
+                    <form onsubmit="saveChanges(event); return false">
+                        <img class="userImgLowerBody" src="./assets/img/benutzer.png" alt="">
+                        <div class="inputContainerOne">
+                            <input id="inputEditName" class="inputLowerBody" type="text" placeholder="Name">
+                            <img class="inputContainerImg" src="./assets/img/profil-avatar.png">
+                        </div>
+                        <div class="inputContainerTwo">
+                            <input id="inputEditEmail" class="inputLowerBody" type="email" placeholder="Email" required>
+                            <img class="inputContainerImg" src="./assets/img/mail.png">
+                        </div>
+                        <div class="inputContainerThree">
+                            <input id="inputEditPhone" class="inputLowerBody" type="number" placeholder="Phone" required>
+                            <img class="inputContainerImg" src="./assets/img/anruf.png">
+                        </div>
+                        <div class="lowerBodyBtnContainer">
+                            <button class="closeAddContactBtn" onclick="closeAddContact(); deleteContact()">Delete</button>
+                            <button id="saveChangesBtn" class="createUserBtn" type="submit">Save ✔</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </section>
 
 </body>

@@ -1,5 +1,5 @@
 let contactBook = [];
-
+let editIndex = [];
 let letterArray = [];
 let randomColorCollection = [];
 
@@ -65,8 +65,8 @@ function addHeadlineToPulledWindow(i) {
   ${contactBook[i].name.charAt(0)}</div>
   <div><h1 class="h1Name">${contactBook[i].name}</h1>
   <div class="editAndDeletetContainer">
-  <button onclick="editContact()" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/pencil.png">Edit</button>
-  <button onclick="deleteContact()" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/mulleimer.png">Delete</button>
+  <button onclick="editContact(${i})" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/pencil.png">Edit</button>
+  <button onclick="deleteContact(${i})" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/mulleimer.png">Delete</button>
   </div></div>`;
   addInformationToPulledWindow(i);
 }
@@ -83,25 +83,72 @@ function addInformationToPulledWindow(i) {
 
 function addContact() {
   document.getElementById("blurContainer").classList.remove("d-none");
+  document.getElementById("upperBody").classList.add("radiusLeft");
   document.getElementById("addContactSlideCard").classList.add("slideOpen");
 }
 
 function closeAddContact() {
   document.getElementById("blurContainer").classList.add("d-none");
   document.getElementById("addContactSlideCard").classList.remove("slideOpen");
+  document.getElementById("editDeleteSlideCard").classList.remove("slideOpen");
+  editIndex = [];
+}
+
+function editContact(i) {
+  document.getElementById("blurContainer").classList.remove("d-none");
+  document.getElementById("upperBodyEditDelete").classList.add("radiusRight");
+  document.getElementById("editDeleteSlideCard").classList.add("slideOpen");
+
+  document.getElementById("inputEditName").value = `${contactBook[i].name}`;
+  document.getElementById("inputEditEmail").value = `${contactBook[i].email}`;
+  document.getElementById("inputEditPhone").value = `${contactBook[i].number}`;
+
+  editIndex.push(i);
+}
+
+function saveChanges(event) {
+  event.preventDefault();
+  let index = editIndex[0];
+  contactBook[index].name = document.getElementById("inputEditName").value;
+  contactBook[index].email = document.getElementById("inputEditEmail").value;
+  contactBook[index].number = document.getElementById("inputEditPhone").value;
+  editIndex = [];
+  closeAddContact();
+}
+
+async function deleteContact() {
+  let index = editIndex[0];
+  contactBook.splice(index, 1);
+  await setItem("contact", JSON.stringify(contactBook));
+  init();
 }
 
 async function insertContact(event) {
   event.preventDefault();
+  let inputEmail = document.getElementById("inputEmail").value;
+  let inputPhone = document.getElementById("inputPhone").value;
+  let inputName = document.getElementById("inputName").value;
 
-  contactBook.push({
-    name: inputName.value,
-    email: inputEmail.value,
-    number: inputPhone.value,
-  });
-  await setItem("contact", JSON.stringify(contactBook));
-  clearInput();
-  renderAlphabeticalCategories();
+  if (
+    !contactBook.some(
+      (contact) => contact.email === inputEmail || contact.number === inputPhone
+    )
+  ) {
+    contactBook.push({
+      name: inputName,
+      email: inputEmail,
+      number: inputPhone,
+    });
+
+    // contactBook = []; -> Nutzen zum löschen der serverdaten
+
+    await setItem("contact", JSON.stringify(contactBook));
+    renderAlphabeticalCategories();
+    clearInput();
+  } else {
+    clearInput();
+    alert("Kontakt ist bereits vorhanden");
+  }
 }
 
 function clearInput() {
