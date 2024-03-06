@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="css/fonts.css">
     <script src="js/addContact.js"></script>
     <script src="js/templates.js"></script>
+    <script src="js/storage.js"></script>
+
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); init();">
     <div w3-include-html="./templates/header.html"></div>
     <section class="main-content">
         <div w3-include-html="./templates/side-menu.html" class="sideBoardContainer"></div>
@@ -39,7 +41,7 @@
 
             <div class="lowerBody">
                 <div class="lowerBodyDiv">
-                    <form onsubmit="insertContact(event)">
+                    <form onsubmit="insertContact(event); return false">
                         <img class="userImgLowerBody" src="./assets/img/benutzer.png" alt="">
                         <div class="inputContainerOne">
                             <input id="inputName" class="inputLowerBody" type="text" placeholder="Name" required>
@@ -50,7 +52,7 @@
                             <img class="inputContainerImg" src="./assets/img/mail.png">
                         </div>
                         <div class="inputContainerThree">
-                            <input id="inputPhone" class="inputLowerBody" type="tel" placeholder="Phone" required>
+                            <input id="inputPhone" class="inputLowerBody" type="number" placeholder="Phone" required>
                             <img class="inputContainerImg" src="./assets/img/anruf.png">
                         </div>
                         <div class="lowerBodyBtnContainer">

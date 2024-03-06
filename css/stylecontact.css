@@ -12,6 +12,7 @@ body {
   border-right: 1px solid rgb(200, 200, 200);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding-top: 96px;
+  overflow: scroll;
 }
 
 .addContactButtonContainer {
@@ -137,8 +138,9 @@ body {
 .lowerBody {
   background-color: white;
   height: 0%; /*  von Laurin von 70% auf null geändert  */
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .lowerBody form {
@@ -254,31 +256,6 @@ body {
   max-height: 100vh;
 }
 
-.popupContainer {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 5px;
-  z-index: 999;
-  display: none;
-}
-
-.popupContent {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.closePopup {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  cursor: pointer;
-}
-
 .listContact {
   display: flex;
   flex-direction: row;
@@ -295,8 +272,8 @@ body {
   background-color: rgba(27, 110, 255, 0.1);
 }
 
-#listContactContainer input{
-    display: none;
+#listContactContainer input {
+  display: none;
 }
 
 .chartAt {
