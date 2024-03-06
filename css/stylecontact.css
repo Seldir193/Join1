@@ -252,7 +252,7 @@ body {
 
 .main-content {
   display: flex;
-  overflow-y: hidden;
+  overflow: hidden;
   max-height: 100vh;
 }
 
