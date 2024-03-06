@@ -57,12 +57,13 @@ function renderTasks() {
 
 
 function showAddTaskFloating() {
-    document.getElementById('addTaskFloating').classList.remove('dNone');
+    let addTaskFloating = document.getElementById('addTaskFloating');
+    addTaskFloating.classList.remove('dNone');
 }
 
 
 function toggleCard() {
-    var card = document.getElementById('addTaskFloating');
+    let card = document.getElementById('addTaskFloating');
     card.classList.toggle('active');
 }
 
@@ -124,17 +125,17 @@ function renderAddTask() {
 
 function searchTasks() {
     // Eingabewert aus dem Inputfeld abrufen
-    var inputValue = document.getElementById("searchTasksInput").value.toLowerCase();
+    let inputValue = document.getElementById("searchTasksInput").value.toLowerCase();
 
     // Alle Task-Container durchlaufen und den Eingabewert suchen
-    for (var i = 0; i < taskCounter.length; i++) {
-        var container = document.getElementById("newTaskFloating" + i);
-        var headline = document.getElementById("headlineValue" + i).innerText.toLowerCase();
-        var description = document.getElementById("descriptionValue" + i).innerText.toLowerCase();
-        var date = document.getElementById("dateValue" + i).innerText.toLowerCase();
-        var priority = document.getElementById("priorityValue" + i).innerText.toLowerCase();
-        var profil = document.getElementById("profilValue" + i).innerText.toLowerCase();
-        var subtask = document.getElementById("subtaskValue" + i).innerText.toLowerCase();
+    for (let i = 0; i < taskCounter.length; i++) {
+        let container = document.getElementById("newTaskFloating" + i);
+        let headline = document.getElementById("headlineValue" + i).innerText.toLowerCase();
+        let description = document.getElementById("descriptionValue" + i).innerText.toLowerCase();
+        let date = document.getElementById("dateValue" + i).innerText.toLowerCase();
+        let priority = document.getElementById("priorityValue" + i).innerText.toLowerCase();
+        let profil = document.getElementById("profilValue" + i).innerText.toLowerCase();
+        let subtask = document.getElementById("subtaskValue" + i).innerText.toLowerCase();
 
         // Überprüfen, ob der Eingabewert in einem der Felder gefunden wird
         if (headline.includes(inputValue) ||
