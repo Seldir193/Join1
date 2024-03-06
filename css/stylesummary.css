@@ -3,7 +3,6 @@ body {
     font-family: Open Sans;
 }
 
-
 .next {
     margin: 0;
 }
@@ -106,6 +105,7 @@ body {
 .main-content {
     display: flex;
     height: 932px;
+    overflow-y: auto;
 }
 
 .date{

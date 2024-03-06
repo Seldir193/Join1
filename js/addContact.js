@@ -47,13 +47,9 @@ function renderContacts() {
     contacts.innerHTML += `
     <button id="contact_${i}" onclick="toggleContactBackground(${i})" onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${nameContactBook[i].charAt(0)}</div>
-<<<<<<< HEAD
+
     <div>
     <div class="listName">${nameContactBook[i]}</div> 
-=======
-    <div class="renderNameEmail">
-    <div class="listName">${nameContactBook[i]}</div>
->>>>>>> 08ab289f14a6bd8aac055dbb7ad750f1e92eeeaf
     <div class="listEmail">${emailContactBook[i]}</div>
     </div><input class="box" type="checkbox" id="remember" name="remember"></button>`;
   }
@@ -167,5 +163,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+let categorySet = ['Technical Task','User Story'];
+let selectedCategories = [];
 
 
+
+function selectCategory(category) {
+  var categoryInput = document.querySelector(".input-with-icon input");
+  categoryInput.value = category;
+  toggleCategory(); 
+
+  selectedCategories.push(category);
+
+  categoryInput.value = selectedCategories.join(', ');
+}
+
+function technicalUser() {
+  let technical = document.getElementById('listTechnical');
+  technical.innerHTML = '';
+
+  for (let k = 0; k < categorySet.length; k++) {
+      technical.innerHTML += `<div class="select" onclick="selectCategory('${categorySet[k]}')">${categorySet[k]}</div>`;
+  }
+}
