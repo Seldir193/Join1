@@ -21,10 +21,13 @@
         <section id="boardsContainer">
             <section class="mainBoard column">
                 <div class="searchMainContainer">
-                    <div class="inputSearchContainer"><input type="text" placeholder="Find Task" id="searchTasksInput" oninput="searchTasks()">
-                        <div class="searchIconContainer"><img src="./assets/img/search.svg" alt="search Icon" id="searchIcon"></div>
+                    <div class="inputSearchContainer"><input type="text" placeholder="Find Task" id="searchTasksInput"
+                            oninput="searchTasks()">
+                        <div class="searchIconContainer"><img src="./assets/img/search.svg" alt="search Icon"
+                                id="searchIcon"></div>
                     </div>
-                    <button class="addTaskBtn" onclick="showAddTaskFloating(), toggleCard()">Add task <img src="./assets/img/plus.svg" alt="plusIcon">
+                    <button class="addTaskBtn" onclick="showAddTaskFloating(), toggleCard()">Add task <img
+                            src="./assets/img/plus.svg" alt="plusIcon">
                     </button>
                 </div>
                 <div class="categorysBoardContainer">
@@ -46,17 +49,12 @@
                 </div>
             </section>
             <section class="taskBoard">
-                <div id="toDoTasks" class="styleTasks"></div>
-                <div id="inProgressTasks" class="styleTasks"></div>
-                <div id="awaitFeedbackTasks" class="styleTasks"></div>
-                <div id="doneTasks" class="styleTasks"></div>
+                <div id="toDoTasks" class="styleTasks" ondrop="moveTo(category)" ondragover="allowDrop(event)"></div>
+                <div id="inProgressTasks" class="styleTasks" ondrop="moveTo(category)" ondragover="allowDrop(event)"></div>
+                <div id="awaitFeedbackTasks" class="styleTasks" ondrop="moveTo(category)" ondragover="allowDrop(event)"></div>
+                <div id="doneTasks" class="styleTasks" ondrop="moveTo(category)" ondragover="allowDrop(event)"></div>
             </section>
         </section>
     </div>
 </body>
 </html>
-
-
-<div>
-    <div></div>
-</div>

@@ -1,9 +1,18 @@
-toDo = [];
-inProgress = [];
-awaitFeedback = [];
-done = [];
-taskCounter = [];
+let currentDraggedElement;
 
+let countToDo = [];
+let countInProgress = [];
+let countAwaitFeedback = [];
+let countDone = [];
+
+toDos = [{ //arraystruktur muss angepasst werden, da die Daten remote gespeichert werden
+    id: 1,
+    title: 'testtitel',
+    description: 'testbeschreibung',
+    category: 'testkategorie',
+    dueDate: 'testdate',
+    subtasks: [],
+}];
 
 
 function onload() {
@@ -14,14 +23,14 @@ function onload() {
 
 function render() {
     for (i = 0; i < 1; i++) {
-        //renderTasks(i);
+        //renderShowTask(i);
         renderAddTask(i);
         renderNoTasks();
     }
 }
 
 
-function renderTasks() {
+function renderShowTask() {
 
     document.getElementById('boardsContainer').innerHTML +=
         `
@@ -58,7 +67,6 @@ function renderTasks() {
 
 function showAddTaskFloating() {
     let addTaskFloating = document.getElementById('addTaskFloating');
-    addTaskFloating.classList.remove('dNone');
 }
 
 
@@ -71,7 +79,7 @@ function toggleCard() {
 function renderAddTask() {
     document.getElementById('boardsContainer').innerHTML +=
         `
-    <div class="addTaskContainer dNone" id="addTaskFloating" class="addTaskFloating">
+    <div class="addTaskContainer" id="addTaskFloating" class="addTaskFloating">
         <h1>Add Task</h1>    
         <form action="submit_task.php" method="POST">
             <input type="text" id="titleAddTaskFloating" name="title" placeholder="Enter a title" required><br>
@@ -128,7 +136,7 @@ function searchTasks() {
     let inputValue = document.getElementById("searchTasksInput").value.toLowerCase();
 
     // Alle Task-Container durchlaufen und den Eingabewert suchen
-    for (let i = 0; i < taskCounter.length; i++) {
+    for (let i = 0; i < toDo['tasks'].length; i++) { //WICHTIG, HIER MUSS NOCH FÜR ALLE ANDEREN CATEGORYS DER WERT EINGEFÜGT WERDEN FÜR DIE LENGTH
         let container = document.getElementById("newTaskFloating" + i);
         let headline = document.getElementById("headlineValue" + i).innerText.toLowerCase();
         let description = document.getElementById("descriptionValue" + i).innerText.toLowerCase();
@@ -163,7 +171,7 @@ function renderNoTasks() {
 
 
 function checkNoTasksToDo() {
-    if (toDo == 0) {
+    if (countToDo == 0) {
         document.getElementById('toDoTasks').innerHTML +=
             `
         <div class="noTasks">No tasks To Do</div>
@@ -173,7 +181,7 @@ function checkNoTasksToDo() {
 
 
 function checkNoTasksInProgress() {
-    if (toDo == 0) {
+    if (countInProgress == 0) {
         document.getElementById('inProgressTasks').innerHTML +=
             `
         <div class="noTasks">No tasks To Do</div>
@@ -183,7 +191,7 @@ function checkNoTasksInProgress() {
 
 
 function checkNoTasksAwaitFeedback() {
-    if (toDo == 0) {
+    if (countAwaitFeedback == 0) {
         document.getElementById('awaitFeedbackTasks').innerHTML +=
             `
         <div class="noTasks">No tasks To Do</div>
@@ -193,10 +201,63 @@ function checkNoTasksAwaitFeedback() {
 
 
 function checkNoTasksDone() {
-    if (toDo == 0) {
+    if (countDone == 0) {
         document.getElementById('doneTasks').innerHTML +=
             `
         <div class="noTasks">No tasks To Do</div>
     `;
     }
+}
+
+
+function updateHTML() {
+    swapToDo();
+    swapInProgress();
+    swapAwaitFeedback();
+    wapDone();
+}
+
+
+function swapToDo() {
+    let addedToDo = toDos.filter(t => t['category'] == 'addedToDo');
+    document.getElementById('toDoTasks').innerHTML = '';
+    for (let i = 0; i < addedToDo.length; i++) {
+        const element = addedToDo[i];
+        document.getElementById('toDoTasks').innerHTML += generateToDoHtml(element);
+    }
+}
+
+
+function generateToDoHtml(element) {
+    document.getElementById('toDoTasks').innerHTML +=
+    `
+<div draggable="true" ondragstart="startDragging(${element['id']})">
+    <div></div>
+    <span></span>
+    <span></span>
+    <div>
+        <span></span>
+        <div></div>
+    </div>  
+    <div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+`;
+}
+
+
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
+function moveTo(category) {
+    todos[currentDraggedElement]['category'] = category;
 }
