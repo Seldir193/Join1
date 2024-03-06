@@ -1,8 +1,8 @@
 toDo = [];
 inProgress = [];
 awaitFeedback = [];
-taskCounter = [];
 done = [];
+taskCounter = [];
 
 
 
@@ -16,6 +16,7 @@ function render() {
     for (i = 0; i < 1; i++) {
         //renderTasks(i);
         renderAddTask(i);
+        renderNoTasks();
     }
 }
 
@@ -66,9 +67,9 @@ function toggleCard() {
 }
 
 
-function renderAddTask(){
+function renderAddTask() {
     document.getElementById('boardsContainer').innerHTML +=
-`
+        `
     <div class="addTaskContainer dNone" id="addTaskFloating" class="addTaskFloating">
         <h1>Add Task</h1>    
         <form action="submit_task.php" method="POST">
@@ -136,11 +137,11 @@ function searchTasks() {
         var subtask = document.getElementById("subtaskValue" + i).innerText.toLowerCase();
 
         // Überprüfen, ob der Eingabewert in einem der Felder gefunden wird
-        if (headline.includes(inputValue) || 
-            description.includes(inputValue) || 
-            date.includes(inputValue) || 
-            priority.includes(inputValue) || 
-            profil.includes(inputValue) || 
+        if (headline.includes(inputValue) ||
+            description.includes(inputValue) ||
+            date.includes(inputValue) ||
+            priority.includes(inputValue) ||
+            profil.includes(inputValue) ||
             subtask.includes(inputValue)) {
             // Falls der Eingabewert gefunden wird, den Container anzeigen
             container.classList.remove("dNone");
@@ -148,5 +149,53 @@ function searchTasks() {
             // Andernfalls den Container ausblenden
             container.classList.add("dNone");
         }
+    }
+}
+
+
+function renderNoTasks() {
+    checkNoTasksToDo();
+    checkNoTasksInProgress();
+    checkNoTasksAwaitFeedback();
+    checkNoTasksDone();
+}
+
+
+function checkNoTasksToDo() {
+    if (toDo == 0) {
+        document.getElementById('toDoTasks').innerHTML +=
+            `
+        <div class="noTasks">No tasks To Do</div>
+    `;
+    }
+}
+
+
+function checkNoTasksInProgress() {
+    if (toDo == 0) {
+        document.getElementById('inProgressTasks').innerHTML +=
+            `
+        <div class="noTasks">No tasks To Do</div>
+    `;
+    }
+}
+
+
+function checkNoTasksAwaitFeedback() {
+    if (toDo == 0) {
+        document.getElementById('awaitFeedbackTasks').innerHTML +=
+            `
+        <div class="noTasks">No tasks To Do</div>
+    `;
+    }
+}
+
+
+function checkNoTasksDone() {
+    if (toDo == 0) {
+        document.getElementById('doneTasks').innerHTML +=
+            `
+        <div class="noTasks">No tasks To Do</div>
+    `;
     }
 }
