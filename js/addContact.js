@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 let contactBook = [];
 let categorySet = ["Technical Task", "User Story"];
+=======
+let editIndex = [];
+let categorySet = ['Technical Task','User Story'];
+>>>>>>> Stashed changes
 let selectedCategories = [];
 let subtaskArray = [];
 
@@ -7,19 +12,6 @@ let editIndex = [];
 
 let letterArray = [];
 let randomColorCollection = [];
-
-async function init() {
-  loadUsers();
-}
-
-async function loadUsers() {
-  try {
-    contactBook = JSON.parse(await getItem("contact"));
-    renderAlphabeticalCategories();
-  } catch (e) {
-    console.error("Loading error:", e);
-  }
-}
 
 function renderAlphabeticalCategories() {
   for (let j = 0; j < contactBook.length; j++) {
@@ -33,7 +25,7 @@ function renderAlphabeticalCategories() {
   contacts.innerHTML = "";
 
   for (let n = 0; n < letterArray.length; n++) {
-    contacts.innerHTML += `<div id="${letterArray[n]}" class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
+    contacts.innerHTML += `<div id="${letterArray[n]}"  class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
   }
 
   renderContacts();
@@ -47,7 +39,7 @@ function renderContacts() {
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
     contacts.innerHTML += `
-    <button id="contact_${i}" onclick="toggleContactBackground(${i})" onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
+    <button id="contact_${i}"  onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
     <div class="renderNameEmail" >
     <div class="listName">${contactBook[i].name} </div>
@@ -172,6 +164,11 @@ function getRandomColor() {
   return color;
 }
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 function selectCategory(category) {
   var categoryInput = document.querySelector(".categoryHeader input");
   categoryInput.value = category;
@@ -179,6 +176,7 @@ function selectCategory(category) {
   selectedCategories.push(category);
   categoryInput.value = selectedCategories.join(", ");
 }
+
 
 function technicalUser() {
   let technical = document.getElementById("listTechnical");
@@ -244,3 +242,28 @@ function deleteToSubtask(position) {
   subtaskArray.splice(position, 1);
   addContactToSubtask();
 }
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+
+  
+  
+
+  
+
+>>>>>>> Stashed changes
