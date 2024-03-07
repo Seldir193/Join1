@@ -1,4 +1,3 @@
-let contactBook = [];
 let categorySet = ["Technical Task", "User Story"];
 let selectedCategories = [];
 let subtaskArray = [];
@@ -35,7 +34,6 @@ function renderAlphabeticalCategories() {
   for (let n = 0; n < letterArray.length; n++) {
     contacts.innerHTML += `<div id="${letterArray[n]}" class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
   }
-
   renderContacts();
 }
 
@@ -47,7 +45,7 @@ function renderContacts() {
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
     contacts.innerHTML += `
-    <button id="contact_${i}" onclick="toggleContactBackground(${i})" onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
+    <button id="contact_${i}"  onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
     <div class="renderNameEmail" >
     <div class="listName">${contactBook[i].name} </div>
