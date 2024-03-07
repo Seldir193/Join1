@@ -1,4 +1,3 @@
-let contactBook = [];
 let categorySet = ["Technical Task", "User Story"];
 let editIndex = [];
 let selectedCategories = [];
@@ -17,6 +16,7 @@ function renderAlphabeticalCategories() {
 
   let contacts = document.getElementById("listContactContainer");
   contacts.innerHTML = "";
+  letterArray = letterArray.slice().sort();
 
   for (let n = 0; n < letterArray.length; n++) {
     contacts.innerHTML += `<div id="${letterArray[n]}"  class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
