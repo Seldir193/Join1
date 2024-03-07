@@ -426,7 +426,6 @@ img {
   align-items: flex-end;
   justify-content: flex-end;
   padding-right: 80px;
-  width: 100%;
 }
 
 .create-button {
@@ -535,8 +534,6 @@ img {
   border-color: white;
 }
 
-
-
 .techUser {
     display: flex;
     gap: 16px;
@@ -572,7 +569,40 @@ img {
 .select {
     padding: 7px 16px;
     transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
-  }
+}
+
+
+
+
+
+
+.contactUser {
+  font-size: 20px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.contactUser img {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.contactUser img + img {
+  margin-left: 8px;
+}
+
+.contactUser:hover {
+  background-color: rgba(27, 110, 255, 0.1);
+  border-radius: 10px;
+}
+
+.contactUser {
+  padding: 7px 16px;
+  transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+
 
 
 @media only screen and (max-width: 768px) {
