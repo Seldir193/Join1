@@ -1,13 +1,10 @@
 let contactBook = [];
-<<<<<<< Updated upstream
-let editIndex = [];
-=======
-let categorySet = ['Technical Task','User Story'];
+let categorySet = ["Technical Task", "User Story"];
 let selectedCategories = [];
 let subtaskArray = [];
 
+let editIndex = [];
 
->>>>>>> Stashed changes
 let letterArray = [];
 let randomColorCollection = [];
 
@@ -175,32 +172,29 @@ function getRandomColor() {
   return color;
 }
 
-
-
-
 function selectCategory(category) {
   var categoryInput = document.querySelector(".categoryHeader input");
   categoryInput.value = category;
-  toggleCategory(); 
+  toggleCategory();
   selectedCategories.push(category);
-  categoryInput.value = selectedCategories.join(', ');
+  categoryInput.value = selectedCategories.join(", ");
 }
 
 function technicalUser() {
-  let technical = document.getElementById('listTechnical');
-  technical.innerHTML = '';
+  let technical = document.getElementById("listTechnical");
+  technical.innerHTML = "";
 
   for (let k = 0; k < categorySet.length; k++) {
-      technical.innerHTML += `<div class="select" onclick="selectCategory('${categorySet[k]}')">${categorySet[k]}</div>`;
+    technical.innerHTML += `<div class="select" onclick="selectCategory('${categorySet[k]}')">${categorySet[k]}</div>`;
   }
 }
 
 function addContactToSubtask() {
-  let contactList = document.getElementById('contactList');
-  contactList.innerHTML = '';
+  let contactList = document.getElementById("contactList");
+  contactList.innerHTML = "";
 
   for (let m = 0; m < subtaskArray.length; m++) {
-    contactList.innerHTML  += `
+    contactList.innerHTML += `
       <ul class="contactUser">
           <li >
                 <span id="contactText_${m}" contenteditable="true"
@@ -220,7 +214,7 @@ function addContactToSubtask() {
 
 function enableEditing(position) {
   let spanElement = document.getElementById(`contactText_${position}`);
-  spanElement.focus();  
+  spanElement.focus();
 }
 
 function updateSubtask(position, newText) {
@@ -228,47 +222,25 @@ function updateSubtask(position, newText) {
 }
 
 function handleKeyPress(event, position) {
-  if (event.key === 'Enter') {
-      let checkImage = document.getElementById(`checkImage_${position}`);
-      checkImage.style.display = 'inline';
+  if (event.key === "Enter") {
+    let checkImage = document.getElementById(`checkImage_${position}`);
+    checkImage.style.display = "inline";
   }
 }
 
 function subCurrentContact() {
-  let taska = document.getElementById('subTaskInput').value;
+  let taska = document.getElementById("subTaskInput").value;
 
-  if (taska.trim() === '') {
-    alert('Bitte ausfüllen.');
+  if (taska.trim() === "") {
+    alert("Bitte ausfüllen.");
     return;
   }
   subtaskArray.push(taska);
-  document.getElementById('subTaskInput').value = '';
+  document.getElementById("subTaskInput").value = "";
   addContactToSubtask();
 }
-  
+
 function deleteToSubtask(position) {
-  subtaskArray.splice(position ,1);
+  subtaskArray.splice(position, 1);
   addContactToSubtask();
 }
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-
-  
-  
-
-  
-
