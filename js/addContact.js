@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
 let contactBook = [];
->>>>>>> 3b23a04409f3140eb202ebabb152ec9294445fa0
 let categorySet = ["Technical Task", "User Story"];
-=======
 let editIndex = [];
-let categorySet = ['Technical Task','User Story'];
->>>>>>> Stashed changes
 let selectedCategories = [];
 let subtaskArray = [];
-
-let editIndex = [];
 
 let letterArray = [];
 let randomColorCollection = [];
@@ -166,11 +157,6 @@ function getRandomColor() {
   return color;
 }
 
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
 function selectCategory(category) {
   var categoryInput = document.querySelector(".categoryHeader input");
   categoryInput.value = category;
@@ -178,7 +164,6 @@ function selectCategory(category) {
   selectedCategories.push(category);
   categoryInput.value = selectedCategories.join(", ");
 }
-
 
 function technicalUser() {
   let technical = document.getElementById("listTechnical");
@@ -244,28 +229,3 @@ function deleteToSubtask(position) {
   subtaskArray.splice(position, 1);
   addContactToSubtask();
 }
-<<<<<<< Updated upstream
-=======
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-
-  
-  
-
-  
-
->>>>>>> Stashed changes
