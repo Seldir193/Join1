@@ -108,9 +108,12 @@ function saveChanges(event) {
   closeAddContact();
 }
 
-async function deleteContact() {
-  let index = editIndex[0];
-  contactBook.splice(index, 1);
+async function deleteContact(i) {
+  document.getElementById("pullContactToWindow").classList.toggle("pull");
+  firstChar = contactBook[i].name.charAt(0);
+  let letterIndex = letterArray.indexOf(firstChar);
+  contactBook.splice(i, 1);
+  letterArray.splice(letterIndex, 1);
   await setItem("contact", JSON.stringify(contactBook));
   init();
 }
