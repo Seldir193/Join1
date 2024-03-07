@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="css/styletemplates.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/styleall.css">
-    
+    <script src="js/storage.js"></script>
     <script src="js/templates.js"></script>
-    <script src="js/add_task.js"></script>
     <script src="js/addContact.js"></script>
+    <script src="js/add_task.js"></script>
+    
+    
 </head>
 
-<body  onload="includeHTML()" >
+<body  onload="includeHTML(); init()" >
     
         <div w3-include-html="./templates/header.html"></div>
     
@@ -59,10 +61,9 @@
             <nav class="assigned">
                 <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
                 <div class="input-with-icon">
-                    <input type="text" id="assignedInput" placeholder="Select contacts to assign..." onfocus="renderAlphabeticalCategories()" onclick="renderAlphabeticalCategories()" >
+                    <input type="text" id="assignedInput" placeholder="Select contacts to assign..." onfocus="renderAlphabeticalCategories()"  onclick="renderAlphabeticalCategories()" >
                     <img id="icon" onclick=" toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
-                    <div id="listContactContainer">
-                    </div>
+                    <div id="listContactContainer"></div>
                 </div>
                 
             </nav>
