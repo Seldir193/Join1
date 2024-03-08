@@ -123,6 +123,8 @@ async function insertContact(event) {
   let inputEmail = document.getElementById("inputEmail").value;
   let inputPhone = document.getElementById("inputPhone").value;
   let inputName = document.getElementById("inputName").value;
+  let capitalizedInputName =
+    inputName.charAt(0).toUpperCase() + inputName.slice(1);
 
   if (
     !contactBook.some(
@@ -130,7 +132,7 @@ async function insertContact(event) {
     )
   ) {
     contactBook.push({
-      name: inputName,
+      name: capitalizedInputName,
       email: inputEmail,
       number: inputPhone,
     });
