@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 let categorySet = ["Technical Task", "User Story"];
 let editIndex = [];
 let selectedCategories = [];
 let subtaskArray = [];
 
+=======
+let editIndex = [];
+let categorySet = ['Technical Task','User Story'];
+let selectedCategories = [];
+let subtaskArray = [];
+>>>>>>> Stashed changes
 let letterArray = [];
 let randomColorCollection = [];
 
@@ -13,7 +20,7 @@ function renderAlphabeticalCategories() {
       letterArray.push(letter);
     }
   }
-
+  
   let contacts = document.getElementById("listContactContainer");
   contacts.innerHTML = "";
   letterArray = letterArray.slice().sort();
@@ -32,7 +39,7 @@ function renderContacts() {
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
     contacts.innerHTML += `
-    <button id="contact_${i}"  onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
+    <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
     <div class="renderNameEmail" >
     <div class="listName">${contactBook[i].name} </div>
@@ -186,20 +193,21 @@ function addContactToSubtask() {
   for (let m = 0; m < subtaskArray.length; m++) {
     contactList.innerHTML += `
       <ul class="contactUser">
-          <li >
+          <li>
                 <span id="contactText_${m}" contenteditable="true"
                   onclick="enableEditing(${m})"
                   onblur="updateSubtask(${m}, this.innerText)"
                   onkeydown="handleKeyPress(event, ${m})">
                   ${subtaskArray[m]}
                 </span>
+                </li>  
+                <div class="subPics">
                   <img src="assets/img/delete.png" onclick="deleteToSubtask(${m})">
                   <img src="assets/img/edit.svg" onclick="enableEditing(${m})">
                   <img id="checkImage_${m}" src="assets/img/bestätigung.png" style="display:none;">
-          </li>
+                </div>
       </ul>`;
   }
-  toggleIcon();
 }
 
 function enableEditing(position) {
@@ -234,3 +242,39 @@ function deleteToSubtask(position) {
   subtaskArray.splice(position, 1);
   addContactToSubtask();
 }
+<<<<<<< Updated upstream
+=======
+
+function clearCurrentall(position){
+  let titleEnter = document.getElementById('titleEnter');
+  titleEnter.value ='';
+
+  let descriptionInput = document.getElementById('descriptionInput');
+  descriptionInput.value = '';
+
+  let dateInput = document.getElementById('dateInput');
+  dateInput.value = '';
+
+  let listContactContainer = document.getElementById('listContactContainer');
+  listContactContainer.innerHTML = '';
+
+  let categoryInput = document.getElementById("categoryInput");
+  categoryInput.value = '';
+
+  let contactList = document.getElementById('contactList');
+  contactList.innerHTML = '';
+  subtaskArray.splice(position, 1);
+}
+
+
+
+
+
+
+
+
+  
+
+
+
+>>>>>>> Stashed changes
