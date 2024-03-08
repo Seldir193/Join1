@@ -12,42 +12,35 @@
     <script src="js/templates.js"></script>
     <script src="js/addContact.js"></script>
     <script src="js/add_task.js"></script>
-    
-    
 </head>
-
 <body  onload="includeHTML(); init()" >
-    
-        <div w3-include-html="./templates/header.html"></div>
-    
+    <div w3-include-html="./templates/header.html"></div>
 <div class="main-content">
-    
     <div w3-include-html="./templates/side-menu.html"></div>
     <div class="sum-container">
         <div class="summary-container">
             <h3>Add Task</h3>
             <nav class="description">
                 <nav class="title">
-                    <input class="titlebox" minlength="5" maxlength="20" placeholder="Enter a title" required>
+                    <input class="titlebox" id="titleEnter" minlength="5" maxlength="20" placeholder="Enter a title" required>
                     <nav class="titlesmallbox">This field is required</nav>
                 </nav>
-                
                 <nav class="enter">
                     <nav class="optional">
                         <span class="description-optional"><b>Description</b> (optional)</span>
                     </nav>
-                    <input class="enter-input" placeholder="Enter a description" required>
+                    <input class="enter-input" id="descriptionInput" placeholder="Enter a description" required>
                     <nav class="date-box"></nav>
                 </nav>
                 <nav class="date">
                     <nav class="due-date">
                         <span>Due date</span>
                     </nav>
-                    <input class="due-input" type="date" required>
+                    <input class="due-input" id="dateInput" type="date" required>
                     <nav class="due-box"></nav>
-            </nav>
-            <nav class="priority">
-                <nav class="priority-header">Priority</nav>
+                </nav>
+                <nav class="priority">
+                  <nav class="priority-header">Priority</nav>
                     <nav class="priority-box" >
                         <nav class="urgent" onclick="toggleBackgroundColor(this)">Urgent
                             <img class="color-img" src="assets/img/Prio alta.png"><img class="gray-img" src="assets/img/Prio alta (1).png"></nav>
@@ -56,51 +49,44 @@
                         <nav class="low" onclick="toggleBackgroundColor(this)">Low<img class="color-img" src="assets/img/Prio baja.png">
                             <img class="gray-img" src="assets/img/Prio baja (1).png"></nav>
                     </nav>
-            </nav>
-            
-            <nav class="assigned">
-                <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
-                <div class="input-with-icon">
-                    <input type="text" id="assignedInput" placeholder="Select contacts to assign..." onfocus="renderAlphabeticalCategories()"  onclick="renderAlphabeticalCategories()" >
-                    <img id="icon" onclick=" toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
-                    <div id="listContactContainer"></div>
-                </div>
-                
-            </nav>
-            <nav class="categoryHeader">
-                <nav class="assigned-box"><b>Category</b></nav>
-                   <div class="input-with-icon">
-                      <input type="text" id="categoryInput" placeholder="Select task category..." onfocus="technicalUser()" onclick="technicalUser()"  required>
-                      <img id="categoryDropdown" onclick="toggleCategory()"src="assets/img/arrow_drop_down.png" class="dropdown-icon">
-                      <div id="listTechnical" class="techUser">
+                </nav>
+                <nav class="assigned">
+                  <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
+                    <div class="input-with-icon">
+                       <input type="text" id="assignedInput" placeholder="Select contacts to assign..." onfocus="renderAlphabeticalCategories()"  onclick="renderAlphabeticalCategories()" readonly>
+                       <img id="icon" onclick=" toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                       <div id="listContactContainer"></div>
+                    </div>
+                </nav>
+                <nav class="categoryHeader">
+                   <nav class="assigned-box"><b>Category</b></nav>
+                      <div class="input-with-icon">
+                         <input type="text" id="categoryInput" placeholder="Select task category..." onfocus="technicalUser()" onclick="technicalUser()" readonly>
+                         <img id="categoryDropdown" onclick="toggleCategory()"src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                        <div id="listTechnical" class="techUser"></div>
                       </div>
-                   </div>
-                   
-            </nav>
-            <nav class="subtasks">
-                <nav class="assigned-box"><b>Subtasks</b> (optional)</nav>
-                <div class="input-with-icon">
-                    <input type="text" placeholder="Add new subtask..." id="subTaskInput" required>
-                    <img id="subTask" onclick="subCurrentContact()" src="assets/img/Subtask's icons.png" class="dropdown-icon">
-                </div>
-                <div id="contactList"></div>
-                <nav class="footer-box"></nav>
-            </nav>
-            
+                </nav>
+                <nav class="subtasks">
+                   <nav class="assigned-box"><b>Subtasks</b> (optional)</nav>
+                     <div class="input-with-icon">
+                        <input type="text" placeholder="Add new subtask..." id="subTaskInput" required>
+                        <img id="subTask" onclick="subCurrentContact()" src="assets/img/Subtask's icons.png" class="dropdown-icon">
+                     </div>
+                     <div id="contactList"></div>
+                     <nav class="footer-box"></nav>
+                </nav>
         </div>
-        <nav class="button-container">
-            <nav class="button-box">
-               <nav class="clear-button">
-                   <button class="clear">Clear <img src="assets/img/iconoir_cancel.png"></button>
+                <nav class="button-container">
+                   <nav class="button-box">
+                        <nav class="clear-button">
+                            <button class="clear" onclick="clearCurrentall()">Clear <img src="assets/img/iconoir_cancel.png"></button>
+                        </nav>
+                     <nav class="create-button">
+                        <button class="create">Create Task <img src="assets/img/check.png"></button>
+                     </nav>
+                   </nav>
                </nav>
-               <nav class="create-button">
-                   <button class="create">Create Task <img src="assets/img/check.png"></button>
-               </nav>
-           </nav>
-
-         </div>
-       </div>
-     </div>
     </div>
+</div>  
 </body>
 </html>

@@ -554,7 +554,6 @@ img {
     background-color: rgba(27, 110, 255, 0.1);
 }
 
-
 #listTechnical {
     z-index: 1000; 
     background-color: white;
@@ -571,21 +570,15 @@ img {
     transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
 
-
-
-
-
-
 .contactUser {
   font-size: 20px;
-  margin-right: 16px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .contactUser img {
   cursor: pointer;
-  margin-left: auto;
 }
 
 .contactUser img + img {
@@ -598,12 +591,13 @@ img {
 }
 
 .contactUser {
-  padding: 7px 16px;
   transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+  padding:7px 36px;
 }
 
-
-
+.subPics{
+  display: flex;
+}
 
 @media only screen and (max-width: 768px) {
     .kanban {
