@@ -160,6 +160,10 @@ body {
         justify-content: flex-end;
         gap:5px;
     }
+
+    .dFlexd{
+        display: unset;
+    }
     
     .kanban p{
         display:none;
@@ -196,6 +200,7 @@ body {
     .summary-container{
         padding: 120px 0px 10px 10px;
         flex-direction: unset;
+        align-items: center;
     }
 
     .summary-container h1{

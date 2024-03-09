@@ -625,20 +625,10 @@ img {
       padding-right: 5px;
     }
   
-    .button-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-right: unset;
-    }
-  
-    .main-content {
-      justify-content: center;
-    }
-  
     .summary-container {
       display: flex;
       flex-direction: column;
+      padding: 134px 24px 2px 24px;
     }
   
     .summary-container h3 {
@@ -651,7 +641,7 @@ img {
     }
   
     .description {
-      width: unset;
+      width: 100%;
     }
   
     .priority-box {
@@ -671,12 +661,97 @@ img {
       display: none;
     }
   
-    .button-container {
-      display: flex;
-    }
-  
     .buttonSize {
       padding: unset;
     }
+
+    .button-container {
+      flex-direction: column-reverse;
+      align-items: flex-end;
+    }
+  
+    .button-box {
+      padding-right: 0;
+    }
+
+    .subtasks {
+      margin-bottom: 20px; /* Beispielwert, passen Sie dies an Ihre Bedürfnisse an */
+    }
+    
+    .button-container {
+      clear: both;
+    }
+
+    .subtasks{
+      height: unset;
+    }
+
+    .flex50.column {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    
+  
+    .sideBoardChild2 a {
+      justify-content: center; 
+   }
+  
+    .alignItems {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  
+    .sideBoard a{
+      padding: 8px 10px 8px 10px;
+    }
+  
+    .flex50.column a {
+      color: white; 
+      text-decoration: none; 
+    }
+  
+    .flex50.column a img {
+      filter: brightness(0) invert(1); /* Ändern Sie die Farbe der Bilder auf Weiß */
+    }
+  
+    .sideBoard a:hover{
+      background-color:#1c6ffe;
+    }
+
+    
+
+    .sideBoard {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); 
+      background-color: #4589ff;
+      z-index: 1000;
+      padding-top:unset;
+      height:unset;
+      width:100%;
   }
+
+  .main-content {
+      padding-bottom: 56px; /* Höhe des fixierten Menüs */
+  }
+
+    .sideBoardChild2 {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding-left: unset;
+      padding-top: unset;
+      display: none;
+    }
+
+    
+
+}
+  
+  
   

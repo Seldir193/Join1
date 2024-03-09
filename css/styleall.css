@@ -56,15 +56,5 @@ body {
     border-color: RGB(209, 209, 209);
 }
 
-@media only screen and (max-width: 768px){
-    .column{
-        display:none;
-    }
-
-    .kanban{
-        justify-content: flex-end;
-    }
-}
-    
 
 
