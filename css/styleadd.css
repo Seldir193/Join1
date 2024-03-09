@@ -664,8 +664,7 @@ img {
     }
   
     .menu-bar {
-      top: 80px;
-      right: unset;
+      right: 30px;
     }
   
     .button-container .clear-button {

@@ -71,35 +71,8 @@ body {
     filter: brightness(90%); 
 }
 
-
-.sum-container {
-    flex: 1; /* Fülle den verbleibenden Platz aus */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.summary-container{
-    width: 952px;
-    height: 591px;
-    top: 264.5px;
-    left: 379.79px;
-    gap: 72px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
-
 .summary-container h1 {
     margin: 0; /* Entferne den Standardmargenwert für das <h1>-Element */
-}
-
-.sum-container h1{
-    width: 455px;
-    height: 77px;
-    gap: 22px;
-    font-size: 64px;
-    color: #2A3647;
 }
 
 .main-content {
@@ -108,21 +81,118 @@ body {
     overflow-y: hidden;
 }
 
-.date{
-   width:912px; 
-   height: 191px;
-   gap: 58px;
-   display: flex;
-}
-
-.tasks{
-    width: 912px;
-    height: 219px;
-    top: 223px;
-    gap: 35px;
-    display: flex;
-}
-
 .dFlexd{
     display: flex;
 }
+
+.sum-container {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    display: flex;
+}
+
+.sum-container h1{
+    font-size: 64px;
+    color: #2A3647;
+}
+
+.summary-container {
+    max-width: 952px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    gap: 72px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.date, .tasks {
+    display: flex;
+    gap: 20px; 
+}
+
+.date img, .tasks img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+    .kanban{
+        justify-content: flex-end;
+        gap:5px;
+    }
+    
+    .kanban p{
+        display:none;
+    }
+    
+    .header{
+        padding:10px 10px 10px 10px;
+    }
+    
+    .headline img{
+        max-width: 10vw;
+    }
+    
+    .summary-container{
+        padding: 90px 0px 10px 10px;
+        gap:unset;
+    }
+
+    .sum-container h1{
+        font-size:36px;
+    }
+
+    .menu-bar {
+        right: 30px;
+    }
+    
+    .privacy-box h1, h2{
+        font-size:23px;
+    }
+
+    .privacy-box{
+        padding:10px 10px 10px 10px;
+    }
+    
+    .arrow-container{
+        padding:30px 10px;
+    }
+
+    .buttonSize{
+        padding:unset;
+    }
+
+    .main-content {
+        flex-direction: column-reverse; /* Ändert die Ausrichtung auf Spalten und kehrt die Reihenfolge um */
+        height: unset;
+        justify-content: flex-end;
+    }
+
+    .summary-container h1{
+        margin:unset;
+    }
+
+    .column{
+        display: block;
+    }
+
+}
+    
+
+
+
+
+

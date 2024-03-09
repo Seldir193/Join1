@@ -3,12 +3,13 @@ body {
   font-family: Open Sans;
 }
 
+
 .next {
   margin: 0;
 }
 
 .buttonSize {
-  background-color: #4589ff;
+  background-color: #4589FF;
   color: white;
   border: none;
   border-radius: 5px;
@@ -19,7 +20,7 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #4589ff;
+  background-color: #4589FF;
   color: white;
   display: flex;
   align-items: center;
@@ -41,16 +42,16 @@ body {
   border-radius: 12px;
   box-shadow: 0px 0px 10px 3px #00000014;
   padding: 10px;
-  z-index: 1;
-  top: 100px;
-  right: 50px;
-  width: 110px;
+  z-index: 1; 
+  top:100px;
+  right:50px;
+  width:110px;
   text-align: right;
 }
 
 .menu-item {
   cursor: pointer;
-  color: #707c92;
+  color: #707C92;
   font-family: Open Sans;
   font-size: 16px;
   font-weight: 400;
@@ -64,19 +65,19 @@ body {
 }
 
 .help-button:hover span {
-  transform: scale(1.2);
+  transform: scale(1.2); 
 }
 
 .buttonSize:hover .profile-icon {
-  filter: brightness(90%);
+  filter: brightness(90%); 
 }
 
 .main-content {
   display: flex;
-  height: 932px;
+  height:932px;
 }
 
-.tasks {
+.tasks{
   width: 912px;
   height: 219px;
   top: 223px;
@@ -84,13 +85,12 @@ body {
   display: flex;
 }
 
-.summary-container {
+.summary-container{
   display: flex;
-  padding: 50px 60px;
-  flex-direction: column;
+  padding: 120px 60px;
 }
 
-.summary-container h1 {
+.summary-container h1{
   width: 418px;
   height: 73px;
   top: 168px;
@@ -99,7 +99,7 @@ body {
   font-weight: 700;
 }
 
-.summary-container img {
+.summary-container img{
   width: 37px;
   height: 37px;
   top: 186px;
@@ -112,21 +112,20 @@ body {
   align-items: center;
   margin-left: auto;
   flex-direction: column;
-  padding: 120px 60px;
+  padding: 60px 60px;
   justify-content: flex-start;
   border-radius: 50%;
 }
 
-.arrow-container img:hover {
+.arrow-container img:hover{
   cursor: pointer;
-  filter: brightness(100%);
-  background-color: #d2e2fe;
+  filter: brightness(100%)  ; /* Hellere Farbe beim Hover */
+  background-color: #D2E2FE; /* Neue Hintergrundfarbe beim Hover */
   border-radius: 50%;
-  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out,
-    background-color 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out ;
 }
 
-.privacy-box {
+.privacy-box{
   top: 289px;
   left: 320px;
   gap: 35px;
@@ -135,23 +134,94 @@ body {
   flex-direction: column;
 }
 
-.privacy-container {
+.privacy-container{
   display: flex;
   flex-direction: column;
 }
 
-.privacy-box h1,
-h2 {
+.privacy-box h1 , h2{
   font-size: 33px;
   font-weight: 700;
-  color: #4589ff;
+  color: #4589FF;
 }
 
-.headline-box p {
+.headline-box p{
   font-size: 16px;
   font-weight: 400;
 }
 
-.dFlexd {
+.dFlexd{
   display: flex;
 }
+
+@media only screen and (max-width: 768px) {
+
+  .kanban{
+      justify-content: flex-end;
+      gap:5px;
+  }
+  
+  .kanban p{
+      display:none;
+  }
+  
+  .header{
+      padding:10px 10px 10px 10px;
+  }
+  
+  .sideBoard-container {
+      display: none;
+  }
+  
+  .headline img{
+      max-width: 10vw;
+  }
+  
+  .clear-button{
+      padding-right: 5px;
+  }
+  
+  .button-box{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: unset;
+  }
+  
+  .main-content{
+      justify-content: flex-start;
+      display: unset;
+  }
+  
+  .summary-container{
+      padding: 120px 0px 10px 10px;
+      flex-direction: unset;
+  }
+
+  .summary-container h1{
+      font-size:36px;
+      height: unset;
+      width: unset;
+  }
+  
+  .menu-bar {
+    right: 30px;
+  }
+  
+  .privacy-box h1, h2{
+      font-size:23px;
+  }
+
+  .privacy-box{
+      padding:10px 10px 10px 10px;
+  }
+  
+  .arrow-container{
+      padding:30px 10px;
+  }
+
+  .buttonSize{
+      padding:unset;
+  }
+}
+  

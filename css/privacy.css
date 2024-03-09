@@ -87,8 +87,7 @@ body {
 
 .summary-container{
     display: flex;
-    padding: 50px 60px;
-    flex-direction: column;
+    padding: 120px 60px;
 }
 
 .summary-container h1{
@@ -113,7 +112,7 @@ body {
     align-items: center;
     margin-left: auto;
     flex-direction: column;
-    padding: 120px 60px;
+    padding: 60px 60px;
     justify-content: flex-start;
     border-radius: 50%;
 }
@@ -155,9 +154,77 @@ body {
     display: flex;
 }
 
+@media only screen and (max-width: 768px) {
 
+    .kanban{
+        justify-content: flex-end;
+        gap:5px;
+    }
+    
+    .kanban p{
+        display:none;
+    }
+    
+    .header{
+        padding:10px 10px 10px 10px;
+    }
+    
+    .sideBoard-container {
+        display: none;
+    }
+    
+    .headline img{
+        max-width: 10vw;
+    }
+    
+    .clear-button{
+        padding-right: 5px;
+    }
+    
+    .button-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: unset;
+    }
+    
+    .main-content{
+        justify-content: flex-start;
+        display: unset;
+    }
+    
+    .summary-container{
+        padding: 120px 0px 10px 10px;
+        flex-direction: unset;
+    }
 
+    .summary-container h1{
+        font-size:36px;
+        height: unset;
+        width: unset;
+    }
+    
+    .menu-bar {
+        right: 30px;
+      }
+    
+    .privacy-box h1, h2{
+        font-size:23px;
+    }
 
+    .privacy-box{
+        padding:10px 10px 10px 10px;
+    }
+    
+    .arrow-container{
+        padding:30px 10px;
+    }
+
+    .buttonSize{
+        padding:unset;
+    }
+}
+    
 
 
 

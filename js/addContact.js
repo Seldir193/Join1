@@ -1,15 +1,7 @@
-<<<<<<< Updated upstream
-let categorySet = ["Technical Task", "User Story"];
-let editIndex = [];
-let selectedCategories = [];
-let subtaskArray = [];
-
-=======
 let editIndex = [];
 let categorySet = ['Technical Task','User Story'];
 let selectedCategories = [];
 let subtaskArray = [];
->>>>>>> Stashed changes
 let letterArray = [];
 let randomColorCollection = [];
 
@@ -242,8 +234,6 @@ function deleteToSubtask(position) {
   subtaskArray.splice(position, 1);
   addContactToSubtask();
 }
-<<<<<<< Updated upstream
-=======
 
 function clearCurrentall(position){
   let titleEnter = document.getElementById('titleEnter');
@@ -263,7 +253,8 @@ function clearCurrentall(position){
 
   let contactList = document.getElementById('contactList');
   contactList.innerHTML = '';
-  subtaskArray.splice(position, 1);
+  subtaskArray.splice(position);
+  addContactToSubtask();
 }
 
 
@@ -277,4 +268,3 @@ function clearCurrentall(position){
 
 
 
->>>>>>> Stashed changes
