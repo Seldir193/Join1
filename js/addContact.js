@@ -94,12 +94,16 @@ function editContact(i) {
   document.getElementById("inputEditEmail").value = `${contactBook[i].email}`;
   document.getElementById("inputEditPhone").value = `${contactBook[i].number}`;
 
+  renderButtonToEditLowerBody(i);
+
+  editIndex.push(i);
+}
+
+function renderButtonToEditLowerBody(i) {
   document.getElementById("editLowerBody").innerHTML = `
   <button id="deleteContactFromEditCard" class="closeAddContactBtn"
   onclick="closeAddContact(); deleteContact(${i})">Delete</button>
   <button id="saveChangesBtn" class="createUserBtn" type="submit">Save ✔</button>`;
-
-  editIndex.push(i);
 }
 
 async function saveChanges(event) {
