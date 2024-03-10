@@ -94,11 +94,12 @@ function editContact(i) {
   document.getElementById("inputEditEmail").value = `${contactBook[i].email}`;
   document.getElementById("inputEditPhone").value = `${contactBook[i].number}`;
 
-  editIndex.push(i);
+  document.getElementById("editLowerBody").innerHTML = `
+  <button id="deleteContactFromEditCard" class="closeAddContactBtn"
+  onclick="closeAddContact(); deleteContact(${i})">Delete</button>
+  <button id="saveChangesBtn" class="createUserBtn" type="submit">Save ✔</button>`;
 
-  document.getElementById("deleteContactFromEditCard").onclick = function () {
-    deleteContact(i);
-  };
+  editIndex.push(i);
 }
 
 async function saveChanges(event) {
@@ -120,7 +121,7 @@ async function saveChanges(event) {
 
   await setItem("contact", JSON.stringify(contactBook));
 
-  loadUsers();
+  await loadUsers();
   editIndex = [];
   closeAddContact();
 }
@@ -132,7 +133,8 @@ async function deleteContact(i) {
   contactBook.splice(i, 1);
   letterArray.splice(letterIndex, 1);
   await setItem("contact", JSON.stringify(contactBook));
-  loadUsers();
+  closeAddContact();
+  await loadUsers();
 }
 
 async function insertContact(event) {
