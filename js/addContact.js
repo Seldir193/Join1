@@ -1,5 +1,5 @@
 let editIndex = [];
-let categorySet = ['Technical Task','User Story'];
+let categorySet = ["Technical Task", "User Story"];
 let selectedCategories = [];
 let subtaskArray = [];
 let letterArray = [];
@@ -12,7 +12,7 @@ function renderAlphabeticalCategories() {
       letterArray.push(letter);
     }
   }
-  
+
   let contacts = document.getElementById("listContactContainer");
   contacts.innerHTML = "";
   letterArray = letterArray.slice().sort();
@@ -97,14 +97,15 @@ function editContact(i) {
   editIndex.push(i);
 }
 
-function saveChanges(event) {
+async function saveChanges(event) {
   event.preventDefault();
   let index = editIndex[0];
   contactBook[index].name = document.getElementById("inputEditName").value;
   contactBook[index].email = document.getElementById("inputEditEmail").value;
   contactBook[index].number = document.getElementById("inputEditPhone").value;
-  editIndex = [];
   closeAddContact();
+  await setItem("contact", JSON.stringify(contactBook));
+  loadUsers();
 }
 
 async function deleteContact(i) {
@@ -114,7 +115,7 @@ async function deleteContact(i) {
   contactBook.splice(i, 1);
   letterArray.splice(letterIndex, 1);
   await setItem("contact", JSON.stringify(contactBook));
-  init();
+  loadUsers();
 }
 
 async function insertContact(event) {
@@ -235,36 +236,24 @@ function deleteToSubtask(position) {
   addContactToSubtask();
 }
 
-function clearCurrentall(position){
-  let titleEnter = document.getElementById('titleEnter');
-  titleEnter.value ='';
+function clearCurrentall(position) {
+  let titleEnter = document.getElementById("titleEnter");
+  titleEnter.value = "";
 
-  let descriptionInput = document.getElementById('descriptionInput');
-  descriptionInput.value = '';
+  let descriptionInput = document.getElementById("descriptionInput");
+  descriptionInput.value = "";
 
-  let dateInput = document.getElementById('dateInput');
-  dateInput.value = '';
+  let dateInput = document.getElementById("dateInput");
+  dateInput.value = "";
 
-  let listContactContainer = document.getElementById('listContactContainer');
-  listContactContainer.innerHTML = '';
+  let listContactContainer = document.getElementById("listContactContainer");
+  listContactContainer.innerHTML = "";
 
   let categoryInput = document.getElementById("categoryInput");
-  categoryInput.value = '';
+  categoryInput.value = "";
 
-  let contactList = document.getElementById('contactList');
-  contactList.innerHTML = '';
+  let contactList = document.getElementById("contactList");
+  contactList.innerHTML = "";
   subtaskArray.splice(position);
   addContactToSubtask();
 }
-
-
-
-
-
-
-
-
-  
-
-
-
