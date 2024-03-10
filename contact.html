@@ -80,10 +80,10 @@
 
             <div class="lowerBody">
                 <div class="lowerBodyDiv">
-                    <form onsubmit="saveChanges(event); return false">
+                    <form onsubmit="saveChanges(event)">
                         <img class="userImgLowerBody" src="./assets/img/benutzer.png" alt="">
                         <div class="inputContainerOne">
-                            <input id="inputEditName" class="inputLowerBody" type="text" placeholder="Name">
+                            <input id="inputEditName" class="inputLowerBody" type="text" placeholder="Name" required>
                             <img class="inputContainerImg" src="./assets/img/profil-avatar.png">
                         </div>
                         <div class="inputContainerTwo">
@@ -95,7 +95,8 @@
                             <img class="inputContainerImg" src="./assets/img/anruf.png">
                         </div>
                         <div class="lowerBodyBtnContainer">
-                            <button class="closeAddContactBtn" onclick="closeAddContact(); deleteContact()">Delete</button>
+                            <button id="deleteContactFromEditCard" class="closeAddContactBtn"
+                                    onclick="closeAddContact(); deleteContact()">Delete</button>
                             <button id="saveChangesBtn" class="createUserBtn" type="submit">Save ✔</button>
                         </div>
                     </form>

@@ -95,17 +95,34 @@ function editContact(i) {
   document.getElementById("inputEditPhone").value = `${contactBook[i].number}`;
 
   editIndex.push(i);
+
+  document.getElementById("deleteContactFromEditCard").onclick = function () {
+    deleteContact(i);
+  };
 }
 
 async function saveChanges(event) {
   event.preventDefault();
   let index = editIndex[0];
   contactBook[index].name = document.getElementById("inputEditName").value;
+  firstChar = contactBook[index].name.charAt(0);
+  let letterIndex = letterArray.indexOf(firstChar);
+  letterArray.splice(letterIndex, 1);
+
+  let capitalizedChangeName = document.getElementById("inputEditName").value;
+  capitalizedChangeName =
+    capitalizedChangeName.charAt(0).toUpperCase() +
+    capitalizedChangeName.slice(1);
+
+  contactBook[index].name = capitalizedChangeName;
   contactBook[index].email = document.getElementById("inputEditEmail").value;
   contactBook[index].number = document.getElementById("inputEditPhone").value;
-  closeAddContact();
+
   await setItem("contact", JSON.stringify(contactBook));
+
   loadUsers();
+  editIndex = [];
+  closeAddContact();
 }
 
 async function deleteContact(i) {
