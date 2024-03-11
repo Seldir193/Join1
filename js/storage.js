@@ -1,3 +1,19 @@
+let contactBook = [];
+
+async function init() {
+  loadUsers();
+}
+
+async function loadUsers() {
+  try {
+    contactBook = JSON.parse(await getItem("contact"));
+    console.log("Contact Book Data:", contactBook);
+    renderAlphabeticalCategories();
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
+}
+
 const STORAGE_TOKEN = "UYC2KGRBQ7QS5SWVHQYXYARK3RHQJN240BPE82NE";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 

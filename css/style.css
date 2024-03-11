@@ -33,8 +33,6 @@ body {
     background-color: #4589FF;
     color: white;
     border: 2px solid #4589FF;
-    width: 80px;
-    height: 28px;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -47,13 +45,13 @@ body {
     border-color: #4589FF;
 }
 
-.signbutton{
+.sign button.buttonSize{
     width: 112px;
     height: 48px;
-    padding: 10px 16px 10px 16px;
     border-radius: 8px;
     gap: 10px;
     display: flex;
+    font-size: 23px;
 }
 
 .next {
@@ -129,10 +127,18 @@ input {
     cursor: pointer;
 }
 
-.button-size{
+.button-container .guest-button.bot{
+    width: 197px;
+    height: 48px;
+    font-size: 23px;
+    border-radius: 8px;
+    gap: 10px;
+}
+
+.button-container .button-log{
     width: 135px;
     height: 48px;
-    padding: 10px 35px 10px 35px;
+    font-size: 23px;
     border-radius: 8px;
     gap: 10px;
 }
@@ -199,15 +205,6 @@ input {
     height: 28px;
 }
 
-.guest{
-    width: 197px;
-    height: 48px;
-    padding: 10px 35px 10px 35px;
-    border-radius: 8px;
-    border: 1px;
-    gap: 10px;
-}
-
 .bot {
     width: 127px;
     height: 28px;
@@ -256,7 +253,7 @@ label{
 }
 
 .footline{
-    width: 240px;
+    /* width: 240px; */
     height: 35px;
     top: 946.3px;
     left: 600px;
@@ -295,4 +292,103 @@ label{
 .policy:hover,
 .notice:hover {
     cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px){
+.sign{
+    margin-right: unset;
+    padding-right:10px;
+}
+
+.sign button{
+    width:unset;
+    height:unset;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    height: unset;
+    align-items: center;
+}
+
+.header img{
+    padding: 10px;
+    width: unset;
+    height:80px;
+    display: flex;
+    justify-content: flex-start;
+    top:0;
+    left:0px;
+}
+
+.container-log {
+    width: 80%; /* Beispielhafte Anpassung für das Hauptcontainer-Element */
+    padding:unset;
+}
+
+.section{
+    width:60vw;
+}
+
+.only-input-near input{
+    width:unset;
+}
+
+.only-input{
+    width:unset;
+}
+
+.button-container{
+    width: unset;
+    height:unset;
+    gap:15px;
+}
+
+.next{
+    width:unset;
+}
+
+.button-size{
+    padding:unset;
+}
+
+.guest{
+    padding:unset;
+    width:unset;
+}
+
+.headline{
+    width:unset;
+}
+
+.inheadline{
+    width:unset;
+}
+
+.remember-me{
+    width: unset;
+}
+
+.button-container .button-log{
+    font-size:20px;
+    width:100%;
+}
+
+.button-container .guest-button.bot{
+    font-size:20px;
+    width:100%;
+}
+
+.sign button.buttonSize{
+    width:unset;
+    font-size:20px;
+}
+
+.guest{
+    height:unset;
+}
+
+
 }

@@ -17,29 +17,11 @@ body {
     position: relative;
 }
 
-.sign {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 315px;
-    height: 48px;
-    top: 67px;
-    left: 1039px;
-    gap: 35px;
-    margin-left: auto; /* Verschiebt den Container so weit nach rechts wie möglich */
-    margin-right: 50px; 
-}
-
 .sign button {
-    background-color: #4589FF;
-    color: white;
-    border: 2px solid #4589FF;
-    width: 80px;
-    height: 28px;
-    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size:19px;
 }
 
 .sign button:hover{
@@ -74,14 +56,15 @@ body {
     color: white;
     border: 2px solid #4589FF;
     cursor: pointer;
+    width: 106px;
+    height: 43px;
     border-radius: 8px;
+    gap: 10px;
 }
 
 .container-log  {
     width: 598px;
     height: 607px;
-    top: 208.5px;
-    left: 421px;
     padding: 48px 88px 48px 88px;
     border-radius: 30px;
     gap: 35px;
@@ -98,12 +81,6 @@ input {
     border: none;
     border-bottom: 2px solid #DDDDDC; /* Ränder nur für die untere Seite */
     outline: none; 
-}
-
-.button-container  {
-    display: flex;
-    height: 48px;
-    gap: 35px;
 }
 
 .container button:hover {
@@ -128,12 +105,6 @@ input {
 .container-log input[type="checkbox"] {
     margin-right: 5px; 
     cursor: pointer;
-}
-
-.button-size{
-    height: 43px;
-    border-radius: 8px;
-    gap: 10px;
 }
 
 .remember-me{
@@ -257,19 +228,16 @@ label{
 .footline{
     width: 240px;
     height: 35px;
-    top: 946.3px;
-    left: 600px;
-    text-align: center;
     display: flex;
+    justify-content: center;
 }
 
 .policy{
     width: 116px;
     height: 35px;
-    top: 946.3px;
-    left: 600px;
     padding: 8px;
     gap: 8px;
+    display: flex;
 }
 
 .policy-button{
@@ -282,10 +250,9 @@ label{
 .notice{
     width: 108px;
     height: 35px;
-    top: 946.3px;
-    left: 732px;
     padding: 8px;
     gap: 8px;
+    display: flex;
 }
 
 .policy,
@@ -323,6 +290,121 @@ label{
     margin-left: 10px;
     gap: 80px;
 }
+
+@media only screen and (max-width: 768px){
+    .sign{
+        margin-right: unset;
+        padding-right:10px;
+    }
+    
+    .sign button{
+        width:unset;
+        height:unset;
+    }
+    
+    .header{
+        display: flex;
+        height: unset;
+        align-items: center;
+    }
+    
+    .header img{
+        padding: 10px;
+        width: unset;
+        height:80px;
+        display: flex;
+        justify-content: flex-start;
+        top:0;
+        left:0px;
+    }
+    
+    .container-log {
+        padding: 0px 0px 10px 0px;
+    }
+    
+    .section{
+        width:60vw;
+    }
+    
+    .only-input-near input{
+        width:unset;
+    }
+    
+    .only-input{
+        width:unset;
+    }
+    
+    .button-container{
+        width: unset;
+        height:unset;
+        gap:15px;
+    }
+    
+    .next{
+        width:unset;
+    }
+    
+    .button-size{
+        padding:unset;
+    }
+    
+    .guest{
+        padding:unset;
+        width:unset;
+    }
+    
+    .headline{
+        width:unset;
+    }
+    
+    .inheadline{
+        width:unset;
+    }
+
+    .inheadline h1{
+        margin-left:unset;
+        gap:50px;
+        margin-right:80px;
+    }
+    
+    .remember-me{
+        width: unset;
+    }
+    
+    .button-container .button-log{
+        font-size:20px;
+        width:100%;
+    }
+    
+    .button-container .guest-button.bot{
+        font-size:20px;
+        width:100%;
+    }
+    
+    .sign button.buttonSize{
+        width:unset;
+        font-size:20px;
+    }
+    
+    .guest{
+        height:unset;
+    }
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 

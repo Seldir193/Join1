@@ -1,25 +1,9 @@
-let contactBook = [];
+let editIndex = [];
 let categorySet = ["Technical Task", "User Story"];
 let selectedCategories = [];
 let subtaskArray = [];
-
-let editIndex = [];
-
 let letterArray = [];
 let randomColorCollection = [];
-
-async function init() {
-  loadUsers();
-}
-
-async function loadUsers() {
-  try {
-    contactBook = JSON.parse(await getItem("contact"));
-    renderAlphabeticalCategories();
-  } catch (e) {
-    console.error("Loading error:", e);
-  }
-}
 
 function renderAlphabeticalCategories() {
   for (let j = 0; j < contactBook.length; j++) {
@@ -31,11 +15,11 @@ function renderAlphabeticalCategories() {
 
   let contacts = document.getElementById("listContactContainer");
   contacts.innerHTML = "";
+  letterArray = letterArray.slice().sort();
 
   for (let n = 0; n < letterArray.length; n++) {
-    contacts.innerHTML += `<div id="${letterArray[n]}" class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
+    contacts.innerHTML += `<div id="${letterArray[n]}"  class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
   }
-
   renderContacts();
 }
 
@@ -47,7 +31,7 @@ function renderContacts() {
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
     contacts.innerHTML += `
-    <button id="contact_${i}" onclick="toggleContactBackground(${i})" onclick="pullContact(${i}, '${randomColorCollection}')" class="listContact">
+    <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
     <div class="renderNameEmail" >
     <div class="listName">${contactBook[i].name} </div>
@@ -110,24 +94,51 @@ function editContact(i) {
   document.getElementById("inputEditEmail").value = `${contactBook[i].email}`;
   document.getElementById("inputEditPhone").value = `${contactBook[i].number}`;
 
+  renderButtonToEditLowerBody(i);
+
   editIndex.push(i);
 }
 
-function saveChanges(event) {
+function renderButtonToEditLowerBody(i) {
+  document.getElementById("editLowerBody").innerHTML = `
+  <button id="deleteContactFromEditCard" class="closeAddContactBtn"
+  onclick="closeAddContact(); deleteContact(${i})">Delete</button>
+  <button id="saveChangesBtn" class="createUserBtn" type="submit">Save ✔</button>`;
+}
+
+async function saveChanges(event) {
   event.preventDefault();
   let index = editIndex[0];
   contactBook[index].name = document.getElementById("inputEditName").value;
+  firstChar = contactBook[index].name.charAt(0);
+  let letterIndex = letterArray.indexOf(firstChar);
+  letterArray.splice(letterIndex, 1);
+
+  let capitalizedChangeName = document.getElementById("inputEditName").value;
+  capitalizedChangeName =
+    capitalizedChangeName.charAt(0).toUpperCase() +
+    capitalizedChangeName.slice(1);
+
+  contactBook[index].name = capitalizedChangeName;
   contactBook[index].email = document.getElementById("inputEditEmail").value;
   contactBook[index].number = document.getElementById("inputEditPhone").value;
+
+  await setItem("contact", JSON.stringify(contactBook));
+
+  await loadUsers();
   editIndex = [];
   closeAddContact();
 }
 
-async function deleteContact() {
-  let index = editIndex[0];
-  contactBook.splice(index, 1);
+async function deleteContact(i) {
+  document.getElementById("pullContactToWindow").classList.toggle("pull");
+  firstChar = contactBook[i].name.charAt(0);
+  let letterIndex = letterArray.indexOf(firstChar);
+  contactBook.splice(i, 1);
+  letterArray.splice(letterIndex, 1);
   await setItem("contact", JSON.stringify(contactBook));
-  init();
+  closeAddContact();
+  await loadUsers();
 }
 
 async function insertContact(event) {
@@ -135,6 +146,8 @@ async function insertContact(event) {
   let inputEmail = document.getElementById("inputEmail").value;
   let inputPhone = document.getElementById("inputPhone").value;
   let inputName = document.getElementById("inputName").value;
+  let capitalizedInputName =
+    inputName.charAt(0).toUpperCase() + inputName.slice(1);
 
   if (
     !contactBook.some(
@@ -142,7 +155,7 @@ async function insertContact(event) {
     )
   ) {
     contactBook.push({
-      name: inputName,
+      name: capitalizedInputName,
       email: inputEmail,
       number: inputPhone,
     });
@@ -196,20 +209,21 @@ function addContactToSubtask() {
   for (let m = 0; m < subtaskArray.length; m++) {
     contactList.innerHTML += `
       <ul class="contactUser">
-          <li >
+          <li>
                 <span id="contactText_${m}" contenteditable="true"
                   onclick="enableEditing(${m})"
                   onblur="updateSubtask(${m}, this.innerText)"
                   onkeydown="handleKeyPress(event, ${m})">
                   ${subtaskArray[m]}
                 </span>
+                </li>  
+                <div class="subPics">
                   <img src="assets/img/delete.png" onclick="deleteToSubtask(${m})">
                   <img src="assets/img/edit.svg" onclick="enableEditing(${m})">
                   <img id="checkImage_${m}" src="assets/img/bestätigung.png" style="display:none;">
-          </li>
+                </div>
       </ul>`;
   }
-  toggleIcon();
 }
 
 function enableEditing(position) {
@@ -242,5 +256,27 @@ function subCurrentContact() {
 
 function deleteToSubtask(position) {
   subtaskArray.splice(position, 1);
+  addContactToSubtask();
+}
+
+function clearCurrentall(position) {
+  let titleEnter = document.getElementById("titleEnter");
+  titleEnter.value = "";
+
+  let descriptionInput = document.getElementById("descriptionInput");
+  descriptionInput.value = "";
+
+  let dateInput = document.getElementById("dateInput");
+  dateInput.value = "";
+
+  let listContactContainer = document.getElementById("listContactContainer");
+  listContactContainer.innerHTML = "";
+
+  let categoryInput = document.getElementById("categoryInput");
+  categoryInput.value = "";
+
+  let contactList = document.getElementById("contactList");
+  contactList.innerHTML = "";
+  subtaskArray.splice(position);
   addContactToSubtask();
 }

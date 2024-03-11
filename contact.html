@@ -15,7 +15,7 @@
 
 </head>
 
-<body onload="includeHTML(); init();">
+<body onload="includeHTML(); init()">
     <div w3-include-html="./templates/header.html"></div>
     <section class="main-content">
         <div w3-include-html="./templates/side-menu.html" class="sideBoardContainer"></div>
@@ -70,6 +70,7 @@
 
 
 
+
         <div id="editDeleteSlideCard" class="editDeleteSlideCard">
             <div id="upperBodyEditDelete" class="upperBody">
                 <div onclick="closeAddContact()" class="closeX">×</div>
@@ -79,10 +80,10 @@
 
             <div class="lowerBody">
                 <div class="lowerBodyDiv">
-                    <form onsubmit="saveChanges(event); return false">
+                    <form onsubmit="saveChanges(event)">
                         <img class="userImgLowerBody" src="./assets/img/benutzer.png" alt="">
                         <div class="inputContainerOne">
-                            <input id="inputEditName" class="inputLowerBody" type="text" placeholder="Name">
+                            <input id="inputEditName" class="inputLowerBody" type="text" placeholder="Name" required>
                             <img class="inputContainerImg" src="./assets/img/profil-avatar.png">
                         </div>
                         <div class="inputContainerTwo">
@@ -93,9 +94,7 @@
                             <input id="inputEditPhone" class="inputLowerBody" type="number" placeholder="Phone" required>
                             <img class="inputContainerImg" src="./assets/img/anruf.png">
                         </div>
-                        <div class="lowerBodyBtnContainer">
-                            <button class="closeAddContactBtn" onclick="closeAddContact(); deleteContact()">Delete</button>
-                            <button id="saveChangesBtn" class="createUserBtn" type="submit">Save ✔</button>
+                        <div id="editLowerBody" class="lowerBodyBtnContainer">
                         </div>
                     </form>
                 </div>

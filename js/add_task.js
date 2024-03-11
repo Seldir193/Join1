@@ -27,38 +27,45 @@ function showHelp(){
     window.location.href = 'help.html';
 }
 
-function toggleIcon() {
-  var listContactContainer = document.getElementById("listContactContainer");
-  var icon = document.getElementById("icon");
-
-  if (listContactContainer.style.display === "none") {
-      listContactContainer.style.display = "block";
-      icon.src = "assets/img/arrow_drop_up.png";
-  } else {
-      listContactContainer.style.display = "none";
-      icon.src = "assets/img/arrow_drop_down.png";
-  }
-}
-
-function toggleCategory() {
-  var listTechnical = document.getElementById("listTechnical");
-  var category = document.getElementById("category");
-
-  if (listTechnical.style.display === "none") {
-    listTechnical.style.display = "block";
-    category.src = "assets/img/arrow_drop_up.png"; 
-  } else {
-    listTechnical.style.display = "none";
-    category.src = "assets/img/arrow_drop_down.png"; 
-  }
-}
-
-function toggleContactBackground(i) {
+function toggleContactBackground(i) {     // Das müssen wir noch machen.
   let clickedContact = document.getElementById(`contact_${i}`);
   if (clickedContact) {
     clickedContact.classList.toggle('active');
   }
 }
 
+function toggleIcon() {
+  var listContactContainer = document.getElementById("listContactContainer");
+  var listTechnical = document.getElementById("listTechnical");
+  var icon = document.getElementById("icon");
 
+  listTechnical.style.display = "none";
+
+  if (listContactContainer.style.display === "none" || listContactContainer.style.display === "") {
+    listContactContainer.style.display = "block";
+    icon.src = "assets/img/arrow_drop_up.png";
+  } else {
+    listContactContainer.style.display = "none";
+    icon.src = "assets/img/arrow_drop_down.png";
+  }
+}
+
+function toggleCategory() {
+  var listTechnical = document.getElementById("listTechnical");
+  var categoryDropdown = document.getElementById("categoryDropdown");
+  
+  if (listTechnical.style.display === "none" || listTechnical.style.display === "") {
+    listTechnical.style.display = "block";
+    categoryDropdown.src = "assets/img/arrow_drop_up.png"; 
+    categoryInput.focus();
+  } else {
+    listTechnical.style.display = "none";
+    category.src = "assets/img/arrow_drop_down.png"; 
+  }
+}
+
+
+
+
+  
 
