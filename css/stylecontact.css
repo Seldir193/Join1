@@ -37,7 +37,6 @@
   position: absolute;
   right: 0;
   top: 0;
-  filter: opacity(0.2);
 }
 
 .avatarProfil {
@@ -128,6 +127,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .closeX {
@@ -135,6 +135,16 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  text-align: center;
+}
+.closeXEdit {
+  font-size: 32px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
   width: 30px;
   height: 30px;
   color: white;

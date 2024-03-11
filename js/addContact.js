@@ -75,6 +75,7 @@ function addInformationToPulledWindow(i) {
 function addContact() {
   document.getElementById("blurContainer").classList.remove("d-none");
   document.getElementById("upperBody").classList.add("radiusLeft");
+  document.getElementById("xBtn").classList.add("closeX");
   document.getElementById("addContactSlideCard").classList.add("slideOpen");
 }
 
@@ -86,6 +87,7 @@ function closeAddContact() {
 }
 
 function editContact(i) {
+  document.getElementById("xCloseBtn").classList.add("closeXEdit");
   document.getElementById("blurContainer").classList.remove("d-none");
   document.getElementById("upperBodyEditDelete").classList.add("radiusRight");
   document.getElementById("editDeleteSlideCard").classList.add("slideOpen");
