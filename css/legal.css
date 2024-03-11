@@ -1,3 +1,11 @@
+.arrowHelp {
+  position: absolute;
+  top: 178px;
+  right: 80px;
+  width: 50px;
+  z-index: 999;
+}
+
 .subHeadlineHelp {
   font-size: 18px;
   color: rgb(69, 137, 255);
@@ -127,16 +135,6 @@ body {
   top: 186px;
   left: 1315px;
   padding: 2.5px;
-}
-
-.arrow-container {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  flex-direction: column;
-  padding: 60px 60px;
-  justify-content: flex-start;
-  border-radius: 50%;
 }
 
 .arrow-container img:hover {
