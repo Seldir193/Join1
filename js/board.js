@@ -5,13 +5,13 @@ let countInProgress = [];
 let countAwaitFeedback = [];
 let countDone = [];
 
-toDos = [{ //arraystruktur muss angepasst werden, da die Daten remote gespeichert werden
+toDos = [{ 
     id: 1,
     title: 'testtitel',
     description: 'testbeschreibung',
     category: 'testkategorie',
     dueDate: 'testdate',
-    subtasks: [],
+    subtasks: ['subtask1','Subtask2'],
 }];
 
 
@@ -27,6 +27,12 @@ function render() {
         renderAddTask(i);
         renderNoTasks();
     }
+}
+
+
+async function pushTask(){
+ //  toDos.push(id des values) //immer 
+    await setItem('tasks', JSON.stringify(toDos));
 }
 
 
@@ -230,7 +236,7 @@ function swapToDo() {
 
 function generateToDoHtml(element) {
     document.getElementById('toDoTasks').innerHTML +=
-    `
+        `
 <div draggable="true" ondragstart="startDragging(${element['id']})">
     <div></div>
     <span></span>
