@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="css/styletemplates.css">
     <link rel="stylesheet" href="css/styleall.css">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/styleadd.css">
     <script src="js/templates.js"></script>
     <script src="js/board.js"></script>
     <script src="js/storage.js"></script>
+    <script src="js/addContact.js"></script>
+    <script src="js/add_task.js"></script>
 </head>
 
 <body onload="onload()" id="body">
@@ -27,7 +30,7 @@
                         <div class="searchIconContainer"><img src="./assets/img/search.svg" alt="search Icon"
                                 id="searchIcon"></div>
                     </div>
-                    <button class="addTaskBtn" onclick="showAddTaskFloating(), toggleCard(), pushTask()">Add task <img
+                    <button class="addTaskBtn" onclick="toggleCard()">Add task <img
                             src="./assets/img/plus.svg" alt="plusIcon">
                     </button>
                 </div>
@@ -50,10 +53,10 @@
                 </div>
             </section>
             <section class="taskBoard">
-                <div id="toDoTasks" class="styleTasks" ondrop="moveTo(category)" ondragover="allowDrop(event)"></div>
-                <div id="inProgressTasks" class="styleTasks" ondrop="moveTo(category)" ondragover="allowDrop(event)"></div>
-                <div id="awaitFeedbackTasks" class="styleTasks" ondrop="moveTo(category)" ondragover="allowDrop(event)"></div>
-                <div id="doneTasks" class="styleTasks" ondrop="moveTo(category)" ondragover="allowDrop(event)"></div>
+                <div id="toDoTasks" class="styleTasks" ondrop="moveTo('toDoTasks')" ondragover="allowDrop(event)"></div>
+                <div id="inProgressTasks" class="styleTasks" ondrop="moveTo('inProgressTasks')" ondragover="allowDrop(event)"></div>
+                <div id="awaitFeedbackTasks" class="styleTasks" ondrop="moveTo('awaitFeedbackTasks')" ondragover="allowDrop(event)"></div>
+                <div id="doneTasks" class="styleTasks" ondrop="moveTo('doneTasks')" ondragover="allowDrop(event)"></div>
             </section>
         </section>
     </div>

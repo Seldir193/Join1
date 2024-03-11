@@ -284,7 +284,6 @@ body {
 }
 
 .active {
-  background-color: inherit !important;
   color: black;
 }
 

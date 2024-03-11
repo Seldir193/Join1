@@ -60,7 +60,7 @@ function toggleCategory() {
     categoryInput.focus();
   } else {
     listTechnical.style.display = "none";
-    category.src = "assets/img/arrow_drop_down.png"; 
+    categoryDropdown.src = "assets/img/arrow_drop_down.png"; 
   }
 }
 
