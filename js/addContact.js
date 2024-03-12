@@ -49,7 +49,9 @@ function pullContact(i) {
 
 function addHeadlineToPulledWindow(i) {
   let contactContainer = document.getElementById("pullContactToWindow");
-  contactContainer.innerHTML = `<div class="pulledHeadline">
+  contactContainer.innerHTML = `
+  <div class="responsivHeader"><span class="responsivContactInformation">Contact Information</span><img onclick="pullContact(${i})" src="assets/img/arrow-left-line (1).png" alt="Arrow Image"></div>
+  <div class="pulledHeadline">
   <div class="chartAtPulledContact" style="background-color: ${
     randomColorCollection[i]
   }">
@@ -58,7 +60,8 @@ function addHeadlineToPulledWindow(i) {
   <div class="editAndDeletetContainer">
   <button onclick="editContact(${i})" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/pencil.png">Edit</button>
   <button onclick="deleteContact(${i})" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/mulleimer.png">Delete</button>
-  </div></div>`;
+  </div>
+  </div>`;
   addInformationToPulledWindow(i);
 }
 
