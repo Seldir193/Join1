@@ -437,9 +437,6 @@ function addSubtasksToBoard() {
 }
 
 
-
-
-
 function startDragging(id) {
     currentDraggedElement = id;
 }
