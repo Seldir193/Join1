@@ -19,7 +19,6 @@ function render() {
     for (i = 0; i < 1; i++) {
         renderShowTask();
         updateHTML();
-        // renderTasksOnBoard();
         renderAddTaskFloating();
         renderNoTasks();
     }
@@ -111,7 +110,7 @@ function renderAddTaskFloating() {
                    <div class="assigned-box"><b>Subtasks</b> (optional)</div>
                      <div class="input-with-icon">
                         <input type="text" placeholder="Add new subtask..." id="subTaskInput">
-                        <img id="subTask" onclick="subCurrentContact()" src="assets/img/Subtask's icons.png" class="dropdown-icon">
+                        <img id="subTask" onclick="subCurrentContact(), addSubtasksToBoard()" src="assets/img/Subtask's icons.png" class="dropdown-icon">
                      </div>
                      <div id="contactList"></div>
                      <div class="footer-box"></div>
@@ -212,10 +211,6 @@ function checkNoTasksDone() {
 
 
 function updateHTML() {
-
-    // for (i = 0; i < toDos.length; i++) {
-    //     renderTasksOnBoard(i);
-    // }
     swapToDo();
     swapInProgress();
     swapAwaitFeedback();
@@ -268,45 +263,24 @@ function swapDone() {
 function generateTodoHTML(element) {
 
     return `
-        <div draggable="true" ondragstart="startDragging(${element['id']})">
+        <div class="tasksOnBoard" draggable="true" ondragstart="startDragging(${element['id']})">
             <div id="categoryOnBoard${element['id']}" class="categoryOnBoard"></div>
             <span id="titleOnBoard${element['id']}" class="titleOnBoard"></span>
             <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard"></span>
             <div>
-                <span></span>
-                <div id="subtasksOnBoard${element['id']}" class="subtasksOnBoard"></div>
+                <div class="progress-bar" id="progress-bar${element['id']}">
+                    <div class="progress" id="progress${element['id']}"></div>
+                    <span id="progressInText${element['id']}"></span>
+                </div>
             </div>  
             <div>
                 <div id="profilsOnBoard${element['id']}"></div>
                 <div id="priorityOnBoard${element['id']}"></div>
             </div>
         </div>
-    `;
+        `;
 
 }
-
- function renderTasksOnBoard() {
-     document.getElementById('toDoTasks').innerHTML = '';
-     for (i = 0; i < toDos.length; i++) {
-         document.getElementById('toDoTasks').innerHTML +=
-             `
-         <div draggable="true" ondragstart="startDragging(${i})">
-             <div id="categoryOnBoard${i}" class="categoryOnBoard"></div>
-             <span id="titleOnBoard${i}" class="titleOnBoard"></span>
-             <span id="descriptionOnBoard${i}" class="descriptionOnBoard"></span>
-             <div>
-                 <span></span>
-                 <div id="subtasksOnBoard${i}" class="subtasksOnBoard"></div>
-             </div>  
-             <div>
-                 <div id="profilsOnBoard${i}"></div>
-                 <div id="priorityOnBoard${i}"></div>
-             </div>
-         </div>
-     `;
-         fillTasksOnBoard(i);
-     }
- }
 
 
 function fillTasksOnBoard(i) {
@@ -314,7 +288,7 @@ function fillTasksOnBoard(i) {
     addDescriptionValue(i);
     addDateValue(i);
     addCategoryValue(i);
-    addSubTaskValue(i);
+    // addSubTaskValue(i);
 }
 
 function addTitleValue(i) {
@@ -326,20 +300,20 @@ function addTitleValue(i) {
 
 function addDescriptionValue(i) {
     document.getElementById(`descriptionOnBoard${i}`).innerHTML = '';
-    let addDescriptionValue = toDos[i]['description'][0];
+    let addDescriptionValue = toDos[i]['description'];
     document.getElementById(`descriptionOnBoard${i}`).innerHTML = `${addDescriptionValue}`;
 }
 
 
 function addDateValue(i) {
-    let addDateValue = toDos[i]['dueDate'][0];
+    let addDateValue = toDos[i]['dueDate'];
     document.getElementById('#');
 }
 
 
 function addCategoryValue(i) {
     document.getElementById(`categoryOnBoard${i}`).innerHTML = ``;
-    let addCategoryValue = toDos[i]['category'][0];
+    let addCategoryValue = toDos[i]['category'];
     document.getElementById(`categoryOnBoard${i}`).innerHTML =
         `
         <button id="technicalAndUserBtn${i}">${addCategoryValue}</button>
@@ -353,16 +327,16 @@ function addCategoryValue(i) {
 }
 
 
-function addSubTaskValue(i) {
-    document.getElementById(`subtasksOnBoard${i}`).innerHTML = '';
-    for (j = 0; j < toDos[i]['subtasks'].length; j++) {
-        let addSubTaskValue = toDos[i]['subtasks'][j];
-        document.getElementById(`subtasksOnBoard${i}`).innerHTML +=
-            `
-        <span>${addSubTaskValue}</span>
-    `;
-    }
-}
+// function addSubTaskValue(i) {
+//     document.getElementById(`subtasksOnScreen${i}`).innerHTML = '';
+//     for (j = 0; j < toDos[i]['subtasks'].length; j++) {
+//         let addSubTaskValue = toDos[i]['subtasks'][j];
+//         document.getElementById(`subtasksOnScreen${i}`).innerHTML +=
+//             `
+//         <span>${addSubTaskValue}</span>
+//     `;
+//     }
+// }
 
 
 function pushToDo(newToDo) {
@@ -429,10 +403,16 @@ function addCategoryToBoard() {
     }
 }
 
+
 function addSubtasksToBoard() {
-    let subtaskInputs = document.getElementById('subTaskInput').value;
     let addSubtasks = [];
-    addSubtasks.push(subtaskInputs);
+
+    for (i = 0; i < contactList.children.length; i++) {
+
+        let subtaskInputs = document.getElementById(`contactText_${i}`).innerHTML;
+
+        addSubtasks.push(subtaskInputs);
+    }
     return addSubtasks;
 }
 
@@ -445,11 +425,6 @@ function startDragging(id) {
 function allowDrop(ev) {
     ev.preventDefault();
 }
-
-
-// function moveTo(category) {
-//     todos[currentDraggedElement]['category'] = category;
-// }
 
 
 function moveTo(box) {
@@ -475,4 +450,23 @@ function clearAddTaskFloating() {
 
     let subTaskInput = document.getElementById("subTaskInput");
     subTaskInput.innerHTML = "";
+}
+
+
+function updateProgress(i) {
+    let count = 0;
+    let totalTasks = toDos[i]['subtasks'].length;
+    
+    // Iteriere über alle Subtasks
+    for (let j = 0; j < totalTasks; j++) {
+        // Überprüfe, ob die Checkbox mit der ID `subtaskCheckbox_${i}_${j}` angeklickt ist
+        if (document.getElementById(`subtaskCheckbox_${i}_${j}`).checked) {
+            // Wenn die Checkbox angeklickt ist, erhöhe count um 1
+            count++;
+        }
+    }
+
+    // Aktualisiere den Fortschritt basierend auf der Anzahl der angeklickten Checkboxen
+    let progress = (count / totalTasks) * 100;
+    document.getElementById(`progress${i}`).style.width = progress + '%';
 }
