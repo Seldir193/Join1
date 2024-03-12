@@ -252,6 +252,7 @@
 
   .sum-container {
     width: 100%;
+    height: 872px;
   }
 
   #pullContactToWindow {
@@ -281,7 +282,7 @@
     display: none;
   }
 
-  .editAndDeletetContainer {
+  #editAndDeletetContainer {
     width: 116px;
     height: 100px;
     justify-content: center;
@@ -292,9 +293,15 @@
     gap: 8px;
     box-shadow: silver 0px 5px 2px;
     position: absolute;
-    bottom: 32px;
+    bottom: 190px;
     right: 32px;
-    visibility: hidden;
+    transform: translateX(135%);
+    transition: all 150ms ease-in-out;
+    z-index: 99;
+  }
+
+  .sum-container {
+    width: 100%;
   }
 }
 
