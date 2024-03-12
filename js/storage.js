@@ -7,6 +7,8 @@ async function init() {
 async function loadUsers() {
   try {
     contactBook = JSON.parse(await getItem("contact"));
+    users = JSON.parse(await getItem('users'));
+    console.warn("Users DATA:", users);
     console.log("Contact Book Data:", contactBook);
     renderAlphabeticalCategories();
   } catch (e) {
@@ -36,3 +38,10 @@ async function getItem(key) {
       throw `Could not find data with key "${key}".`;
     });
 }
+
+
+
+
+
+
+

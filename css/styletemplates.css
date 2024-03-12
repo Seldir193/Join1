@@ -144,37 +144,37 @@
   }
 
   .flex50.column a img {
-    filter: brightness(0) invert(1); /* Ändern Sie die Farbe der Bilder auf Weiß */
+    filter: brightness(0) invert(1); 
   }
 
   .sideBoard a:hover {
     background-color: #1c6ffe;
   }
 
-  .kanban {
-    justify-content: flex-end;
-    gap: 5px;
+  .kanban{
+      justify-content: flex-end;
+      gap:5px;
+  }
+  
+  .kanban p{
+      display:none;
+  }
+  
+  .header{
+      padding:10px 10px 10px 10px;
+  }
+  
+  .headline img{
+      max-width: 10vw;
+  }
+  
+  .summary-container{
+      gap:60px;
+      padding: 90px 0px 10px 10px;
   }
 
-  .kanban p {
-    display: none;
-  }
-
-  .header {
-    padding: 10px 10px 10px 10px;
-  }
-
-  .headline img {
-    max-width: 10vw;
-  }
-
-  .summary-container {
-    gap: unset;
-    padding: 90px 0px 10px 10px;
-  }
-
-  .sum-container h1 {
-    font-size: 36px;
+  .sum-container h1{
+      font-size:36px;
   }
 
   .menu-bar {
@@ -202,16 +202,19 @@
     flex-direction: unset;
     align-items: unset;
     display: flex;
-    justify-content: center;
-  }
+    justify-content: center; 
+ }
 
-  .create-button {
-    padding-right: unset;
-  }
+ .create-button{
+  padding-right: unset;
+ }
 
-  .summary-container h1 {
-    margin: unset;
-  }
+.summary-container h1{
+    margin:unset;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 
   .column {
     display: block;
@@ -228,17 +231,27 @@
     height: unset;
   }
 
-  .main-content {
-    padding-bottom: 56px; /* Höhe des fixierten Menüs */
-    height: unset;
-  }
-
-  .sideBoardChild2 {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding-left: unset;
-    padding-top: unset;
-    display: none;
-  }
+.main-content {
+  padding-bottom: 56px; /* Höhe des fixierten Menüs */
+  height: unset;
 }
+
+.sideBoardChild2 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-left: unset;
+  padding-top: unset;
+  display: none;
+}
+
+#user-name{
+  font-size:46px;
+}
+
+.greatName{
+  flex-direction: column;
+  text-align: center;
+}
+}
+
