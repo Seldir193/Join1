@@ -1,5 +1,4 @@
 let contactBook = [];
-
 async function init() {
   loadUsers();
 }
@@ -8,8 +7,10 @@ async function loadUsers() {
   try {
     contactBook = JSON.parse(await getItem("contact"));
     users = JSON.parse(await getItem('users'));
+    tasks = JSON.parse(await getItem('tasks'))
     console.warn("Users DATA:", users);
     console.log("Contact Book Data:", contactBook);
+    console.log("Tasks Data:", tasks);
     renderAlphabeticalCategories();
   } catch (e) {
     console.error("Loading error:", e);
