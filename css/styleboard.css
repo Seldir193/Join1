@@ -417,6 +417,8 @@
   /* Animation für den Slide-Effekt */
 }
 
+
+
 .noTasks {
   height: 48px;
   width: 100%;
@@ -437,83 +439,177 @@
 
 
 #boardsContainer {
-    height: 100vh;
-    overflow: hidden;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .technicalTaskBtn {
-    width: 140px;
-    height: 27px;
-    border-radius: 8px;
-    border: none;
-    color: white;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19.2px;
-    background-color: RGB(0, 56, 255);
-    padding: 4px 16px 4px 16px;
-    margin-bottom: 10px;
+  width: 140px;
+  height: 27px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.2px;
+  background-color: RGB(0, 56, 255);
+  padding: 4px 16px 4px 16px;
+  margin-bottom: 10px;
 }
 
 .UserStoryBtn {
-    width: 140px;
-    height: 27px;
-    border-radius: 8px;
-    border: none;
-    color: white;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19.2px;
-    background-color: RGB(255, 122, 0);
-    padding: 4px 16px 4px 16px;
-    margin-bottom: 10px;
+  width: 140px;
+  height: 27px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.2px;
+  background-color: RGB(255, 122, 0);
+  padding: 4px 16px 4px 16px;
+  margin-bottom: 10px;
 }
 
 
 .titleOnBoard {
-    width: 220px;
-    height: 38px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19.2px;
-    color: rgba(69, 137, 255, 1);
+  width: 220px;
+  height: 38px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19.2px;
+  color: rgba(69, 137, 255, 1);
 }
 
 
 .descriptionOnBoard {
-    width: 220px;
-    height: 38px;
-    font-family: 'Inter';
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19.2px;
-    color: rgba(168, 168, 168, 1);
-}
-
-
-.tasksOnBoard {
-    width: 252px;
-    max-height: 263px;
-    border-radius: 24px;
-    padding: 16px;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
+  width: 220px;
+  height: 38px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.2px;
+  color: rgba(168, 168, 168, 1);
 }
 
 
 .progress-bar {
-    width: 100%;
-    height: 20px;
-    background-color: #ddd;
-    border-radius: 10px;
-    margin-bottom: 10px;
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .progress {
-    height: 100%;
-    background-color: #4caf50;
-    border-radius: 10px;
-    width: 0%;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px;
+  width: 0%;
+}
+
+
+.tasksOverBoardContainer{
+  width: 528px;
+  left: 148px;
+  top: -1500px;
+}
+
+
+.titelOverBoard {
+  width: 448px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 61px;
+  line-height: 73.2px;
+  color: rgba(0, 0, 0, 1);
+}
+
+
+.categoryContainerOverBoard {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+.descriptionOverBoard {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22.8px;
+  color: black;
+}
+
+
+.styleDescription {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 25.2px;
+  color: rgba(66, 82, 110, 1);
+}
+
+
+.styleDueDate{
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 25.2px;
+  color: rgba(66, 82, 110, 1);
+}
+
+
+.styleDueDate th{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22.8px;
+  color: black;
+}
+
+
+.StylePriority{
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 25.2px;
+  color: rgba(66, 82, 110, 1);
+}
+
+
+.StylePriority th{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22.8px;
+  color: black;
+}
+
+
+.styleAssigned {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 25.2px;
+  color: rgba(66, 82, 110, 1);
+}
+
+
+.styleCategory {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 25.2px;
+  color: rgba(66, 82, 110, 1);
+}
+
+
+.styleSubtasks {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 25.2px;
+  color: rgba(66, 82, 110, 1);
 }

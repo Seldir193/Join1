@@ -9,9 +9,11 @@ let toDos = [];
 
 let nextId = 0;
 
-function onload() {
+async function onload() {
+    await init();
     includeHTML();
     render();
+  
 }
 
 
@@ -23,6 +25,8 @@ function render() {
         renderNoTasks();
     }
 }
+
+
 
 
 
@@ -67,6 +71,12 @@ function toggleCard() {
 }
 
 
+function toggleCardFromBoard() {
+    let card = document.getElementById(`tasksOverBoardContainer${i}`);
+    card.classList.toggle('active');
+}
+
+
 function renderAddTaskFloating() {
     document.getElementById('boardsContainer').innerHTML +=
         `
@@ -74,13 +84,13 @@ function renderAddTaskFloating() {
         <h1>Add Task</h1>    
             <input type="text" id="titleAddTaskFloating" name="title" placeholder="Enter a title" required><br>
         
-            <label for="descriptionTextareaAddTask"><span id="descriptionTitleAddTask">Description <span id="optionalDescriptionTitleAddTask">(optional)</span></span></label><br>
+            <label for="descriptionTextareaAddTask" class="styleDescription"><span id="descriptionTitleAddTask">Description <span id="optionalDescriptionTitleAddTask">(optional)</span></span></label><br>
             <textarea id="descriptionAddTaskFloating" name="description" rows="4" cols="50" placeholder="Enter a Description" required></textarea><br>
         
-            <label for="dueDate">Due date</label><br>
-            <input type="date" id="dueDateAddTaskFloating" name="due_date"><br>
+            <label class="styleDueDate" for="dueDate">Due date</label><br>
+            <input type="date" id="dueDateAddTaskFloating" name="due_date" ><br>
         
-            <div class="priority">
+            <div class="StylePriority">
                         <div class="priority-header">Priority</div>
                         <div class="priority-box">
                             <div class="urgent">Urgent<img src="assets/img/Prio alta.png"></div>
@@ -91,7 +101,7 @@ function renderAddTaskFloating() {
                     
 
                 <div class="assigned">
-                  <div class="assigned-box"><b>Assigned to</b> (optional)</div>
+                  <div class="styleAssigned"><b>Assigned to</b> (optional)</div>
                     <div class="input-with-icon">
                        <input type="text" id="assignedInput" placeholder="Select contacts to assign..."  onclick="renderAlphabeticalCategories()" readonly>
                        <img id="icon" onclick=" toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
@@ -99,7 +109,7 @@ function renderAddTaskFloating() {
                     </div>
                 </div>
                 <div class="categoryHeader">
-                   <div class="assigned-box"><b>Category</b></div>
+                   <div class="styleCategory"><b>Category</b></div>
                       <div class="input-with-icon">
                          <input type="text" id="categoryInput" placeholder="Select task category..." onfocus="technicalUser()" onclick="technicalUser()" readonly>
                          <img id="categoryDropdown" onclick="toggleCategory()"src="assets/img/arrow_drop_down.png" class="dropdown-icon">
@@ -107,7 +117,7 @@ function renderAddTaskFloating() {
                       </div>
                 </div>
                 <div class="subtasks">
-                   <div class="assigned-box"><b>Subtasks</b> (optional)</div>
+                   <div class="styleSubtasks"><b>Subtasks</b> (optional)</div>
                      <div class="input-with-icon">
                         <input type="text" placeholder="Add new subtask..." id="subTaskInput">
                         <img id="subTask" onclick="subCurrentContact(), addSubtasksToBoard()" src="assets/img/Subtask's icons.png" class="dropdown-icon">
@@ -339,9 +349,9 @@ function addCategoryValue(i) {
 // }
 
 
-function pushToDo(newToDo) {
+async function pushToDo(newToDo) {
     toDos.push(newToDo);
-    // await setItem('tasks', JSON.stringify(toDos));    
+    await setItem('tasks', JSON.stringify(toDos));    
     updateHTML()
 }
 
@@ -456,7 +466,7 @@ function clearAddTaskFloating() {
 function updateProgress(i) {
     let count = 0;
     let totalTasks = toDos[i]['subtasks'].length;
-    
+
     // Iteriere über alle Subtasks
     for (let j = 0; j < totalTasks; j++) {
         // Überprüfe, ob die Checkbox mit der ID `subtaskCheckbox_${i}_${j}` angeklickt ist
@@ -469,4 +479,42 @@ function updateProgress(i) {
     // Aktualisiere den Fortschritt basierend auf der Anzahl der angeklickten Checkboxen
     let progress = (count / totalTasks) * 100;
     document.getElementById(`progress${i}`).style.width = progress + '%';
+}
+
+
+function renderTaskFloating(i) {
+
+   document.getElementById('boardsContainer').innerHTML =
+   `
+    <div class="tasksOverBoardContainer" id="tasksOverBoardContainer${i}">
+        <div class="categoryContainerOverBoard">
+            <button class="technicalTaskBtn"></button>
+            <img src="assets/img/close.png" alt="close img">
+        </div>
+        <h1 class="titelOverBoard"></h1>
+        <span class="descriptionOverBoard"></span>
+        <table>
+            <tr>
+                <th rowspan="2" class="styleDueDate">Due Date:</th>
+                <th rowspan="2" class="stylePriority">Priority:</th>
+            </tr>
+            <tr>
+                <th id="insertDueDateOverBoard${i}"></th>
+                <th id="insertPriorityOverBoard${i}"></th>
+            </tr>
+        </table>
+        <div>
+            <span class="styleAssigned">Assigned to:</span>
+            <div>
+                <img src="assets/img/Profile badge.png" alt="#"
+            
+            </div>
+        </div>
+        <div>
+            <span class="styleSubtasks">Subtasks</span>
+            <label for="checkbox1"><input type="checkbox" id="checkbox${i}" name="checkbox1">Subtask 1</label>
+            <label for="checkbox2"><input type="checkbox" id="checkbox${i}" name="checkbox2">Subtask 2</label>
+        </div>
+    </div>
+    `;
 }
