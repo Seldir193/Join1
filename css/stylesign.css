@@ -17,6 +17,11 @@ body {
     position: relative;
 }
 
+.sign{
+    display: flex;
+    justify-content: center;
+}
+
 .sign button {
     display: flex;
     justify-content: center;
@@ -291,6 +296,53 @@ label{
     gap: 80px;
 }
 
+.only-input-near img{
+    width:24px;
+    height: 24px;
+    filter: brightness(70%);
+}
+
+.only-input-near {
+    position: relative;
+}
+
+#password,#email {
+    padding-right: 30px; 
+}
+
+#togglePassword {
+    position: absolute;
+    top: 50%;
+    right: 5px; 
+    transform: translateY(-20%);
+    cursor: pointer;
+}
+
+#togglePasswordConfirm {
+    position: absolute;
+    top: 50%;
+    right: 5px; 
+    transform: translateY(220%);
+    cursor: pointer;
+}
+
+#toggleUser {
+    position: absolute;
+    top: 50%;
+    right: 5px; 
+    transform: translateY(-520%);
+    cursor: pointer;
+}
+
+#toggleEmail {
+    position: absolute;
+    top: 50%;
+    right: 5px; 
+    transform: translateY(-265%);
+    cursor: pointer;
+}
+
+
 @media only screen and (max-width: 768px){
     .sign{
         margin-right: unset;
@@ -327,7 +379,7 @@ label{
     }
     
     .only-input-near input{
-        width:unset;
+        width:100%;
     }
     
     .only-input{

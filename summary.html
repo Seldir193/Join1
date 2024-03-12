@@ -13,13 +13,13 @@
     <script src="js/storage.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); load(); displayGreeting();">
     <div w3-include-html="./templates/header.html"></div>
     <div class="main-content">
         <div w3-include-html="./templates/side-menu.html"></div>
         <div class="sum-container">
             <div class="summary-container">
-                <h1>Good morning</h1>
+               <div class="greatName"> <h1 id="greeting"></h1><span id="user-name"></span></div>
                 <div class="date">
                     <a href="board.html"><img src="assets/img/Urgency.png"></a>
                     <a href="board.html"><img src="assets/img/square button.png"></a>

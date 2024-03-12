@@ -118,6 +118,15 @@ body {
     height: auto;
 }
 
+#user-name {
+    font-size: 64px;  
+    color: #4589FF;   
+}
+
+.greatName{
+    display: flex;
+    gap:10px;
+}
 
 
 

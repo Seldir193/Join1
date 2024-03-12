@@ -99,8 +99,8 @@ input {
 .button-container  {
     display: flex;
     width: 422px;
-    height: 48px;
     gap: 35px;
+    padding-top:25px;
 }
 
 .container button:hover {
@@ -233,6 +233,7 @@ input {
     height: 24px;
     display: flex;
     gap:4px;
+    padding-top:10px;
 }
 
 label{
@@ -294,8 +295,43 @@ label{
     cursor: pointer;
 }
 
+#msgBox{
+    font-size: 18px;
+    font-weight: bold;
+    color: #4589FF;
+}
 
-@media only screen and (max-width: 768px){
+.only-input-near img{
+    width:24px;
+    height: 24px;
+    filter: brightness(70%);
+}
+
+.only-input-near {
+    position: relative;
+}
+
+#password,#email {
+    padding-right: 30px; 
+}
+
+#togglePassword {
+    position: absolute;
+    top: 50%;
+    right: 5px; 
+    transform: translateY(80%);
+    cursor: pointer;
+}
+
+#toggleEmail {
+    position: absolute;
+    top: 50%;
+    right: 5px; 
+    transform: translateY(-125%);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 630px){
 .sign{
     margin-right: unset;
     padding-right:10px;
@@ -333,7 +369,7 @@ label{
 }
 
 .only-input-near input{
-    width:unset;
+    width:100%;
 }
 
 .only-input{
@@ -372,12 +408,12 @@ label{
 }
 
 .button-container .button-log{
-    font-size:20px;
+    font-size:16px;
     width:100%;
 }
 
 .button-container .guest-button.bot{
-    font-size:20px;
+    font-size:16px;
     width:100%;
 }
 
@@ -388,6 +424,14 @@ label{
 
 .guest{
     height:unset;
+}
+
+#msgBox{
+   text-align: center;
+}
+
+#user-name{
+    font-size:36px;
 }
 
 
