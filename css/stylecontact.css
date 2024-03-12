@@ -429,7 +429,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  visibility: none;
+  visibility: hidden;
 }
 
 .responsivHeader img:hover {
@@ -452,6 +452,7 @@
   bottom: 190px;
   right: 32px;
   cursor: pointer;
+  visibility: hidden;
 }
 
 .reponsivDots img {

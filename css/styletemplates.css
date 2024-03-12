@@ -303,28 +303,31 @@
   .sum-container {
     width: 100%;
   }
-}
-
-@media only screen and (min-width: 768px) {
-  .responsivHeader {
-    visibility: hidden;
+  .reponsivDots {
+    visibility: visible;
   }
-}
 
-.sideBoardChild2 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding-left: unset;
-  padding-top: unset;
-  display: none;
-}
+  @media only screen and (min-width: 768px) {
+    .responsivHeader {
+      visibility: hidden;
+    }
+  }
 
-#user-name {
-  font-size: 46px;
-}
+  .sideBoardChild2 {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: unset;
+    padding-top: unset;
+    display: none;
+  }
 
-.greatName {
-  flex-direction: column;
-  text-align: center;
+  #user-name {
+    font-size: 46px;
+  }
+
+  .greatName {
+    flex-direction: column;
+    text-align: center;
+  }
 }
