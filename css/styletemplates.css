@@ -249,7 +249,7 @@
 
   .main-content {
     padding-bottom: 56px; /* Höhe des fixierten Menüs */
-    height: 870px;
+    height: auto;
   }
 
   .sideBoardChild2 {
