@@ -130,6 +130,16 @@ body {
   height: 37px;
 }
 
+.arrow-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  flex-direction: column;
+  padding: 60px 60px;
+  justify-content: flex-start;
+  border-radius: 50%;
+}
+
 .arrow-container img:hover {
   cursor: pointer;
   filter: brightness(100%); /* Hellere Farbe beim Hover */
