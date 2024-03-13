@@ -8,13 +8,12 @@ body {
 }
 
 .buttonSize {
-    background-color: #4589FF;
+    background-color: #4589ff;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-}
-
+  }
+  
 .help-button {
     width: 30px;
     height: 30px;
@@ -93,7 +92,7 @@ body {
 }
 
 .sum-container h1{
-    font-size: 64px;
+    font-size: 48px;
     color: #2A3647;
 }
 
@@ -126,12 +125,15 @@ body {
 .greatName{
     display: flex;
     gap:10px;
+    align-items: center;
 }
 
 
-
-
-
-
+#userInitial{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 7px;
+  }
 
 

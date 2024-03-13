@@ -10,6 +10,7 @@
     <script src="js/storage.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/add_task.js"></script>
+    <script src="js/script.js"></script>
     <link rel="stylesheet" href="css/legal.css">
     <link rel="stylesheet" href="css/styletemplates.css">
 </head>
@@ -23,10 +24,14 @@
 
 
             <selection class="privacy-container">
-                <div class="summary-container">
-                    <h1 class="h1Help">Help</h1>
-                    <a href="./summary.html" class="arrowHelp"><img src="assets/img/arrow-left-line (1).png" alt="Arrow Image"></a>
+                <div class="summary-container"> 
+                    <h1>Help</h1>
+                    <div class="arrow-container">
+                        <img src="assets/img/arrow-left-line (1).png" alt="Arrow Image" onclick="showContact()">
+                    </div>
                 </div>
+                
+                
                 <div class="privacy-box">
                     <span>
                         Welcome to the help page for <span class="blueWord">Join</span>, your guide to using our kanban project management tool. Here,
