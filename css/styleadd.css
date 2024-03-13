@@ -285,6 +285,7 @@ body {
 
 .active {
   color: black;
+  background-color: inherit !important;
 }
 
 .color-img {
