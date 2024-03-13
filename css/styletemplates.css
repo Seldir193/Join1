@@ -28,10 +28,16 @@
 }
 
 .buttonSize {
-  background-color: #4589ff;
-  color: white;
+  background-color: white;
+  color: #29abe2;
+  font-weight: 700;
+  font-size: 30px;
   border: none;
   cursor: pointer;
+  height: 56px;
+  width: 56px;
+  border-radius: 100px;
+  border: solid white 2px;
 }
 
 .help-button {
@@ -114,6 +120,13 @@
 .sideBoardContainer {
   width: 232px;
   height: 100vh;
+}
+
+#userInitial {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 7px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -238,7 +251,7 @@
 
   .main-content {
     padding-bottom: 56px; /* Höhe des fixierten Menüs */
-    height: unset;
+    height: 870px;
   }
 
   .sideBoardChild2 {
@@ -252,9 +265,12 @@
 
   .sum-container {
     width: 100%;
+    height: auto;
   }
 
   #pullContactToWindow {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     background-color: white;
     width: 100%;
@@ -281,7 +297,7 @@
     display: none;
   }
 
-  .editAndDeletetContainer {
+  #editAndDeletetContainer {
     width: 116px;
     height: 100px;
     justify-content: center;
@@ -292,32 +308,59 @@
     gap: 8px;
     box-shadow: silver 0px 5px 2px;
     position: absolute;
-    bottom: 32px;
+    bottom: 190px;
     right: 32px;
-    visibility: hidden;
+    transform: translateX(135%);
+    transition: all 150ms ease-in-out;
+    z-index: 99;
   }
-}
 
-@media only screen and (min-width: 768px) {
-  .responsivHeader {
-    visibility: hidden;
+  .addContactSlideCard {
+    width: 90%;
   }
-}
 
-.sideBoardChild2 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding-left: unset;
-  padding-top: unset;
-  display: none;
-}
+  .radiusLeft {
+    border-radius: 25px 25px 0px 0px;
+  }
 
-#user-name {
-  font-size: 46px;
-}
+  .slideOpen {
+    transform: translateX(-6%) !important;
+    z-index: 9999;
+    border-radius: 25px !important;
+  }
 
-.greatName {
-  flex-direction: column;
-  text-align: center;
+  .sum-container {
+    width: 100%;
+  }
+  .responsivDots {
+    visibility: visible;
+  }
+
+  .addContactButtonContainer {
+    display: none;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .responsivHeader {
+      visibility: hidden;
+    }
+  }
+
+  .sideBoardChild2 {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: unset;
+    padding-top: unset;
+    display: none;
+  }
+
+  #user-name {
+    font-size: 46px;
+  }
+
+  .greatName {
+    flex-direction: column;
+    text-align: center;
+  }
 }

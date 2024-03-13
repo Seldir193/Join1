@@ -1,6 +1,8 @@
 let contactBook = [];
+
 async function init() {
   loadUsers();
+
 }
 
 async function loadUsers() {
@@ -39,6 +41,8 @@ async function getItem(key) {
       throw `Could not find data with key "${key}".`;
     });
 }
+
+
 
 
 

@@ -57,11 +57,10 @@ function addHeadlineToPulledWindow(i) {
   }">
   ${contactBook[i].name.charAt(0)}</div>
   <div><h1 class="h1Name">${contactBook[i].name}</h1>
-  <div class="editAndDeletetContainer">
+  <div id="editAndDeletetContainer">
   <button onclick="editContact(${i})" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/pencil.png">Edit</button>
   <button onclick="deleteContact(${i})" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/mulleimer.png">Delete</button>
-  </div>
-  </div>`;
+  </div></div>`;
   addInformationToPulledWindow(i);
 }
 
@@ -72,7 +71,27 @@ function addInformationToPulledWindow(i) {
      <h4>Email</h4>
      <span style="color:rgb(27, 110, 255)">${contactBook[i].email}</span>
      <h4>Phone</h4>
-     <span>${contactBook[i].number}</span></div>`;
+     <span>${contactBook[i].number}</span></div>
+     <div><div onclick="openResponsivDeleteEdit()" class="responsivDots"><img src="./assets/img/more_vert.png"></div></div>`;
+}
+
+function openResponsivDeleteEdit() {
+  document.getElementById("editAndDeletetContainer").style.transform =
+    "translateX(0%)";
+}
+
+function hiddeResponsivDeleteAndEditBtn() {
+  let editAndDeleteContainer = document.getElementById(
+    "editAndDeletetContainer"
+  );
+  let currentTransform = window
+    .getComputedStyle(editAndDeleteContainer)
+    .getPropertyValue("transform");
+
+  // Überprüfen, ob der Container sich bereits in der Startposition befindet
+  if (currentTransform === "matrix(1, 0, 0, 1, 0, 0)") {
+    editAndDeleteContainer.style.transform = "translateX(135%)";
+  }
 }
 
 function addContact() {

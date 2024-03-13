@@ -12,7 +12,7 @@
     <script src="js/addContact.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/storage.js"></script>
-
+    <script src="js/script.js"></script>
 </head>
 
 <body onload="includeHTML(); init()">
@@ -22,14 +22,17 @@
 
 
         <div id="sum-container" class="sum-container">
+            <div class="addContactButtonContainerResponsiv"><button onclick="addContact()" class="addToContactButtonResponiv"><img
+                         src="./assets/img/person_add.png"></button></div>
+
             <div class="addContactButtonContainer">
-                <button onclick="addContact()" class="addToContactButton">Add new contact <img src="./assets/img/add avatar.png" alt=""></button>
+                <button onclick="addContact()" class="addToContactButton">Add new contact <img src="./assets/img/person_add.png"></button>
             </div>
             <div id="listContactContainer"></div>
         </div>
 
         <div onclick="closeAddContact()" id="blurContainer" class="blurContainer d-none"></div>
-        <div id="pullContactToWindow"></div>
+        <div id="pullContactToWindow" onclick="hiddeResponsivDeleteAndEditBtn()"></div>
 
         <div id="addContactSlideCard" class="addContactSlideCard">
             <div id="upperBody" class="upperBody">
