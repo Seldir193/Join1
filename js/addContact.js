@@ -72,7 +72,7 @@ function addInformationToPulledWindow(i) {
      <span style="color:rgb(27, 110, 255)">${contactBook[i].email}</span>
      <h4>Phone</h4>
      <span>${contactBook[i].number}</span></div>
-     <div onclick="openResponsivDeleteEdit()" class="reponsivDots"><img src="./assets/img/more_vert.png"></div>`;
+     <div><div onclick="openResponsivDeleteEdit()" class="responsivDots"><img src="./assets/img/more_vert.png"></div></div>`;
 }
 
 function openResponsivDeleteEdit() {

@@ -441,7 +441,7 @@
   font-weight: bold;
 }
 
-.reponsivDots {
+.responsivDots {
   width: 72px;
   height: 72px;
   border-radius: 6px;
@@ -455,7 +455,21 @@
   visibility: hidden;
 }
 
-.reponsivDots img {
+.responsivDots img {
   width: 6px;
   height: 32px;
+}
+
+.addContactButtonContainerResponsiv {
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  background-color: #1a6eff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  right: 32px;
+  position: absolute;
+  bottom: 86px;
+  right: 32px;
 }
