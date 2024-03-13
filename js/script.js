@@ -1,14 +1,21 @@
-function loginForm(){
+load();
+displayGreeting();
+
+async function loginForm(){
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
     const rememberCheckbox = document.getElementById('rememberCheckbox');
     
-    if (!email || !password || !rememberCheckbox.checked) {
+    if (!email || !password) {
         console.log('E-Mail und Passwort sind erforderlich.');
         return;
     }
     
-    rememberMe();
+    if (rememberCheckbox.checked) {
+        await rememberMe();
+    } else {
+        clearCredentials();
+    }
     
     let user = users.find(u => u.email === email && u.password === password);
 
@@ -95,7 +102,7 @@ async function load() {
         console.error('Fehler beim Laden des Benutzernamens aus dem Remote-Speicher:', error);
     }
 }
-load();
+
 
 const urlParams = new URLSearchParams(window.location.search);
 const msg = urlParams.get('msg');
@@ -162,8 +169,6 @@ function displayGreeting() {
     }
 }
 
-displayGreeting();
-
 function togglePasswordVisibility() {
     const passwordInput = document.getElementById('password');
     const togglePasswordIcon = document.getElementById('togglePassword');
@@ -192,17 +197,19 @@ function togglePasswordConfirmVisibility() {
     }
 }
 
-function redirectToSignUp() {                                  
+function guestToLogin() {
+    const guestUser = { name: 'Gast' };
+    save(guestUser.name);
     window.location.href = 'summary.html';
 }
- function guestToLogin(){   
-    save('');                               
-    window.location.href = 'summary.html'; 
- }
 
 function toggleMenuBar() {
     var menuBar = document.getElementById('menuBar');
     menuBar.style.display = (menuBar.style.display === 'block') ? 'none' : 'block';
+}
+
+function redirectToSignUp() {                                  
+    window.location.href = 'summary.html';
 }
 
 function signForm(){
@@ -224,3 +231,34 @@ function showPrivacyPolicy(){
 function showHelp(){
     window.location.href = 'help.html';
 }
+
+function returnToOriginalPage(page) {
+    if (page) {
+        window.location.href = page;
+    } else {
+        
+        window.history.back();
+    }
+}
+
+// Bağlantılar için Event Listener'ları ekle
+document.getElementById('policyLink').addEventListener('click', function() {
+    returnToOriginalPage('privacy.html');
+});
+
+document.getElementById('legalLink').addEventListener('click', function() {
+    returnToOriginalPage('legal.html');
+});
+
+document.getElementById('helpLink').addEventListener('click', function() {
+    returnToOriginalPage('help.html');
+});
+
+function returnToOriginalPage() {
+    history.back();
+}
+
+
+
+
+

@@ -114,7 +114,6 @@ body {
 .summary-container {
   display: flex;
   padding: 120px 60px;
-  height: 40px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

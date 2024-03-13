@@ -1,3 +1,4 @@
+
 function toggleMenuBar() {
     var menuBar = document.getElementById('menuBar');
     menuBar.style.display = (menuBar.style.display === 'block') ? 'none' : 'block';
@@ -12,19 +13,22 @@ function logOut(){
 }
 
 function showLegalNotice(){
-    window.location.href = 'legal.html';
+  window.location.href = 'legal.html';
 }
+
+
 
 function showPrivacyPolicy(){
-    window.location.href = 'privacy.html';
+  window.location.href = 'privacy.html';
 }
 
+
 function showContact(){
-    window.location.href = 'contact.html';
+  window.location.href = 'contact.html';
 }
 
 function showHelp(){
-    window.location.href = 'help.html';
+  window.location.href = 'help.html';
 }
 
 function toggleContactBackground(i) {     // Das müssen wir noch machen.

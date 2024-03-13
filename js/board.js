@@ -13,7 +13,7 @@ async function onload() {
     await init();
     includeHTML();
     render();
-  
+    load();
 }
 
 
