@@ -23,14 +23,17 @@
 
 .inputContainerOne {
   position: relative;
+  width: 100%;
 }
 
 .inputContainerTwo {
   position: relative;
+  width: 100%;
 }
 
 .inputContainerThree {
   position: relative;
+  width: 100%;
 }
 
 .inputContainerImg {
@@ -183,7 +186,7 @@
 }
 
 .lowerBodyDiv {
-  width: 422px;
+  width: 80%;
   height: 438px;
 }
 
@@ -221,10 +224,11 @@
   justify-content: center;
   flex-direction: row;
   gap: 16px;
+  width: 80%;
 }
 
 .createUserBtn {
-  width: 204px;
+  width: 60%;
   height: 61px;
   padding: 8px;
   background-color: rgb(69, 137, 255);
@@ -244,7 +248,7 @@
 }
 
 .closeAddContactBtn {
-  width: 136px;
+  width: 40%;
   padding: 8px;
   background-color: rgb(250, 250, 250);
   border: 1px solid rgb(200, 200, 200);

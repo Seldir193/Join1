@@ -27,7 +27,7 @@
   margin: 0;
 }
 
-.buttonSize{
+.buttonSize {
   background-color: white;
   color: #29abe2;
   font-weight: 700;
@@ -122,7 +122,7 @@
   height: 100vh;
 }
 
-#userInitial{
+#userInitial {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -313,6 +313,20 @@
     transform: translateX(135%);
     transition: all 150ms ease-in-out;
     z-index: 99;
+  }
+
+  .addContactSlideCard {
+    width: 90%;
+  }
+
+  .radiusLeft {
+    border-radius: 25px 25px 0px 0px;
+  }
+
+  .slideOpen {
+    transform: translateX(-6%) !important;
+    z-index: 9999;
+    border-radius: 25px !important;
   }
 
   .sum-container {
