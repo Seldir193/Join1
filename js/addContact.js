@@ -49,18 +49,28 @@ function pullContact(i) {
 
 function addHeadlineToPulledWindow(i) {
   let contactContainer = document.getElementById("pullContactToWindow");
+  let char = getCharAfterEmptySpace(i);
   contactContainer.innerHTML = `
-  <div class="responsivHeader"><span class="responsivContactInformation">Contact Information</span><img onclick="pullContact(${i})" src="assets/img/arrow-left-line (1).png" alt="Arrow Image"></div>
-  <div class="pulledHeadline">
-  <div class="chartAtPulledContact" style="background-color: ${
-    randomColorCollection[i]
-  }">
-  ${contactBook[i].name.charAt(0)}</div>
-  <div><h1 class="h1Name">${contactBook[i].name}</h1>
-  <div id="editAndDeletetContainer">
-  <button onclick="editContact(${i})" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/pencil.png">Edit</button>
-  <button onclick="deleteContact(${i})" class="editAndDeletetBtn"><img class="pencilAndTrashImg" src="./assets/img/mulleimer.png">Delete</button>
-  </div></div>`;
+    <div class="responsivHeader">
+      <span class="responsivContactInformation">Contact Information</span>
+      <img onclick="pullContact(${i})" src="assets/img/arrow-left-line (1).png" alt="Arrow Image">
+    </div>
+    <div class="pulledHeadline">
+      ${char}
+      <div>
+        <h1 class="h1Name">${contactBook[i].name}</h1>
+        <div id="editAndDeletetContainer">
+          <button onclick="editContact(${i})" class="editAndDeletetBtn">
+            <img class="pencilAndTrashImg" src="./assets/img/pencil.png">
+            Edit
+          </button>
+          <button onclick="deleteContact(${i})" class="editAndDeletetBtn">
+            <img class="pencilAndTrashImg" src="./assets/img/mulleimer.png">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>`;
   addInformationToPulledWindow(i);
 }
 
@@ -88,7 +98,6 @@ function hiddeResponsivDeleteAndEditBtn() {
     .getComputedStyle(editAndDeleteContainer)
     .getPropertyValue("transform");
 
-  // Überprüfen, ob der Container sich bereits in der Startposition befindet
   if (currentTransform === "matrix(1, 0, 0, 1, 0, 0)") {
     editAndDeleteContainer.style.transform = "translateX(135%)";
   }
@@ -111,12 +120,9 @@ function closeAddContact() {
 }
 
 function editContact(i) {
-  document.getElementById(
-    "userImgLowerBody"
-  ).innerHTML = `<div class="chartAtPulledContact" style="background-color: ${
-    randomColorCollection[i]
-  }">
-  ${contactBook[i].name.charAt(0)}</div>`;
+  let userImgLowerBody = document.getElementById("userImgLowerBody");
+  let char = getCharAfterEmptySpace(i);
+  userImgLowerBody.innerHTML = char;
 
   document.getElementById("xCloseBtn").classList.add("closeXEdit");
   document.getElementById("blurContainer").classList.remove("d-none");
@@ -130,6 +136,23 @@ function editContact(i) {
   renderButtonToEditLowerBody(i);
 
   editIndex.push(i);
+}
+
+function getCharAfterEmptySpace(i) {
+  let fullName = contactBook[i].name;
+  let firstName = fullName.split(" ")[0];
+  let lastName = fullName.split(" ")[1];
+
+  let firstNameCapitalized =
+    firstName.charAt(0).toUpperCase() + firstName.slice(1);
+  let lastNameCapitalized =
+    lastName.charAt(0).toUpperCase() + lastName.slice(1);
+
+  return `<div class="chartAtPulledContact" style="background-color: ${
+    randomColorCollection[i]
+  }">
+    ${firstNameCapitalized.charAt(0)}${lastNameCapitalized.charAt(0)}
+  </div>`;
 }
 
 function renderButtonToEditLowerBody(i) {
