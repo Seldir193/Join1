@@ -25,20 +25,24 @@ function renderAlphabeticalCategories() {
 
 function renderContacts() {
   for (let i = 0; i < contactBook.length; i++) {
-    let letter = contactBook[i].name.charAt(0).toUpperCase();
-    let contacts = document.getElementById(letter);
+    let firstName = contactBook[i].name.split(" ")[0];
+    let lastName = contactBook[i].name.split(" ")[1] || "";
+    let firstChar = firstName.charAt(0).toUpperCase();
+    let lastChar = lastName.charAt(0).toUpperCase();
+
+    let contacts = document.getElementById(firstChar);
     let randomColor = getRandomColor();
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
+
     contacts.innerHTML += `
     <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
-    <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
+    <div class="chartAt" ${charStyle}>${firstChar}${lastChar}</div>
     <div class="renderNameEmail" >
     <div class="listName">${contactBook[i].name} </div>
     <div class="listEmail">${contactBook[i].email}</div>
-    
     </div><input class="box" type="checkbox" id="remember" name="remember">
-   </button>`;
+    </button>`;
   }
 }
 
@@ -148,7 +152,7 @@ function getCharAfterEmptySpace(i) {
   let lastNameCapitalized =
     lastName.charAt(0).toUpperCase() + lastName.slice(1);
 
-  return `<div class="chartAtPulledContact" style="background-color: ${
+  return `<div id="charIcon" class="chartAtPulledContact" style="background-color: ${
     randomColorCollection[i]
   }">
     ${firstNameCapitalized.charAt(0)}${lastNameCapitalized.charAt(0)}
