@@ -104,15 +104,24 @@ function addContact() {
 function closeAddContact() {
   document.getElementById("blurContainer").classList.add("d-none");
   document.getElementById("addContactSlideCard").classList.remove("slideOpen");
-  document.getElementById("editDeleteSlideCard").classList.remove("slideOpen");
+  document
+    .getElementById("editDeleteSlideCard")
+    .classList.remove("slideOpenEdit");
   editIndex = [];
 }
 
 function editContact(i) {
+  document.getElementById(
+    "userImgLowerBody"
+  ).innerHTML = `<div class="chartAtPulledContact" style="background-color: ${
+    randomColorCollection[i]
+  }">
+  ${contactBook[i].name.charAt(0)}</div>`;
+
   document.getElementById("xCloseBtn").classList.add("closeXEdit");
   document.getElementById("blurContainer").classList.remove("d-none");
   document.getElementById("upperBodyEditDelete").classList.add("radiusRight");
-  document.getElementById("editDeleteSlideCard").classList.add("slideOpen");
+  document.getElementById("editDeleteSlideCard").classList.add("slideOpenEdit");
 
   document.getElementById("inputEditName").value = `${contactBook[i].name}`;
   document.getElementById("inputEditEmail").value = `${contactBook[i].email}`;

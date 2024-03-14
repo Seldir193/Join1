@@ -310,8 +310,8 @@
     position: absolute;
     bottom: 190px;
     right: 32px;
-    transform: translateX(135%);
-    transition: all 150ms ease-in-out;
+    transform: translateX(200%);
+    transition: all 100ms ease-in-out;
     z-index: 99;
   }
 
@@ -322,11 +322,34 @@
   .radiusLeft {
     border-radius: 25px 25px 0px 0px;
   }
+  .radiusRight {
+    border-radius: 25px 25px 0px 0px;
+  }
+
+  .inputLowerBody {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .editDeleteSlideCard {
+    width: 90%;
+  }
 
   .slideOpen {
-    transform: translateX(-6%) !important;
-    z-index: 9999;
+    height: 85vh;
     border-radius: 25px !important;
+    margin-top: 70px;
+    box-shadow: 0px 0px 24px grey;
+    z-index: 9999;
+    transform: translateX(-6%) !important;
+  }
+  .slideOpenEdit {
+    height: 85vh;
+    border-radius: 25px !important;
+    margin-top: 70px;
+    box-shadow: 0px 0px 24px grey;
+    z-index: 9999;
+    transform: translateX(5%) !important;
   }
 
   .sum-container {
@@ -334,6 +357,63 @@
   }
   .responsivDots {
     visibility: visible;
+  }
+
+  .addContactButtonContainerResponsiv {
+    visibility: visible;
+  }
+
+  .upperBody img {
+    display: none;
+  }
+
+  .chartAtPulledContact {
+    background-color: #b4aef8;
+    position: absolute;
+    top: -60px;
+    border: solid 6px white;
+  }
+
+  .closeAddContactBtn {
+    display: none;
+  }
+  .functionNameTextTwo {
+    font-size: 20px;
+  }
+
+  .lowerBodyDiv {
+    height: unset;
+  }
+
+  .lowerBody {
+    position: relative;
+  }
+
+  .editDeleteSlideCard {
+    transform: translateX(200%);
+    transition: all 100ms ease-in-out;
+  }
+
+  .lowerBodyBtnContainer {
+    padding-top: 40px;
+  }
+
+  .closeX {
+    font-size: 54px;
+    right: 32px;
+  }
+  .closeXEdit {
+    font-size: 54px;
+    right: 32px !important;
+    left: unset;
+  }
+
+  .createUserBtn {
+    width: 80%;
+  }
+
+  .userImgLowerBody {
+    display: none;
   }
 
   .addContactButtonContainer {
