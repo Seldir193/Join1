@@ -136,4 +136,7 @@ body {
     padding: 7px;
   }
 
+  .sideBoardOffline{
+    display: none;
+  }
 

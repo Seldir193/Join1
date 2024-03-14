@@ -481,3 +481,8 @@
   right: 32px;
   visibility: hidden;
 }
+
+.sideBoardOffline{
+  display: none;
+}
+

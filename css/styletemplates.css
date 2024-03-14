@@ -129,6 +129,8 @@
   padding: 7px;
 }
 
+
+
 @media only screen and (max-width: 768px) {
   .flex50.column {
     display: flex;
@@ -182,9 +184,9 @@
   }
 
   .summary-container {
-    padding: 90px 0px 10px 10px;
+    padding: 120px 10px 10px 10px;
   }
-
+  
   .sum-container h1 {
     font-size: 36px;
   }

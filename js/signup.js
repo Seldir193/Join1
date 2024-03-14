@@ -15,6 +15,15 @@ async function register() {
         registerBtn.disabled = false;
         return;
     }
+
+    // Kullanıcının daha önce kayıtlı olup olmadığını kontrol et
+    const userExists = users.some(user => user.email === email);
+
+    if (userExists) {
+        alert("Bu e-posta adresi zaten kullanımda.");
+        registerBtn.disabled = false;
+        return;
+    }
     
     try {
         users.push({
@@ -45,6 +54,8 @@ function showLegalNotice(){
 function showPrivacyPolicy(){
     window.location.href = 'privacy.html';
 }
+
+
 
 
 

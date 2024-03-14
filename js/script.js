@@ -26,7 +26,23 @@ async function loginForm(){
         window.location.href = 'summary.html';
     } else {
         console.log('Benutzer nicht gefunden');
+        alert('Yanlış e-posta veya şifre. Lütfen tekrar deneyin.');
+        
     }
+    clearRememberCheckbox();
+}
+
+async function clearRememberCheckbox() {
+    let rememberCheckbox = document.getElementById('rememberCheckbox');
+    let emailInput = document.getElementById('email');
+    let passwordInput = document.getElementById('password');
+    
+    rememberCheckbox.checked = false;
+    emailInput.value = '';
+    passwordInput.value = '';
+    
+    // Hatırla kutusu bilgilerini localStorage'dan temizle
+    await clearCredentials();
 }
 
 async function clearCredentials() {
@@ -35,7 +51,8 @@ async function clearCredentials() {
         await setItem('rememberedEmail', '');
         await setItem('rememberedPassword', '');
         console.log('Anmeldeinformationen erfolgreich gelöscht.');
-        loadRememberedCredentials(); // Aktualisieren der Anmeldeinformationen im Formular
+       
+        // Aktualisieren der Anmeldeinformationen im Formular
     } catch (error) {
         console.error('Fehler beim Löschen der Anmeldeinformationen:', error);
     }
@@ -49,6 +66,17 @@ async function rememberMe() {
     const passwordInput = document.getElementById('password');
   
     if (rememberCheckbox && rememberCheckbox.checked) {
+        // E-posta adresi değişmişse, sistemde kayıtlı olan e-posta adresine ait şifreyi hatırla
+        const rememberedEmail = await getItem('rememberedEmail');
+        const rememberedPassword = await getItem('rememberedPassword');
+        if (rememberedEmail !== emailInput.value) {
+            // E-posta adresi değiştiğinde, sistemde kayıtlı olan e-posta adresine ait şifreyi otomatik olarak doldur
+            const user = users.find(u => u.email === emailInput.value);
+            if (user) {
+                passwordInput.value = user.password || ''; // Kullanıcıya ait şifreyi doldur veya boşalt
+            }
+        }
+        
         // Speichern der Anmeldeinformationen und des Checkbox-Status im Remote-Speicher
         try {
             await setItem('rememberedEmail', emailInput.value);
@@ -59,12 +87,13 @@ async function rememberMe() {
             console.error('Fehler beim Speichern der Anmeldeinformationen:', error);
         }
     } else {
-        // Löschen der Anmeldeinformationen und des Checkbox-Status im Remote-Speicher
+        // Hatırla kutusu işaretlenmemişse, diğer işlemleri gerçekleştir
         await clearCredentials();
     }
   
     await loadRememberedCredentials(); // Aktualisieren der Anmeldeinformationen im Formular
 }
+
 
 async function loadRememberedCredentials() {
     try {
@@ -100,9 +129,9 @@ async function load() {
         }
     } catch (error) {
         console.error('Fehler beim Laden des Benutzernamens aus dem Remote-Speicher:', error);
+
     }
 }
-
 
 const urlParams = new URLSearchParams(window.location.search);
 const msg = urlParams.get('msg');
@@ -224,8 +253,16 @@ function showLegalNotice(){
     window.location.href = 'legal.html';
 }
 
+function guestLegalNotice(){
+    window.location.href = 'guestLegal.html';
+}
+
 function showPrivacyPolicy(){
     window.location.href = 'privacy.html';
+}
+
+function guestPrivacyPolicy(){
+    window.location.href = 'guestprivacy.html';
 }
 
 function showHelp(){
@@ -241,7 +278,7 @@ function returnToOriginalPage(page) {
     }
 }
 
-// Bağlantılar için Event Listener'ları ekle
+
 document.getElementById('policyLink').addEventListener('click', function() {
     returnToOriginalPage('privacy.html');
 });

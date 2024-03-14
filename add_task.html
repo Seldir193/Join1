@@ -14,7 +14,7 @@
     <script src="js/add_task.js"></script>
     <script src="js/script.js"></script>
 </head>
-<body  onload="includeHTML(); init(); load(); " >
+<body  onload="includeHTML(); init(); load(); datePlan();"  >
     <div w3-include-html="./templates/header.html"></div>
 <div class="main-content">
     <div w3-include-html="./templates/side-menu.html"></div>
@@ -37,7 +37,7 @@
                     <nav class="due-date">
                         <span>Due date</span>
                     </nav>
-                    <input class="due-input" id="dateInput" type="date" required>
+                    <input class="due-input" id="dateInput" type="date" required  >
                     <nav class="due-box"></nav>
                 </nav>
                 <nav class="priority">

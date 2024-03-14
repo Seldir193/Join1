@@ -69,7 +69,17 @@ function toggleCategory() {
 }
 
 
+function datePlan(){
+const today = new Date();
+// Bugünün tarihini ISO formatına dönüştür (YYYY-MM-DD)
+const todayISO = today.toISOString().split('T')[0];
 
+// Due input elementini seç
+const dueInput = document.getElementById('dateInput');
+// Minimum tarih olarak bugünün tarihini (todayISO) belirle
+dueInput.min = todayISO;
+
+}
 
   
 
