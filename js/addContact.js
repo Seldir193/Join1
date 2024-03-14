@@ -30,9 +30,11 @@ function renderContacts() {
     let randomColor = getRandomColor();
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
+    let firstName = contactBook[i].name.split(" ")[0].charAt(0).toUpperCase();
+    let lastName = contactBook[i].name.split(" ")[1].charAt(0).toUpperCase();
     contacts.innerHTML += `
     <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
-    <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
+    <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
     <div class="renderNameEmail" >
     <div class="listName">${contactBook[i].name} </div>
     <div class="listEmail">${contactBook[i].email}</div>
