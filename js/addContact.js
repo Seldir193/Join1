@@ -235,11 +235,27 @@ function clearInput() {
   inputPhone.value = "";
 }
 
+function isWhiteOrGray(color) {
+  let r = parseInt(color.substr(1, 2), 16);
+  let g = parseInt(color.substr(3, 2), 16);
+  let b = parseInt(color.substr(5, 2), 16);
+
+  let brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness > 200;
+}
+
 function getRandomColor() {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-  let color = "#" + r.toString(16) + g.toString(16) + b.toString(16);
+  let color;
+  do {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    color =
+      "#" +
+      r.toString(16).padStart(2, "0") +
+      g.toString(16).padStart(2, "0") +
+      b.toString(16).padStart(2, "0");
+  } while (isWhiteOrGray(color));
   return color;
 }
 
