@@ -13,7 +13,7 @@ async function onload() {
     await init();
     includeHTML();
     render();
-  
+    load();
 }
 
 
@@ -81,6 +81,9 @@ function renderAddTaskFloating() {
     document.getElementById('boardsContainer').innerHTML +=
         `
     <div class="addTaskContainer" id="addTaskFloating" class="addTaskFloating">
+        <div class="closeBtnContainer">
+            <img src="assets/img/close.svg" alt="close img" onclick="toggleCard()">
+        </div>
         <h1>Add Task</h1>    
             <input type="text" id="titleAddTaskFloating" name="title" placeholder="Enter a title" required><br>
         
@@ -103,8 +106,8 @@ function renderAddTaskFloating() {
                 <div class="assigned">
                   <div class="styleAssigned"><b>Assigned to</b> (optional)</div>
                     <div class="input-with-icon">
-                       <input type="text" id="assignedInput" placeholder="Select contacts to assign..."  onclick="renderAlphabeticalCategories()" readonly>
-                       <img id="icon" onclick=" toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                       <input type="text" id="assignedInput" placeholder="Select contacts to assign..." readonly>
+                       <img id="icon" onclick="toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
                        <div id="listContactContainer"></div>
                     </div>
                 </div>
@@ -271,9 +274,8 @@ function swapDone() {
 }
 
 function generateTodoHTML(element) {
-
     return `
-        <div class="tasksOnBoard" draggable="true" ondragstart="startDragging(${element['id']})">
+        <div class="tasksOnBoard" onclick="renderTaskFloating(${element['id']})" draggable="true" ondragstart="startDragging(${element['id']})">
             <div id="categoryOnBoard${element['id']}" class="categoryOnBoard"></div>
             <span id="titleOnBoard${element['id']}" class="titleOnBoard"></span>
             <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard"></span>
@@ -289,7 +291,6 @@ function generateTodoHTML(element) {
             </div>
         </div>
         `;
-
 }
 
 
@@ -352,7 +353,7 @@ function addCategoryValue(i) {
 async function pushToDo(newToDo) {
     toDos.push(newToDo);
     await setItem('tasks', JSON.stringify(toDos));    
-    updateHTML()
+    updateHTML();
 }
 
 
@@ -484,12 +485,12 @@ function updateProgress(i) {
 
 function renderTaskFloating(i) {
 
-   document.getElementById('boardsContainer').innerHTML =
+   document.getElementById('taskBoard').innerHTML =
    `
     <div class="tasksOverBoardContainer" id="tasksOverBoardContainer${i}">
         <div class="categoryContainerOverBoard">
-            <button class="technicalTaskBtn"></button>
-            <img src="assets/img/close.png" alt="close img">
+            <button class="technicalTaskBtn" id="technicalTaskBtnOverBoard${i}"></button>
+            <img src="assets/img/close.svg" alt="close img">
         </div>
         <h1 class="titelOverBoard"></h1>
         <span class="descriptionOverBoard"></span>

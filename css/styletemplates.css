@@ -174,7 +174,7 @@
   }
 
   .header {
-    padding: 10px 10px 10px 10px;
+    padding: 20px 20px 20px 20px;
   }
 
   .headline img {
@@ -182,7 +182,6 @@
   }
 
   .summary-container {
-    gap: 60px;
     padding: 90px 0px 10px 10px;
   }
 
@@ -223,7 +222,6 @@
   }
 
   .summary-container h1 {
-    margin: unset;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -241,7 +239,7 @@
     background-color: #4589ff;
     z-index: 1000;
     padding-top: unset;
-    height: unset;
+    height: auto;
   }
 
   .sideBoardContainer {
@@ -251,7 +249,7 @@
 
   .main-content {
     padding-bottom: 56px; /* Höhe des fixierten Menüs */
-    height: 870px;
+    height: auto;
   }
 
   .sideBoardChild2 {

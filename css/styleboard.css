@@ -613,3 +613,10 @@
   line-height: 25.2px;
   color: rgba(66, 82, 110, 1);
 }
+
+
+.closeBtnContainer{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
