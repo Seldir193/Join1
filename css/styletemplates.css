@@ -1,3 +1,19 @@
+.menu-bar {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 3px #00000014;
+  padding: 10px;
+  z-index: 1;
+  top: 100px;
+  right: 50px;
+  width: 110px;
+  text-align: right;
+}
+
 .header {
   display: flex;
   position: absolute;
@@ -127,6 +143,8 @@
   align-content: center;
   padding: 7px;
 }
+
+/* ----------------------------------------------------------------- */
 
 @media only screen and (max-width: 768px) {
   .flex50.column {
@@ -405,7 +423,6 @@
   .addContactButtonContainer {
     display: none;
   }
-
 
   @media only screen and (min-width: 768px) {
     .responsivHeader {
