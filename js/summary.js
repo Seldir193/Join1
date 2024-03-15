@@ -1,3 +1,5 @@
+load();
+
 function displayUserName(userName) {
     const userNameElement = document.getElementById('user-name');
     if (userNameElement ) {
@@ -97,4 +99,4 @@ function toggleMenuBar() {
     menuBar.style.display = (menuBar.style.display === 'block') ? 'none' : 'block';
 }
 
-load();
+

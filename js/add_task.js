@@ -16,8 +16,6 @@ function showLegalNotice(){
   window.location.href = 'legal.html';
 }
 
-
-
 function showPrivacyPolicy(){
   window.location.href = 'privacy.html';
 }
@@ -31,11 +29,15 @@ function showHelp(){
   window.location.href = 'help.html';
 }
 
-function toggleContactBackground(i) {     // Das müssen wir noch machen.
+function  toggleContactBackground(i){     // Das müssen wir noch machen.
   let clickedContact = document.getElementById(`contact_${i}`);
   if (clickedContact) {
     clickedContact.classList.toggle('active');
   }
+}
+
+function toggleContactAndPullContact(index) {
+  toggleContactBackground(index);
 }
 
 function toggleIcon() {
@@ -68,7 +70,6 @@ function toggleCategory() {
   }
 }
 
-
 function datePlan(){
 const today = new Date();
 // Bugünün tarihini ISO formatına dönüştür (YYYY-MM-DD)
@@ -81,5 +82,7 @@ dueInput.min = todayISO;
 
 }
 
-  
+function pullContact(i) {
+  document.getElementById("listContactContainer").classList.toggle("pull");
+}
 

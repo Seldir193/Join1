@@ -5,6 +5,7 @@ let subtaskArray = [];
 let letterArray = [];
 let randomColorCollection = [];
 
+
 function renderAlphabeticalCategories() {
   for (let j = 0; j < contactBook.length; j++) {
     let letter = contactBook[j].name.charAt(0).toUpperCase();
@@ -48,7 +49,7 @@ function renderContacts() {
 
 function insertRenderContacts(i, charStyle, firstName, lastName) {
   return `
-    <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
+  <button id="contact_${i}" onclick="toggleContactAndPullContact(${i}, '${randomColorCollection}')" class="listContact" >
       <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
       <div class="renderNameEmail" >
         <div class="listName">${contactBook[i].name} </div>
@@ -56,6 +57,10 @@ function insertRenderContacts(i, charStyle, firstName, lastName) {
       </div>
       <input class="box" type="checkbox" id="remember" name="remember">
     </button>`;
+}
+
+function toggleContactAndPullContact(index) {
+  pullContact(index);
 }
 
 function pullContact(i) {
