@@ -9,6 +9,9 @@ async function loadUsers() {
     contactBook = JSON.parse(await getItem("contact"));
     users = JSON.parse(await getItem("users"));
     tasks = JSON.parse(await getItem("tasks"));
+    console.log("Users DATA:", users);
+    users = JSON.parse(await getItem("users"));
+    tasks = JSON.parse(await getItem("tasks"));
     console.warn("Users DATA:", users);
     console.log("Contact Book Data:", contactBook);
     console.log("Tasks Data:", tasks);

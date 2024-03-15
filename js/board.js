@@ -9,6 +9,8 @@ let toDos = [];
 
 let nextId = 0;
 
+var activePriority = null;
+
 async function onload() {
     await init();
     includeHTML();
@@ -96,13 +98,11 @@ function renderAddTaskFloating() {
             <div class="StylePriority">
                         <div class="priority-header">Priority</div>
                         <div class="priority-box">
-                            <div class="urgent">Urgent<img src="assets/img/Prio alta.png"></div>
-                            <div class="medium">Medium <img src="assets/img/Prio media.png"></div>
-                            <div class="low">Low<img src="assets/img/Prio baja.png"></div>
+                            <div onclick="togglePriority(1)" class="urgent">Urgent<img src="assets/img/Prio alta.png"></div>
+                            <div onclick="togglePriority(2)" class="medium">Medium <img src="assets/img/Prio media.png"></div>
+                            <div onclick="togglePriority(3)" class="low">Low<img src="assets/img/Prio baja.png"></div>
                         </div>
                     </div>
-                    
-
                 <div class="assigned">
                   <div class="styleAssigned"><b>Assigned to</b> (optional)</div>
                     <div class="input-with-icon">
@@ -131,10 +131,10 @@ function renderAddTaskFloating() {
                 <div class="button-container">
                    <div class="button-box">
                         <div class="clear-button">
-                            <button class="clear" onclick="clearAddTaskFloating()">Clear <img src="assets/img/iconoir_cancel.png"></button>
+                            <button class="clear" onclick="clearAddTaskFloating(), togglePriority(activePriority)">Clear <img src="assets/img/iconoir_cancel.png"></button>
                         </div>
                      <div class="create-button">
-                        <button class="create" onclick="fillArray()">Create Task <img src="assets/img/check.png"></button>
+                        <button class="create" onclick="fillArray(), togglePriority(activePriority)">Create Task <img src="assets/img/check.png"></button>
                      </div>
                    </div>
                </div>   
@@ -286,7 +286,7 @@ function generateTodoHTML(element) {
                 </div>
             </div>  
             <div>
-                <div id="profilsOnBoard${element['id']}"></div>
+                <div class="profilsOnBoard" id="profilsOnBoard${element['id']}"></div>
                 <div id="priorityOnBoard${element['id']}"></div>
             </div>
         </div>
@@ -299,8 +299,21 @@ function fillTasksOnBoard(i) {
     addDescriptionValue(i);
     addDateValue(i);
     addCategoryValue(i);
+    addMembersValue(i)
     // addSubTaskValue(i);
 }
+
+function addMembersValue(i) {
+    for (j = 0; j < toDos[i].members.length; j++){
+    let memberFirstLetter = toDos[i].members[j].charAt(0).toUpperCase();
+    let color = getRandomColor();
+    document.getElementById(`profilsOnBoard${i}`).innerHTML += 
+    `
+        <div class="profileOnBoard" style="background-color: ${color};">${memberFirstLetter}</div>
+    `;
+}}
+
+
 
 function addTitleValue(i) {
     document.getElementById(`titleOnBoard${i}`).innerHTML = ``;
@@ -363,6 +376,7 @@ function fillArray() {
     let addDateValue = addDueDateToBoard();
     let addCategoryValue = addCategoryToBoard();
     let addSubTaskValue = addSubtasksToBoard();
+    let addMembersValue = addMembersValueToBoard();
     let newToDo = {
         id: `${nextId}`,
         box: 'toDoTasks',
@@ -370,13 +384,25 @@ function fillArray() {
         description: `${addDescriptionValue}`,
         category: `${addCategoryValue}`,
         dueDate: `${addDateValue}`,
+        members: addMembersValue,
         subtasks: addSubTaskValue,
     };
     nextId++;
     pushToDo(newToDo);
     clearAddTaskFloating();
+    clearMembersSubtasks();
 }
 
+
+function addMembersValueToBoard() {
+    let addMembers = [];
+
+    for (i = 0; i < contactBook.length; i++) {
+        let membersInputs = document.getElementById(`listName${i}`).innerHTML;
+        addMembers.push(membersInputs);
+    }
+    return addMembers;
+}
 
 function addTitleToBoard() {
     let addTitleInput = document.getElementById('titleAddTaskFloating');
@@ -518,4 +544,57 @@ function renderTaskFloating(i) {
         </div>
     </div>
     `;
+}
+
+
+// // function renderAlphabeticalCategoriesOnBoard() {
+// //     for (let j = 0; j < contactBook.length; j++) {
+// //       let letter = contactBook[j].name.charAt(0).toUpperCase();
+// //       if (!letterArray.includes(letter)) {
+// //         letterArray.push(letter);
+// //       }
+// //     }
+// //     let contacts = document.getElementById("listContactContainerBoard");
+// //     contacts.innerHTML = "";
+// //     letterArray = letterArray.slice().sort();
+  
+// //     for (let n = 0; n < letterArray.length; n++) {
+// //       contacts.innerHTML += `<div id="${letterArray[n]}"  class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
+// //     }
+// //    <>
+// //   }
+  
+//   function renderContactsOnBoard() {
+//     let letter = contactBook[i].name.charAt(0).toUpperCase();
+//       let contacts = document.getElementById(letter);
+//       contacts.innerHTML = '';
+//     for (let i = 0; i < contactBook.length; i++) {
+//       let letter = contactBook[i].name.charAt(0).toUpperCase();
+//       let contacts = document.getElementById(letter);
+//       let randomColor = getRandomColor();
+//       randomColorCollection.push(randomColor);
+//       let charStyle = `style="background-color: ${randomColor}"`;
+//       contacts.innerHTML += `
+//       <button id="contactOnBoard${i}" class="listContact">
+//       <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
+//       <div class="renderNameEmail" >
+//       <div class="listName">${contactBook[i].name} </div>
+      
+//       </div><input class="box" type="checkbox" id="remember" name="remember">
+//      </button>`;
+//     }
+//   }
+
+
+function togglePriority(priority) {
+    
+    if (activePriority === priority) {
+        activePriority = null;
+    } else {
+        if (activePriority !== null) {
+            document.getElementsByTagName('button')[activePriority - 1].classList.remove('active');
+        }
+        activePriority = priority;
+
+    }
 }
