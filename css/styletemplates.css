@@ -456,3 +456,34 @@
     text-align: center;
   }
 }
+
+@media (max-width: 440px) {
+  .chartAtPulledContact {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+  }
+
+  .functionNameTextOne {
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .inputContainerOne img {
+    display: none;
+  }
+  .inputContainerTwo img {
+    display: none;
+  }
+  .inputContainerThree img {
+    display: none;
+  }
+
+  .lowerBody form {
+    gap: 16px;
+  }
+
+  .functionNameTextTwo {
+    text-align: center;
+  }
+}
