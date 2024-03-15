@@ -94,7 +94,6 @@
 .sideBoard img {
   width: 22px;
   height: 22px;
-
   margin-right: 10px;
 }
 
@@ -179,10 +178,6 @@
 
   .headline img {
     max-width: 10vw;
-  }
-
-  .summary-container {
-    padding: 120px 10px 10px 10px;
   }
 
   .sum-container h1 {
