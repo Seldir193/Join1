@@ -45,3 +45,11 @@ body {
   border-width: 1px;
   border-color: RGB(209, 209, 209);
 }
+
+#menuBar {
+  display: none;
+}
+
+#menuBar.show {
+  display: block;
+}

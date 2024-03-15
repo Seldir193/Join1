@@ -96,7 +96,5 @@ function showHelp(){
 
 function toggleMenuBar() {
     var menuBar = document.getElementById('menuBar');
-    menuBar.style.display = (menuBar.style.display === 'block') ? 'none' : 'block';
+    menuBar.classList.toggle('show');
 }
-
-
