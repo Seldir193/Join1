@@ -123,7 +123,7 @@ function guestLegalNotice(){
 }
 
 function guestPrivacyPolicy(){
-    window.location.href = 'guestprivacy.html';
+    window.location.href = 'guestPrivacy.html';
 }
 
 function returnToOriginalPage(page) {

@@ -140,3 +140,13 @@ body {
     display: none;
   }
 
+  @media only screen and (max-width: 768px) {
+    .main-content {
+        display: unset;
+      }
+
+    .summary-container {
+         padding: 170px 10px 10px 10px;
+          
+    }
+  }
