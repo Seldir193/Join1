@@ -165,8 +165,15 @@ function getCharAfterEmptySpace(i) {
 
   let firstNameCapitalized =
     firstName.charAt(0).toUpperCase() + firstName.slice(1);
-  let lastNameCapitalized =
-    lastName.charAt(0).toUpperCase() + lastName.slice(1);
+
+  let lastNameCapitalized;
+  if (contactBook[i].name.split(" ").length > 1) {
+    lastNameCapitalized =
+      contactBook[i].name.split(" ")[1].charAt(0).toUpperCase() +
+      contactBook[i].name.split(" ")[1].slice(1);
+  } else {
+    lastNameCapitalized = " ";
+  }
 
   return `<div class="chartAtPulledContact" style="background-color: ${
     randomColorCollection[i]
