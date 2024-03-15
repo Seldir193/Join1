@@ -319,17 +319,6 @@
   color: white;
 }
 
-.chartAtPulledContact {
-  width: 120px;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  font-size: 56px;
-  color: white;
-}
-
 .renderNameEmail {
   display: flex;
   flex-direction: column;
@@ -486,4 +475,31 @@
 
 .sideBoardOffline {
   display: none;
+}
+
+.chartAtPulledContactTransformSlideCard {
+  background-color: #b4aef8;
+  position: absolute;
+  top: -60px;
+  border: solid 6px white;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  font-size: 56px;
+  display: grid;
+  place-items: center;
+  color: white;
+}
+
+.chartAtPulledContact {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 56px;
+  color: white;
 }

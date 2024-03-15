@@ -372,15 +372,6 @@
     font-size: 20px;
   }
 
-  /* .chartAtPulledContact {
-    background-color: #b4aef8;
-    position: absolute;
-    top: -60px;
-    border: solid 6px white;
-    left: 50%;
-    transform: translateX(-50%);
-  } */
-
   .lowerBodyDiv {
     height: unset;
   }
@@ -419,6 +410,7 @@
   .addContactButtonContainer {
     display: none;
   }
+
 
   @media only screen and (min-width: 768px) {
     .responsivHeader {
