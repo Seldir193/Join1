@@ -36,7 +36,7 @@ function renderContacts() {
     <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
     <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
     <div class="renderNameEmail" >
-    <div class="listName">${contactBook[i].name} </div>
+    <div class="listName" id="listName${i}">${contactBook[i].name} </div>
     <div class="listEmail">${contactBook[i].email}</div>
     
     </div><input class="box" type="checkbox" id="remember" name="remember">

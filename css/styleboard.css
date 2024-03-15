@@ -510,7 +510,7 @@
 }
 
 
-.tasksOverBoardContainer{
+.tasksOverBoardContainer {
   width: 528px;
   left: 148px;
   top: -1500px;
@@ -552,7 +552,7 @@
 }
 
 
-.styleDueDate{
+.styleDueDate {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 21px;
@@ -561,7 +561,7 @@
 }
 
 
-.styleDueDate th{
+.styleDueDate th {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 19px;
@@ -570,7 +570,7 @@
 }
 
 
-.StylePriority{
+.StylePriority {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 21px;
@@ -579,7 +579,7 @@
 }
 
 
-.StylePriority th{
+.StylePriority th {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 19px;
@@ -615,12 +615,37 @@
 }
 
 
-.closeBtnContainer{
+.closeBtnContainer {
   display: flex;
   justify-content: flex-end;
   width: 100%;
 }
 
+
 .sideBoardOffline{
   display: none;
+}
+
+
+.profileOnBoard {
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  border: 1px;
+  border-color: white;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.4px;
+  display: flex;
+  margin-left: -6px;
+
+}
+
+
+.profilsOnBoard {
+  display: flex;
+  position: relative;
 }
