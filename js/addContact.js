@@ -250,9 +250,10 @@ async function insertContact(event) {
   let inputEmail = document.getElementById("inputEmail").value;
   let inputPhone = document.getElementById("inputPhone").value;
   let inputName = document.getElementById("inputName").value;
-  let capitalizedInputName =
-    inputName.charAt(0).toUpperCase() + inputName.slice(1);
-
+  let words = inputName.split(" ");
+  let capitalizedInputName = words
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
   if (
     !contactBook.some(
       (contact) => contact.email === inputEmail || contact.number === inputPhone
@@ -398,4 +399,3 @@ function clearCurrentall(position) {
   subtaskArray.splice(position);
   addContactToSubtask();
 }
-
