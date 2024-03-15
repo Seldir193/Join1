@@ -47,14 +47,13 @@ function resetForm() {
     document.getElementById('registerBtn').disabled = false;
 }
 
-function showLegalNotice(){
-    window.location.href = 'legal.html';
+function guestLegalNotice(){
+    window.location.href = 'guestLegal.html';
 }
 
-function showPrivacyPolicy(){
-    window.location.href = 'privacy.html';
+function guestPrivacyPolicy(){
+    window.location.href = 'guestprivacy.html';
 }
-
 
 
 

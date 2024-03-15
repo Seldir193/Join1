@@ -13,14 +13,12 @@
     <script src="js/templates.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/summary.js"></script>
 </head>
-
 <body onload="includeHTML(); init(); load();">
     <div w3-include-html="./templates/header.html"></div>
     <section class="main-content">
         <div w3-include-html="./templates/side-menu.html" class="sideBoardContainer"></div>
-
-
         <div id="sum-container" class="sum-container">
             <div class="addContactButtonContainerResponsiv"><button onclick="addContact()" class="addToContactButtonResponiv"><img
                          src="./assets/img/person_add.png"></button></div>
@@ -96,9 +94,6 @@
                 </div>
             </div>
         </div>
-
     </section>
-
 </body>
-
 </html>
