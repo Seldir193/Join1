@@ -31,17 +31,31 @@ function renderContacts() {
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
     let firstName = contactBook[i].name.split(" ")[0].charAt(0).toUpperCase();
-    let lastName = contactBook[i].name.split(" ")[1].charAt(0).toUpperCase();
-    contacts.innerHTML += `
-    <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
-    <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
-    <div class="renderNameEmail" >
-    <div class="listName">${contactBook[i].name} </div>
-    <div class="listEmail">${contactBook[i].email}</div>
-    
-    </div><input class="box" type="checkbox" id="remember" name="remember">
-   </button>`;
+    let lastName;
+    if (contactBook[i].name.split(" ").length > 1) {
+      lastName = contactBook[i].name.split(" ")[1].charAt(0).toUpperCase();
+    } else {
+      lastName = " ";
+    }
+    contacts.innerHTML += insertRenderContacts(
+      i,
+      charStyle,
+      firstName,
+      lastName
+    );
   }
+}
+
+function insertRenderContacts(i, charStyle, firstName, lastName) {
+  return `
+    <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
+      <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
+      <div class="renderNameEmail" >
+        <div class="listName">${contactBook[i].name} </div>
+        <div class="listEmail">${contactBook[i].email}</div>
+      </div>
+      <input class="box" type="checkbox" id="remember" name="remember">
+    </button>`;
 }
 
 function pullContact(i) {
@@ -52,7 +66,12 @@ function pullContact(i) {
 function addHeadlineToPulledWindow(i) {
   let contactContainer = document.getElementById("pullContactToWindow");
   let char = getCharAfterEmptySpace(i);
-  contactContainer.innerHTML = `
+  contactContainer.innerHTML = insertAddHeadlineToPulledWindow(i, char);
+  addInformationToPulledWindow(i);
+}
+
+function insertAddHeadlineToPulledWindow(i, char) {
+  return `
     <div class="responsivHeader">
       <span class="responsivContactInformation">Contact Information</span>
       <img onclick="pullContact(${i})" src="assets/img/arrow-left-line (1).png" alt="Arrow Image">
@@ -73,7 +92,6 @@ function addHeadlineToPulledWindow(i) {
         </div>
       </div>
     </div>`;
-  addInformationToPulledWindow(i);
 }
 
 function addInformationToPulledWindow(i) {
@@ -180,11 +198,10 @@ async function saveChanges(event) {
   contactBook[index].name = capitalizedChangeName;
   contactBook[index].email = document.getElementById("inputEditEmail").value;
   contactBook[index].number = document.getElementById("inputEditPhone").value;
-
   await setItem("contact", JSON.stringify(contactBook));
-
   await loadUsers();
   editIndex = [];
+
   closeAddContact();
 }
 
@@ -218,14 +235,12 @@ async function insertContact(event) {
       number: inputPhone,
     });
 
-    // contactBook = []; -> Nutzen zum löschen der serverdaten
-
     await setItem("contact", JSON.stringify(contactBook));
     renderAlphabeticalCategories();
     clearInput();
   } else {
     clearInput();
-    alert("Kontakt ist bereits vorhanden");
+    // alert("Kontakt ist bereits vorhanden");
   }
 }
 
@@ -233,15 +248,6 @@ function clearInput() {
   inputName.value = "";
   inputEmail.value = "";
   inputPhone.value = "";
-}
-
-function isWhiteOrGray(color) {
-  let r = parseInt(color.substr(1, 2), 16);
-  let g = parseInt(color.substr(3, 2), 16);
-  let b = parseInt(color.substr(5, 2), 16);
-
-  let brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  return brightness > 200;
 }
 
 function getRandomColor() {
@@ -257,6 +263,15 @@ function getRandomColor() {
       b.toString(16).padStart(2, "0");
   } while (isWhiteOrGray(color));
   return color;
+}
+
+function isWhiteOrGray(color) {
+  let r = parseInt(color.substr(1, 2), 16);
+  let g = parseInt(color.substr(3, 2), 16);
+  let b = parseInt(color.substr(5, 2), 16);
+
+  let brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness > 200;
 }
 
 function selectCategory(category) {

@@ -129,8 +129,6 @@
   padding: 7px;
 }
 
-
-
 @media only screen and (max-width: 768px) {
   .flex50.column {
     display: flex;
@@ -186,7 +184,7 @@
   .summary-container {
     padding: 120px 10px 10px 10px;
   }
-  
+
   .sum-container h1 {
     font-size: 36px;
   }
@@ -367,21 +365,21 @@
     display: none;
   }
 
-  .chartAtPulledContact {
-    background-color: #b4aef8;
-    position: absolute;
-    top: -60px;
-    border: solid 6px white;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
   .closeAddContactBtn {
     display: none;
   }
   .functionNameTextTwo {
     font-size: 20px;
   }
+
+  /* .chartAtPulledContact {
+    background-color: #b4aef8;
+    position: absolute;
+    top: -60px;
+    border: solid 6px white;
+    left: 50%;
+    transform: translateX(-50%);
+  } */
 
   .lowerBodyDiv {
     height: unset;
