@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Join summary</title>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/styleall.css">
     <link rel="stylesheet" href="css/stylesummary.css">
@@ -17,13 +18,16 @@
     <script src="js/board.js"></script>
     <script src="js/summary.js"></script>
 </head>
-<body onload="includeHTML(); load(); displayGreeting();">
+
+<body onload="includeHTML(); load(); init(); displayGreeting();">
     <div w3-include-html="./templates/header.html"></div>
     <div class="main-content">
         <div w3-include-html="./templates/side-menu.html"></div>
         <div class="sum-container">
             <div class="summary-container">
-               <div class="greatName"> <h1 id="greeting"></h1><span id="user-name"></span></div>
+                <div class="greatName">
+                    <h1 id="greeting"></h1><span id="user-name"></span>
+                </div>
                 <div class="date">
                     <a href="board.html"><img src="assets/img/Urgency.png"></a>
                     <a href="board.html"><img src="assets/img/square button.png"></a>
@@ -38,4 +42,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -399,4 +399,3 @@ function clearCurrentall(position) {
   subtaskArray.splice(position);
   addContactToSubtask();
 }
-
