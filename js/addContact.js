@@ -3,7 +3,8 @@ let categorySet = ["Technical Task", "User Story"];
 let selectedCategories = [];
 let subtaskArray = [];
 let letterArray = [];
-let randomColorCollection = [];
+let randomColorCollection = {};
+let initialColorMap = {};
 
 function renderAlphabeticalCategories() {
   for (let j = 0; j < mainUserInfos[0].contactBook.length; j++) {
@@ -27,8 +28,10 @@ function renderContacts() {
   for (let i = 0; i < mainUserInfos[0].contactBook.length; i++) {
     let letter = mainUserInfos[0].contactBook[i].name.charAt(0).toUpperCase();
     let contacts = document.getElementById(letter);
-    let randomColor = getRandomColor();
-    randomColorCollection.push(randomColor);
+    let randomColor = getRandomColorForInitials(
+      mainUserInfos[0].contactBook[i].name
+    );
+    randomColorCollection[i] = randomColor;
     let charStyle = `style="background-color: ${randomColor}"`;
     let firstName = mainUserInfos[0].contactBook[i].name
       .split(" ")[0]
@@ -54,7 +57,7 @@ function renderContacts() {
 
 function insertRenderContacts(i, charStyle, firstName, lastName) {
   return `
-    <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
+    <button id="contact_${i}" onclick="pullContact(${i})" class="listContact">
       <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
       <div class="renderNameEmail" >
         <div class="listName">${mainUserInfos[0].contactBook[i].name} </div>
@@ -301,19 +304,37 @@ function clearInput() {
   inputPhone.value = "";
 }
 
-function getRandomColor() {
-  let color;
-  do {
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    color =
-      "#" +
-      r.toString(16).padStart(2, "0") +
-      g.toString(16).padStart(2, "0") +
-      b.toString(16).padStart(2, "0");
-  } while (isWhiteOrGray(color));
-  return color;
+function getRandomColorForInitials(name) {
+  let initials = getInitials(name);
+  // Überprüfen, ob bereits eine Farbe für die Initialen vorhanden ist
+  if (initialColorMap.hasOwnProperty(initials)) {
+    return initialColorMap[initials];
+  } else {
+    // Generiere eine neue zufällige Farbe
+    let color;
+    do {
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      color =
+        "#" +
+        r.toString(16).padStart(2, "0") +
+        g.toString(16).padStart(2, "0") +
+        b.toString(16).padStart(2, "0");
+    } while (isWhiteOrGray(color));
+    // Speichere die Farbe für die Initialen
+    initialColorMap[initials] = color;
+    return color;
+  }
+}
+
+function getInitials(name) {
+  let words = name.split(" ");
+  let initials = "";
+  for (let i = 0; i < words.length; i++) {
+    initials += words[i].charAt(0).toUpperCase();
+  }
+  return initials;
 }
 
 function isWhiteOrGray(color) {

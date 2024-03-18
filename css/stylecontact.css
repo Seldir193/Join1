@@ -168,6 +168,12 @@
   border-radius: 50%;
   padding: 0px 0px 4px 0px;
 }
+.closeXEdit:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  padding: 0px 0px 4px 0px;
+}
 
 .upperBody img {
   width: 55px;
