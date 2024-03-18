@@ -376,7 +376,7 @@ function fillArray() {
     let addDateValue = addDueDateToBoard();
     let addCategoryValue = addCategoryToBoard();
     let addSubTaskValue = addSubtasksToBoard();
-    let addMembersValue = addMembersValueToBoard();
+    // let addMembersValue = addMembersValueToBoard();
     let newToDo = {
         id: `${nextId}`,
         box: 'toDoTasks',
@@ -384,7 +384,7 @@ function fillArray() {
         description: `${addDescriptionValue}`,
         category: `${addCategoryValue}`,
         dueDate: `${addDateValue}`,
-        members: addMembersValue,
+        // members: addMembersValue,
         subtasks: addSubTaskValue,
     };
     nextId++;
@@ -394,15 +394,15 @@ function fillArray() {
 }
 
 
-function addMembersValueToBoard() {
-    let addMembers = [];
+// function addMembersValueToBoard() {
+//     let addMembers = [];
 
-    for (i = 0; i < contactBook.length; i++) {
-        let membersInputs = document.getElementById(`listName${i}`).innerHTML;
-        addMembers.push(membersInputs);
-    }
-    return addMembers;
-}
+//     for (i = 0; i < contactBook.length; i++) {
+//         let membersInputs = document.getElementById(`listName${i}`).innerHTML;
+//         addMembers.push(membersInputs);
+//     }
+//     return addMembers;
+// }
 
 function addTitleToBoard() {
     let addTitleInput = document.getElementById('titleAddTaskFloating');
