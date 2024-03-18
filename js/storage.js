@@ -1,6 +1,7 @@
 const STORAGE_TOKEN = "UYC2KGRBQ7QS5SWVHQYXYARK3RHQJN240BPE82NE";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
+let mainUserInfos = [];
 let contactBook = [];
 let currentUserKey = [];
 
@@ -13,13 +14,11 @@ async function loadUsers() {
     currentUserKey = JSON.parse(await getItem("currentUserKey")); //Besim: Laden des aktuelle users
 
     try {
-      contactBook = JSON.parse(await getItem("contact"));
+      mainUserInfos = JSON.parse(await getItem(`${currentUserKey}`)); //Laden der INfos vom übergeordneten Array
       users = JSON.parse(await getItem("users"));
       tasks = JSON.parse(await getItem("tasks"));
       console.log("Users DATA:", users);
-      users = JSON.parse(await getItem("users"));
-      tasks = JSON.parse(await getItem("tasks"));
-      console.warn("Users DATA:", users);
+      console.log("MainUser DATA:", mainUserInfos);
       console.log("Contact Book Data:", contactBook);
       console.log("Tasks Data:", tasks);
       renderAlphabeticalCategories();
@@ -28,6 +27,14 @@ async function loadUsers() {
     }
   } catch (e) {
     console.error("Loading error:", e);
+  }
+  loadContactbook();
+}
+
+async function loadContactbook() {
+  let countUsers = mainUserInfos[0].length;
+  for (let i = 0; i < countUsers; i++) {
+    contactBook.push(mainUserInfos[0][i]);
   }
 }
 

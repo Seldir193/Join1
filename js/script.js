@@ -18,8 +18,9 @@ async function loginForm() {
 
   if (user) {
     console.log("Benutzer gefunden:", user);
-    currentUserKey.push(user.email); //Besim: Pushen des aktuellen users
+    currentUserKey.push(email); //Besim: Pushen des aktuellen users der eingetippt wird
     await setItem("currentUserKey", JSON.stringify(currentUserKey)); //Besim: Speichern des aktuellem users in remote
+    init();
     save(user.name);
     displayUserName(user.name);
     window.location.href = "summary.html";
@@ -28,6 +29,10 @@ async function loginForm() {
     alert("Yanlış e-posta veya şifre. Lütfen tekrar deneyin.");
   }
   clearRememberCheckbox();
+}
+
+async function loadUsersForLogin() {
+  users = JSON.parse(await getItem("users"));
 }
 
 async function clearRememberCheckbox() {
