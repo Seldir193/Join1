@@ -235,7 +235,7 @@ function updateHTML() {
 
 
 function swapToDo() {
-    let addedToDo = toDos.filter(t => t['box'] == 'toDoTasks');
+    let addedToDo = mainUserInfos[0]['tasks'].filter(t => t['box'] == 'toDoTasks');
     document.getElementById('toDoTasks').innerHTML = '';
     for (let i = 0; i < addedToDo.length; i++) {
         const element = addedToDo[i];
@@ -245,7 +245,7 @@ function swapToDo() {
 
 
 function swapInProgress() {
-    let addedInProgress = toDos.filter(t => t['box'] == 'inProgressTasks');
+    let addedInProgress = mainUserInfos[0]['tasks'].filter(t => t['box'] == 'inProgressTasks');
     document.getElementById('inProgressTasks').innerHTML = '';
     for (let i = 0; i < addedInProgress.length; i++) {
         const element = addedInProgress[i];
@@ -255,7 +255,7 @@ function swapInProgress() {
 
 
 function swapAwaitFeedback() {
-    let addedAwaitFeedback = toDos.filter(t => t['box'] == 'awaitFeedbackTasks');
+    let addedAwaitFeedback = mainUserInfos[0]['tasks'].filter(t => t['box'] == 'awaitFeedbackTasks');
     document.getElementById('awaitFeedbackTasks').innerHTML = '';
     for (let i = 0; i < addedAwaitFeedback.length; i++) {
         const element = addedAwaitFeedback[i];
@@ -265,20 +265,27 @@ function swapAwaitFeedback() {
 
 
 function swapDone() {
-    let addedDone = toDos.filter(t => t['box'] == 'doneFeedbackTasks');
+    let addedDone = mainUserInfos[0]['tasks'].filter(t => t['box'] == 'doneFeedbackTasks');
     document.getElementById('doneTasks').innerHTML = '';
     for (let i = 0; i < addedDone.length; i++) {
         const element = addedDone[i];
-        document.getElementById('doneTasks').innerHTML += generateTodoHTML(element);
+        let currentUserInfo = mainUserInfos[0]['tasks'][i];
+        document.getElementById('doneTasks').innerHTML += generateTodoHTML(element, currentUserInfo);
     }
 }
 
 function generateTodoHTML(element) {
+    let category = currentUserInfo['category'];
+    let titel = currentUserInfo['titel'];
+    let description = currentUserInfo['description'];
+    let priority = currentUserInfo['priority']
+
+   
     return `
         <div class="tasksOnBoard" onclick="renderTaskFloating(${element['id']})" draggable="true" ondragstart="startDragging(${element['id']})">
-            <div id="categoryOnBoard${element['id']}" class="categoryOnBoard"></div>
-            <span id="titleOnBoard${element['id']}" class="titleOnBoard"></span>
-            <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard"></span>
+            <div id="categoryOnBoard${element['id']}" class="categoryOnBoard">${category}</div>
+            <span id="titleOnBoard${element['id']}" class="titleOnBoard">${titel}</span>
+            <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard">${description}</span>
             <div>
                 <div class="progress-bar" id="progress-bar${element['id']}">
                     <div class="progress" id="progress${element['id']}"></div>
@@ -287,7 +294,7 @@ function generateTodoHTML(element) {
             </div>  
             <div>
                 <div class="profilsOnBoard" id="profilsOnBoard${element['id']}"></div>
-                <div id="priorityOnBoard${element['id']}"></div>
+                <div id="priorityOnBoard${element['id']}">${priotiy}</div>
             </div>
         </div>
         `;
@@ -364,8 +371,8 @@ function addCategoryValue(i) {
 
 
 async function pushToDo(newToDo) {
-    toDos.push(newToDo);
-    await setItem('tasks', JSON.stringify(toDos));    
+    mainUserInfos[0]['tasks'].push(newToDo);
+    await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
     updateHTML();
 }
 
@@ -390,7 +397,7 @@ function fillArray() {
     nextId++;
     pushToDo(newToDo);
     clearAddTaskFloating();
-    clearMembersSubtasks();
+    
 }
 
 
