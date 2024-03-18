@@ -20,6 +20,7 @@ async function loadUsers() {
       console.log("MainUser DATA:", mainUserInfos);
       console.log("Contact Book Data:", mainUserInfos[0].contactBook);
       renderAlphabeticalCategories();
+      updateHTML();
     } catch (e) {
       console.error("Loading error:", e);
     }
