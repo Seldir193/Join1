@@ -6,8 +6,8 @@ let letterArray = [];
 let randomColorCollection = [];
 
 function renderAlphabeticalCategories() {
-  for (let j = 0; j < contactBook.length; j++) {
-    let letter = contactBook[j].name.charAt(0).toUpperCase();
+  for (let j = 0; j < mainUserInfos[0].contactBook.length; j++) {
+    let letter = mainUserInfos[0].contactBook[j].name.charAt(0).toUpperCase();
     if (!letterArray.includes(letter)) {
       letterArray.push(letter);
     }
@@ -24,16 +24,22 @@ function renderAlphabeticalCategories() {
 }
 
 function renderContacts() {
-  for (let i = 0; i < contactBook.length; i++) {
-    let letter = contactBook[i].name.charAt(0).toUpperCase();
+  for (let i = 0; i < mainUserInfos[0].contactBook.length; i++) {
+    let letter = mainUserInfos[0].contactBook[i].name.charAt(0).toUpperCase();
     let contacts = document.getElementById(letter);
     let randomColor = getRandomColor();
     randomColorCollection.push(randomColor);
     let charStyle = `style="background-color: ${randomColor}"`;
-    let firstName = contactBook[i].name.split(" ")[0].charAt(0).toUpperCase();
+    let firstName = mainUserInfos[0].contactBook[i].name
+      .split(" ")[0]
+      .charAt(0)
+      .toUpperCase();
     let lastName;
-    if (contactBook[i].name.split(" ").length > 1) {
-      lastName = contactBook[i].name.split(" ")[1].charAt(0).toUpperCase();
+    if (mainUserInfos[0].contactBook[i].name.split(" ").length > 1) {
+      lastName = mainUserInfos[0].contactBook[i].name
+        .split(" ")[1]
+        .charAt(0)
+        .toUpperCase();
     } else {
       lastName = " ";
     }
@@ -51,8 +57,8 @@ function insertRenderContacts(i, charStyle, firstName, lastName) {
     <button id="contact_${i}" onclick="pullContact(${i},'${randomColorCollection}')" class="listContact">
       <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
       <div class="renderNameEmail" >
-        <div class="listName">${contactBook[i].name} </div>
-        <div class="listEmail">${contactBook[i].email}</div>
+        <div class="listName">${mainUserInfos[0].contactBook[i].name} </div>
+        <div class="listEmail">${mainUserInfos[0].contactBook[i].email}</div>
       </div>
       <input class="box" type="checkbox" id="remember" name="remember">
     </button>`;
@@ -79,7 +85,7 @@ function insertAddHeadlineToPulledWindow(i, char) {
     <div class="pulledHeadline">
       ${char}
       <div>
-        <h1 class="h1Name">${contactBook[i].name}</h1>
+        <h1 class="h1Name">${mainUserInfos[0].contactBook[i].name}</h1>
         <div id="editAndDeletetContainer">
           <button onclick="editContact(${i})" class="editAndDeletetBtn">
             <img class="pencilAndTrashImg" src="./assets/img/pencil.png">
@@ -99,9 +105,9 @@ function addInformationToPulledWindow(i) {
   contactContainer.innerHTML += `<div class="pulledInformation">
   <h2>Contact Information</h2>
      <h4>Email</h4>
-     <span style="color:rgb(27, 110, 255)">${contactBook[i].email}</span>
+     <span style="color:rgb(27, 110, 255)">${mainUserInfos[0].contactBook[i].email}</span>
      <h4>Phone</h4>
-     <span>${contactBook[i].number}</span></div>
+     <span>${mainUserInfos[0].contactBook[i].number}</span></div>
      <div><div onclick="openResponsivDeleteEdit()" class="responsivDots"><img src="./assets/img/more_vert.png"></div></div>`;
 }
 
@@ -149,9 +155,15 @@ function editContact(i) {
   document.getElementById("upperBodyEditDelete").classList.add("radiusRight");
   document.getElementById("editDeleteSlideCard").classList.add("slideOpenEdit");
 
-  document.getElementById("inputEditName").value = `${contactBook[i].name}`;
-  document.getElementById("inputEditEmail").value = `${contactBook[i].email}`;
-  document.getElementById("inputEditPhone").value = `${contactBook[i].number}`;
+  document.getElementById(
+    "inputEditName"
+  ).value = `${mainUserInfos[0].contactBook[i].name}`;
+  document.getElementById(
+    "inputEditEmail"
+  ).value = `${mainUserInfos[0].contactBook[i].email}`;
+  document.getElementById(
+    "inputEditPhone"
+  ).value = `${mainUserInfos[0].contactBook[i].number}`;
 
   renderButtonToEditLowerBody(i);
 
@@ -182,7 +194,7 @@ function transformEditSlideCard() {
 }
 
 function getCharAfterEmptySpace(i) {
-  let fullName = contactBook[i].name;
+  let fullName = mainUserInfos[0].contactBook[i].name;
   let firstName = fullName.split(" ")[0];
   // let lastName = fullName.split(" ")[1];
 
@@ -190,10 +202,13 @@ function getCharAfterEmptySpace(i) {
     firstName.charAt(0).toUpperCase() + firstName.slice(1);
 
   let lastNameCapitalized;
-  if (contactBook[i].name.split(" ").length > 1) {
+  if (mainUserInfos[0].contactBook[i].name.split(" ").length > 1) {
     lastNameCapitalized =
-      contactBook[i].name.split(" ")[1].charAt(0).toUpperCase() +
-      contactBook[i].name.split(" ")[1].slice(1);
+      mainUserInfos[0].contactBook[i].name
+        .split(" ")[1]
+        .charAt(0)
+        .toUpperCase() +
+      mainUserInfos[0].contactBook[i].name.split(" ")[1].slice(1);
   } else {
     lastNameCapitalized = " ";
   }
@@ -214,8 +229,9 @@ function renderButtonToEditLowerBody(i) {
 async function saveChanges(event) {
   event.preventDefault();
   let index = editIndex[0];
-  contactBook[index].name = document.getElementById("inputEditName").value;
-  firstChar = contactBook[index].name.charAt(0);
+  mainUserInfos[0].contactBook[index].name =
+    document.getElementById("inputEditName").value;
+  firstChar = mainUserInfos[0].contactBook[index].name.charAt(0);
   let letterIndex = letterArray.indexOf(firstChar);
   letterArray.splice(letterIndex, 1);
 
@@ -224,9 +240,11 @@ async function saveChanges(event) {
     capitalizedChangeName.charAt(0).toUpperCase() +
     capitalizedChangeName.slice(1);
 
-  contactBook[index].name = capitalizedChangeName;
-  contactBook[index].email = document.getElementById("inputEditEmail").value;
-  contactBook[index].number = document.getElementById("inputEditPhone").value;
+  mainUserInfos[0].contactBook[index].name = capitalizedChangeName;
+  mainUserInfos[0].contactBook[index].email =
+    document.getElementById("inputEditEmail").value;
+  mainUserInfos[0].contactBook[index].number =
+    document.getElementById("inputEditPhone").value;
   await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
   await loadUsers();
   editIndex = [];
@@ -236,9 +254,9 @@ async function saveChanges(event) {
 
 async function deleteContact(i) {
   document.getElementById("pullContactToWindow").classList.toggle("pull");
-  firstChar = contactBook[i].name.charAt(0);
+  firstChar = mainUserInfos[0].contactBook[i].name.charAt(0);
   let letterIndex = letterArray.indexOf(firstChar);
-  contactBook.splice(i, 1);
+  mainUserInfos[0].contactBook.splice(i, 1);
   letterArray.splice(letterIndex, 1);
   await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
   closeAddContact();
@@ -256,17 +274,16 @@ async function insertContact(event) {
     .join(" ");
 
   if (
-    !contactBook.some(
+    !mainUserInfos[0].contactBook.some(
       (contact) => contact.email === inputEmail || contact.number === inputPhone
     )
   ) {
-    contactBook.push({
+    mainUserInfos[0]["contactBook"].push({
       name: capitalizedInputName,
       email: inputEmail,
       number: inputPhone,
     });
 
-    mainUserInfos.push(contactBook); //Besim: Push die contacte in den Basisarray
     await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos)); //Besim: Speichere den Array unter den Key (email)
     init();
 
@@ -274,7 +291,7 @@ async function insertContact(event) {
     clearInput();
   } else {
     clearInput();
-    // alert("Kontakt ist bereits vorhanden");
+    alert("Kontakt ist bereits vorhanden");
   }
 }
 
