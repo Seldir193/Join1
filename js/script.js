@@ -20,13 +20,14 @@ async function loginForm() {
     console.log("Benutzer gefunden:", user);
     currentUserKey.push(email); //Besim: Pushen des aktuellen users der eingetippt wird
     await setItem("currentUserKey", JSON.stringify(currentUserKey)); //Besim: Speichern des aktuellem users in remote
-    init();
     save(user.name);
+    // Hier war vorher init, musste gelöscht werden, damit nicht zwei mal die email gepushed wird. Ggfs. zum laden getItems einsetzen
+
     displayUserName(user.name);
     window.location.href = "summary.html";
   } else {
     console.log("Benutzer nicht gefunden");
-    alert("Yanlış e-posta veya şifre. Lütfen tekrar deneyin.");
+    alert("Ungültige E-Mail oder Passwort. Bitte versuchen Sie es erneut.");
   }
   clearRememberCheckbox();
 }
@@ -43,7 +44,7 @@ async function clearRememberCheckbox() {
   rememberCheckbox.checked = false;
   emailInput.value = "";
   passwordInput.value = "";
-  // Hatırla kutusu bilgilerini localStorage'dan temizle
+  // "Entfernen Sie die Informationen aus dem Local Storage des 'Remember Me'-Kästchens."
   await clearCredentials();
 }
 

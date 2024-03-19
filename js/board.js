@@ -20,16 +20,18 @@ async function onload() {
 
 function render() {
     for (i = 0; i < 1; i++) {
-        renderShowTask();
+
         renderAddTaskFloating();
         renderNoTasks();
+        if (mainUserInfos[0]['tasks'].length > 0 ){
+        renderShowTask();}
     }
 }
 
 
 function toggleCard() {
     let card = document.getElementById('addTaskFloating');
-    card.classList.toggle('active');
+    card.classList.toggle('activeAddTask');
 }
 
 
@@ -425,3 +427,12 @@ function valueSubtask()    {
     let valueSubtask = document.getElementById('subTaskInput').value;
     document.getElementById('subtaskList').innerHTML += `${valueSubtask}`;
 }
+
+
+function selectCategory(category) {
+    var categoryInput = document.querySelector(".categoryHeader input");
+    categoryInput.value = category;
+    toggleCategory();
+    selectedCategories.push(category);
+    categoryInput.value = selectedCategories.join(", ");
+  }

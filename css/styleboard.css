@@ -457,12 +457,13 @@
   /* Animation für das Slide-Effekt */
 }
 
-.active {
+.activeAddTask {
   /* Startposition außerhalb des Bildschirms */
   transition: right 0.5s ease;
-  right: 0;
+  right: 0 !important;
   /* Animation für den Slide-Effekt */
 }
+
 
 
 

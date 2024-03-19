@@ -20,7 +20,7 @@ async function register() {
   const userExists = users.some((user) => user.email === email);
 
   if (userExists) {
-    alert("Bu e-posta adresi zaten kullanımda.");
+    alert("Diese E-Mail-Adresse wird bereits verwendet.");
     registerBtn.disabled = false;
     return;
   }
@@ -44,6 +44,7 @@ async function register() {
 //Besim: Funktion zum erstellen des Basisarrays mit der spezifischen email. In diesem Array werden alle Infos gepusht(contactbook...)
 async function createBasicJason(email) {
   await setItem(`${email}`, JSON.stringify(mainUserInfos));
+  console.log(email);
 }
 
 function resetForm() {

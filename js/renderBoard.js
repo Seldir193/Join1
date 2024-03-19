@@ -55,7 +55,8 @@ function renderAddTaskFloating() {
         <div class="closeBtnContainer">
             <img src="assets/img/close.svg" alt="close img" onclick="toggleCard()">
         </div>
-        <h1>Add Task</h1>    
+        <h1>Add Task</h1>
+            <form id="addTaskForm">    
             <input type="text" id="titleAddTaskFloating" name="title" placeholder="Enter a title" required><br>
         
             <label for="descriptionTextareaAddTask" class="styleDescription"><span id="descriptionTitleAddTask">Description <span id="optionalDescriptionTitleAddTask">(optional)</span></span></label><br>
@@ -111,6 +112,7 @@ function renderAddTaskFloating() {
                    </div>
                </div>   
             </div>
+            </form>
     </div>`;
 }
 
@@ -183,6 +185,20 @@ function generateTodoHTML(element,currentUserInfo) {
 
 
 function renderTaskFloating(i) {
+
+    let addCategoryInput = mainUserInfos[0]['tasks'][i]['category'];
+
+    let addTitleInput = mainUserInfos[0]['tasks'][i]['title'];
+
+    let addDescriptionInput = mainUserInfos[0]['tasks'][i]['description'];
+
+    let addDateInput = mainUserInfos[0]['tasks'][i]['dueDate'];
+
+    let addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
+
+    let addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
+
+    let addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
 
     document.getElementById('taskBoard').innerHTML =
     `
