@@ -60,8 +60,8 @@ function insertRenderContacts(i, charStyle, firstName, lastName) {
     <button id="contact_${i}" onclick="pullContact(${i})" class="listContact">
       <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
       <div class="renderNameEmail" >
-        <div class="listName">${mainUserInfos[0].contactBook[i].name} </div>
-        <div class="listEmail">${mainUserInfos[0].contactBook[i].email}</div>
+        <div id="lN" class="listName">${mainUserInfos[0].contactBook[i].name} </div>
+        <div id="lE" class="listEmail">${mainUserInfos[0].contactBook[i].email}</div>
       </div>
       <input class="box" type="checkbox" id="remember" name="remember">
     </button>`;
@@ -70,6 +70,36 @@ function insertRenderContacts(i, charStyle, firstName, lastName) {
 function pullContact(i) {
   document.getElementById("pullContactToWindow").classList.toggle("pull");
   addHeadlineToPulledWindow(i);
+  changeHoverColor(i);
+}
+
+function changeHoverColor(i) {
+  let hoverColor = document.getElementById(`contact_${i}`);
+  let originalColor = hoverColor.style.backgroundColor;
+  hoverColor.style.backgroundColor = "rgb(0,92,255)";
+
+  let nameElement = document.getElementById(`lN${i}`);
+  let emailElement = document.getElementById(`lE${i}`);
+  nameElement.style.color = "white";
+  emailElement.style.color = "white";
+
+  setTimeout(function () {
+    hoverColor.style.backgroundColor = originalColor;
+    nameElement.style.color = "";
+    emailElement.style.color = "";
+  }, 100);
+}
+
+function insertRenderContacts(i, charStyle, firstName, lastName) {
+  return `
+    <button id="contact_${i}" onclick="pullContact(${i})" class="listContact">
+      <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
+      <div class="renderNameEmail" >
+        <div id="lN${i}" class="listName">${mainUserInfos[0].contactBook[i].name} </div>
+        <div id="lE${i}" class="listEmail">${mainUserInfos[0].contactBook[i].email}</div>
+      </div>
+      <input class="box" type="checkbox" id="remember" name="remember">
+    </button>`;
 }
 
 function addHeadlineToPulledWindow(i) {
