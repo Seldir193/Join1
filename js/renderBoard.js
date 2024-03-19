@@ -1,32 +1,47 @@
 function renderShowTask() {
 
+    let addCategoryInput = mainUserInfos[0]['tasks'][i]['category'];
+
+    let addTitleInput = mainUserInfos[0]['tasks'][i]['title'];
+
+    let addDescriptionInput = mainUserInfos[0]['tasks'][i]['description'];
+
+    let addDateInput = mainUserInfos[0]['tasks'][i]['dueDate'];
+
+    let addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
+
+    let addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
+
+    let addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
+
+
     document.getElementById('boardsContainer').innerHTML +=
         `
         <div class="newTaskFloating dNone" id="newTaskFloating${i}">
             <div class="userStoryBtnContainer">
-                <button class="userStoryBtn">User Story</button>
+                <button class="userStoryBtn">${addCategoryInput}</button>
                 <img src="assets/img/close.svg" alt="close icon" class="closeBtn">
             </div>
-            <h1 id="headlineValue${i}">Hier steht die Überschrift</h1>
-            <span id="descriptionValue${i}">Hier wird eine kleine Beschreibung der Aufgaben stehen</span>
+            <h1 id="headlineValue${i}">${addTitleInput}</h1>
+            <span id="descriptionValue${i}">${addDescriptionInput}</span>
             <table>
                 <tr>
                     <th>Due Date:</th>
-                    <td id="dateValue${i}">99/99/2099</td>
+                    <td id="dateValue${i}">${addDateInput}</td>
                 </tr>
                 <tr>
                     <th>Priority:</th>
-                    <td id="priorityValue${i}">Medium <img src"assets/img/medium.svg" alt="priority img"></td>
+                    <td id="priorityValue${i}">${addPriorityInput}<img src"assets/img/medium.svg" alt="priority img"></td>
                 </tr>
             </table>
             <h3>Assigned To:</h3>
                     <div class="alignItems">
                         <img src="assets/img/ellipse_profil.svg" alt="Profil Img">
-                        <span id="profilValue${i}">mohammed Ali</span>
+                        <span id="profilValue${i}">${addMembersInput}</span>
                     </div>
             <h3>Subtasks:</h3>
             <label for="checkboxSubtasks1" class="styleCheckboxContainer" id="subtaskValue${i}">
-                <input type="checkbox" id="checkbox2" name="checkbox2">Checkbox for a Subtasks
+                <input type="checkbox" id="checkbox2" name="checkbox2">${addSubtasksInput}
             </label>
         </div>
         `;
@@ -49,14 +64,17 @@ function renderAddTaskFloating() {
             <label class="styleDueDate" for="dueDate">Due date</label><br>
             <input type="date" id="dueDateAddTaskFloating" name="due_date" ><br>
         
-            <div class="StylePriority">
-                        <div class="priority-header">Priority</div>
-                        <div class="priority-box">
-                            <div onclick="togglePriority(1)" class="urgent">Urgent<img src="assets/img/Prio alta.png"></div>
-                            <div onclick="togglePriority(2)" class="medium">Medium <img src="assets/img/Prio media.png"></div>
-                            <div onclick="togglePriority(3)" class="low">Low<img src="assets/img/Prio baja.png"></div>
-                        </div>
-                    </div>
+            <nav class="priority">
+                  <nav class="priority-header">Priority</nav>
+                    <nav class="priority-box" >
+                        <nav class="urgent" onclick="toggleBackgroundColor(this)">Urgent
+                            <img class="color-img" src="assets/img/Prio alta.png"><img class="gray-img" src="assets/img/Prio alta (1).png"></nav>
+                        <nav class="medium"onclick="toggleBackgroundColor(this)" >Medium <img class="color-img" src="assets/img/Prio media (1).png">
+                            <img class="gray-img" src="assets/img/Prio media.png"></nav>
+                        <nav class="low" onclick="toggleBackgroundColor(this)">Low<img class="color-img" src="assets/img/Prio baja.png">
+                            <img class="gray-img" src="assets/img/Prio baja (1).png"></nav>
+                    </nav>
+                </nav>
                 <div class="assigned">
                   <div class="styleAssigned"><b>Assigned to</b> (optional)</div>
                     <div class="input-with-icon">
@@ -70,16 +88,16 @@ function renderAddTaskFloating() {
                       <div class="input-with-icon">
                          <input type="text" id="categoryInput" placeholder="Select task category..." onfocus="technicalUser()" onclick="technicalUser()" readonly>
                          <img id="categoryDropdown" onclick="toggleCategory()"src="assets/img/arrow_drop_down.png" class="dropdown-icon">
-                        <div id="listTechnical" class="techUser"></div>
                       </div>
+                      <div id="listTechnical" class="techUser"></div>
                 </div>
                 <div class="subtasks">
                    <div class="styleSubtasks"><b>Subtasks</b> (optional)</div>
                      <div class="input-with-icon">
                         <input type="text" placeholder="Add new subtask..." id="subTaskInput">
-                        <img id="subTask" onclick="subCurrentContact(), addSubtasksToBoard()" src="assets/img/Subtask's icons.png" class="dropdown-icon">
+                        <img id="subTask" onclick="valueSubtask()" src="assets/img/Subtask's icons.png" class="dropdown-icon">
                      </div>
-                     <div id="contactList"></div>
+                     <div id="subtaskList"></div>
                      <div class="footer-box"></div>
                 </div>
                 <div class="button-container">

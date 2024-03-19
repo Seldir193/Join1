@@ -5,6 +5,7 @@ let countInProgress = [];
 let countAwaitFeedback = [];
 let countDone = [];
 
+let categorySet = ["Technical Task", "User Story"];
 
 let nextId = 0;
 
@@ -14,7 +15,6 @@ async function onload() {
     await init();
     includeHTML();
     render();
-    load();
 }
 
 
@@ -136,22 +136,23 @@ function swapDone() {
 function fillTasksOnBoard(i) {
     addTitleValue(i);
     addDescriptionValue(i);
-    addDateValue(i);
+    // addDateValue(i);
     addCategoryValue(i);
-    addMembersValue(i)
+    // addMembersValue(i)
     // addSubTaskValue(i);
 }
 
 
-function addMembersValue(i) {
-    for (j = 0; j < mainUserInfos[0]['tasks'][i].members.length; j++){
-    let memberFirstLetter = mainUserInfos[0]['tasks'][i].members[j].charAt(0).toUpperCase();
-    let color = getRandomColor();
-    document.getElementById(`profilsOnBoard${i}`).innerHTML += 
-    `
-        <div class="profileOnBoard" style="background-color: ${color};">${memberFirstLetter}</div>
-    `;
-}}
+// function addMembersValue(i) {
+//     for (j = 0; j < mainUserInfos[0]['tasks'][i].members.length; j++) {
+//         let memberFirstLetter = mainUserInfos[0]['tasks'][i].members[j].charAt(0).toUpperCase();
+//         let color = getRandomColor();
+//         document.getElementById(`profilsOnBoard${i}`).innerHTML +=
+//             `
+//         <div class="profileOnBoard" style="background-color: ${color};">${memberFirstLetter}</div>
+//     `;
+//     }
+// }
 
 
 function addTitleValue(i) {
@@ -168,10 +169,10 @@ function addDescriptionValue(i) {
 }
 
 
-function addDateValue(i) {
-    let addDateValue = toDos[i]['dueDate'];
-    document.getElementById('#');
-}
+// function addDateValue(i) {
+//     let addDateValue = mainUserInfos[0]['tasks']['dueDate'];
+//     document.getElementById('#');
+// }
 
 
 function addCategoryValue(i) {
@@ -217,7 +218,7 @@ function fillArray() {
     let addSubTaskValue = addSubtasksToBoard();
     // let addMembersValue = addMembersValueToBoard();
     let newToDo = {
-        id: `${nextId}`,
+        id: `${nextId}`, // ACHTUNG! NEXTID BLEIBT BEI 0, MUSS ALSO ANDERS GESPEICHERT UND ITTERIERT WERDEN
         box: 'toDoTasks',
         title: `${addTitleValue}`,
         description: `${addDescriptionValue}`,
@@ -284,9 +285,10 @@ function addCategoryToBoard() {
 
 
 function addSubtasksToBoard() {
+
     let addSubtasks = [];
 
-    for (i = 0; i < contactList.children.length; i++) {
+    for (i = 0; i < subtaskList.children.length; i++) {
 
         let subtaskInputs = document.getElementById(`contactText_${i}`).innerHTML;
 
@@ -353,7 +355,7 @@ function updateProgress(i) {
 
 
 function togglePriority(priority) {
-    
+
     if (activePriority === priority) {
         activePriority = null;
     } else {
@@ -363,4 +365,63 @@ function togglePriority(priority) {
         activePriority = priority;
 
     }
+}
+
+
+function toggleCategory() {
+    var listTechnical = document.getElementById("listTechnical");
+    var categoryDropdown = document.getElementById("categoryDropdown");
+
+    if (
+        listTechnical.style.display === "none" ||
+        listTechnical.style.display === ""
+    ) {
+        listTechnical.style.display = "block";
+        categoryDropdown.src = "assets/img/arrow_drop_up.png";
+        categoryInput.focus();
+    } else {
+        listTechnical.style.display = "none";
+        categoryDropdown.src = "assets/img/arrow_drop_down.png";
+    }
+}
+
+
+function toggleBackgroundColor(element) {
+    element.classList.toggle("activePrio");
+}
+
+
+function toggleIcon() {
+    var listContactContainer = document.getElementById("listContactContainer");
+    var listTechnical = document.getElementById("listTechnical");
+    var icon = document.getElementById("icon");
+
+    listTechnical.style.display = "none";
+
+    if (
+        listContactContainer.style.display === "none" ||
+        listContactContainer.style.display === ""
+    ) {
+        listContactContainer.style.display = "block";
+        icon.src = "assets/img/arrow_drop_up.png";
+    } else {
+        listContactContainer.style.display = "none";
+        icon.src = "assets/img/arrow_drop_down.png";
+    }
+}
+
+
+function technicalUser() {
+    let technical = document.getElementById("listTechnical");
+    technical.innerHTML = "";
+
+    for (let k = 0; k < categorySet.length; k++) {
+        technical.innerHTML += `<div class="select" onclick="selectCategory('${categorySet[k]}')">${categorySet[k]}</div>`;
+    }
+}
+
+
+function valueSubtask()    {
+    let valueSubtask = document.getElementById('subTaskInput').value;
+    document.getElementById('subtaskList').innerHTML += `${valueSubtask}`;
 }
