@@ -275,7 +275,7 @@ async function saveChanges(event) {
 
   mainUserInfos[0].contactBook[index].name = capitalizedChangeName;
   mainUserInfos[0].contactBook[index].email =
-    document.getElementById("inputEditEmail").value;
+    document.getElementById("inputEditEmail").value.toLowerCase();
   mainUserInfos[0].contactBook[index].number =
     document.getElementById("inputEditPhone").value;
   await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
@@ -283,6 +283,7 @@ async function saveChanges(event) {
   editIndex = [];
 
   closeAddContact();
+  renderAlphabeticalCategories();
 }
 
 async function deleteContact(i) {
@@ -294,11 +295,12 @@ async function deleteContact(i) {
   await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
   closeAddContact();
   await loadUsers();
+  renderAlphabeticalCategories();
 }
 
 async function insertContact(event) {
   event.preventDefault();
-  let inputEmail = document.getElementById("inputEmail").value;
+  let inputEmail = document.getElementById("inputEmail").value.toLowerCase();
   let inputPhone = document.getElementById("inputPhone").value;
   let inputName = document.getElementById("inputName").value;
   let words = inputName.split(" ");

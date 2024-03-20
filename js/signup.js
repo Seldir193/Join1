@@ -18,7 +18,7 @@ async function register() {
   registerBtn.disabled = true;
 
   const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
+  const email = document.getElementById("email").value.toLowerCase();
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirm-password").value;
 

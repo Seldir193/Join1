@@ -15,11 +15,11 @@ async function loadUsers() {
 
     try {
       mainUserInfos = JSON.parse(await getItem(`${currentUserKey}`)); //Laden der INfos vom übergeordneten Array
-      users = JSON.parse(await getItem("users"));
+        users = JSON.parse(await getItem("users"));
       console.log("Users DATA:", users);
       console.log("MainUser DATA:", mainUserInfos);
       console.log("Contact Book Data:", mainUserInfos[0].contactBook);
-      // renderAlphabeticalCategories();
+
       // updateHTML();
     } catch (e) {
       console.error("Loading error:", e);
@@ -28,6 +28,9 @@ async function loadUsers() {
     console.error("Loading error:", e);
   }
 }
+
+
+
 
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
