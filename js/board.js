@@ -5,6 +5,8 @@ let countInProgress = [];
 let countAwaitFeedback = [];
 let countDone = [];
 
+let currentPriority;
+
 let categorySet = ["Technical Task", "User Story"];
 
 let nextId = 0;
@@ -212,6 +214,12 @@ async function pushToDo(newToDo) {
 }
 
 
+function addPriorityValue(element) {
+    currentPriority = element;
+    return currentPriority;
+}
+
+
 function fillArray() {
     let addTitleValue = addTitleToBoard();
     let addDescriptionValue = addDescriptionToBoard();
@@ -228,6 +236,7 @@ function fillArray() {
         dueDate: `${addDateValue}`,
         // members: addMembersValue,
         subtasks: addSubTaskValue,
+        priority: currentPriority,
     };
     nextId++;
     pushToDo(newToDo);
@@ -390,6 +399,12 @@ function toggleCategory() {
 
 function toggleBackgroundColor(element) {
     element.classList.toggle("activePrio");
+}
+
+
+function resetBackgroundColors() {
+    const buttons = document.querySelectorAll('.priority-box nav');
+    buttons.forEach(button => button.classList.remove('activePrio'));
 }
 
 

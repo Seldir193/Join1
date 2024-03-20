@@ -68,11 +68,11 @@ function renderAddTaskFloating() {
             <nav class="priority">
                   <nav class="priority-header">Priority</nav>
                     <nav class="priority-box" >
-                        <nav class="urgent" onclick="toggleBackgroundColor(this)">Urgent
+                        <nav class="urgent" onclick="resetBackgroundColors(), toggleBackgroundColor(this), addPriorityValue('urgent')">Urgent
                             <img class="color-img" src="assets/img/Prio alta.png"><img class="gray-img" src="assets/img/Prio alta (1).png"></nav>
-                        <nav class="medium"onclick="toggleBackgroundColor(this)" >Medium <img class="color-img" src="assets/img/Prio media (1).png">
+                        <nav class="medium"onclick="resetBackgroundColors(), toggleBackgroundColor(this), addPriorityValue('medium')" >Medium <img class="color-img" src="assets/img/Prio media (1).png">
                             <img class="gray-img" src="assets/img/Prio media.png"></nav>
-                        <nav class="low" onclick="toggleBackgroundColor(this)">Low<img class="color-img" src="assets/img/Prio baja.png">
+                        <nav class="low" onclick="resetBackgroundColors(), toggleBackgroundColor(this), addPriorityValue('low')">Low<img class="color-img" src="assets/img/Prio baja.png">
                             <img class="gray-img" src="assets/img/Prio baja (1).png"></nav>
                     </nav>
                 </nav>
@@ -81,7 +81,7 @@ function renderAddTaskFloating() {
                     <div class="input-with-icon">
                        <input type="text" id="assignedInput" placeholder="Select contacts to assign..." readonly>
                        <img id="icon" onclick="toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
-                       <div id="listContactContainer"></div>
+                       <div id="listContactContainerBoard"></div>
                     </div>
                 </div>
                 <div class="categoryHeader">
@@ -111,11 +111,25 @@ function renderAddTaskFloating() {
                      </div>
                    </div>
                </div>   
-            </div>
+            </div>F
             </form>
     </div>`;
 }
 
+
+function renderContactsInAddTask() {
+    for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++){
+    let contact = mainUserInfos[0]['contactBook'][i];
+    document.getElementById('listContactContainerBoard').innerHTML =
+    `
+        <div>
+            <div></div>
+            <span>${contact}</span>
+            <input type="checkbox" id="addContactToBoard${i}" name="myCheckbox" value="checkboxValue">
+        </div>
+    `;
+}
+}
 
 function checkNoTasksToDo() {
     if (countToDo == 0) {
