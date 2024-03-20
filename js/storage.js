@@ -2,7 +2,6 @@ const STORAGE_TOKEN = "UYC2KGRBQ7QS5SWVHQYXYARK3RHQJN240BPE82NE";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 let mainUserInfos = [{ contactBook: [], tasks: [] }];
-// let contactBook = [];
 let currentUserKey = [];
 
 async function init() {

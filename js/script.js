@@ -3,12 +3,11 @@ async function loginForm() {
   let password = document.getElementById("password").value;
   const rememberCheckbox = document.getElementById("rememberCheckbox");
 
-  if (!email || !password) {
-    console.log("E-Mail und Passwort sind erforderlich.");
-    return;
-  }
-
-  if (rememberCheckbox.checked) {
+  // if (!email || !password) {
+  //   console.log("E-Mail und Passwort sind erforderlich.");
+  //   return;
+  // }
+ if (rememberCheckbox.checked) {
     await rememberMe();
   } else {
     clearCredentials();
@@ -18,8 +17,10 @@ async function loginForm() {
 
   if (user) {
     console.log("Benutzer gefunden:", user);
+    if(!currentUserKey.includes(email)){
     currentUserKey.push(email); //Besim: Pushen des aktuellen users der eingetippt wird
     await setItem("currentUserKey", JSON.stringify(currentUserKey)); //Besim: Speichern des aktuellem users in remote
+    }
     save(user.name);
     // Hier war vorher init, musste gelöscht werden, damit nicht zwei mal die email gepushed wird. Ggfs. zum laden getItems einsetzen
 
