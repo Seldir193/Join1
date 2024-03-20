@@ -46,7 +46,7 @@ function renderContacts() {
     } else {
       lastName = " ";
     }
-    contacts.innerHTML += insertRenderContacts(
+    contacts.innerHTML += insertRenderContacts (
       i,
       charStyle,
       firstName,
@@ -57,14 +57,24 @@ function renderContacts() {
 
 function insertRenderContacts(i, charStyle, firstName, lastName) {
   return `
+<<<<<<< Updated upstream
     <button id="contact_${i}" onclick="pullContact(${i})" class="listContact">
+=======
+    <button id="contact_${i}" onclick="toggleContactAndPullContact(${i},'${randomColorCollection}')" class="listContact">
+    
+>>>>>>> Stashed changes
       <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
       <div class="renderNameEmail" >
         <div id="lN" class="listName">${mainUserInfos[0].contactBook[i].name} </div>
         <div id="lE" class="listEmail">${mainUserInfos[0].contactBook[i].email}</div>
       </div>
-      <input class="box" type="checkbox" id="remember" name="remember">
+      
+      <input class="box" type="checkbox" id="contact_checkbox_${i}" name="contact_checkbox_${i}">
     </button>`;
+}
+
+function toggleContactAndPullContact(index) {
+pullContact(index);
 }
 
 function pullContact(i) {
@@ -376,27 +386,11 @@ function isWhiteOrGray(color) {
   return brightness > 200;
 }
 
-function selectCategory(category) {
-  var categoryInput = document.querySelector(".categoryHeader input");
-  categoryInput.value = category;
-  toggleCategory();
-  selectedCategories.push(category);
-  categoryInput.value = selectedCategories.join(", ");
-}
 
-function technicalUser() {
-  let technical = document.getElementById("listTechnical");
-  technical.innerHTML = "";
 
-  for (let k = 0; k < categorySet.length; k++) {
-    technical.innerHTML += `<div class="select" onclick="selectCategory('${categorySet[k]}')">${categorySet[k]}</div>`;
-  }
-}
 
-function addContactToSubtask() {
-  let contactList = document.getElementById("contactList");
-  contactList.innerHTML = "";
 
+<<<<<<< Updated upstream
   for (let m = 0; m < subtaskArray.length; m++) {
     contactList.innerHTML += `
       <ul class="contactUser">
@@ -471,3 +465,6 @@ function clearCurrentall(position) {
   subtaskArray.splice(position);
   addContactToSubtask();
 }
+=======
+
+>>>>>>> Stashed changes

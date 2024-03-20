@@ -62,3 +62,37 @@ function guestLegalNotice() {
 function guestPrivacyPolicy() {
   window.location.href = "guestPrivacy.html";
 }
+<<<<<<< Updated upstream
+=======
+
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const togglePasswordIcon = document.getElementById('togglePassword');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        togglePasswordIcon.src = 'assets/img/eye-regular.svg';
+     
+    } else {
+        passwordInput.type = 'password';
+        togglePasswordIcon.src = 'assets/img/eyecloseregular.svg'; 
+    }
+}
+
+function togglePasswordConfirmVisibility() {
+    const passwordConfirmInput = document.getElementById('confirm-password');
+    const togglePasswordConfirmIcon = document.getElementById('togglePasswordConfirm');
+
+    if (passwordConfirmInput.type === 'password') {
+        passwordConfirmInput.type = 'text';
+        togglePasswordConfirmIcon.src = 'assets/img/eye-regular.svg';
+     
+    } else {
+        passwordConfirmInput.type = 'password';
+        togglePasswordConfirmIcon.src = 'assets/img/eyecloseregular.svg'; 
+    }
+}
+
+
+
+>>>>>>> Stashed changes
