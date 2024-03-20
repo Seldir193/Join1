@@ -15,6 +15,8 @@ async function onload() {
     await init();
     includeHTML();
     render();
+   
+    
 }
 
 
@@ -26,6 +28,41 @@ function render() {
         if (mainUserInfos[0]['tasks'].length > 0 ){
         renderShowTask();}
     }
+}
+
+
+function renderShowTask() {
+
+    document.getElementById('boardsContainer').innerHTML +=
+        `
+        <div class="newTaskFloating dNone" id="newTaskFloating${i}">
+            <div class="userStoryBtnContainer">
+                <button class="userStoryBtn">User Story</button>
+                <img src="assets/img/close.svg" alt="close icon" class="closeBtn">
+            </div>
+            <h1 id="headlineValue${i}">Hier steht die Überschrift</h1>
+            <span id="descriptionValue${i}">Hier wird eine kleine Beschreibung der Aufgaben stehen</span>
+            <table>
+                <tr>
+                    <th>Due Date:</th>
+                    <td id="dateValue${i}">99/99/2099</td>
+                </tr>
+                <tr>
+                    <th>Priority:</th>
+                    <td id="priorityValue${i}">Medium <img src"assets/img/medium.svg" alt="priority img"></td>
+                </tr>
+            </table>
+            <h3>Assigned To:</h3>
+                    <div class="alignItems">
+                        <img src="assets/img/ellipse_profil.svg" alt="Profil Img">
+                        <span id="profilValue${i}">mohammed Ali</span>
+                    </div>
+            <h3>Subtasks:</h3>
+            <label for="checkboxSubtasks1" class="styleCheckboxContainer" id="subtaskValue${i}">
+                <input type="checkbox" id="checkbox2" name="checkbox2">Checkbox for a Subtasks
+            </label>
+        </div>
+        `;
 }
 
 
@@ -77,6 +114,46 @@ function renderNoTasks() {
     checkNoTasksInProgress();
     checkNoTasksAwaitFeedback();
     checkNoTasksDone();
+}
+
+
+function checkNoTasksToDo() {
+    if (countToDo == 0) {
+        document.getElementById('toDoTasks').innerHTML +=
+            `
+        <div class="noTasks">No tasks To Do</div> 
+    `;
+    }
+}
+
+
+function checkNoTasksInProgress() {
+    if (countInProgress == 0) {
+        document.getElementById('inProgressTasks').innerHTML +=
+            `
+        <div class="noTasks">No tasks To Do</div>
+    `;
+    }
+}
+
+
+function checkNoTasksAwaitFeedback() {
+    if (countAwaitFeedback == 0) {
+        document.getElementById('awaitFeedbackTasks').innerHTML +=
+            `
+        <div class="noTasks">No tasks To Do</div>
+    `;
+    }
+}
+
+
+function checkNoTasksDone() {
+    if (countDone == 0) {
+        document.getElementById('doneTasks').innerHTML +=
+            `
+        <div class="noTasks">No tasks To Do</div>
+    `;
+    }
 }
 
 
@@ -232,6 +309,8 @@ function fillArray() {
     nextId++;
     pushToDo(newToDo);
     clearAddTaskFloating();
+    clearMembersSubtasks();
+   
 }
 
 
