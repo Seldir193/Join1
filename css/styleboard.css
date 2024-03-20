@@ -939,3 +939,9 @@
   color: black;
   background-color: inherit !important;
 }
+
+#listContactContainerBoard {
+  width: 100%;
+  z-index: 20000;
+  height: 400px;
+}
