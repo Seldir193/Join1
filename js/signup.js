@@ -1,6 +1,3 @@
-users = [];
-
-
 async function onload() {
   await getRemoteUsers();
   load();
@@ -8,12 +5,11 @@ async function onload() {
 
 
 async function getRemoteUsers() {
-  if(users.length > 1){
-    await getItem("users", JSON.stringify(users));
-    console.log("Users DATA:", users);
-  }
-  else(console.log('Keine User angelegt'))
+  users = JSON.parse(await getItem("users"));
+  console.log("Users DATA:", users);
 }
+
+
 
 
 async function register() {
@@ -47,15 +43,16 @@ async function register() {
       email: email,
       password: password,
     });
-    await setItem("users", JSON.stringify(users));
-    createBasicJason(email); //Besim: Funktion in die stelle einfügen wenn der user erstellt wird
-    resetForm();
+    await setItem("users", JSON.stringify(users)); // Update the users array in the storage
+    await createBasicJason(email); //Besim: Funktion in die stelle einfügen wenn der user erstellt wird
+    // resetForm();
     window.location.href =
       "index.html?msg=Glückwunsch,du hast dich erfolgreich registriert!";
   } catch (error) {
     console.error("Registration error:", error);
   }
 }
+
 
 //Besim: Funktion zum erstellen des Basisarrays mit der spezifischen email. In diesem Array werden alle Infos gepusht(contactbook...)
 async function createBasicJason(email) {

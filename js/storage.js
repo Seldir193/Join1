@@ -3,6 +3,7 @@ const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 let mainUserInfos = [{ contactBook: [], tasks: [] }];
 let currentUserKey = [];
+let users = [];
 
 async function init() {
   loadUsers();
@@ -19,7 +20,7 @@ async function loadUsers() {
       console.log("MainUser DATA:", mainUserInfos);
       console.log("Contact Book Data:", mainUserInfos[0].contactBook);
       // renderAlphabeticalCategories();
-      updateHTML();
+      // updateHTML();
     } catch (e) {
       console.error("Loading error:", e);
     }

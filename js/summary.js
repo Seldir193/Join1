@@ -1,4 +1,4 @@
-load();
+init();
 
 function displayUserName(userName) {
   const userNameElement = document.getElementById("user-name");

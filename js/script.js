@@ -22,7 +22,7 @@ async function loginForm() {
     await setItem("currentUserKey", JSON.stringify(currentUserKey)); //Besim: Speichern des aktuellem users in remote
     }
     save(user.name);
-    // Hier war vorher init, musste gelöscht werden, damit nicht zwei mal die email gepushed wird. Ggfs. zum laden getItems einsetzen
+    init();// Hier war vorher init, musste gelöscht werden, damit nicht zwei mal die email gepushed wird. Ggfs. zum laden getItems einsetzen
 
     displayUserName(user.name);
     window.location.href = "summary.html";
