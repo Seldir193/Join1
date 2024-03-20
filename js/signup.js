@@ -1,5 +1,21 @@
 users = [];
 
+
+async function onload() {
+  await getRemoteUsers();
+  load();
+}
+
+
+async function getRemoteUsers() {
+  if(users.length > 1){
+    await getItem("users", JSON.stringify(users));
+    console.log("Users DATA:", users);
+  }
+  else(console.log('Keine User angelegt'))
+}
+
+
 async function register() {
   const registerBtn = document.getElementById("registerBtn");
 
