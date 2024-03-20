@@ -509,29 +509,9 @@
   border-radius: 50%;
   font-size: 56px;
   color: white;
-<<<<<<< Updated upstream
 }
 
 .addToContactButtonResponiv {
   background-color: transparent;
   border: none;
-=======
-
-
-.menu-bar {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    position: absolute;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0px 0px 10px 3px #00000014;
-    padding: 10px;
-    z-index: 1;
-    top: 100px;
-    right: 50px;
-    width: 110px;
-    text-align: right;
-  }
->>>>>>> Stashed changes
 }

@@ -603,42 +603,6 @@ img {
   display: none;
 }
 
-.message-container {
-  display: none;
-  position: fixed;
-  bottom: 50%;
-  left: 50%;
-  transform: translate(-50%, 100%);
-  color: white;
-  z-index: 999;
-  width: 326px;
-  height: 74px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 4px 0px #00000026;
-  background: #4589FF;
-  font-size: 23px;
-  cursor: pointer;
-  transition: transform 1.5s ease; /* Übergang für die Transform-Eigenschaft */
-}
-
-.message-container img {
-  width: 22px;
-  height: 26px;
-}
-
-.my-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.add-container {
-  display: flex;
-  justify-content: center;
-  padding: 25px;
-  gap: 20px;
-}
-
 
 @media only screen and (max-width: 768px) {
     .kanban {

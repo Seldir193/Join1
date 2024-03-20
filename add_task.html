@@ -14,7 +14,6 @@
     <script src="js/add_task.js"></script>
     <script src="js/script.js"></script>
     <script src="js/summary.js"></script>
-    
 </head>
 <body  onload="includeHTML(); init(); load(); datePlan();"  >
     <div w3-include-html="./templates/header.html"></div>
@@ -45,11 +44,11 @@
                 <nav class="priority">
                   <nav class="priority-header">Priority</nav>
                     <nav class="priority-box" >
-                        <nav class="urgent"  onclick="toggleBackgroundColor(this)">Urgent
+                        <nav class="urgent" onclick="toggleBackgroundColor(this)">Urgent
                             <img class="color-img" src="assets/img/Prio alta.png"><img class="gray-img" src="assets/img/Prio alta (1).png"></nav>
-                        <nav class="medium"  onclick="toggleBackgroundColor(this)" >Medium <img class="color-img" src="assets/img/Prio media (1).png">
+                        <nav class="medium"onclick="toggleBackgroundColor(this)" >Medium <img class="color-img" src="assets/img/Prio media (1).png">
                             <img class="gray-img" src="assets/img/Prio media.png"></nav>
-                        <nav class="low"  onclick="toggleBackgroundColor(this)">Low<img class="color-img" src="assets/img/Prio baja.png">
+                        <nav class="low" onclick="toggleBackgroundColor(this)">Low<img class="color-img" src="assets/img/Prio baja.png">
                             <img class="gray-img" src="assets/img/Prio baja (1).png"></nav>
                     </nav>
                 </nav>
@@ -85,16 +84,11 @@
                             <button class="clear" onclick="clearCurrentall()">Clear <img src="assets/img/iconoir_cancel.png"></button>
                         </nav>
                      <nav class="create-button">
-                        <button class="create" id="createTask" onclick="createTask()">Create Task <img src="assets/img/check.png"></button>
+                        <button class="create">Create Task <img src="assets/img/check.png"></button>
                      </nav>
                    </nav>
                </nav>   
     </div>
-</div>    
-        <div clss="my-container">
-           <div class="message-container" id="notificationContainer">
-               <div class="add-container">Task added to board<img src="assets/img/Vector.png"></div> 
-           </div>
-        </div>
+</div>  
 </body>
 </html>

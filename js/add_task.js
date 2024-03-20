@@ -1,16 +1,12 @@
-<<<<<<< Updated upstream
 function toggleMenuBar() {
   var menuBar = document.getElementById("menuBar");
   menuBar.style.display = menuBar.style.display === "block" ? "none" : "block";
 }
 
-=======
->>>>>>> Stashed changes
 function toggleBackgroundColor(element) {
   element.classList.toggle("active");
 }
 
-<<<<<<< Updated upstream
 //Besim: Diese logOut funktion gibt es schon in summary. Brauchen wir diese?
 function logOut() {
   window.location.href = "index.html";
@@ -34,9 +30,6 @@ function showHelp() {
 
 function toggleContactBackground(i) {
   // Das müssen wir noch machen.
-=======
-function  toggleContactBackground(i){     // Das müssen wir noch machen.
->>>>>>> Stashed changes
   let clickedContact = document.getElementById(`contact_${i}`);
   if (clickedContact) {
     clickedContact.classList.toggle("active");
@@ -97,111 +90,3 @@ function datePlan() {
 function pullContact(i) {
   document.getElementById("listContactContainer").classList.toggle("pull");
 }
-<<<<<<< Updated upstream
-=======
-
-function selectCategory(category) {
-  var categoryInput = document.querySelector(".categoryHeader input");
-  categoryInput.value = category;
-  toggleCategory();
-  selectedCategories.push(category);
-  categoryInput.value = selectedCategories.join(", ");
-}
-
-function technicalUser() {
-  let technical = document.getElementById("listTechnical");
-  technical.innerHTML = "";
-
-  for (let k = 0; k < categorySet.length; k++) {
-    technical.innerHTML += `<div class="select" onclick="selectCategory('${categorySet[k]}')">${categorySet[k]}</div>`;
-  }
-}
-
-function addContactToSubtask() {
-  let contactList = document.getElementById("contactList");
-  contactList.innerHTML = "";
-
-  for (let m = 0; m < subtaskArray.length; m++) {
-    contactList.innerHTML += `
-      <ul class="contactUser">
-          <li>
-                <span id="contactText_${m}" contenteditable="true"
-                  onclick="enableEditing(${m})"
-                  onblur="updateSubtask(${m}, this.innerText)"
-                  onkeydown="handleKeyPress(event, ${m})">
-                  ${subtaskArray[m]}
-                </span>
-                </li>  
-                <div class="subPics">
-                  <img src="assets/img/delete.png" onclick="deleteToSubtask(${m})">
-                  <img src="assets/img/edit.svg" onclick="enableEditing(${m})">
-                  <img id="checkImage_${m}" src="assets/img/bestätigung.png" style="display:none;">
-                </div>
-      </ul>`;
-  }
-}
-
-function enableEditing(position) {
-  let spanElement = document.getElementById(`contactText_${position}`);
-  spanElement.focus();
-}
-
-function updateSubtask(position, newText) {
-  subtaskArray[position] = newText;
-}
-
-function handleKeyPress(event, position) {
-  if (event.key === "Enter") {
-    let checkImage = document.getElementById(`checkImage_${position}`);
-    checkImage.style.display = "inline";
-  }
-}
-
-function subCurrentContact() {
-  let taska = document.getElementById("subTaskInput").value;
-
-  if (taska.trim() === "") {
-    alert("Bitte ausfüllen.");
-    return;
-  }
-  subtaskArray.push(taska);
-  document.getElementById("subTaskInput").value = "";
-  addContactToSubtask();
-}
-
-function deleteToSubtask(position) {
-  subtaskArray.splice(position, 1);
-  addContactToSubtask();
-}
-
-function clearCurrentall(position) {
-  let titleEnter = document.getElementById("titleEnter");
-  titleEnter.value = "";
-
-  let descriptionInput = document.getElementById("descriptionInput");
-  descriptionInput.value = "";
-
-  let dateInput = document.getElementById("dateInput");
-  dateInput.value = "";
-
-  let listContactContainer = document.getElementById("listContactContainer");
-  listContactContainer.innerHTML = "";
-
-  let categoryInput = document.getElementById("categoryInput");
-  categoryInput.value = "";
-
-  let contactList = document.getElementById("contactList");
-  contactList.innerHTML = "";
-  subtaskArray.splice(position);
-  addContactToSubtask();
-}
-
-
-
-
-
-
-
-
-
->>>>>>> Stashed changes

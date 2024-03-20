@@ -557,11 +557,13 @@
   width: 0%;
 }
 
+
 .tasksOverBoardContainer {
   width: 528px;
   left: 148px;
   top: -1500px;
 }
+
 
 .titelOverBoard {
   width: 448px;
@@ -710,6 +712,8 @@
   width:110px;
   text-align: right;
 }
+
+
 
 @media only screen and (max-width: 768px) {
   .kanban {
