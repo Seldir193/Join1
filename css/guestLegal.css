@@ -1,0 +1,311 @@
+.arrowHelp {
+    width: 50px;
+    z-index: 999;
+  }
+  
+  .subHeadlineHelp {
+    font-size: 18px;
+    color: rgb(69, 137, 255);
+    font-weight: bold;
+  }
+  
+  .blueWord {
+    color: rgb(69, 137, 255);
+  }
+  
+  .howToUseItOneToFive {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .h1Help {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Open Sans;
+  }
+  
+  .next {
+    margin: 0;
+  }
+  
+  .buttonSize {
+    background-color: #4589ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .help-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #4589ff;
+    color: white;
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .help-button span {
+    font-size: 20px;
+    line-height: 1;
+  }
+  
+  .menu-bar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px 3px #00000014;
+    padding: 10px;
+    z-index: 1;
+    top: 100px;
+    right: 50px;
+    width: 110px;
+    text-align: right;
+  }
+  
+  .menu-item {
+    cursor: pointer;
+    color: #707c92;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+  }
+  
+  .menu-item:hover {
+    text-decoration: none;
+    color: lightblue;
+  }
+  
+  .help-button:hover span {
+    transform: scale(1.2);
+  }
+  
+  .buttonSize:hover .profile-icon {
+    filter: brightness(90%);
+  }
+  
+  .main-content {
+    display: flex;
+    height: 932px;
+  }
+  
+  .tasks {
+    width: 912px;
+    height: 219px;
+    top: 223px;
+    gap: 35px;
+    display: flex;
+  }
+  
+  .summary-container {
+    display: flex;
+    padding: 120px 60px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .summary-container h1 {
+    font-size: 61px;
+    font-weight: 700;
+  }
+  
+  .summary-container img {
+    width: 37px;
+    height: 37px;
+  }
+  
+  .arrow-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    flex-direction: column;
+    padding: 60px 60px;
+    justify-content: flex-start;
+    border-radius: 50%;
+  }
+  
+  .arrow-container img:hover {
+    cursor: pointer;
+    filter: brightness(100%); /* Hellere Farbe beim Hover */
+    background-color: #d2e2fe; /* Neue Hintergrundfarbe beim Hover */
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
+  }
+  
+  .privacy-box {
+    top: 289px;
+    left: 320px;
+    gap: 24px;
+    padding: 0px 60px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .privacy-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  
+  .privacy-container::-webkit-scrollbar {
+    display: none; /* Diese Eigenschaft blendet die Scrollleiste aus */
+  }
+  
+  .privacy-box h1,
+  h2 {
+    font-size: 33px;
+    font-weight: 700;
+    color: #4589ff;
+  }
+  
+  .headline-box p {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .dFlexd {
+    display: flex;
+  }
+
+  .flex50 {
+    display: none;
+    flex: 0.5;
+  }
+
+  .sideBoard {
+    padding-top: 462px !important;
+  }
+
+  .kanban{
+    width: unset !important;
+  }
+
+.sideBoardOffline{
+    width: 186px;
+    height: 40px;
+    padding: 8px 10px 8px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    color: black;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.sideBoardChild2 a {
+    display: none !important; 
+}
+  
+  @media only screen and (max-width: 768px) {
+    .kanban {
+      justify-content: flex-end;
+      gap: 5px;
+    }
+
+    .sideBoardOffline{
+        display: none;
+    }
+
+    .sideBoard {
+        padding-top: unset !important;
+      }
+  
+    .dFlexd {
+      display: unset;
+    }
+  
+    .kanban p {
+      display: none;
+    }
+  
+    .header {
+      padding: 10px 10px 10px 10px;
+    }
+  
+    .sideBoard-container {
+      display: none;
+    }
+  
+    .headline img {
+      max-width: 10vw;
+    }
+  
+    .clear-button {
+      padding-right: 5px;
+    }
+  
+    .button-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: unset;
+    }
+  
+    .main-content {
+      justify-content: flex-start;
+      display: unset;
+    }
+  
+    .summary-container {
+      padding: 120px 0px 10px 10px;
+      flex-direction: unset;
+      align-items: center;
+    }
+  
+    .summary-container h1 {
+      font-size: 36px;
+      height: unset;
+      width: unset;
+    }
+  
+    .menu-bar {
+      right: 30px;
+    }
+  
+    .privacy-box h1,
+    h2 {
+      font-size: 23px;
+    }
+  
+    .privacy-box {
+      padding: 10px 10px 10px 10px;
+    }
+  
+    .arrow-container {
+      padding: 30px 10px;
+    }
+  
+    .buttonSize {
+      padding: unset;
+    }
+  }
+  
+    
+
+
+
+
+
+
+
+
+
