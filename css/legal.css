@@ -100,8 +100,7 @@ body {
 
 .main-content {
   display: flex;
-  height: 100vh;
-  overflow-y: hidden;
+  height: 932px;
 }
 
 .tasks {

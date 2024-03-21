@@ -19,8 +19,8 @@ async function loadUsers() {
       console.log("Users DATA:", users);
       console.log("MainUser DATA:", mainUserInfos);
       console.log("Contact Book Data:", mainUserInfos[0].contactBook);
-      renderAlphabeticalCategories();
-      updateHTML();
+
+      // updateHTML();
     } catch (e) {
       console.error("Loading error:", e);
     }
