@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
     <link rel="stylesheet" href="css/styleadd.css">
     <link rel="stylesheet" href="css/styletemplates.css">
     <link rel="stylesheet" href="css/fonts.css">
@@ -16,7 +15,7 @@
     <script src="js/script.js"></script>
     <script src="js/summary.js"></script>
 </head>
-<body  onload="includeHTML();  init();load(); datePlan();"  >
+<body  onload="includeHTML(); init(); load(); datePlan();"  >
     <div w3-include-html="./templates/header.html"></div>
 <div class="main-content">
     <div w3-include-html="./templates/side-menu.html"></div>
@@ -57,7 +56,7 @@
                   <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
                     <div class="input-with-icon">
                        <input type="text" id="assignedInput" placeholder="Select contacts to assign..." onfocus="renderAlphabeticalCategories()"  onclick="renderAlphabeticalCategories()" readonly>
-                       <img id="icon" onclick="toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                       <img id="icon" onclick=" toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
                        <div id="listContactContainer"></div>
                     </div>
                 </nav>

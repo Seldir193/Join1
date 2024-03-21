@@ -67,7 +67,7 @@ function renderAddTaskFloating() {
         
             <nav class="priority">
                   <nav class="priority-header">Priority</nav>
-                    <nav class="priority-box" >
+                    <nav class="priority-box">
                         <nav class="urgent" onclick="resetBackgroundColors(), toggleBackgroundColor(this), addPriorityValue('urgent')">Urgent
                             <img class="color-img" src="assets/img/Prio alta.png"><img class="gray-img" src="assets/img/Prio alta (1).png"></nav>
                         <nav class="medium"onclick="resetBackgroundColors(), toggleBackgroundColor(this), addPriorityValue('medium')" >Medium <img class="color-img" src="assets/img/Prio media (1).png">
@@ -79,9 +79,13 @@ function renderAddTaskFloating() {
                 <div class="assigned">
                   <div class="styleAssigned"><b>Assigned to</b> (optional)</div>
                     <div class="input-with-icon">
-                       <input type="text" id="assignedInput" placeholder="Select contacts to assign..." readonly>
-                       <img id="icon" onclick="toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
-                       <div id="listContactContainerBoard"></div>
+                        <div class="column">
+                            <div class="dFlex">
+                                <input type="text" id="assignedInput" placeholder="Select contacts to assign..." readonly>
+                                <img id="icon" onclick="showContacts()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                            </div>
+                            <div id="listContactContainerBoard" class="dNone"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="categoryHeader">
@@ -118,17 +122,17 @@ function renderAddTaskFloating() {
 
 
 function renderContactsInAddTask() {
-    for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++){
-    let contact = mainUserInfos[0]['contactBook'][i];
-    document.getElementById('listContactContainerBoard').innerHTML =
-    `
+    for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
+        let contact = mainUserInfos[0]['contactBook'][i];
+        document.getElementById('listContactContainerBoard').innerHTML =
+            `
         <div>
             <div></div>
             <span>${contact}</span>
             <input type="checkbox" id="addContactToBoard${i}" name="myCheckbox" value="checkboxValue">
         </div>
     `;
-}
+    }
 }
 
 function checkNoTasksToDo() {
@@ -171,13 +175,13 @@ function checkNoTasksDone() {
 }
 
 
-function generateTodoHTML(element,currentUserInfo) {
+function generateTodoHTML(element, currentUserInfo) {
     let category = currentUserInfo['category'];
     let title = currentUserInfo['title'];
     let description = currentUserInfo['description'];
     let priority = currentUserInfo['priority']
 
-   
+
     return `
         <div class="tasksOnBoard" onclick="renderTaskFloating(${element['id']})" draggable="true" ondragstart="startDragging(${element['id']})">
             <div id="categoryOnBoard${element['id']}" class="categoryOnBoard">${category}</div>
@@ -215,7 +219,7 @@ function renderTaskFloating(i) {
     let addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
 
     document.getElementById('taskBoard').innerHTML =
-    `
+        `
      <div class="tasksOverBoardContainer" id="tasksOverBoardContainer${i}">
          <div class="categoryContainerOverBoard">
              <button class="technicalTaskBtn" id="technicalTaskBtnOverBoard${i}"></button>
@@ -247,10 +251,10 @@ function renderTaskFloating(i) {
          </div>
      </div>
      `;
- }
+}
 
 
- // // function renderAlphabeticalCategoriesOnBoard() {
+// // function renderAlphabeticalCategoriesOnBoard() {
 // //     for (let j = 0; j < contactBook.length; j++) {
 // //       let letter = contactBook[j].name.charAt(0).toUpperCase();
 // //       if (!letterArray.includes(letter)) {
@@ -260,13 +264,13 @@ function renderTaskFloating(i) {
 // //     let contacts = document.getElementById("listContactContainerBoard");
 // //     contacts.innerHTML = "";
 // //     letterArray = letterArray.slice().sort();
-  
+
 // //     for (let n = 0; n < letterArray.length; n++) {
 // //       contacts.innerHTML += `<div id="${letterArray[n]}"  class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
 // //     }
 // //    <>
 // //   }
-  
+
 //   function renderContactsOnBoard() {
 //     let letter = contactBook[i].name.charAt(0).toUpperCase();
 //       let contacts = document.getElementById(letter);
@@ -282,10 +286,23 @@ function renderTaskFloating(i) {
 //       <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
 //       <div class="renderNameEmail" >
 //       <div class="listName">${contactBook[i].name} </div>
-      
+
 //       </div><input class="box" type="checkbox" id="remember" name="remember">
 //      </button>`;
 //     }
 //   }
 
 
+function renderContactsAddTaskBoard() {
+    for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
+        let contactsBoard = document.getElementById('listContactContainerBoard');
+        contactsBoard.innerHTML =
+            `
+        <div>
+            <div id="initialsContainer${i}"></div>
+            <span id="contactBoard${i}"></span>
+            <input type="checkbox" name="checkboxContact${i}" id="checkboxContact${i}">
+        </div>
+    `;
+    }
+}
