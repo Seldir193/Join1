@@ -22,7 +22,7 @@
     <div class="sum-container">
         <div class="summary-container">
             <h3>Add Task</h3>
-            <nav class="description">
+            <form class="description">
                 <nav class="title">
                     <input class="titlebox" id="titleEnter" minlength="5" maxlength="20" placeholder="Enter a title" required>
                     <nav class="titlesmallbox">This field is required</nav>
@@ -31,7 +31,7 @@
                     <nav class="optional">
                         <span class="description-optional"><b>Description</b> (optional)</span>
                     </nav>
-                    <input class="enter-input" id="descriptionInput" placeholder="Enter a description" required>
+                    <textarea class="enter-input" id="descriptionInput" placeholder="Enter a description" required></textarea>
                     <nav class="date-box"></nav>
                 </nav>
                 <nav class="date">
@@ -84,10 +84,11 @@
                             <button class="clear" onclick="clearCurrentall()">Clear <img src="assets/img/iconoir_cancel.png"></button>
                         </nav>
                      <nav class="create-button">
-                        <button class="create">Create Task <img src="assets/img/check.png"></button>
+                        <button class="create" onclick="createTask()">Create Task <img src="assets/img/check.png"></button>
                      </nav>
                    </nav>
                </nav>   
+            </form>
     </div>
 </div>  
 </body>

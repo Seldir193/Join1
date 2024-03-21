@@ -161,6 +161,7 @@ body {
   gap: 10px;
   border: 1px solid #d1d1d1;
   padding: 13px 16px 13px 16px;
+  font-size:19px;
 }
 
 .enter input {
