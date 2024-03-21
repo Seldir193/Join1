@@ -76,18 +76,14 @@ function renderAddTaskFloating() {
                             <img class="gray-img" src="assets/img/Prio baja (1).png"></nav>
                     </nav>
                 </nav>
-                <div class="assigned">
-                  <div class="styleAssigned"><b>Assigned to</b> (optional)</div>
+                <nav class="assigned">
+                  <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
                     <div class="input-with-icon">
-                        <div class="column">
-                            <div class="dFlex">
-                                <input type="text" id="assignedInput" placeholder="Select contacts to assign..." readonly>
-                                <img id="icon" onclick="showContacts()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
-                            </div>
-                            <div id="listContactContainerBoard" class="dNone"></div>
-                        </div>
+                       <input type="text" id="assignedInput" placeholder="Select contacts to assign..." onfocus="renderAlphabeticalCategories()"  onclick="renderAlphabeticalCategories()" readonly>
+                       <img id="icon" onclick=" toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                       <div id="listContactContainerBoard"></div>
                     </div>
-                </div>
+                </nav>
                 <div class="categoryHeader">
                    <div class="styleCategory"><b>Category</b></div>
                       <div class="input-with-icon">
@@ -121,19 +117,19 @@ function renderAddTaskFloating() {
 }
 
 
-function renderContactsInAddTask() {
-    for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
-        let contact = mainUserInfos[0]['contactBook'][i];
-        document.getElementById('listContactContainerBoard').innerHTML =
-            `
-        <div>
-            <div></div>
-            <span>${contact}</span>
-            <input type="checkbox" id="addContactToBoard${i}" name="myCheckbox" value="checkboxValue">
-        </div>
-    `;
-    }
-}
+// function renderContactsInAddTask() {
+//     for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
+//         let contact = mainUserInfos[0]['contactBook'][i];
+//         document.getElementById('listContactContainerBoard').innerHTML =
+//             `
+//         <div>
+//             <div></div>
+//             <span>${contact}</span>
+//             <input type="checkbox" id="addContactToBoard${i}" name="myCheckbox" value="checkboxValue">
+//         </div>
+//     `;
+//     }
+// }
 
 function checkNoTasksToDo() {
     if (countToDo == 0) {
@@ -222,32 +218,33 @@ function renderTaskFloating(i) {
         `
      <div class="tasksOverBoardContainer" id="tasksOverBoardContainer${i}">
          <div class="categoryContainerOverBoard">
-             <button class="technicalTaskBtn" id="technicalTaskBtnOverBoard${i}"></button>
+             <button class="technicalTaskBtn" id="technicalTaskBtnOverBoard${i}">${addCategoryInput}</button>
              <img src="assets/img/close.svg" alt="close img">
          </div>
-         <h1 class="titelOverBoard"></h1>
-         <span class="descriptionOverBoard"></span>
+         <h1 class="titelOverBoard">${addTitleInput}</h1>
+         <span class="descriptionOverBoard">${addDescriptionInput}</span>
          <table>
              <tr>
                  <th rowspan="2" class="styleDueDate">Due Date:</th>
                  <th rowspan="2" class="stylePriority">Priority:</th>
              </tr>
              <tr>
-                 <th id="insertDueDateOverBoard${i}"></th>
-                 <th id="insertPriorityOverBoard${i}"></th>
+                 <th id="insertDueDateOverBoard${i}">${addDateInput}</th>
+                 <th id="insertPriorityOverBoard${i}">${addPriorityInput}</th>
              </tr>
          </table>
          <div>
              <span class="styleAssigned">Assigned to:</span>
              <div>
                  <img src="assets/img/Profile badge.png" alt="#"
-             
+                 ${addMembersInput}
              </div>
          </div>
          <div>
-             <span class="styleSubtasks">Subtasks</span>
-             <label for="checkbox1"><input type="checkbox" id="checkbox${i}" name="checkbox1">Subtask 1</label>
-             <label for="checkbox2"><input type="checkbox" id="checkbox${i}" name="checkbox2">Subtask 2</label>
+             <span class="styleSubtasks" >Subtasks</span>
+             <div id="checkBoxContainer${i}"></div>
+             
+             
          </div>
      </div>
      `;
@@ -293,16 +290,27 @@ function renderTaskFloating(i) {
 //   }
 
 
-function renderContactsAddTaskBoard() {
-    for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
-        let contactsBoard = document.getElementById('listContactContainerBoard');
-        contactsBoard.innerHTML =
+// function renderContactsAddTaskBoard() {
+//     for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
+//         let contactsBoard = document.getElementById('listContactContainerBoard');
+//         contactsBoard.innerHTML =
+//             `
+//         <div>
+//             <div id="initialsContainer${i}"></div>
+//             <span id="contactBoard${i}"></span>
+//             <input type="checkbox" name="checkboxContact${i}" id="checkboxContact${i}">
+//         </div>
+//     `;
+//     }
+// }
+
+
+function renderCheckboxs(i) {
+    let subtasksCheck = mainUserInfos[0]['tasks'][i]['subtasks'];
+    for (j = 0; j < subtasksCheck.length; j++) {
+        document.getElementById(`checkBoxContainer${i}`).innerHTML +=
             `
-        <div>
-            <div id="initialsContainer${i}"></div>
-            <span id="contactBoard${i}"></span>
-            <input type="checkbox" name="checkboxContact${i}" id="checkboxContact${i}">
-        </div>
+    <label for="checkbox1"><input type="checkbox" id="checkboxContact${i}" name="checkbox1">${subtasksCheck[j]}</label>
     `;
     }
 }

@@ -53,3 +53,8 @@ body {
 #menuBar.show {
   display: block;
 }
+
+
+.width100{
+  width: 100%;
+}

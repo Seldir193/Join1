@@ -6,7 +6,7 @@ let currentUserKey = [];
 let users = [];
 
 async function init() {
-  loadUsers();
+  await loadUsers();
 }
 
 async function loadUsers() {
@@ -19,8 +19,8 @@ async function loadUsers() {
       console.log("Users DATA:", users);
       console.log("MainUser DATA:", mainUserInfos);
       console.log("Contact Book Data:", mainUserInfos[0].contactBook);
-
-      // updateHTML();
+      renderAlphabeticalCategories();
+      
     } catch (e) {
       console.error("Loading error:", e);
     }

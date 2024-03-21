@@ -4,7 +4,7 @@ let countToDo = [];
 let countInProgress = [];
 let countAwaitFeedback = [];
 let countDone = [];
-
+let letterArray = [];
 let currentPriority;
 
 let categorySet = ["Technical Task", "User Story"];
@@ -24,9 +24,11 @@ function render() {
     for (i = 0; i < 1; i++) {
         renderAddTaskFloating();
         renderNoTasks();
-        if (mainUserInfos[0]['tasks'].length > 0 ){
-        renderShowTask();}
+        if (mainUserInfos[0]['tasks'].length > 0) {
+            renderShowTask();
+        }
     }
+    updateHTML();
     renderContactsAddTaskBoard();
 }
 
@@ -89,8 +91,10 @@ function updateHTML() {
     swapDone();
     for (i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         fillTasksOnBoard(i);
+        updateProgress(i);
+        progress(i);
     }
-    progress();
+    
 }
 
 
@@ -313,7 +317,7 @@ function addSubtasksToBoard() {
 }
 
 
-addDoneToBoard() {
+function addDoneToBoard() {
     let addDone = [];
     return addDone;
 }
@@ -353,25 +357,6 @@ function clearAddTaskFloating() {
 
     let subTaskInput = document.getElementById("subTaskInput");
     subTaskInput.innerHTML = "";
-}
-
-
-function updateProgress(i) {
-    let count = 0;
-    let totalTasks = mainUserInfos[0]['tasks'][i]['subtasks'].length;
-
-    // Iteriere über alle Subtasks
-    for (let j = 0; j < totalTasks; j++) {
-        // Überprüfe, ob die Checkbox mit der ID `subtaskCheckbox_${i}_${j}` angeklickt ist
-        if (document.getElementById(`subtaskCheckbox_${i}_${j}`).checked) {
-            // Wenn die Checkbox angeklickt ist, erhöhe count um 1
-            count++;
-        }
-    }
-
-    // Aktualisiere den Fortschritt basierend auf der Anzahl der angeklickten Checkboxen
-    let progress = (count / totalTasks) * 100;
-    document.getElementById(`progress${i}`).style.width = progress + '%';
 }
 
 
@@ -429,10 +414,10 @@ function resetBackgroundColors() {
 //         listContactContainer.style.display === "none" ||
 //         listContactContainer.style.display === ""
 //     ) {
-        
+
 //         icon.src = "assets/img/arrow_drop_up.png";
 //     } else {
-        
+
 //         icon.src = "assets/img/arrow_drop_down.png";
 //     }
 // }
@@ -448,7 +433,7 @@ function technicalUser() {
 }
 
 
-function valueSubtask()    {
+function valueSubtask() {
     let valueSubtask = document.getElementById('subTaskInput').value;
     document.getElementById('subtaskList').innerHTML += `${valueSubtask}`;
 }
@@ -460,23 +445,24 @@ function selectCategory(category) {
     toggleCategory();
     selectedCategories.push(category);
     categoryInput.value = selectedCategories.join(", ");
-  }
+}
 
 
-  function showContacts() {
+function showContacts() {
     document.getElementById('listContactContainerBoard').classList.remove('dNone');
-  }
+}
 
 
-  function progress() {
-    let progress = mainUserInfos[0]['tasks'][i]['done'].length;
-    let goal = mainUserInfos[0]['tasks'][i]['subtasks'].length;
+function progress(i) {
+    if (mainUserInfos[0]['tasks'][i]['done'].length > 0) {
+        let progress = mainUserInfos[0]['tasks'][i]['done'].length;
+        let goal = mainUserInfos[0]['tasks'][i]['subtasks'].length;
 
-    document.querySelector('.progress').style.width = ((progress / goal) * 100) + '%';
-  }
+        document.querySelector('.progress').style.width = ((progress / goal) * 100) + '%';
+    }
+}
 
-
-  function updateProgress() {
+function updateProgress(i) {
     var checkbox = document.getElementById(`checkboxContact${i}`);
 
     if (!checkbox.checked) {
@@ -487,3 +473,85 @@ function selectCategory(category) {
         mainUserInfos[0]['tasks'][i]['done'].push(doneCount);
     }
 }
+
+
+function toggleIcon() {
+    var listContactContainer = document.getElementById("listContactContainer");
+    var listTechnical = document.getElementById("listTechnical");
+    var icon = document.getElementById("icon");
+  
+    listTechnical.style.display = "none";
+  
+    if (
+      listContactContainer.style.display === "none" ||
+      listContactContainer.style.display === ""
+    ) {
+      listContactContainer.style.display = "block";
+      icon.src = "assets/img/arrow_drop_up.png";
+    } else {
+      listContactContainer.style.display = "none";
+      icon.src = "assets/img/arrow_drop_down.png";
+    }
+  }
+
+
+  function renderAlphabeticalCategories() {
+    for (let j = 0; j < mainUserInfos[0].contactBook.length; j++) {
+      let letter = mainUserInfos[0].contactBook[j].name.charAt(0).toUpperCase();
+      if (!letterArray.includes(letter)) {
+        letterArray.push(letter);
+      }
+    }
+  
+    let contacts = document.getElementById("listContactContainerBoard");
+    contacts.innerHTML = "";
+    letterArray = letterArray.slice().sort();
+  
+    for (let n = 0; n < letterArray.length; n++) {
+      contacts.innerHTML += `<div id="${letterArray[n]}"  class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
+    }
+    renderContacts();
+  }
+  
+  function renderContacts() {
+    for (let i = 0; i < mainUserInfos[0].contactBook.length; i++) {
+      let letter = mainUserInfos[0].contactBook[i].name.charAt(0).toUpperCase();
+      let contacts = document.getElementById(letter);
+      let randomColor = getRandomColorForInitials(
+        mainUserInfos[0].contactBook[i].name
+      );
+      randomColorCollection[i] = randomColor;
+      let charStyle = `style="background-color: ${randomColor}"`;
+      let firstName = mainUserInfos[0].contactBook[i].name
+        .split(" ")[0]
+        .charAt(0)
+        .toUpperCase();
+      let lastName;
+      if (mainUserInfos[0].contactBook[i].name.split(" ").length > 1) {
+        lastName = mainUserInfos[0].contactBook[i].name
+          .split(" ")[1]
+          .charAt(0)
+          .toUpperCase();
+      } else {
+        lastName = " ";
+      }
+      contacts.innerHTML += insertRenderContacts(
+        i,
+        charStyle,
+        firstName,
+        lastName
+      );
+    }
+  }
+  
+  function insertRenderContacts(i, charStyle, firstName, lastName) {
+    return `
+      <button id="contact_${i}" onclick="pullContact(${i})" class="listContact">
+        <div class="chartAt" ${charStyle}>${firstName}${lastName}</div>
+        <div class="renderNameEmail" >
+          <div id="lN" class="listName">${mainUserInfos[0].contactBook[i].name} </div>
+          <div id="lE" class="listEmail">${mainUserInfos[0].contactBook[i].email}</div>
+        </div>
+        <input class="box" type="checkbox" id="remember" name="remember">
+      </button>`;
+  }
