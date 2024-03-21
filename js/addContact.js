@@ -67,6 +67,13 @@ function insertRenderContacts(i, charStyle, firstName, lastName) {
     </button>`;
 }
 
+<<<<<<< Updated upstream
+=======
+function toggleContactAndPullContact(index) {
+  pullContact(index);
+}
+
+>>>>>>> Stashed changes
 function pullContact(i) {
   document.getElementById("pullContactToWindow").classList.toggle("pull");
   addHeadlineToPulledWindow(i);
