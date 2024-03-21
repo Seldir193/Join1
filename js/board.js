@@ -25,12 +25,14 @@ async function onload() {
 
 
 function render() {
-        renderAddTaskFloating();
-        renderNoTasks();
-        if (mainUserInfos[0]['tasks'].length > 0) {
-            renderShowTask();
+    renderAddTaskFloating();
+    renderNoTasks();
+    if (mainUserInfos[0]['tasks'].length > 0) {
+        for (i = 0; mainUserInfos[0]['tasks'].length; i++) {
+            renderShowTask(i);
         }
-        renderContactsOnBoard();
+    }
+    renderContactsOnBoard();
     updateHTML();
 }
 
@@ -243,7 +245,7 @@ function fillArray() {
         description: `${addDescriptionValue}`,
         category: `${addCategoryValue}`,
         dueDate: `${addDateValue}`,
-        // members: addMembersValue,
+        members: addMembersValue,
         subtasks: addSubTaskValue,
         done: addDoneValue,
         priority: currentPriority,
@@ -477,35 +479,3 @@ function updateProgress(i) {
 }
 
 
-function toggleIcon() {
-    var listContactContainer = document.getElementById("listContactContainer");
-    var listTechnical = document.getElementById("listTechnical");
-    var icon = document.getElementById("icon");
-
-    listTechnical.style.display = "none";
-
-    if (
-        listContactContainer.style.display === "none" ||
-        listContactContainer.style.display === ""
-    ) {
-        listContactContainer.style.display = "block";
-        icon.src = "assets/img/arrow_drop_up.png";
-    } else {
-        listContactContainer.style.display = "none";
-        icon.src = "assets/img/arrow_drop_down.png";
-    }
-}
-
-
-function renderContactsOnBoard() {
-    let contactBoard = document.getElementById('listContactContainerBoard');
-    for (i = 0; i < mainUserInfos[0]['contactBoard'].length; i++) { 
-    contactBoard.innerHTML +=
-        `
-    <div class="contactsBoardContainer">
-        <div id="profilMember${i}"></div>
-        <span id="nameMember${i}"></span>
-        <input id="checkboxMember${i}" type="checkbox">
-    </div>
-    `;
-}}

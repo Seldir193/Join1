@@ -1,18 +1,39 @@
-function renderShowTask() {
 
-    let addCategoryInput = mainUserInfos[0]['tasks'][i]['category'];
+function renderShowTask(i) {
 
-    let addTitleInput = mainUserInfos[0]['tasks'][i]['title'];
 
-    let addDescriptionInput = mainUserInfos[0]['tasks'][i]['description'];
+    if (mainUserInfos[0]['tasks'][i]['category'] !== undefined) {
+        addCategoryInput = mainUserInfos[0]['tasks'][i]['category'];
+    } else {
+        addCategoryInput = "Kein Wert";
+    }
+    if (mainUserInfos[0]['tasks'][i]['title'] !== undefined) {
+        addTitleInput = mainUserInfos[0]['tasks'][i]['title'];
+    } else {
 
-    let addDateInput = mainUserInfos[0]['tasks'][i]['dueDate'];
+        addTitleInput = "Kein Wert";
+    }
+    if (mainUserInfos[0]['tasks'][i]['description'] !== undefined) {
+        addDescriptionInput = mainUserInfos[0]['tasks'][i]['description'];
+    } else {
+        addDescriptionInput = "Kein Wert";
+    }
+    if (mainUserInfos[0]['tasks'][i]['dueDate'] !== undefined) {
+        addDateInput = mainUserInfos[0]['tasks'][i]['dueDate'];
+    } else {
+        addDateInput = "Kein Wert";
+    }
+    if (mainUserInfos[0]['tasks'][i]['priority'] !== undefined) {
+        addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
+    } else {
+        addPriorityInput = "Kein Wert";
+    }
+    if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
+        addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
+    } else {
+        addSubtasksInput = "Kein Wert";
+    }
 
-    let addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
-
-    let addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
-
-    let addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
 
 
     document.getElementById('boardsContainer').innerHTML +=
@@ -37,7 +58,7 @@ function renderShowTask() {
             <h3>Assigned To:</h3>
                     <div class="alignItems">
                         <img src="assets/img/ellipse_profil.svg" alt="Profil Img">
-                        <span id="profilValue${i}">${addMembersInput}</span>
+                        <span id="profilValue${i}"></span>
                     </div>
             <h3>Subtasks:</h3>
             <label for="checkboxSubtasks1" class="styleCheckboxContainer" id="subtaskValue${i}">
@@ -79,16 +100,16 @@ function renderAddTaskFloating() {
                 <nav class="assigned">
                   <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
                     <div class="input-with-icon">
-                    <div id="listContactContainerBoard"></div>
+                    <div id="listContactContainerBoard" class="dNone"></div>
                        <input type="text" id="assignedInput" placeholder="Select contacts to assign..." onfocus="renderAlphabeticalCategories()"  onclick="renderAlphabeticalCategories()" readonly>
-                       <img id="icon" onclick=" toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                       <img id="icon" onclick="showContacts()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
                        
                     </div>
                 </nav>
                 <div class="categoryHeader">
                    <div class="styleCategory"><b>Category</b></div>
                       <div class="input-with-icon">
-                         <input type="text" id="categoryInput" placeholder="Select task category..." onfocus="technicalUser()" onclick="technicalUser()" readonly>
+                         <input type="text" id="categoryInput" placeholder="Select task category..." onfocus="technicalUser()" onclick="technicalUser()" readonly required>
                          <img id="categoryDropdown" onclick="toggleCategory()"src="assets/img/arrow_drop_down.png" class="dropdown-icon">
                       </div>
                       <div id="listTechnical" class="techUser"></div>
@@ -211,7 +232,7 @@ function renderTaskFloating(i) {
 
     let addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
 
-    let addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
+    // let addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
 
     let addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
 
@@ -238,24 +259,16 @@ function renderTaskFloating(i) {
              <span class="styleAssigned">Assigned to:</span>
              <div>
                  <img src="assets/img/Profile badge.png" alt="#"
-                 ${addMembersInput}
+                //  ${addMembersInput}
              </div>
          </div>
          <div>
              <span class="styleSubtasks" >Subtasks</span>
-             <div id="checkBoxContainer${i}"></div>
-             
-             
+             <div id="checkBoxContainer${i}">${addSubtasksInput}</div>             
          </div>
      </div>
      `;
 }
-
-
-
-
-
-
 
 
 function renderCheckboxs(i) {
@@ -266,4 +279,24 @@ function renderCheckboxs(i) {
     <label for="checkbox1"><input type="checkbox" id="checkboxContact${i}" name="checkbox1">${subtasksCheck[j]}</label>
     `;
     }
+}
+
+
+function renderContactsOnBoard() {
+    let contactBoard = document.getElementById('listContactContainerBoard');
+    for (i = 0; i < mainUserInfos[0]['contactBoard'].length; i++) {
+        contactBoard.innerHTML +=
+            `
+    <div class="contactsBoardContainer">
+        <div id="profilMember${i}"></div>
+        <span id="nameMember${i}"></span>
+        <input id="checkboxMember${i}" type="checkbox">
+    </div>
+    `;
+    }
+}
+
+
+function showContacts() {
+    document.getElementById('listContactContainerBoard').classList.remove('dNone');
 }
