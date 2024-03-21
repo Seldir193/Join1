@@ -6,6 +6,13 @@ let letterArray = [];
 let randomColorCollection = {};
 let initialColorMap = {};
 
+
+async function initContacts(){
+  await init();
+  renderAlphabeticalCategories();
+}
+
+
 function renderAlphabeticalCategories() {
   for (let j = 0; j < mainUserInfos[0].contactBook.length; j++) {
     let letter = mainUserInfos[0].contactBook[j].name.charAt(0).toUpperCase();
@@ -320,7 +327,7 @@ async function insertContact(event) {
     });
 
     await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos)); //Besim: Speichere den Array unter den Key (email)
-    init();
+    initContacts();
 
     renderAlphabeticalCategories();
     clearInput();

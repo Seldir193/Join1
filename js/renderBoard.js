@@ -79,9 +79,10 @@ function renderAddTaskFloating() {
                 <nav class="assigned">
                   <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
                     <div class="input-with-icon">
+                    <div id="listContactContainerBoard"></div>
                        <input type="text" id="assignedInput" placeholder="Select contacts to assign..." onfocus="renderAlphabeticalCategories()"  onclick="renderAlphabeticalCategories()" readonly>
                        <img id="icon" onclick=" toggleIcon()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
-                       <div id="listContactContainerBoard"></div>
+                       
                     </div>
                 </nav>
                 <div class="categoryHeader">
@@ -111,7 +112,7 @@ function renderAddTaskFloating() {
                      </div>
                    </div>
                </div>   
-            </div>F
+            </div>
             </form>
     </div>`;
 }
@@ -251,58 +252,10 @@ function renderTaskFloating(i) {
 }
 
 
-// // function renderAlphabeticalCategoriesOnBoard() {
-// //     for (let j = 0; j < contactBook.length; j++) {
-// //       let letter = contactBook[j].name.charAt(0).toUpperCase();
-// //       if (!letterArray.includes(letter)) {
-// //         letterArray.push(letter);
-// //       }
-// //     }
-// //     let contacts = document.getElementById("listContactContainerBoard");
-// //     contacts.innerHTML = "";
-// //     letterArray = letterArray.slice().sort();
-
-// //     for (let n = 0; n < letterArray.length; n++) {
-// //       contacts.innerHTML += `<div id="${letterArray[n]}"  class="category"><div class="letter">${letterArray[n]}</div><div class="line"></div></div>`;
-// //     }
-// //    <>
-// //   }
-
-//   function renderContactsOnBoard() {
-//     let letter = contactBook[i].name.charAt(0).toUpperCase();
-//       let contacts = document.getElementById(letter);
-//       contacts.innerHTML = '';
-//     for (let i = 0; i < contactBook.length; i++) {
-//       let letter = contactBook[i].name.charAt(0).toUpperCase();
-//       let contacts = document.getElementById(letter);
-//       let randomColor = getRandomColor();
-//       randomColorCollection.push(randomColor);
-//       let charStyle = `style="background-color: ${randomColor}"`;
-//       contacts.innerHTML += `
-//       <button id="contactOnBoard${i}" class="listContact">
-//       <div class="chartAt" ${charStyle}>${contactBook[i].name.charAt(0)}</div>
-//       <div class="renderNameEmail" >
-//       <div class="listName">${contactBook[i].name} </div>
-
-//       </div><input class="box" type="checkbox" id="remember" name="remember">
-//      </button>`;
-//     }
-//   }
 
 
-// function renderContactsAddTaskBoard() {
-//     for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
-//         let contactsBoard = document.getElementById('listContactContainerBoard');
-//         contactsBoard.innerHTML =
-//             `
-//         <div>
-//             <div id="initialsContainer${i}"></div>
-//             <span id="contactBoard${i}"></span>
-//             <input type="checkbox" name="checkboxContact${i}" id="checkboxContact${i}">
-//         </div>
-//     `;
-//     }
-// }
+
+
 
 
 function renderCheckboxs(i) {
