@@ -145,18 +145,7 @@
   cursor: pointer;
 }
 
-.userStoryBtn {
-  color: white;
-  background-color: #ff7a00;
-  border-radius: 8px;
-  border-style: none;
-  font-family: "Open Sans", sans-serif;
-  font-size: 23px;
-  line-height: 27.6px;
-  font-weight: 400;
-  height: 36px;
-  width: 160px;
-}
+
 
 .closeBtn {
   width: 24px;
@@ -235,6 +224,34 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+
+
+.technicalTaskBtn {
+  height: 27px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.2px;
+  background-color: RGB(0, 56, 255);
+  padding: 4px 16px 4px 16px;
+  margin-bottom: 10px;
+}
+
+.UserStoryBtn {
+  height: 27px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.2px;
+  background-color: RGB(255, 122, 0);
+  padding: 4px 16px 4px 16px;
+  margin-bottom: 10px;
 }
 
 .addTaskStyleProfileName {
@@ -483,7 +500,7 @@
   /* Startposition rechts außerhalb des Bildschirms */
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
-  overflow: hidden;
+  overflow-y: scroll;
   background-color: white;
   padding: 20px;
   transition: right 0.5s ease;
@@ -521,34 +538,17 @@
 
 #boardsContainer {
   height: 100vh;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.technicalTaskBtn {
-  width: 140px;
-  height: 27px;
-  border-radius: 8px;
-  border: none;
-  color: white;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19.2px;
-  background-color: RGB(0, 56, 255);
-  padding: 4px 16px 4px 16px;
-  margin-bottom: 10px;
-}
 
-.UserStoryBtn {
-  width: 140px;
-  height: 27px;
-  border-radius: 8px;
-  border: none;
-  color: white;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19.2px;
-  background-color: RGB(255, 122, 0);
-  padding: 4px 16px 4px 16px;
+
+.tasksOnBoard{
+  box-shadow: 0px 0px 10px 3px #00000014;
+  border-radius: 24px;
+  width: 252px;
+  padding: 16px;
   margin-bottom: 10px;
 }
 
@@ -897,7 +897,7 @@
 
 .categoryHeader {
   height: 79px;
-  gap: 8px;
+  padding-top: 8px;
   display: flex;
   flex-direction: column;
 }
@@ -985,15 +985,42 @@
 }
 
 
-#listContactContainerBoard {
+.contactsBoardContainer{
+  height: 100%;
+  width: 100%;
+  display: flex;
   overflow-y: scroll;
   z-index: 5000;
-  background-color: white;
-  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 
-.contactsBoardContainer{
-  height: 40px;
-  width: 100%;
+.styleMembersAddTask{
+  color: white;
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  
+}
+
+
+.nameMember {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+
+.contactsBoardContainerChild {
+  display: flex;
+  align-items: center;
+}
+
+
+.customCheckbox{
+  margin-right: 16px
 }

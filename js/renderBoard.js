@@ -15,9 +15,9 @@ function renderShowTask(i) {
         if (mainUserInfos[0]['tasks'][i]['priority'] !== undefined) {
             addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
         }
-        // if(mainUserInfos[0]['tasks'][i]['members'].length > 0){
-        // addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
-        // }
+        if (mainUserInfos[0]['tasks'][i]['members'].length > 0) {
+            addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
+        }
         if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
             addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
         }
@@ -86,12 +86,13 @@ function renderAddTaskFloating() {
                 <nav class="assigned">
                   <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
                     <div class="input-with-icon">
-                    <div id="listContactContainerBoard" class="dNone"></div>
+                    
                        <input type="text" id="assignedInput" placeholder="Select contacts to assign..." readonly>
-                       <img id="icon" onclick="showContacts()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
+                       <img id="icon" onclick="renderContactsOnBoard()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
                        
                     </div>
                 </nav>
+                <div id="listContactContainerBoard" class="dNone"></div>
                 <div class="categoryHeader">
                    <div class="styleCategory"><b>Category</b></div>
                       <div class="input-with-icon">
@@ -126,7 +127,7 @@ function renderAddTaskFloating() {
 
 
 // function renderContactsInAddTask() {
-//     for (i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
+//     for (let i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
 //         let contact = mainUserInfos[0]['contactBook'][i];
 //         document.getElementById('listContactContainerBoard').innerHTML =
 //             `
@@ -196,9 +197,9 @@ function renderTaskFloating(i) {
         if (mainUserInfos[0]['tasks'][i]['priority'] !== undefined) {
             addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
         }
-        // if(mainUserInfos[0]['tasks'][i]['members'].length > 0){
-        // addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
-        // }
+        if (mainUserInfos[0]['tasks'][i]['members'] !== undefined) {
+            addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
+        }
         if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
             addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
         }
@@ -224,9 +225,7 @@ function renderTaskFloating(i) {
          </table>
          <div>
              <span class="styleAssigned">Assigned to:</span>
-             <div>
-                 <img src="assets/img/Profile badge.png" alt="#"
-        
+             <div id="contactsOverBoardContainer${i}">${addMembersInput}        
              </div>
          </div>
          <div>
@@ -240,34 +239,12 @@ function renderTaskFloating(i) {
 
 function renderCheckboxs(i) {
     let subtasksCheck = mainUserInfos[0]['tasks'][i]['subtasks'];
-    for (j = 0; j < subtasksCheck.length; j++) {
+    for (let j = 0; j < subtasksCheck.length; j++) {
         document.getElementById(`checkBoxContainer${i}`).innerHTML +=
             `
     <label for="checkbox1"><input type="checkbox" id="checkboxContact${i}" name="checkbox1">${subtasksCheck[j]}</label>
     `;
     }
-}
-
-
-function renderContactsOnBoard() {
-    let contactBoard = document.getElementById('listContactContainerBoard');
-    if (mainUserInfos[0]['contactBoard']) {
-        for (i = 0; i < mainUserInfos[0]['contactBoard'].length; i++) {
-            contactBoard.innerHTML +=
-                `
-    <div class="contactsBoardContainer">
-        <div id="profilMember${i}"></div>
-        <span id="nameMember${i}"></span>
-        <input id="checkboxMember${i}" type="checkbox">
-    </div>
-    `;
-        }
-    }
-}
-
-
-function showContacts() {
-    document.getElementById('listContactContainerBoard').classList.remove('dNone');
 }
 
 
@@ -282,8 +259,10 @@ function generateTodoHTML(element, currentUserInfo) {
         <div class="tasksOnBoard" onclick="renderTaskFloating(${element['id']})" draggable="true" ondragstart="startDragging(${element['id']})">
             <div id="categoryOnBoard${element['id']}" class="categoryOnBoard">${category}</div>
             <img src="assets/img/delete.svg" alt="deleteBtn" onclick="deleteTask(${element['id']})">
-            <span id="titleOnBoard${element['id']}" class="titleOnBoard">${title}</span>
-            <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard">${description}</span>
+            <div class="column">
+                <span id="titleOnBoard${element['id']}" class="titleOnBoard">${title}</span>
+                <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard">${description}</span>
+            </div>
             <div>
                 <div class="progress-bar" id="progress-bar${element['id']}">
                     <div class="progress" id="progress${element['id']}"></div>
@@ -343,7 +322,7 @@ function addSubtasksToBoard() {
 
     let addSubtasks = [];
 
-    for (i = 0; i < subtaskList.children.length; i++) {
+    for (let i = 0; i < subtaskList.children.length; i++) {
 
         let subtaskInputs = document.getElementById(`contactText_${i}`).innerHTML;
 

@@ -9,7 +9,7 @@ let currentPriority;
 let initialColorMap = {};
 let randomColorCollection = {};
 let selectedCategories = [];
-
+let addMembersValueArray = []
 
 
 let categorySet = ["Technical Task", "User Story"];
@@ -39,6 +39,11 @@ function render() {
 function toggleCard() {
     let card = document.getElementById('addTaskFloating');
     card.classList.toggle('activeAddTask');
+    let contactBoard = document.getElementById('listContactContainerBoard');
+    if (contactBoard.classList.contains('dFlex')) {
+        contactBoard.classList.remove('dFlex');
+        contactBoard.classList.add('dNone');
+    }
 }
 
 
@@ -92,7 +97,7 @@ function updateHTML() {
     swapInProgress();
     swapAwaitFeedback();
     swapDone();
-    for (i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         fillTasksOnBoard(i);
         // updateProgress(i);
         // progress(i);
@@ -155,16 +160,16 @@ function fillTasksOnBoard(i) {
 }
 
 
-// function addMembersValue(i) {
-//     for (j = 0; j < mainUserInfos[0]['tasks'][i].members.length; j++) {
-//         let memberFirstLetter = mainUserInfos[0]['tasks'][i].members[j].charAt(0).toUpperCase();
-//         let color = getRandomColor();
-//         document.getElementById(`profilsOnBoard${i}`).innerHTML +=
-//             `
-//         <div class="profileOnBoard" style="background-color: ${color};">${memberFirstLetter}</div>
-//     `;
-//     }
-// }
+function addMembersValue(i) {
+    for (let j = 0; j < mainUserInfos[0]['tasks'][i].members.length; j++) {
+        let memberFirstLetter = mainUserInfos[0]['tasks'][i].members[j].charAt(0).toUpperCase();
+        let color = getRandomColor();
+        document.getElementById(`profilsOnBoard${i}`).innerHTML +=
+            `
+        <div class="profileOnBoard" style="background-color: ${color};">${memberFirstLetter}</div>
+    `;
+    }
+}
 
 
 function addTitleValue(i) {
@@ -205,7 +210,7 @@ function addCategoryValue(i) {
 
 // function addSubTaskValue(i) {
 //     document.getElementById(`subtasksOnScreen${i}`).innerHTML = '';
-//     for (j = 0; j < mainUserInfos[0]['tasks'][i]['subtasks'].length; j++) {
+//     for (let j = 0; j < mainUserInfos[0]['tasks'][i]['subtasks'].length; j++) {
 //         let addSubTaskValue = mainUserInfos[0]['tasks'][i]['subtasks'][j];
 //         document.getElementById(`subtasksOnScreen${i}`).innerHTML +=
 //             `
@@ -219,7 +224,7 @@ async function pushToDo(newToDo) {
     mainUserInfos[0]['tasks'].push(newToDo);
     await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
     updateHTML();
-    renderContactsAddTaskBoard();
+    addMembersValueArray = [];
 }
 
 
@@ -237,15 +242,15 @@ function fillArray() {
     let addCategoryValue = addCategoryToBoard();
     let addSubTaskValue = addSubtasksToBoard();
     let addDoneValue = addDoneToBoard();
-    // let addMembersValue = addMembersValueToBoard();
+    let addMembersValue = addMembersValueArray; 
     let newToDo = {
-        id: `${countIDs}`, 
+        id: `${countIDs}`,
         box: 'toDoTasks',
         title: `${addTitleValue}`,
         description: `${addDescriptionValue}`,
         category: `${addCategoryValue}`,
         dueDate: `${addDateValue}`,
-        // members: addMembersValue,
+        members: addMembersValue,
         subtasks: addSubTaskValue,
         done: addDoneValue,
         priority: currentPriority,
@@ -265,7 +270,7 @@ async function deleteTask(i) {
 // function addMembersValueToBoard() {
 //     let addMembers = [];
 
-//     for (i = 0; i < contactBook.length; i++) {
+//     for (let i = 0; i < contactBook.length; i++) {
 //         let membersInputs = document.getElementById(`listName${i}`).innerHTML;
 //         addMembers.push(membersInputs);
 //     }
@@ -401,8 +406,51 @@ function selectCategory(category) {
 }
 
 
-function showContacts() {
-    document.getElementById('listContactContainerBoard').classList.remove('dNone');
+function renderContactsOnBoard() {
+    document.getElementById('listContactContainerBoard').innerHTML = ``;
+    let contactBoard = document.getElementById('listContactContainerBoard');
+    if (contactBoard.classList.contains('dNone')) {
+        contactBoard.classList.remove('dNone');
+        contactBoard.classList.add('dFlex');
+    }
+    else {
+        contactBoard.classList.add('dNone');
+        contactBoard.classList.remove('dFlex');
+    }
+    if (mainUserInfos[0]['contactBook']) {
+        for (let i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
+            contactBoard.innerHTML +=
+                `
+    <div class="contactsBoardContainer">
+        <div class="contactsBoardContainerChild">   
+            <div class="styleMembersAddTask" id="profilMember${i}"></div>
+            <span class="nameMember" id="nameMember${i}"></span>
+        </div>
+        <img src="assets/img/checkbox1.svg" class="customCheckbox" id="checkboxMember${i}" type="checkbox" onclick="pushMembers(${i}), switchCheckboxImg(${i})">
+    </div>
+    `;
+            fillContactsOnBoard(i);
+        }
+        assignRandomBackgroundColor();
+    }
+}
+
+
+function assignRandomBackgroundColor() {
+    const elements = document.querySelectorAll('[id^="profilMember"]');
+
+    elements.forEach(element => {
+        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); // Zufällige Hex-Farbe generieren
+        element.style.backgroundColor = randomColor; // Hintergrundfarbe zuweisen
+    });
+}
+
+
+function fillContactsOnBoard(i) {
+    const fullName = mainUserInfos[0]['contactBook'][i]['name'];
+    const initials = fullName.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+    document.getElementById(`profilMember${i}`).innerHTML = `${initials}`;
+    document.getElementById(`nameMember${i}`).innerHTML = `${fullName}`;
 }
 
 
@@ -428,3 +476,23 @@ function progress(i) {
 // }
 
 
+function switchCheckboxImg(i) {
+    var image = document.getElementById(`checkboxMember${i}`);
+    if (image.src.includes('assets/img/checkbox1.svg')) {
+        image.src = 'assets/img/checkbox2.svg';
+        pushMembers(i);
+    } else {
+        image.src = 'assets/img/checkbox1.svg';
+        deleteMember(i);
+    }
+}
+
+
+function pushMembers(i) {
+    let addMembersValue = mainUserInfos[0]['contactBook'][i]['name'];
+    addMembersValueArray.push(addMembersValue);
+}
+
+function deleteMember(i) {
+    addMembersValueArray.splice(i, 1);
+}
