@@ -1,3 +1,5 @@
+
+
 async function loginForm() {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
@@ -35,6 +37,7 @@ async function loginForm() {
 
 async function loadUsersForLogin() {
   users = JSON.parse(await getItem("users"));
+  onload();
 }
 
 async function clearRememberCheckbox() {
@@ -115,13 +118,18 @@ async function loadRememberedCredentials() {
   }
 }
 
-const urlParams = new URLSearchParams(window.location.search);
-const msg = urlParams.get("msg");
+ 
 
-if (msg) {
-  msgBox.innerHTML = msg;
-} else {
-  console.log("Nachricht ist nicht vorhanden");
+function displayMessage() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const msg = urlParams.get("msg");
+  const msgBox = document.getElementById("msgBox");
+
+  if (msg) {
+    msgBox.innerHTML = msg;
+  } else {
+    console.log("Nachricht ist nicht vorhanden");
+  }
 }
 
 function signForm() {
