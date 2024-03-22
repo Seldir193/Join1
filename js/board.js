@@ -101,8 +101,9 @@ function updateHTML() {
         fillTasksOnBoard(i);
         // updateProgress(i);
         // progress(i);
+        transformPriorityToImg(i);
     }
-
+    
 }
 
 
@@ -495,4 +496,26 @@ function pushMembers(i) {
 
 function deleteMember(i) {
     addMembersValueArray.splice(i, 1);
+}
+
+
+function transformPriorityToImg(i) {
+    if (mainUserInfos[0]['tasks'][i]['priority'] === 'low'){
+        document.getElementById(`priorityOnBoard${i}`).innerHTML =
+        `
+        <img src="assets/img/Prio baja.png" alt="low priority">
+        `;
+    }
+    if (mainUserInfos[0]['tasks'][i]['priority'] === 'medium'){
+        document.getElementById(`priorityOnBoard${i}`).innerHTML =
+        `
+        <img src="assets/img/Prio media (1).png" alt="medium priority">
+        `;
+    }
+    if (mainUserInfos[0]['tasks'][i]['priority'] === 'urgent'){
+        document.getElementById(`priorityOnBoard${i}`).innerHTML =
+        `
+        <img src="assets/img/Prio alta.png" alt="urgent priority">
+        `;
+    }
 }
