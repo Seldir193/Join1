@@ -1,41 +1,27 @@
-
 function renderShowTask(i) {
-
-
-    if (mainUserInfos[0]['tasks'][i]['category'] !== undefined) {
-        addCategoryInput = mainUserInfos[0]['tasks'][i]['category'];
-    } else {
-        addCategoryInput = "Kein Wert";
+    if (mainUserInfos[0] && mainUserInfos[0]['tasks'] && mainUserInfos[0]['tasks'][i]) {
+        if (mainUserInfos[0]['tasks'][i]['category'] !== undefined) {
+            addCategoryInput = mainUserInfos[0]['tasks'][i]['category'];
+        }
+        if (mainUserInfos[0]['tasks'][i]['title'] !== undefined) {
+            addTitleInput = mainUserInfos[0]['tasks'][i]['title'];
+        }
+        if (mainUserInfos[0]['tasks'][i]['description'] !== undefined) {
+            addDescriptionInput = mainUserInfos[0]['tasks'][i]['description'];
+        }
+        if (mainUserInfos[0]['tasks'][i]['dueDate'] !== undefined) {
+            addDateInput = mainUserInfos[0]['tasks'][i]['dueDate'];
+        }
+        if (mainUserInfos[0]['tasks'][i]['priority'] !== undefined) {
+            addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
+        }
+        // if(mainUserInfos[0]['tasks'][i]['members'].length > 0){
+        // addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
+        // }
+        if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
+            addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
+        }
     }
-    if (mainUserInfos[0]['tasks'][i]['title'] !== undefined) {
-        addTitleInput = mainUserInfos[0]['tasks'][i]['title'];
-    } else {
-
-        addTitleInput = "Kein Wert";
-    }
-    if (mainUserInfos[0]['tasks'][i]['description'] !== undefined) {
-        addDescriptionInput = mainUserInfos[0]['tasks'][i]['description'];
-    } else {
-        addDescriptionInput = "Kein Wert";
-    }
-    if (mainUserInfos[0]['tasks'][i]['dueDate'] !== undefined) {
-        addDateInput = mainUserInfos[0]['tasks'][i]['dueDate'];
-    } else {
-        addDateInput = "Kein Wert";
-    }
-    if (mainUserInfos[0]['tasks'][i]['priority'] !== undefined) {
-        addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
-    } else {
-        addPriorityInput = "Kein Wert";
-    }
-    if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
-        addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
-    } else {
-        addSubtasksInput = "Kein Wert";
-    }
-
-
-
     document.getElementById('boardsContainer').innerHTML +=
         `
         <div class="newTaskFloating dNone" id="newTaskFloating${i}">
@@ -101,7 +87,7 @@ function renderAddTaskFloating() {
                   <nav class="assigned-box"><b>Assigned to</b> (optional)</nav>
                     <div class="input-with-icon">
                     <div id="listContactContainerBoard" class="dNone"></div>
-                       <input type="text" id="assignedInput" placeholder="Select contacts to assign..." onfocus="renderAlphabeticalCategories()"  onclick="renderAlphabeticalCategories()" readonly>
+                       <input type="text" id="assignedInput" placeholder="Select contacts to assign..." readonly>
                        <img id="icon" onclick="showContacts()" src="assets/img/arrow_drop_down.png" class="dropdown-icon">
                        
                     </div>
@@ -193,51 +179,32 @@ function checkNoTasksDone() {
 }
 
 
-function generateTodoHTML(element, currentUserInfo) {
-    let category = currentUserInfo['category'];
-    let title = currentUserInfo['title'];
-    let description = currentUserInfo['description'];
-    let priority = currentUserInfo['priority']
-
-
-    return `
-        <div class="tasksOnBoard" onclick="renderTaskFloating(${element['id']})" draggable="true" ondragstart="startDragging(${element['id']})">
-            <div id="categoryOnBoard${element['id']}" class="categoryOnBoard">${category}</div>
-            <span id="titleOnBoard${element['id']}" class="titleOnBoard">${title}</span>
-            <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard">${description}</span>
-            <div>
-                <div class="progress-bar" id="progress-bar${element['id']}">
-                    <div class="progress" id="progress${element['id']}"></div>
-                    <span id="progressInText${element['id']}"></span>
-                </div>
-            </div>  
-            <div>
-                <div class="profilsOnBoard" id="profilsOnBoard${element['id']}"></div>
-                <div id="priorityOnBoard${element['id']}">${priority}</div>
-            </div>
-        </div>
-        `;
-}
-
-
 function renderTaskFloating(i) {
+    if (mainUserInfos[0] && mainUserInfos[0]['tasks'] && mainUserInfos[0]['tasks'][i]) {
+        if (mainUserInfos[0]['tasks'][i]['category'] !== undefined) {
+            addCategoryInput = mainUserInfos[0]['tasks'][i]['category'];
+        }
+        if (mainUserInfos[0]['tasks'][i]['title'] !== undefined) {
+            addTitleInput = mainUserInfos[0]['tasks'][i]['title'];
+        }
+        if (mainUserInfos[0]['tasks'][i]['description'] !== undefined) {
+            addDescriptionInput = mainUserInfos[0]['tasks'][i]['description'];
+        }
+        if (mainUserInfos[0]['tasks'][i]['dueDate'] !== undefined) {
+            addDateInput = mainUserInfos[0]['tasks'][i]['dueDate'];
+        }
+        if (mainUserInfos[0]['tasks'][i]['priority'] !== undefined) {
+            addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
+        }
+        // if(mainUserInfos[0]['tasks'][i]['members'].length > 0){
+        // addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
+        // }
+        if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
+            addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
+        }
 
-    let addCategoryInput = mainUserInfos[0]['tasks'][i]['category'];
-
-    let addTitleInput = mainUserInfos[0]['tasks'][i]['title'];
-
-    let addDescriptionInput = mainUserInfos[0]['tasks'][i]['description'];
-
-    let addDateInput = mainUserInfos[0]['tasks'][i]['dueDate'];
-
-    let addPriorityInput = mainUserInfos[0]['tasks'][i]['priority'];
-
-    // let addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
-
-    let addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
-
-    document.getElementById('taskBoard').innerHTML =
-        `
+        document.getElementById('taskBoard').innerHTML =
+            `
      <div class="tasksOverBoardContainer" id="tasksOverBoardContainer${i}">
          <div class="categoryContainerOverBoard">
              <button class="technicalTaskBtn" id="technicalTaskBtnOverBoard${i}">${addCategoryInput}</button>
@@ -259,17 +226,17 @@ function renderTaskFloating(i) {
              <span class="styleAssigned">Assigned to:</span>
              <div>
                  <img src="assets/img/Profile badge.png" alt="#"
-                //  ${addMembersInput}
+        
              </div>
          </div>
          <div>
-             <span class="styleSubtasks" >Subtasks</span>
+             <span class="styleSubtasks">Subtasks</span>
              <div id="checkBoxContainer${i}">${addSubtasksInput}</div>             
          </div>
      </div>
      `;
+    }
 }
-
 
 function renderCheckboxs(i) {
     let subtasksCheck = mainUserInfos[0]['tasks'][i]['subtasks'];
@@ -284,19 +251,109 @@ function renderCheckboxs(i) {
 
 function renderContactsOnBoard() {
     let contactBoard = document.getElementById('listContactContainerBoard');
-    for (i = 0; i < mainUserInfos[0]['contactBoard'].length; i++) {
-        contactBoard.innerHTML +=
-            `
+    if (mainUserInfos[0]['contactBoard']) {
+        for (i = 0; i < mainUserInfos[0]['contactBoard'].length; i++) {
+            contactBoard.innerHTML +=
+                `
     <div class="contactsBoardContainer">
         <div id="profilMember${i}"></div>
         <span id="nameMember${i}"></span>
         <input id="checkboxMember${i}" type="checkbox">
     </div>
     `;
+        }
     }
 }
 
 
 function showContacts() {
     document.getElementById('listContactContainerBoard').classList.remove('dNone');
+}
+
+
+function generateTodoHTML(element, currentUserInfo) {
+    let category = currentUserInfo['category'];
+    let title = currentUserInfo['title'];
+    let description = currentUserInfo['description'];
+    let priority = currentUserInfo['priority']
+
+
+    return `
+        <div class="tasksOnBoard" onclick="renderTaskFloating(${element['id']})" draggable="true" ondragstart="startDragging(${element['id']})">
+            <div id="categoryOnBoard${element['id']}" class="categoryOnBoard">${category}</div>
+            <img src="assets/img/delete.svg" alt="deleteBtn" onclick="deleteTask(${element['id']})">
+            <span id="titleOnBoard${element['id']}" class="titleOnBoard">${title}</span>
+            <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard">${description}</span>
+            <div>
+                <div class="progress-bar" id="progress-bar${element['id']}">
+                    <div class="progress" id="progress${element['id']}"></div>
+                    <span id="progressInText${element['id']}"></span>
+                </div>
+            </div>  
+            <div>
+                <div class="profilsOnBoard" id="profilsOnBoard${element['id']}"></div>
+                <div id="priorityOnBoard${element['id']}">${priority}</div>
+            </div>
+        </div>
+        `;
+}
+
+
+function addTitleToBoard() {
+    let addTitleInput = document.getElementById('titleAddTaskFloating');
+    if (addTitleInput) {
+        return addTitleInput.value;
+    } else {
+        return ''; // Standardwert, falls kein Element gefunden wird
+    }
+}
+
+
+function addDescriptionToBoard() {
+    let addDescriptionInput = document.getElementById('descriptionAddTaskFloating');
+    if (addDescriptionInput) {
+        return addDescriptionInput.value;
+    } else {
+        return ''; // Standardwert, falls kein Element gefunden wird
+    }
+}
+
+
+function addDueDateToBoard() {
+    let addDueDateInput = document.getElementById('dueDateAddTaskFloating');
+    if (addDueDateInput) {
+        return addDueDateInput.value;
+    } else {
+        return ''; // Standardwert, falls kein Element gefunden wird
+    }
+}
+
+
+function addCategoryToBoard() {
+    let addCategoryInput = document.getElementById('categoryInput');
+    if (addCategoryInput) {
+        return addCategoryInput.value;
+    } else {
+        return ''; // Standardwert, falls kein Element gefunden wird
+    }
+}
+
+
+function addSubtasksToBoard() {
+
+    let addSubtasks = [];
+
+    for (i = 0; i < subtaskList.children.length; i++) {
+
+        let subtaskInputs = document.getElementById(`contactText_${i}`).innerHTML;
+
+        addSubtasks.push(subtaskInputs);
+    }
+    return addSubtasks;
+}
+
+
+function addDoneToBoard() {
+    let addDone = [];
+    return addDone;
 }

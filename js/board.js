@@ -8,11 +8,11 @@ let letterArray = [];
 let currentPriority;
 let initialColorMap = {};
 let randomColorCollection = {};
+let selectedCategories = [];
+
 
 
 let categorySet = ["Technical Task", "User Story"];
-
-let nextId = 0;
 
 var activePriority = null;
 
@@ -20,7 +20,6 @@ async function onload() {
     await init();
     includeHTML();
     render();
-    renderContacts();
 }
 
 
@@ -28,7 +27,7 @@ function render() {
     renderAddTaskFloating();
     renderNoTasks();
     if (mainUserInfos[0]['tasks'].length > 0) {
-        for (i = 0; mainUserInfos[0]['tasks'].length; i++) {
+        for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
             renderShowTask(i);
         }
     }
@@ -95,8 +94,8 @@ function updateHTML() {
     swapDone();
     for (i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         fillTasksOnBoard(i);
-        updateProgress(i);
-        progress(i);
+        // updateProgress(i);
+        // progress(i);
     }
 
 }
@@ -231,6 +230,7 @@ function addPriorityValue(element) {
 
 
 function fillArray() {
+    let countIDs = mainUserInfos[0]['tasks'].length;
     let addTitleValue = addTitleToBoard();
     let addDescriptionValue = addDescriptionToBoard();
     let addDateValue = addDueDateToBoard();
@@ -239,22 +239,28 @@ function fillArray() {
     let addDoneValue = addDoneToBoard();
     // let addMembersValue = addMembersValueToBoard();
     let newToDo = {
-        id: `${nextId}`, // ACHTUNG! NEXTID BLEIBT BEI 0, MUSS ALSO ANDERS GESPEICHERT UND ITTERIERT WERDEN
+        id: `${countIDs}`, 
         box: 'toDoTasks',
         title: `${addTitleValue}`,
         description: `${addDescriptionValue}`,
         category: `${addCategoryValue}`,
         dueDate: `${addDateValue}`,
-        members: addMembersValue,
+        // members: addMembersValue,
         subtasks: addSubTaskValue,
         done: addDoneValue,
         priority: currentPriority,
     };
-    nextId++;
     pushToDo(newToDo);
     clearAddTaskFloating();
 }
 
+
+async function deleteTask(i) {
+
+    mainUserInfos[0]['tasks'].splice(i, 1);
+    await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
+    updateHTML();
+}
 
 // function addMembersValueToBoard() {
 //     let addMembers = [];
@@ -267,64 +273,7 @@ function fillArray() {
 // }
 
 
-function addTitleToBoard() {
-    let addTitleInput = document.getElementById('titleAddTaskFloating');
-    if (addTitleInput) {
-        return addTitleInput.value;
-    } else {
-        return ''; // Standardwert, falls kein Element gefunden wird
-    }
-}
 
-
-function addDescriptionToBoard() {
-    let addDescriptionInput = document.getElementById('descriptionAddTaskFloating');
-    if (addDescriptionInput) {
-        return addDescriptionInput.value;
-    } else {
-        return ''; // Standardwert, falls kein Element gefunden wird
-    }
-}
-
-
-function addDueDateToBoard() {
-    let addDueDateInput = document.getElementById('dueDateAddTaskFloating');
-    if (addDueDateInput) {
-        return addDueDateInput.value;
-    } else {
-        return ''; // Standardwert, falls kein Element gefunden wird
-    }
-}
-
-
-function addCategoryToBoard() {
-    let addCategoryInput = document.getElementById('categoryInput');
-    if (addCategoryInput) {
-        return addCategoryInput.value;
-    } else {
-        return ''; // Standardwert, falls kein Element gefunden wird
-    }
-}
-
-
-function addSubtasksToBoard() {
-
-    let addSubtasks = [];
-
-    for (i = 0; i < subtaskList.children.length; i++) {
-
-        let subtaskInputs = document.getElementById(`contactText_${i}`).innerHTML;
-
-        addSubtasks.push(subtaskInputs);
-    }
-    return addSubtasks;
-}
-
-
-function addDoneToBoard() {
-    let addDone = [];
-    return addDone;
-}
 
 
 function startDragging(id) {
@@ -466,16 +415,16 @@ function progress(i) {
     }
 }
 
-function updateProgress(i) {
-    var checkbox = document.getElementById(`checkboxContact${i}`);
+// function updateProgress(i) {
+//     var checkbox = document.getElementById(`checkboxContact${i}`);
 
-    if (!checkbox.checked) {
-        let doneCount = 0;
-        mainUserInfos[0]['tasks'][i]['done'].pop(doneCount);
-    } else {
-        let doneCount = 0;
-        mainUserInfos[0]['tasks'][i]['done'].push(doneCount);
-    }
-}
+//     if (!checkbox.checked) {
+//         let doneCount = 0;
+//         mainUserInfos[0]['tasks'][i]['done'].pop(doneCount);
+//     } else {
+//         let doneCount = 0;
+//         mainUserInfos[0]['tasks'][i]['done'].push(doneCount);
+//     }
+// }
 
 
