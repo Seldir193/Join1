@@ -2,7 +2,6 @@ async function loading() {
   init();
   includeHTML(); 
   load(); 
-  datePlan();
 }
 
 function toggleBackgroundColor(element) {
