@@ -73,6 +73,11 @@ function insertRenderContacts(i, charStyle, firstName, lastName) {
 }
 
 function pullContact(i) {
+  if (window.innerWidth > 786) {
+    document
+      .getElementById("pullContactToWindow")
+      .classList.toggle("positionForWindowDefine");
+  }
   document.getElementById("pullContactToWindow").classList.toggle("pull");
   addHeadlineToPulledWindow(i);
   changeHoverColor(i);
@@ -196,9 +201,11 @@ function editContact(i) {
   document.getElementById(
     "inputEditName"
   ).value = `${mainUserInfos[0].contactBook[i].name}`;
+
   document.getElementById(
     "inputEditEmail"
   ).value = `${mainUserInfos[0].contactBook[i].email}`;
+
   document.getElementById(
     "inputEditPhone"
   ).value = `${mainUserInfos[0].contactBook[i].number}`;
@@ -267,23 +274,22 @@ function renderButtonToEditLowerBody(i) {
 async function saveChanges(event) {
   event.preventDefault();
   let index = editIndex[0];
-  mainUserInfos[0].contactBook[index].name =
-    document.getElementById("inputEditName").value;
-  firstChar = mainUserInfos[0].contactBook[index].name.charAt(0);
-  let letterIndex = letterArray.indexOf(firstChar);
-  letterArray.splice(letterIndex, 1);
+  let newName = document.getElementById("inputEditName").value;
 
-  let capitalizedChangeName = document.getElementById("inputEditName").value;
-  capitalizedChangeName =
-    capitalizedChangeName.charAt(0).toUpperCase() +
-    capitalizedChangeName.slice(1);
+  let nameParts = newName.split(" ");
 
-  mainUserInfos[0].contactBook[index].name = capitalizedChangeName;
+  nameParts = nameParts.map(
+    (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+  );
+
+  mainUserInfos[0].contactBook[index].name = nameParts.join(" ");
+
   mainUserInfos[0].contactBook[index].email = document
     .getElementById("inputEditEmail")
     .value.toLowerCase();
   mainUserInfos[0].contactBook[index].number =
     document.getElementById("inputEditPhone").value;
+
   await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
   await loadUsers();
   editIndex = [];
@@ -293,6 +299,9 @@ async function saveChanges(event) {
 }
 
 async function deleteContact(i) {
+  document
+    .getElementById("pullContactToWindow")
+    .classList.toggle("positionForWindwowDefine");
   document.getElementById("pullContactToWindow").classList.toggle("pull");
   firstChar = mainUserInfos[0].contactBook[i].name.charAt(0);
   let letterIndex = letterArray.indexOf(firstChar);

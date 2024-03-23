@@ -369,6 +369,9 @@
 .pull {
   transform: translateX(0) !important;
   transition: all 100ms ease-in-out;
+}
+
+.positionForWindowDefine {
   position: unset !important;
 }
 
