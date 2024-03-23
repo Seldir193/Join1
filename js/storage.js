@@ -6,6 +6,7 @@ let currentUserKey = [];
 let users = [];
 
 async function init() {
+  load();
   await loadUsers();
 }
 
@@ -15,11 +16,10 @@ async function loadUsers() {
 
     try {
       mainUserInfos = JSON.parse(await getItem(`${currentUserKey}`)); //Laden der INfos vom übergeordneten Array
-        users = JSON.parse(await getItem("users"));
+      users = JSON.parse(await getItem("users"));
       console.log("Users DATA:", users);
       console.log("MainUser DATA:", mainUserInfos);
       console.log("Contact Book Data:", mainUserInfos[0].contactBook);
-      
     } catch (e) {
       console.error("Loading error:", e);
     }
@@ -27,9 +27,6 @@ async function loadUsers() {
     console.error("Loading error:", e);
   }
 }
-
-
-
 
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
@@ -40,7 +37,7 @@ async function setItem(key, value) {
 }
 
 async function getItem(key) {
-  console.log(key)
+  console.log(key);
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
   return fetch(url)
     .then((res) => res.json())

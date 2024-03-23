@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/styletemplates.css">
     <link rel="stylesheet" href="css/styleall.css">
     <link rel="stylesheet" href="css/fonts.css">
-   
+
     <script src="js/templates.js"></script>
     <script src="js/board.js"></script>
     <script src="js/storage.js"></script>
@@ -17,6 +17,7 @@
     <script src="js/summary.js"></script>
     <script src="js/renderBoard.js"></script>
 </head>
+
 <body onload="onload()" id="body">
     <section w3-include-html="./templates/header.html"></section>
     <div class="dFlex overflowHidden">
@@ -24,13 +25,10 @@
         <section id="boardsContainer">
             <section class="mainBoard column">
                 <div class="searchMainContainer">
-                    <div class="inputSearchContainer"><input type="text" placeholder="Find Task" id="searchTasksInput"
-                            oninput="searchTasks()">
-                        <div class="searchIconContainer"><img src="./assets/img/search.svg" alt="search Icon"
-                                id="searchIcon"></div>
+                    <div class="inputSearchContainer"><input type="text" placeholder="Find Task" id="searchTasksInput" oninput="searchTasks()">
+                        <div class="searchIconContainer"><img src="./assets/img/search.svg" alt="search Icon" id="searchIcon"></div>
                     </div>
-                    <button class="addTaskBtn" onclick="toggleCard()">Add task <img
-                            src="./assets/img/plus.svg" alt="plusIcon">
+                    <button class="addTaskBtn" onclick="toggleCard()">Add task <img src="./assets/img/plus.svg" alt="plusIcon">
                     </button>
                 </div>
                 <div class="categorysBoardContainer">
@@ -60,4 +58,5 @@
         </section>
     </div>
 </body>
+
 </html>

@@ -3,14 +3,10 @@ async function onload() {
   load();
 }
 
-
 async function getRemoteUsers() {
   users = JSON.parse(await getItem("users"));
   console.log("Users DATA:", users);
 }
-
-
-
 
 async function register() {
   const registerBtn = document.getElementById("registerBtn");
@@ -52,7 +48,6 @@ async function register() {
     console.error("Registration error:", error);
   }
 }
-
 
 //Besim: Funktion zum erstellen des Basisarrays mit der spezifischen email. In diesem Array werden alle Infos gepusht(contactbook...)
 async function createBasicJason(email) {

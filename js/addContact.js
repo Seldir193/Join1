@@ -6,12 +6,10 @@ let letterArray = [];
 let randomColorCollection = {};
 let initialColorMap = {};
 
-
-async function initContacts(){
+async function initContacts() {
   await init();
   renderAlphabeticalCategories();
 }
-
 
 function renderAlphabeticalCategories() {
   for (let j = 0; j < mainUserInfos[0].contactBook.length; j++) {
@@ -281,8 +279,9 @@ async function saveChanges(event) {
     capitalizedChangeName.slice(1);
 
   mainUserInfos[0].contactBook[index].name = capitalizedChangeName;
-  mainUserInfos[0].contactBook[index].email =
-    document.getElementById("inputEditEmail").value.toLowerCase();
+  mainUserInfos[0].contactBook[index].email = document
+    .getElementById("inputEditEmail")
+    .value.toLowerCase();
   mainUserInfos[0].contactBook[index].number =
     document.getElementById("inputEditPhone").value;
   await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));

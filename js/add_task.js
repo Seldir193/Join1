@@ -90,9 +90,3 @@ function datePlan() {
 function pullContact(i) {
   document.getElementById("listContactContainer").classList.toggle("pull");
 }
-
-
-
-
-
-
