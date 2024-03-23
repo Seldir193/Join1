@@ -1,4 +1,10 @@
-init();
+async function loading() {
+  init();
+  includeHTML(); 
+  load(); 
+  displayGreeting();
+}
+
 
 function displayUserName(userName) {
   const userNameElement = document.getElementById("user-name");
@@ -29,9 +35,7 @@ function displayUserProfile(userName) {
 function getGreeting() {
   const currentDate = new Date();
   const currentHour = currentDate.getHours();
-
   console.log("Aktuelle Stunde:", currentHour);
-
   if (currentHour >= 5 && currentHour < 12) {
     return "Good morning,";
   } else if (currentHour >= 12 && currentHour < 18) {

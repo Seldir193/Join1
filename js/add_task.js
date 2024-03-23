@@ -1,35 +1,15 @@
-function toggleMenuBar() {
-  var menuBar = document.getElementById("menuBar");
-  menuBar.style.display = menuBar.style.display === "block" ? "none" : "block";
+async function loading() {
+  init();
+  includeHTML(); 
+  load(); 
+  datePlan();
 }
 
 function toggleBackgroundColor(element) {
   element.classList.toggle("active");
 }
 
-//Besim: Diese logOut funktion gibt es schon in summary. Brauchen wir diese?
-function logOut() {
-  window.location.href = "index.html";
-}
-
-function showLegalNotice() {
-  window.location.href = "legal.html";
-}
-
-function showPrivacyPolicy() {
-  window.location.href = "privacy.html";
-}
-
-function showContact() {
-  window.location.href = "contact.html";
-}
-
-function showHelp() {
-  window.location.href = "help.html";
-}
-
 function toggleContactBackground(i) {
-  // Das müssen wir noch machen.
   let clickedContact = document.getElementById(`contact_${i}`);
   if (clickedContact) {
     clickedContact.classList.toggle("active");
@@ -78,12 +58,8 @@ function toggleCategory() {
 
 function datePlan() {
   const today = new Date();
-  // Bugünün tarihini ISO formatına dönüştür (YYYY-MM-DD)
   const todayISO = today.toISOString().split("T")[0];
-
-  // Due input elementini seç
   const dueInput = document.getElementById("dateInput");
-  // Minimum tarih olarak bugünün tarihini (todayISO) belirle
   dueInput.min = todayISO;
 }
 
