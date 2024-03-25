@@ -1120,3 +1120,10 @@
   border-spacing: 0;
   padding-top: 24px;
 }
+
+
+.deleteChangeContainer {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}

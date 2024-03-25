@@ -142,8 +142,13 @@ function renderAddTaskFloating() {
 // }
 
 function checkNoTasksToDo() {
+    let anyTask = mainUserInfos[0]['tasks'].length;
+    if (anyTask < 1) {
+        document.getElementById('toDoTasks').innerHTML =
+            `
+    <div class="noTasks">No tasks To Do</div>
+`;}
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
-        let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'toDoTasks') {
             document.getElementById('toDoTasks').innerHTML =
                 `
@@ -155,6 +160,12 @@ function checkNoTasksToDo() {
 
 
 function checkNoTasksInProgress() {
+    let anyTask = mainUserInfos[0]['tasks'].length;
+    if (anyTask < 1) {
+        document.getElementById('inProgressTasks').innerHTML =
+            `
+    <div class="noTasks">No tasks To Do</div>
+`;}
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'inProgressTasks') {
@@ -168,6 +179,12 @@ function checkNoTasksInProgress() {
 
 
 function checkNoTasksAwaitFeedback() {
+    let anyTask = mainUserInfos[0]['tasks'].length;
+    if (anyTask < 1) {
+        document.getElementById('awaitFeedbackTasks').innerHTML =
+            `
+    <div class="noTasks">No tasks To Do</div>
+`;}
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'awaitFeedbackTasks') {
@@ -180,6 +197,12 @@ function checkNoTasksAwaitFeedback() {
 }
 
 function checkNoTasksDone() {
+    let anyTask = mainUserInfos[0]['tasks'].length;
+    if (anyTask < 1) {
+        document.getElementById('doneTasks').innerHTML =
+            `
+    <div class="noTasks">No tasks To Do</div>
+`;}
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'doneTasks') {
@@ -242,6 +265,9 @@ function renderTaskFloating(i) {
              <span class="styleSubtasks">Subtasks</span>
              <div id="checkBoxContainer" class="checkBoxContainer"></div>             
          </div>
+         <div class="deleteChangeContainer">
+            <img src="assets/img/delete.svg" alt="deleteBtn" onclick="deleteTask(${i})">
+         </div>
      </div>
      `;
     }
@@ -262,6 +288,7 @@ function renderTaskFloating(i) {
 }
 
 
+// DeleteButton, falls man ihn mal braucht <img src="assets/img/delete.svg" alt="deleteBtn" onclick="deleteTask(${element['id']})">
 
 
 function generateTodoHTML(element, currentUserInfo) {
@@ -275,7 +302,6 @@ function generateTodoHTML(element, currentUserInfo) {
     return `
         <div class="tasksOnBoard" onclick="renderTaskFloating(${element['id']})" draggable="true" ondragstart="startDragging(${element['id']})">
             <div id="categoryOnBoard${element['id']}" class="categoryOnBoard">${category}</div>
-            <img src="assets/img/delete.svg" alt="deleteBtn" onclick="deleteTask(${element['id']})">
             <div class="column">
                 <span id="titleOnBoard${element['id']}" class="titleOnBoard">${title}</span>
                 <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard">${description}</span>
