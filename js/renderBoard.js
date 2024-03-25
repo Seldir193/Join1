@@ -19,7 +19,9 @@ function renderShowTask(i) {
             addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
         }
         if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
-            addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
+            for (let j = 0; j < mainUserInfos[0]['tasks'][i]['subtasks'].length; j++) {
+                addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'][j];
+            }
         }
     }
     document.getElementById('boardsContainer').innerHTML +=
@@ -38,7 +40,7 @@ function renderShowTask(i) {
                 </tr>
                 <tr>
                     <th>Priority:</th>
-                    <td id="priorityValue${i}">${addPriorityInput}<img src"assets/img/medium.svg" alt="priority img"></td>
+                    <td id="priorityValue${i}"><img src"assets/img/medium.svg" alt="priority img"></td>
                 </tr>
             </table>
             <h3>Assigned To:</h3>
@@ -48,7 +50,7 @@ function renderShowTask(i) {
                     </div>
             <h3>Subtasks:</h3>
             <label for="checkboxSubtasks1" class="styleCheckboxContainer" id="subtaskValue${i}">
-                <input type="checkbox" id="checkbox2" name="checkbox2">${addSubtasksInput}
+                <input type="checkbox" id="checkboxContainerNewTask" name="checkbox2">
             </label>
         </div>
         `;
@@ -108,7 +110,6 @@ function renderAddTaskFloating() {
                         <img id="subTask" onclick="valueSubtask()" src="assets/img/Subtask's icons.png" class="dropdown-icon">
                      </div>
                      <div id="subtaskList"></div>
-                     <div class="footer-box"></div>
                 </div>
                 <div class="button-container">
                    <div class="button-box">
@@ -116,7 +117,7 @@ function renderAddTaskFloating() {
                             <button class="clear" onclick="clearAddTaskFloating(), togglePriority(activePriority)">Clear <img src="assets/img/iconoir_cancel.png"></button>
                         </div>
                      <div class="create-button">
-                        <button class="create" onclick="fillArray(), togglePriority(activePriority)">Create Task <img src="assets/img/check.png"></button>
+                        <button class="create" onclick="fillArray(), togglePriority(activePriority), toggleCard()">Create Task <img src="assets/img/check.png"></button>
                      </div>
                    </div>
                </div>   
@@ -200,9 +201,7 @@ function renderTaskFloating(i) {
         if (mainUserInfos[0]['tasks'][i]['members'] !== undefined) {
             addMembersInput = mainUserInfos[0]['tasks'][i]['members'];
         }
-        if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
-            addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'];
-        }
+
 
         document.getElementById('taskBoard').innerHTML =
             `
@@ -214,15 +213,15 @@ function renderTaskFloating(i) {
          <h1 class="titelOverBoard">${addTitleInput}</h1>
          <span class="descriptionOverBoard">${addDescriptionInput}</span>
          <table>
-             <tr>
-                 <th rowspan="2" class="styleDueDate">Due Date:</th>
-                 <th rowspan="2" class="stylePriority">Priority:</th>
-             </tr>
-             <tr>
-                 <th id="insertDueDateOverBoard${i}">${addDateInput}</th>
-                 <th id="insertPriorityOverBoard${i}">${addPriorityInput}</th>
-             </tr>
-         </table>
+            <tr>
+                <th class="styleDueDate">Due Date:</th>
+                <td id="insertDueDateOverBoard${i}">${addDateInput}</td>
+            </tr>
+            <tr>
+                <th class="stylePriority">Priority:</th>
+                <td id="insertPriorityOverBoard${i}">${addPriorityInput}</td>
+            </tr>
+        </table>
          <div>
              <span class="styleAssigned">Assigned to:</span>
              <div id="contactsOverBoardContainer${i}">${addMembersInput}        
@@ -230,22 +229,28 @@ function renderTaskFloating(i) {
          </div>
          <div>
              <span class="styleSubtasks">Subtasks</span>
-             <div id="checkBoxContainer${i}">${addSubtasksInput}</div>             
+             <div id="checkBoxContainer" class="checkBoxContainer"></div>             
          </div>
      </div>
      `;
     }
+
+    if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
+        for (let j = 0; j < mainUserInfos[0]['tasks'][i]['subtasks'].length; j++) {
+            let addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'][j];
+            document.getElementById('checkBoxContainer').innerHTML +=
+                `
+            <div>
+                <input type="checkbox" id="checkbox${j}" name="checkbox${j}" onchange="checkSubtasks(${i}, ${j})">
+                <label for="checkbox${j}">${addSubtasksInput}</label>
+            </div>
+            `;
+        }
+    }
+    updateCheckBoxes(i);
 }
 
-function renderCheckboxs(i) {
-    let subtasksCheck = mainUserInfos[0]['tasks'][i]['subtasks'];
-    for (let j = 0; j < subtasksCheck.length; j++) {
-        document.getElementById(`checkBoxContainer${i}`).innerHTML +=
-            `
-    <label for="checkbox1"><input type="checkbox" id="checkboxContact${i}" name="checkbox1">${subtasksCheck[j]}</label>
-    `;
-    }
-}
+
 
 
 function generateTodoHTML(element, currentUserInfo) {
@@ -253,8 +258,9 @@ function generateTodoHTML(element, currentUserInfo) {
     let title = currentUserInfo['title'];
     let description = currentUserInfo['description'];
     let priority = currentUserInfo['priority']
-
-
+    let progress = element['done'].filter(item => item === true).length;
+    let goal = element['subtasks'].length;
+    let result = progress + '/' + goal;
     return `
         <div class="tasksOnBoard" onclick="renderTaskFloating(${element['id']})" draggable="true" ondragstart="startDragging(${element['id']})">
             <div id="categoryOnBoard${element['id']}" class="categoryOnBoard">${category}</div>
@@ -263,13 +269,13 @@ function generateTodoHTML(element, currentUserInfo) {
                 <span id="titleOnBoard${element['id']}" class="titleOnBoard">${title}</span>
                 <span id="descriptionOnBoard${element['id']}" class="descriptionOnBoard">${description}</span>
             </div>
-            <div>
+            <div class="progressContainer">
                 <div class="progress-bar" id="progress-bar${element['id']}">
                     <div class="progress" id="progress${element['id']}"></div>
-                    <span id="progressInText${element['id']}"></span>
                 </div>
+                <span id="progressInText${element['id']}" class="progressInText">${result} Subtasks</span>
             </div>  
-            <div>
+            <div class="spaceBetween">
                 <div class="profilsOnBoard" id="profilsOnBoard${element['id']}"></div>
                 <div id="priorityOnBoard${element['id']}">${priority}</div>
             </div>
@@ -318,21 +324,28 @@ function addCategoryToBoard() {
 }
 
 
-function addSubtasksToBoard() {
+// function addSubtasksToBoard() {
 
-    let addSubtasks = [];
+//     addSubtaskValue = [];
 
-    for (let i = 0; i < subtaskList.children.length; i++) {
+//     for (let i = 0; i < subtaskList.children.length; i++) {
 
-        let subtaskInputs = document.getElementById(`contactText_${i}`).innerHTML;
+//         let subtaskInputs = document.getElementById(`contactText_${i}`).innerHTML;
 
-        addSubtasks.push(subtaskInputs);
-    }
-    return addSubtasks;
-}
+//         addSubtaskValue.push(subtaskInputs);
+//         addDoneToBoard(i)
+//     }
+//     return addSubtaskValue;
+
+// }
 
 
 function addDoneToBoard() {
-    let addDone = [];
-    return addDone;
+    if (addDoneValue.length == 0) {
+        for (let j = 0; j < addSubtasks.length; j++) {
+            let firstStatus = 'false';
+            addDoneValue.push(firstStatus);
+        }
+        return addDoneValue;
+    }
 }

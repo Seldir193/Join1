@@ -577,15 +577,16 @@
 
 .progress-bar {
   width: 100%;
-  height: 20px;
+  height: 8px;
   background-color: #ddd;
   border-radius: 10px;
-  margin-bottom: 10px;
+  flex: 0.6;
+  margin-right: 10px;
 }
 
 .progress {
   height: 100%;
-  background-color: #4caf50;
+  background-color: rgba(69, 137, 255, 1);
   border-radius: 10px;
   width: 0%;
 }
@@ -594,7 +595,10 @@
 .tasksOverBoardContainer {
   width: 528px;
   left: 148px;
-  top: -1500px;
+  padding: 48px 40px 48px 40px;
+  box-shadow: 0px 0px 10px 3px #00000014;
+  border-radius: 30px;
+  height: 100%;
 }
 
 
@@ -605,6 +609,9 @@
   font-size: 61px;
   line-height: 73.2px;
   color: rgba(0, 0, 0, 1);
+  margin: 0;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
 
@@ -675,6 +682,7 @@
   font-size: 21px;
   line-height: 25.2px;
   color: rgba(66, 82, 110, 1);
+  padding-bottom: 8px;
 }
 
 
@@ -722,7 +730,7 @@
   line-height: 14.4px;
   display: flex;
   margin-left: -6px;
-
+  color: white;
 }
 
 .profilsOnBoard {
@@ -1023,4 +1031,85 @@
 
 .customCheckbox{
   margin-right: 16px
+}
+
+
+.checkBoxContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+#checkBoxContainer input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  position: relative;
+
+  border: 2px solid rgba(69, 137, 255, 1);
+  border-radius: 2px; /* optional for rounded corners */
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
+#checkBoxContainer input[type="checkbox"]:checked::before {
+  content: '';
+  width: 6px;
+  height: 12px;
+  position: absolute;
+  top: 0;
+  left: 4px;
+  border: 2px solid rgba(69, 137, 255, 1);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+}
+
+
+.progressInText {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.6px;
+  width: 100%;
+  flex: 0.4;
+}
+
+
+.progressContainer{
+  display: flex;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+
+.stylePriority{
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-Height: 25.2px;
+  color: rgba(66, 82, 110, 1);
+}
+
+
+
+.tasksOverBoardContainer td, th {
+    text-align: left; 
+    padding-bottom: 24px;
+
+}
+
+
+.tasksOverBoardContainer table {
+  border-spacing: 0;
+  padding-top: 24px;
 }

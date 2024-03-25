@@ -10,6 +10,8 @@ let initialColorMap = {};
 let randomColorCollection = {};
 let selectedCategories = [];
 let addMembersValueArray = []
+let addSubtasks = [];
+let addDoneValue = [];
 
 
 let categorySet = ["Technical Task", "User Story"];
@@ -97,13 +99,11 @@ function updateHTML() {
     swapInProgress();
     swapAwaitFeedback();
     swapDone();
-    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         fillTasksOnBoard(i);
-        // updateProgress(i);
-        // progress(i);
+        progress(i);
         transformPriorityToImg(i);
-    }
-    
+     }
 }
 
 
@@ -156,20 +156,19 @@ function fillTasksOnBoard(i) {
     addDescriptionValue(i);
     // addDateValue(i);
     addCategoryValue(i);
-    // addMembersValue(i)
-    // addSubTaskValue(i);
+    addMembersValue(i);
 }
 
 
 function addMembersValue(i) {
     for (let j = 0; j < mainUserInfos[0]['tasks'][i].members.length; j++) {
         let memberFirstLetter = mainUserInfos[0]['tasks'][i].members[j].charAt(0).toUpperCase();
-        let color = getRandomColor();
         document.getElementById(`profilsOnBoard${i}`).innerHTML +=
             `
-        <div class="profileOnBoard" style="background-color: ${color};">${memberFirstLetter}</div>
+        <div class="profileOnBoard" id="selectedProfilOnBoard${i}">${memberFirstLetter}</div>
     `;
     }
+    assignRandomBackgroundColor();
 }
 
 
@@ -209,16 +208,16 @@ function addCategoryValue(i) {
 }
 
 
-// function addSubTaskValue(i) {
-//     document.getElementById(`subtasksOnScreen${i}`).innerHTML = '';
-//     for (let j = 0; j < mainUserInfos[0]['tasks'][i]['subtasks'].length; j++) {
-//         let addSubTaskValue = mainUserInfos[0]['tasks'][i]['subtasks'][j];
-//         document.getElementById(`subtasksOnScreen${i}`).innerHTML +=
-//             `
-//         <span>${addSubTaskValue}</span>
-//     `;
-//     }
-// }
+function addSubTaskValue(i) {
+    // document.getElementById(`checkBoxContainer`).innerHTML = '';
+    for (let j = 0; j < mainUserInfos[0]['tasks'][i]['subtasks'].length; j++) {
+        let addSubTaskValue = mainUserInfos[0]['tasks'][i]['subtasks'][j];
+        document.getElementById(`checkBoxContainer`).innerHTML +=
+            `
+        <span>${addSubTaskValue}</span>
+    `;
+    }
+}
 
 
 async function pushToDo(newToDo) {
@@ -226,6 +225,7 @@ async function pushToDo(newToDo) {
     await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
     updateHTML();
     addMembersValueArray = [];
+    addSubtasks = [];
 }
 
 
@@ -241,7 +241,6 @@ function fillArray() {
     let addDescriptionValue = addDescriptionToBoard();
     let addDateValue = addDueDateToBoard();
     let addCategoryValue = addCategoryToBoard();
-    let addSubTaskValue = addSubtasksToBoard();
     let addDoneValue = addDoneToBoard();
     let addMembersValue = addMembersValueArray; 
     let newToDo = {
@@ -252,10 +251,11 @@ function fillArray() {
         category: `${addCategoryValue}`,
         dueDate: `${addDateValue}`,
         members: addMembersValue,
-        subtasks: addSubTaskValue,
+        subtasks: addSubtasks,
         done: addDoneValue,
         priority: currentPriority,
     };
+    
     pushToDo(newToDo);
     clearAddTaskFloating();
 }
@@ -394,7 +394,12 @@ function technicalUser() {
 
 function valueSubtask() {
     let valueSubtask = document.getElementById('subTaskInput').value;
-    document.getElementById('subtaskList').innerHTML += `${valueSubtask}`;
+    addSubtasks.push(valueSubtask);
+    valueSubtask.innerHTML = '';
+    document.getElementById('subtaskList').innerHTML += 
+    `
+    <div>${valueSubtask}</div>
+    `;
 }
 
 
@@ -438,9 +443,15 @@ function renderContactsOnBoard() {
 
 
 function assignRandomBackgroundColor() {
-    const elements = document.querySelectorAll('[id^="profilMember"]');
+    const elementsWithProfilMember = document.querySelectorAll('[id^="profilMember"]');
+    const elementsWithSelectedProfilOnBoard = document.querySelectorAll('[id*="selectedProfilOnBoard"]');
 
-    elements.forEach(element => {
+    elementsWithProfilMember.forEach(element => {
+        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); // Zufällige Hex-Farbe generieren
+        element.style.backgroundColor = randomColor; // Hintergrundfarbe zuweisen
+    });
+
+    elementsWithSelectedProfilOnBoard.forEach(element => {
         const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); // Zufällige Hex-Farbe generieren
         element.style.backgroundColor = randomColor; // Hintergrundfarbe zuweisen
     });
@@ -457,16 +468,14 @@ function fillContactsOnBoard(i) {
 
 function progress(i) {
     if (mainUserInfos[0]['tasks'][i]['done'].length > 0) {
-        let progress = mainUserInfos[0]['tasks'][i]['done'].length;
+        let progress = mainUserInfos[0]['tasks'][i]['done'].filter(item => item === true).length;
         let goal = mainUserInfos[0]['tasks'][i]['subtasks'].length;
-
-        document.querySelector('.progress').style.width = ((progress / goal) * 100) + '%';
+        document.getElementById(`progress${i}`).style.width = ((progress / goal) * 100) + '%';
     }
 }
 
 // function updateProgress(i) {
 //     var checkbox = document.getElementById(`checkboxContact${i}`);
-
 //     if (!checkbox.checked) {
 //         let doneCount = 0;
 //         mainUserInfos[0]['tasks'][i]['done'].pop(doneCount);
@@ -517,5 +526,34 @@ function transformPriorityToImg(i) {
         `
         <img src="assets/img/Prio alta.png" alt="urgent priority">
         `;
+    }
+}
+
+
+
+async function checkSubtasks(i, j) {
+    let checkbox = document.getElementById(`checkbox${j}`);
+    if (checkbox.checked) {
+        mainUserInfos[0]['tasks'][i]['done'][j] = true;
+    } else {
+        mainUserInfos[0]['tasks'][i]['done'][j] = false;
+    }
+    await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
+    updateCheckBoxes(i);
+}
+
+
+
+
+function updateCheckBoxes(i) {
+    
+    for (let j = 0; j < mainUserInfos[0]['tasks'][i]['done'].length; j++) {
+        // Überprüfe, ob der Wert im Array true oder false ist
+        if (mainUserInfos[0]['tasks'][i]['done'][j] === true) {
+            // Setze den Status der Checkbox entsprechend
+            document.getElementById(`checkbox${j}`).checked = true;
+        } else {
+            document.getElementById(`checkbox${j}`).checked = false;
+        }
     }
 }
