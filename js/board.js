@@ -27,7 +27,7 @@ async function onload() {
 
 function render() {
     renderAddTaskFloating();
-    renderNoTasks();
+    
     if (mainUserInfos[0]['tasks'].length > 0) {
         for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
             renderShowTask(i);
@@ -95,6 +95,7 @@ function renderNoTasks() {
 
 
 function updateHTML() {
+    
     swapToDo();
     swapInProgress();
     swapAwaitFeedback();
@@ -104,6 +105,7 @@ function updateHTML() {
         progress(i);
         transformPriorityToImg(i);
      }
+    renderNoTasks();
 }
 
 
@@ -141,7 +143,7 @@ function swapAwaitFeedback() {
 
 
 function swapDone() {
-    let addedDone = mainUserInfos[0]['tasks'].filter(t => t['box'] == 'doneFeedbackTasks');
+    let addedDone = mainUserInfos[0]['tasks'].filter(t => t['box'] == 'doneTasks');
     document.getElementById('doneTasks').innerHTML = '';
     for (let i = 0; i < addedDone.length; i++) {
         const element = addedDone[i];

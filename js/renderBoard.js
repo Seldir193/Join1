@@ -142,41 +142,52 @@ function renderAddTaskFloating() {
 // }
 
 function checkNoTasksToDo() {
-    if (countToDo == 0) {
-        document.getElementById('toDoTasks').innerHTML +=
-            `
+    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+        let tasks = mainUserInfos[0]['tasks'][i]['box'];
+        if (tasks !== 'toDoTasks') {
+            document.getElementById('toDoTasks').innerHTML +=
+                `
         <div class="noTasks">No tasks To Do</div>
     `;
+        }
     }
 }
 
 
 function checkNoTasksInProgress() {
-    if (countInProgress == 0) {
-        document.getElementById('inProgressTasks').innerHTML +=
-            `
+    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+        let tasks = mainUserInfos[0]['tasks'][i]['box'];
+        if (tasks !== 'inProgressTasks') {
+            document.getElementById('inProgressTasks').innerHTML +=
+                `
         <div class="noTasks">No tasks To Do</div>
     `;
+        }
     }
 }
 
 
 function checkNoTasksAwaitFeedback() {
-    if (countAwaitFeedback == 0) {
-        document.getElementById('awaitFeedbackTasks').innerHTML +=
-            `
+    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+        let tasks = mainUserInfos[0]['tasks'][i]['box'];
+        if (tasks !== 'awaitFeedbackTasks') {
+            document.getElementById('awaitFeedbackTasks').innerHTML +=
+                `
         <div class="noTasks">No tasks To Do</div>
     `;
+        }
     }
 }
 
-
 function checkNoTasksDone() {
-    if (countDone == 0) {
-        document.getElementById('doneTasks').innerHTML +=
-            `
+    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+        let tasks = mainUserInfos[0]['tasks'][i]['box'];
+        if (tasks !== 'doneTasks') {
+            document.getElementById('doneTasks').innerHTML +=
+                `
         <div class="noTasks">No tasks To Do</div>
     `;
+        }
     }
 }
 
