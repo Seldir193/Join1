@@ -35,6 +35,7 @@ function render() {
     }
     renderContactsOnBoard();
     updateHTML();
+    renderNoTasks();
 }
 
 
@@ -105,7 +106,6 @@ function updateHTML() {
         progress(i);
         transformPriorityToImg(i);
      }
-    renderNoTasks();
 }
 
 

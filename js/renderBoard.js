@@ -145,7 +145,7 @@ function checkNoTasksToDo() {
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'toDoTasks') {
-            document.getElementById('toDoTasks').innerHTML +=
+            document.getElementById('toDoTasks').innerHTML =
                 `
         <div class="noTasks">No tasks To Do</div>
     `;
@@ -158,7 +158,7 @@ function checkNoTasksInProgress() {
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'inProgressTasks') {
-            document.getElementById('inProgressTasks').innerHTML +=
+            document.getElementById('inProgressTasks').innerHTML =
                 `
         <div class="noTasks">No tasks To Do</div>
     `;
@@ -171,7 +171,7 @@ function checkNoTasksAwaitFeedback() {
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'awaitFeedbackTasks') {
-            document.getElementById('awaitFeedbackTasks').innerHTML +=
+            document.getElementById('awaitFeedbackTasks').innerHTML =
                 `
         <div class="noTasks">No tasks To Do</div>
     `;
@@ -183,7 +183,7 @@ function checkNoTasksDone() {
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'doneTasks') {
-            document.getElementById('doneTasks').innerHTML +=
+            document.getElementById('doneTasks').innerHTML =
                 `
         <div class="noTasks">No tasks To Do</div>
     `;
