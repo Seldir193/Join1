@@ -114,10 +114,10 @@ function renderAddTaskFloating() {
                 <div class="button-container">
                    <div class="button-box">
                         <div class="clear-button">
-                            <button class="clear" onclick="clearAddTaskFloating(), togglePriority(activePriority)">Clear <img src="assets/img/iconoir_cancel.png"></button>
+                            <button class="clear" onclick="clearAddTaskFloating(), togglePriority(activePriority), ClearAddMembersValueArray()">Clear <img src="assets/img/iconoir_cancel.png"></button>
                         </div>
                      <div class="create-button">
-                        <button class="create" onclick="fillArray(), togglePriority(activePriority), toggleCard()">Create Task <img src="assets/img/check.png"></button>
+                        <button class="create" onclick="fillArray(), togglePriority(activePriority), toggleCard(), clearAddTaskFloating(), ClearAddMembersValueArray()">Create Task <img src="assets/img/check.png"></button>
                      </div>
                    </div>
                </div>   
@@ -149,6 +149,7 @@ function checkNoTasksToDo() {
     <div class="noTasks">No tasks To Do</div>
 `;}
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+        let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'toDoTasks') {
             document.getElementById('toDoTasks').innerHTML =
                 `

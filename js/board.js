@@ -550,12 +550,15 @@ async function checkSubtasks(i, j) {
 function updateCheckBoxes(i) {
     
     for (let j = 0; j < mainUserInfos[0]['tasks'][i]['done'].length; j++) {
-        // Überprüfe, ob der Wert im Array true oder false ist
         if (mainUserInfos[0]['tasks'][i]['done'][j] === true) {
-            // Setze den Status der Checkbox entsprechend
             document.getElementById(`checkbox${j}`).checked = true;
         } else {
             document.getElementById(`checkbox${j}`).checked = false;
         }
     }
+}
+
+
+function ClearAddMembersValueArray() {
+    addMembersValueArray = [];
 }
