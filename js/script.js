@@ -21,10 +21,9 @@ async function loginForm() {
   proofUser(user, email);
 }
 
-
 function saveCurrentUserMailToSessionStorage(currentUserMail) {
   // Überprüfen, ob sessionStorage unterstützt wird
-  if (typeof(Storage) !== "undefined") {
+  if (typeof Storage !== "undefined") {
     // Speichern von currentUserMail in sessionStorage
     sessionStorage.setItem("currentUserMail", JSON.stringify(currentUserMail));
     console.log("currentUserMail erfolgreich in sessionStorage gespeichert.");
@@ -33,10 +32,9 @@ function saveCurrentUserMailToSessionStorage(currentUserMail) {
   }
 }
 
-
 function getCurrentUserMailFromSessionStorage() {
   // Überprüfen, ob sessionStorage unterstützt wird
-  if (typeof(Storage) !== "undefined") {
+  if (typeof Storage !== "undefined") {
     // Versuche, currentUserMail aus sessionStorage abzurufen
     const currentUserMailJSON = sessionStorage.getItem("currentUserMail");
     if (currentUserMailJSON !== null) {
@@ -45,7 +43,9 @@ function getCurrentUserMailFromSessionStorage() {
       console.log("currentUserMail erfolgreich aus sessionStorage abgerufen.");
       return currentUserMail;
     } else {
-      console.log("Es wurde keine currentUserMail in der sessionStorage gefunden.");
+      console.log(
+        "Es wurde keine currentUserMail in der sessionStorage gefunden."
+      );
       return null;
     }
   } else {
@@ -53,7 +53,6 @@ function getCurrentUserMailFromSessionStorage() {
     return null;
   }
 }
-
 
 async function proofUser(user, email) {
   if (user) {

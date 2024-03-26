@@ -1,15 +1,19 @@
 async function loading() {
-  init();
-  includeHTML(); 
-  load(); 
+  await init();
+  includeHTML();
+  // load();
   displayGreeting();
+  displayUserName(); //Besim: Funktio aufrufen
+  displayUserProfile(); //Besim: Funktio aufrufen
 }
 
-
-function displayUserName(userName) {
-  const userNameElement = document.getElementById("user-name");
+function displayUserName() {
+  //Besim: userName entfernt
+  let userNameElement = document.getElementById("user-name");
+  let index = users.findIndex((user) => user.email === currentUserMail[0]);
+  let name = users[index].name;
   if (userNameElement) {
-    userNameElement.textContent = `${userName}`;
+    userNameElement.textContent = `${name}`; //Besim: Eränzung des Pfades zum aktuelle nutzers
   }
 }
 
@@ -17,9 +21,10 @@ function displayUserProfile(userName) {
   console.log("displayUserProfile wird aufgerufen");
   const userInitialElement = document.getElementById("userInitial");
 
-  if (userInitialElement && userName) {
+  if (userInitialElement && currentUserMail[0]) {
+    //Besim: userName entfernt
     // Teile den Benutzernamen in Vorname und Nachname auf
-    const nameParts = userName.split(" ");
+    const nameParts = currentUserMail[0].split(" "); //Besim: userName entfernt
     let initials = "";
     // Füge den ersten Buchstaben des Vornamens und des Nachnamens zu den Initialen hinzu
     nameParts.forEach((part) => {
@@ -54,21 +59,6 @@ async function save(userName) {
   } catch (error) {
     console.error(
       "Fehler beim Speichern des Benutzernamens im Remote-Speicher:",
-      error
-    );
-  }
-}
-
-async function load() {
-  try {
-    let userName = await getItem("name");
-    if (userName) {
-      displayUserName(userName);
-      displayUserProfile(userName);
-    }
-  } catch (error) {
-    console.error(
-      "Fehler beim Laden des Benutzernamens aus dem Remote-Speicher:",
       error
     );
   }

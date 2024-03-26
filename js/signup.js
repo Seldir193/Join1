@@ -4,17 +4,10 @@ async function onload() {
   displayMessage();
 }
 
-
 async function getRemoteUsers() {
   users = JSON.parse(await getItem("users"));
   console.log("Users DATA:", users);
-  
 }
-     
-   
-
-
-
 
 async function register() {
   const registerBtn = document.getElementById("registerBtn");
@@ -51,15 +44,11 @@ async function register() {
     await createBasicJason(email); //Besim: Funktion in die stelle einfügen wenn der user erstellt wird
     // resetForm();
     window.location.href =
-      'index.html?msg=Glückwunsch,du hast dich erfolgreich registriert!';
+      "index.html?msg=Glückwunsch,du hast dich erfolgreich registriert!";
   } catch (error) {
     console.error("Registration error:", error);
   }
-  
 }
-
-
-
 
 //Besim: Funktion zum erstellen des Basisarrays mit der spezifischen email. In diesem Array werden alle Infos gepusht(contactbook...)
 async function createBasicJason(email) {
@@ -82,7 +71,3 @@ function guestLegalNotice() {
 function guestPrivacyPolicy() {
   window.location.href = "guestPrivacy.html";
 }
-
-
-      
-  
