@@ -24,6 +24,9 @@ async function loginForm() {
       currentUserKey.push(email); //Besim: Pushen des aktuellen users der eingetippt wird
       await setItem("currentUserKey", JSON.stringify(currentUserKey)); //Besim: Speichern des aktuellem users in remote
     } 
+    if (currentUserKey.includes(email)){
+      return;
+    }
     save(user.name);
     init();
 
