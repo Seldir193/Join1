@@ -7,7 +7,6 @@ let users = [];
 
 async function init() {
   await loadUsers();
-  // load();
 }
 
 async function loadUsers() {

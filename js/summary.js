@@ -1,6 +1,6 @@
 async function loading() {
   await init();
-  includeHTML();
+  await includeHTML();
   // load();
   displayGreeting();
   displayUserName(); //Besim: Funktio aufrufen
@@ -10,31 +10,32 @@ async function loading() {
 function displayUserName() {
   //Besim: userName entfernt
   let userNameElement = document.getElementById("user-name");
-  let index = users.findIndex((user) => user.email === currentUserMail[0]);
-  let name = users[index].name;
+
   if (userNameElement) {
-    userNameElement.textContent = `${name}`; //Besim: Eränzung des Pfades zum aktuelle nutzers
+    userNameElement.textContent = `${getName()}`; //Besim: Eränzung des Pfades zum aktuelle nutzers
   }
 }
 
-function displayUserProfile(userName) {
-  console.log("displayUserProfile wird aufgerufen");
-  const userInitialElement = document.getElementById("userInitial");
+function getName() {
+  let index = users.findIndex((user) => user.email === currentUserMail[0]);
+  let name = users[index].name;
+  return name;
+}
 
-  if (userInitialElement && currentUserMail[0]) {
-    //Besim: userName entfernt
-    // Teile den Benutzernamen in Vorname und Nachname auf
-    const nameParts = currentUserMail[0].split(" "); //Besim: userName entfernt
-    let initials = "";
-    // Füge den ersten Buchstaben des Vornamens und des Nachnamens zu den Initialen hinzu
-    nameParts.forEach((part) => {
-      if (part.length > 0) {
-        initials += part[0];
-      }
-    });
-    // Konvertiere die Initialen in Großbuchstaben und zeige sie im HTML-Element an
-    userInitialElement.textContent = initials.toUpperCase();
-  }
+function displayUserProfile() {
+  let userInitialElement = document.getElementById("userInitial");
+  userInitialElement.innerHTML = "";
+  // Teile den Benutzernamen in Vorname und Nachname auf
+  let name = getName();
+  let nameParts = name.split(" "); //Besim: userName entfernt
+  let initials = "";
+  // Füge den ersten Buchstaben des Vornamens und des Nachnamens zu den Initialen hinzu
+  nameParts.forEach((part) => {
+    if (part.length > 0) {
+      initials += part[0];
+    }
+  });
+  userInitialElement.innerHTML = `${initials.toUpperCase()}`;
 }
 
 function getGreeting() {

@@ -8,6 +8,8 @@ let initialColorMap = {};
 
 async function initContacts() {
   await init();
+  await includeHTML();
+  displayUserProfile();
   renderAlphabeticalCategories();
 }
 
