@@ -1,7 +1,5 @@
 async function loginForm() {
   let email = document.getElementById("email").value;
-  // currentUserMail = Array.create(1);
-  // currentUserMail[0] = email;
   currentUserMail = Array.of(email);
   let password = document.getElementById("password").value;
   const rememberCheckbox = document.getElementById("rememberCheckbox");
@@ -27,10 +25,7 @@ async function proofUser(user, email) {
       currentUserKey.push(email); //Besim: Pushen des aktuellen users der eingetippt wird
       await setItem("currentUserKey", JSON.stringify(currentUserKey)); //Besim: Speichern des aktuellem users in remote
     }
-    if (currentUserKey.includes(email)) {
-      console.log("User schon Angemeldet");
-      return;
-    }
+
     save(user.name);
     init();
 
