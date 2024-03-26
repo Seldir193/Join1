@@ -1,6 +1,7 @@
 
 
 async function loginForm() {
+
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
   const rememberCheckbox = document.getElementById("rememberCheckbox");
@@ -9,7 +10,7 @@ async function loginForm() {
   //   console.log("E-Mail und Passwort sind erforderlich.");
   //   return;
   // }
- if (rememberCheckbox.checked) {
+  if (rememberCheckbox.checked) {
     await rememberMe();
   } else {
     clearCredentials();
@@ -19,15 +20,16 @@ async function loginForm() {
 
   if (user) {
     console.log("Benutzer gefunden:", user);
-    if(!currentUserKey.includes(email)){
-    currentUserKey.push(email); //Besim: Pushen des aktuellen users der eingetippt wird
-    await setItem("currentUserKey", JSON.stringify(currentUserKey)); //Besim: Speichern des aktuellem users in remote
-    }
+    if (!currentUserKey.includes(email)) {
+      currentUserKey.push(email); //Besim: Pushen des aktuellen users der eingetippt wird
+      await setItem("currentUserKey", JSON.stringify(currentUserKey)); //Besim: Speichern des aktuellem users in remote
+    } 
     save(user.name);
-    init();// Hier war vorher init, musste gelöscht werden, damit nicht zwei mal die email gepushed wird. Ggfs. zum laden getItems einsetzen
+    init();
 
     displayUserName(user.name);
     window.location.href = "summary.html";
+
   } else {
     console.log("Benutzer nicht gefunden");
     alert("Ungültige E-Mail oder Passwort. Bitte versuchen Sie es erneut.");
@@ -118,7 +120,7 @@ async function loadRememberedCredentials() {
   }
 }
 
- 
+
 
 function displayMessage() {
   const urlParams = new URLSearchParams(window.location.search);

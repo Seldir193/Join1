@@ -264,7 +264,6 @@ function fillArray() {
 
 
 async function deleteTask(i) {
-
     mainUserInfos[0]['tasks'].splice(i, 1);
     await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
     updateHTML();
