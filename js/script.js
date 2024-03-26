@@ -1,15 +1,13 @@
-
-
 async function loginForm() {
-
+  init();
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
   const rememberCheckbox = document.getElementById("rememberCheckbox");
 
-  // if (!email || !password) {
-  //   console.log("E-Mail und Passwort sind erforderlich.");
-  //   return;
-  // }
+  if (!email || !password) {
+    console.log("E-Mail und Passwort sind erforderlich.");
+    return;
+  }
   if (rememberCheckbox.checked) {
     await rememberMe();
   } else {
@@ -17,22 +15,25 @@ async function loginForm() {
   }
 
   let user = users.find((u) => u.email === email && u.password === password);
+  proofUser(user, email);
+}
 
+async function proofUser(user, email) {
   if (user) {
     console.log("Benutzer gefunden:", user);
     if (!currentUserKey.includes(email)) {
       currentUserKey.push(email); //Besim: Pushen des aktuellen users der eingetippt wird
       await setItem("currentUserKey", JSON.stringify(currentUserKey)); //Besim: Speichern des aktuellem users in remote
-    } 
-    if (currentUserKey.includes(email)){
-      return;
     }
+    // if (currentUserKey.includes(email)) {
+    //   console.log("User schon Angemeldet");
+    //   return;
+    // }
     save(user.name);
     init();
 
     displayUserName(user.name);
     window.location.href = "summary.html";
-
   } else {
     console.log("Benutzer nicht gefunden");
     alert("Ungültige E-Mail oder Passwort. Bitte versuchen Sie es erneut.");
@@ -122,8 +123,6 @@ async function loadRememberedCredentials() {
     );
   }
 }
-
-
 
 function displayMessage() {
   const urlParams = new URLSearchParams(window.location.search);
