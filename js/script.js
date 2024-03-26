@@ -1,6 +1,8 @@
+let currentUserMail;
 async function loginForm() {
   let email = document.getElementById("email").value;
   currentUserMail = Array.of(email);
+
   let password = document.getElementById("password").value;
   const rememberCheckbox = document.getElementById("rememberCheckbox");
 
