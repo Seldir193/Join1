@@ -98,7 +98,7 @@ function renderAddTaskFloating() {
                 <div class="categoryHeader">
                    <div class="styleCategory"><b>Category</b></div>
                       <div class="input-with-icon">
-                         <input type="text" id="categoryInput" placeholder="Select task category..." onfocus="technicalUser()" onclick="technicalUser()" readonly required>
+                         <input type="text" id="categoryInput" placeholder="Select task category..." onfocus="technicalUser(), toggleCategory()" readonly required>
                          <img id="categoryDropdown" onclick="toggleCategory()"src="assets/img/arrow_drop_down.png" class="dropdown-icon">
                       </div>
                       <div id="listTechnical" class="techUser"></div>
@@ -117,7 +117,7 @@ function renderAddTaskFloating() {
                             <button class="clear" onclick="clearAddTaskFloating(), togglePriority(activePriority), ClearAddMembersValueArray()">Clear <img src="assets/img/iconoir_cancel.png"></button>
                         </div>
                      <div class="create-button">
-                        <button class="create" onclick="fillArray(), togglePriority(activePriority), toggleCard(), clearAddTaskFloating(), ClearAddMembersValueArray()">Create Task <img src="assets/img/check.png"></button>
+                        <button class="create" onclick="pushMembers(), fillArray(), togglePriority(activePriority), toggleCard(), clearAddTaskFloating(), ClearAddMembersValueArray()">Create Task <img src="assets/img/check.png"></button>
                      </div>
                    </div>
                </div>   

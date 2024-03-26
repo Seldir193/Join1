@@ -8,8 +8,8 @@ let letterArray = [];
 let currentPriority;
 let initialColorMap = {};
 let randomColorCollection = {};
-let selectedCategories = [];
-let addMembersValueArray = []
+let addMembersValueArray = [];
+let addMembersStatusArray = [];
 let addSubtasks = [];
 let addDoneValue = [];
 
@@ -27,7 +27,7 @@ async function onload() {
 
 function render() {
     renderAddTaskFloating();
-    
+
     if (mainUserInfos[0]['tasks'].length > 0) {
         for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
             renderShowTask(i);
@@ -95,17 +95,17 @@ function renderNoTasks() {
 
 
 function updateHTML() {
-    
+
     swapToDo();
     swapInProgress();
     swapAwaitFeedback();
     swapDone();
-     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         fillTasksOnBoard(i);
         progress(i);
         transformPriorityToImg(i);
-     }
-     renderNoTasks();
+    }
+    renderNoTasks();
 }
 
 
@@ -224,10 +224,11 @@ function addSubTaskValue(i) {
 
 async function pushToDo(newToDo) {
     mainUserInfos[0]['tasks'].push(newToDo);
-    await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
+    await setItem(`${currentUserMail}`, JSON.stringify(mainUserInfos));
     updateHTML();
     addMembersValueArray = [];
     addSubtasks = [];
+    addMembersValue = [];
 }
 
 
@@ -244,7 +245,6 @@ function fillArray() {
     let addDateValue = addDueDateToBoard();
     let addCategoryValue = addCategoryToBoard();
     let addDoneValue = addDoneToBoard();
-    let addMembersValue = addMembersValueArray; 
     let newToDo = {
         id: `${countIDs}`,
         box: 'toDoTasks',
@@ -252,12 +252,13 @@ function fillArray() {
         description: `${addDescriptionValue}`,
         category: `${addCategoryValue}`,
         dueDate: `${addDateValue}`,
-        members: addMembersValue,
+        members: addMembersValueArray,
+        status: addMembersStatusArray,
         subtasks: addSubtasks,
         done: addDoneValue,
         priority: currentPriority,
     };
-    
+
     pushToDo(newToDo);
     clearAddTaskFloating();
 }
@@ -265,22 +266,9 @@ function fillArray() {
 
 async function deleteTask(i) {
     mainUserInfos[0]['tasks'].splice(i, 1);
-    await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
+    await setItem(`${currentUserMail}`, JSON.stringify(mainUserInfos));
     updateHTML();
 }
-
-// function addMembersValueToBoard() {
-//     let addMembers = [];
-
-//     for (let i = 0; i < contactBook.length; i++) {
-//         let membersInputs = document.getElementById(`listName${i}`).innerHTML;
-//         addMembers.push(membersInputs);
-//     }
-//     return addMembers;
-// }
-
-
-
 
 
 function startDragging(id) {
@@ -388,8 +376,13 @@ function technicalUser() {
     technical.innerHTML = "";
 
     for (let k = 0; k < categorySet.length; k++) {
-        technical.innerHTML += `<div class="select" onclick="selectCategory('${categorySet[k]}')">${categorySet[k]}</div>`;
+        technical.innerHTML += `<div class="select" onclick="chosenTechnicalUser('${categorySet[k]}')">${categorySet[k]}</div>`;
     }
+}
+
+
+function chosenTechnicalUser(category) {
+    document.getElementById('categoryInput').value = `${category}`;
 }
 
 
@@ -397,19 +390,10 @@ function valueSubtask() {
     let valueSubtask = document.getElementById('subTaskInput').value;
     addSubtasks.push(valueSubtask);
     valueSubtask.innerHTML = '';
-    document.getElementById('subtaskList').innerHTML += 
-    `
+    document.getElementById('subtaskList').innerHTML +=
+        `
     <div>${valueSubtask}</div>
     `;
-}
-
-
-function selectCategory(category) {
-    var categoryInput = document.querySelector(".categoryHeader input");
-    categoryInput.value = category;
-    toggleCategory();
-    selectedCategories.push(category);
-    categoryInput.value = selectedCategories.join(", ");
 }
 
 
@@ -433,7 +417,7 @@ function renderContactsOnBoard() {
             <div class="styleMembersAddTask" id="profilMember${i}"></div>
             <span class="nameMember" id="nameMember${i}"></span>
         </div>
-        <img src="assets/img/checkbox1.svg" class="customCheckbox" id="checkboxMember${i}" type="checkbox" onclick="pushMembers(${i}), switchCheckboxImg(${i})">
+        <input class="customCheckbox" id="checkboxMember${i}" type="checkbox">
     </div>
     `;
             fillContactsOnBoard(i);
@@ -487,22 +471,31 @@ function progress(i) {
 // }
 
 
-function switchCheckboxImg(i) {
-    var image = document.getElementById(`checkboxMember${i}`);
-    if (image.src.includes('assets/img/checkbox1.svg')) {
-        image.src = 'assets/img/checkbox2.svg';
-        pushMembers(i);
-    } else {
-        image.src = 'assets/img/checkbox1.svg';
-        deleteMember(i);
+
+
+
+function pushMembers() {
+    for (let i = 0; i < mainUserInfos[0]['contactBook'].lenght; i++) {
+        let addMembersValue = mainUserInfos[0]['contactBook'][i]['name'];
+        addMembersValueArray.push(addMembersValue);
+        addMembersStatusArray.push(false);
+        updateStatus(i);
     }
 }
 
 
-function pushMembers(i) {
-    let addMembersValue = mainUserInfos[0]['contactBook'][i]['name'];
-    addMembersValueArray.push(addMembersValue);
+function updateStatus(i) {
+    let checkbox = document.getElementById(`checkboxMember${i}`);
+    if (checkbox.checked) {
+        mainUserInfos[0]['tasks'][i]['status'][i] = true;
+    }
+    else {
+        mainUserInfos[0]['tasks'][i]['status'][i] = false;
+    }
 }
+
+
+
 
 function deleteMember(i) {
     addMembersValueArray.splice(i, 1);
@@ -510,21 +503,21 @@ function deleteMember(i) {
 
 
 function transformPriorityToImg(i) {
-    if (mainUserInfos[0]['tasks'][i]['priority'] === 'low'){
+    if (mainUserInfos[0]['tasks'][i]['priority'] === 'low') {
         document.getElementById(`priorityOnBoard${i}`).innerHTML =
-        `
+            `
         <img src="assets/img/Prio baja.png" alt="low priority">
         `;
     }
-    if (mainUserInfos[0]['tasks'][i]['priority'] === 'medium'){
+    if (mainUserInfos[0]['tasks'][i]['priority'] === 'medium') {
         document.getElementById(`priorityOnBoard${i}`).innerHTML =
-        `
+            `
         <img src="assets/img/Prio media (1).png" alt="medium priority">
         `;
     }
-    if (mainUserInfos[0]['tasks'][i]['priority'] === 'urgent'){
+    if (mainUserInfos[0]['tasks'][i]['priority'] === 'urgent') {
         document.getElementById(`priorityOnBoard${i}`).innerHTML =
-        `
+            `
         <img src="assets/img/Prio alta.png" alt="urgent priority">
         `;
     }
@@ -539,7 +532,7 @@ async function checkSubtasks(i, j) {
     } else {
         mainUserInfos[0]['tasks'][i]['done'][j] = false;
     }
-    await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
+    await setItem(`${currentUserMail}`, JSON.stringify(mainUserInfos));
     updateCheckBoxes(i);
 }
 
@@ -547,7 +540,7 @@ async function checkSubtasks(i, j) {
 
 
 function updateCheckBoxes(i) {
-    
+
     for (let j = 0; j < mainUserInfos[0]['tasks'][i]['done'].length; j++) {
         if (mainUserInfos[0]['tasks'][i]['done'][j] === true) {
             document.getElementById(`checkbox${j}`).checked = true;
