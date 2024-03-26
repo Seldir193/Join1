@@ -1,8 +1,9 @@
 let currentUserMail;
+
 async function loginForm() {
   let email = document.getElementById("email").value;
   currentUserMail = Array.of(email);
-
+  saveCurrentUserMailToSessionStorage(currentUserMail);
   let password = document.getElementById("password").value;
   const rememberCheckbox = document.getElementById("rememberCheckbox");
 
@@ -19,6 +20,40 @@ async function loginForm() {
   let user = users.find((u) => u.email === email && u.password === password);
   proofUser(user, email);
 }
+
+
+function saveCurrentUserMailToSessionStorage(currentUserMail) {
+  // Überprüfen, ob sessionStorage unterstützt wird
+  if (typeof(Storage) !== "undefined") {
+    // Speichern von currentUserMail in sessionStorage
+    sessionStorage.setItem("currentUserMail", JSON.stringify(currentUserMail));
+    console.log("currentUserMail erfolgreich in sessionStorage gespeichert.");
+  } else {
+    console.log("SessionStorage wird in diesem Browser nicht unterstützt.");
+  }
+}
+
+
+function getCurrentUserMailFromSessionStorage() {
+  // Überprüfen, ob sessionStorage unterstützt wird
+  if (typeof(Storage) !== "undefined") {
+    // Versuche, currentUserMail aus sessionStorage abzurufen
+    const currentUserMailJSON = sessionStorage.getItem("currentUserMail");
+    if (currentUserMailJSON !== null) {
+      // Konvertiere den JSON-String zurück in ein JavaScript-Objekt
+      const currentUserMail = JSON.parse(currentUserMailJSON);
+      console.log("currentUserMail erfolgreich aus sessionStorage abgerufen.");
+      return currentUserMail;
+    } else {
+      console.log("Es wurde keine currentUserMail in der sessionStorage gefunden.");
+      return null;
+    }
+  } else {
+    console.log("SessionStorage wird in diesem Browser nicht unterstützt.");
+    return null;
+  }
+}
+
 
 async function proofUser(user, email) {
   if (user) {

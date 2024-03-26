@@ -5,17 +5,20 @@ let mainUserInfos = [{ contactBook: [], tasks: [] }];
 let currentUserKey = [];
 let users = [];
 
+
+
 async function init() {
   await loadUsers();
   load();
 }
 
 async function loadUsers() {
+  const currentUserMail = getCurrentUserMailFromSessionStorage();
   try {
     currentUserKey = JSON.parse(await getItem("currentUserKey")); //Besim: Laden des aktuelle users
 
     try {
-      mainUserInfos = JSON.parse(await getItem(`${currentUserKey}`)); //Laden der INfos vom übergeordneten Array
+      mainUserInfos = JSON.parse(await getItem(`${currentUserMail[0]}`)); //Laden der INfos vom übergeordneten Array
         users = JSON.parse(await getItem("users"));
       console.log("Users DATA:", users);
       console.log("MainUser DATA:", mainUserInfos);
