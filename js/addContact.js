@@ -284,7 +284,7 @@ async function saveChanges(event) {
     .value.toLowerCase();
   mainUserInfos[0].contactBook[index].number =
     document.getElementById("inputEditPhone").value;
-  await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
+  await setItem(`${currentUserMail[0]}`, JSON.stringify(mainUserInfos));
   await loadUsers();
   editIndex = [];
 
@@ -298,7 +298,7 @@ async function deleteContact(i) {
   let letterIndex = letterArray.indexOf(firstChar);
   mainUserInfos[0].contactBook.splice(i, 1);
   letterArray.splice(letterIndex, 1);
-  await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos));
+  await setItem(`${currentUserMail[0]}`, JSON.stringify(mainUserInfos));
   closeAddContact();
   await loadUsers();
   renderAlphabeticalCategories();
@@ -325,7 +325,7 @@ async function insertContact(event) {
       number: inputPhone,
     });
 
-    await setItem(`${currentUserKey}`, JSON.stringify(mainUserInfos)); //Besim: Speichere den Array unter den Key (email)
+    await setItem(`${currentUserMail[0]}`, JSON.stringify(mainUserInfos)); //Besim: Speichere den Array unter den Key (email)
     initContacts();
 
     renderAlphabeticalCategories();
