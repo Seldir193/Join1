@@ -11,7 +11,7 @@ let randomColorCollection = {};
 let addMembersValueArray = [];
 let addMembersStatusArray = [];
 let addSubtasks = [];
-let addDoneValue = [];
+let addDoneValueArray = [];
 
 let categorySet = ["Technical Task", "User Story"];
 
@@ -257,12 +257,12 @@ function addPriorityValue(element) {
 }
 
 function fillArray() {
-    let countIDs = mainUserInfos[0]["tasks"].length;
+    let countIDs = countIds();
     let addTitleValue = addTitleToBoard();
     let addDescriptionValue = addDescriptionToBoard();
     let addDateValue = addDueDateToBoard();
     let addCategoryValue = addCategoryToBoard();
-    let addDoneValue = addDoneToBoard();
+    addDoneToBoard();
     let addMembersValue = addMembersToTask();
     let newToDo = {
         id: `${countIDs}`,
@@ -273,12 +273,25 @@ function fillArray() {
         dueDate: `${addDateValue}`,
         members: addMembersValue,
         subtasks: addSubtasks,
-        done: addDoneValue,
+        done: addDoneValueArray,
         priority: currentPriority,
     };
-
     pushToDo(newToDo);
     clearAddTaskFloating();
+}
+
+
+function countIds() {
+    if (mainUserInfos[0]['tasks'].length === 0) {
+        return 0; // Falls keine IDs vorhanden sind, gib 0 zurück
+    } else {
+        let ids = new Set(mainUserInfos[0]['tasks'].map(task => parseInt(task['id']))); // Extrahiere alle IDs aus mainUserInfos[0]['tasks'] und konvertiere sie in Zahlen
+        for (let i = 0; ; i++) {
+            if (!ids.has(i)) { // Überprüfe, ob die Zahl i nicht in den IDs enthalten ist
+                return i; // Wenn nicht, gib die Zahl zurück
+            }
+        }
+    }
 }
 
 
@@ -288,7 +301,7 @@ function addMembersToTask() {
         let element = addMembersStatusArray[i];
         if (element === true) {
             addMembersValue.push(addMembersValueArray[i])
-        } 
+        }
     }
     return addMembersValue
 }

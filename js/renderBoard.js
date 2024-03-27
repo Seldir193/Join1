@@ -147,7 +147,8 @@ function checkNoTasksToDo() {
         document.getElementById('toDoTasks').innerHTML =
             `
     <div class="noTasks">No tasks To Do</div>
-`;}
+`;
+    }
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'toDoTasks') {
@@ -166,7 +167,8 @@ function checkNoTasksInProgress() {
         document.getElementById('inProgressTasks').innerHTML =
             `
     <div class="noTasks">No tasks To Do</div>
-`;}
+`;
+    }
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'inProgressTasks') {
@@ -185,7 +187,8 @@ function checkNoTasksAwaitFeedback() {
         document.getElementById('awaitFeedbackTasks').innerHTML =
             `
     <div class="noTasks">No tasks To Do</div>
-`;}
+`;
+    }
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'awaitFeedbackTasks') {
@@ -203,7 +206,8 @@ function checkNoTasksDone() {
         document.getElementById('doneTasks').innerHTML =
             `
     <div class="noTasks">No tasks To Do</div>
-`;}
+`;
+    }
     for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
         let tasks = mainUserInfos[0]['tasks'][i]['box'];
         if (tasks !== 'doneTasks') {
@@ -264,7 +268,7 @@ function renderTaskFloating(i) {
          </div>
          <div>
              <span class="styleSubtasks">Subtasks</span>
-             <div id="checkBoxContainer" class="checkBoxContainer"></div>             
+             <div id="checkBoxContainer${i}" class="checkBoxContainer"></div>             
          </div>
          <div class="deleteChangeContainer">
             <img src="assets/img/delete.svg" alt="deleteBtn" onclick="deleteTask(${i})">
@@ -296,7 +300,7 @@ function generateTodoHTML(element, currentUserInfo) {
     let category = currentUserInfo['category'];
     let title = currentUserInfo['title'];
     let description = currentUserInfo['description'];
-    let priority = currentUserInfo['priority']
+    let priority = currentUserInfo['priority'];
     let progress = element['done'].filter(item => item === true).length;
     let goal = element['subtasks'].length;
     let result = progress + '/' + goal;
@@ -362,28 +366,11 @@ function addCategoryToBoard() {
 }
 
 
-// function addSubtasksToBoard() {
-
-//     addSubtaskValue = [];
-
-//     for (let i = 0; i < subtaskList.children.length; i++) {
-
-//         let subtaskInputs = document.getElementById(`contactText_${i}`).innerHTML;
-
-//         addSubtaskValue.push(subtaskInputs);
-//         addDoneToBoard(i)
-//     }
-//     return addSubtaskValue;
-
-// }
-
-
 function addDoneToBoard() {
-    if (addDoneValue.length == 0) {
+    if (addDoneValueArray.length == 0) {
         for (let j = 0; j < addSubtasks.length; j++) {
             let firstStatus = 'false';
-            addDoneValue.push(firstStatus);
+            addDoneValueArray.push(firstStatus);
         }
-        return addDoneValue;
     }
 }
