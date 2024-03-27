@@ -17,6 +17,7 @@
     <script src="js/summary.js"></script>
     <script src="js/renderBoard.js"></script>
 </head>
+
 <body onload="onload()" id="body">
     <section w3-include-html="./templates/header.html"></section>
     <div class="dFlex overflowHidden">
@@ -29,7 +30,7 @@
                         <div class="searchIconContainer"><img src="./assets/img/search.svg" alt="search Icon"
                                 id="searchIcon"></div>
                     </div>
-                    <button class="addTaskBtn" onclick="toggleCard()">Add task <img
+                    <button class="addTaskBtn" onclick="deleteTask(), toggleCard(), pushMembers()">Add task <img
                             src="./assets/img/plus.svg" alt="plusIcon">
                     </button>
                 </div>

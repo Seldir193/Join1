@@ -117,7 +117,7 @@ function renderAddTaskFloating() {
                             <button class="clear" onclick="clearAddTaskFloating(), togglePriority(activePriority), ClearAddMembersValueArray()">Clear <img src="assets/img/iconoir_cancel.png"></button>
                         </div>
                      <div class="create-button">
-                        <button class="create" onclick="pushMembers(), fillArray(), togglePriority(activePriority), toggleCard(), clearAddTaskFloating(), ClearAddMembersValueArray()">Create Task <img src="assets/img/check.png"></button>
+                        <button class="create" onclick="fillArray(), togglePriority(activePriority), toggleCard(), clearAddTaskFloating(), ClearAddMembersValueArray()">Create Task <img src="assets/img/check.png"></button>
                      </div>
                    </div>
                </div>   
