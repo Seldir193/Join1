@@ -134,14 +134,15 @@ function checkNoTasksToDo() {
             `
     <div class="noTasks">No tasks To Do</div>
 `;
-    }
-    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
-        let tasks = mainUserInfos[0]['tasks'][i]['box'];
-        if (tasks !== 'toDoTasks') {
-            document.getElementById('toDoTasks').innerHTML =
-                `
+
+        for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+            let tasks = mainUserInfos[0]['tasks'][i]['box'];
+            if (tasks !== 'toDoTasks') {
+                document.getElementById('toDoTasks').innerHTML =
+                    `
         <div class="noTasks">No tasks To Do</div>
     `;
+            }
         }
     }
 }
@@ -154,14 +155,15 @@ function checkNoTasksInProgress() {
             `
     <div class="noTasks">No tasks To Do</div>
 `;
-    }
-    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
-        let tasks = mainUserInfos[0]['tasks'][i]['box'];
-        if (tasks !== 'inProgressTasks') {
-            document.getElementById('inProgressTasks').innerHTML =
-                `
+
+        for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+            let tasks = mainUserInfos[0]['tasks'][i]['box'];
+            if (tasks !== 'inProgressTasks') {
+                document.getElementById('inProgressTasks').innerHTML =
+                    `
         <div class="noTasks">No tasks To Do</div>
     `;
+            }
         }
     }
 }
@@ -174,14 +176,15 @@ function checkNoTasksAwaitFeedback() {
             `
     <div class="noTasks">No tasks To Do</div>
 `;
-    }
-    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
-        let tasks = mainUserInfos[0]['tasks'][i]['box'];
-        if (tasks !== 'awaitFeedbackTasks') {
-            document.getElementById('awaitFeedbackTasks').innerHTML =
-                `
+
+        for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+            let tasks = mainUserInfos[0]['tasks'][i]['box'];
+            if (tasks !== 'awaitFeedbackTasks') {
+                document.getElementById('awaitFeedbackTasks').innerHTML =
+                    `
         <div class="noTasks">No tasks To Do</div>
     `;
+            }
         }
     }
 }
@@ -193,14 +196,15 @@ function checkNoTasksDone() {
             `
     <div class="noTasks">No tasks To Do</div>
 `;
-    }
-    for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
-        let tasks = mainUserInfos[0]['tasks'][i]['box'];
-        if (tasks !== 'doneTasks') {
-            document.getElementById('doneTasks').innerHTML =
-                `
+
+        for (let i = 0; i < mainUserInfos[0]['tasks'].length; i++) {
+            let tasks = mainUserInfos[0]['tasks'][i]['box'];
+            if (tasks !== 'doneTasks') {
+                document.getElementById('doneTasks').innerHTML =
+                    `
         <div class="noTasks">No tasks To Do</div>
     `;
+            }
         }
     }
 }
