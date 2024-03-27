@@ -293,8 +293,8 @@ function addMembersToTask() {
     return addMembersValue
 }
 
-async function deleteTask() {
-    mainUserInfos[0]["tasks"].splice(0, 1);
+async function deleteTask(i) {
+    mainUserInfos[0]["tasks"].splice(i, 1);
     await setItem(`${currentUserMail}`, JSON.stringify(mainUserInfos));
     updateHTML();
 }
