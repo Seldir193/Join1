@@ -185,8 +185,8 @@ function fillTasksOnBoard(i) {
 }
 
 function addMembersValue(i) {
-    for (let j = 0; j < mainUserInfos[0]["tasks"][i].members.length; j++) {
-        let memberFirstLetter = mainUserInfos[0]["tasks"][i].members[j]
+    for (let j = 0; j < mainUserInfos[0]["tasks"][i]["members"].length; j++) {
+        let memberFirstLetter = mainUserInfos[0]["tasks"][i]["members"][j]
             .charAt(0)
             .toUpperCase();
         document.getElementById(`profilsOnBoard${i}`).innerHTML += `

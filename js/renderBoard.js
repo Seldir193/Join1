@@ -49,8 +49,8 @@ function renderShowTask(i) {
                         <span id="profilValue${i}"></span>
                     </div>
             <h3>Subtasks:</h3>
-            <label for="checkboxSubtasks1" class="styleCheckboxContainer" id="subtaskValue${i}">
-                <input type="checkbox" id="checkboxContainerNewTask" name="checkbox2">
+            <label for="checkboxContainerNewTask${i}" class="styleCheckboxContainer" id="subtaskValue${i}">
+                <input type="checkbox" id="checkboxContainerNewTask${i}" name="checkbox${i}">
             </label>
         </div>
         `;
@@ -68,10 +68,10 @@ function renderAddTaskFloating() {
             <form id="addTaskForm">    
             <input type="text" id="titleAddTaskFloating" name="title" placeholder="Enter a title" required><br>
         
-            <label for="descriptionTextareaAddTask" class="styleDescription"><span id="descriptionTitleAddTask">Description <span id="optionalDescriptionTitleAddTask">(optional)</span></span></label><br>
+            <label for="descriptionAddTaskFloating" class="styleDescription"><span id="descriptionTitleAddTask">Description <span id="optionalDescriptionTitleAddTask">(optional)</span></span></label><br>
             <textarea id="descriptionAddTaskFloating" name="description" rows="4" cols="50" placeholder="Enter a Description" required></textarea><br>
         
-            <label class="styleDueDate" for="dueDate">Due date</label><br>
+            <label class="styleDueDate" for="dueDateAddTaskFloating">Due date</label><br>
             <input type="date" id="dueDateAddTaskFloating" name="due_date" ><br>
         
             <nav class="priority">
@@ -117,7 +117,7 @@ function renderAddTaskFloating() {
                             <button class="clear" onclick="clearAddTaskFloating(), togglePriority(activePriority), ClearAddMembersValueArray()">Clear <img src="assets/img/iconoir_cancel.png"></button>
                         </div>
                      <div class="create-button">
-                        <button class="create" onclick="fillArray(), togglePriority(activePriority), toggleCard(), clearAddTaskFloating(), ClearAddMembersValueArray()">Create Task <img src="assets/img/check.png"></button>
+                        <button class="create" onclick="fillArray(), togglePriority(activePriority), clearAddTaskFloating(), ClearAddMembersValueArray(), toggleCard()">Create Task <img src="assets/img/check.png"></button>
                      </div>
                    </div>
                </div>   
@@ -126,20 +126,6 @@ function renderAddTaskFloating() {
     </div>`;
 }
 
-
-// function renderContactsInAddTask() {
-//     for (let i = 0; i < mainUserInfos[0]['contactBook'].length; i++) {
-//         let contact = mainUserInfos[0]['contactBook'][i];
-//         document.getElementById('listContactContainerBoard').innerHTML =
-//             `
-//         <div>
-//             <div></div>
-//             <span>${contact}</span>
-//             <input type="checkbox" id="addContactToBoard${i}" name="myCheckbox" value="checkboxValue">
-//         </div>
-//     `;
-//     }
-// }
 
 function checkNoTasksToDo() {
     let anyTask = mainUserInfos[0]['tasks'].length;
@@ -280,7 +266,7 @@ function renderTaskFloating(i) {
     if (mainUserInfos[0]['tasks'][i]['subtasks'] !== undefined) {
         for (let j = 0; j < mainUserInfos[0]['tasks'][i]['subtasks'].length; j++) {
             let addSubtasksInput = mainUserInfos[0]['tasks'][i]['subtasks'][j];
-            document.getElementById('checkBoxContainer').innerHTML +=
+            document.getElementById(`checkBoxContainer${i}`).innerHTML +=
                 `
             <div>
                 <input type="checkbox" id="checkbox${j}" name="checkbox${j}" onchange="checkSubtasks(${i}, ${j})">
