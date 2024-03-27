@@ -1,7 +1,6 @@
 async function onload() {
   await getRemoteUsers();
-  load();
-  displayMessage();
+    displayMessage();
 }
 
 async function getRemoteUsers() {
